@@ -1,0 +1,15 @@
+{
+  "cliVersion": "5.91.0",
+  "generatorName": "fernapi/fern-csharp-sdk",
+  "generatorVersion": "2.80.0",
+  "generatorConfig": {
+    "namespace": "CloudpdfApi",
+    "package-id": "CloudpdfApi"
+  },
+  "originGitCommit": "232d5e0240d5673a73c9ea7c7ae9e7b937fdd5b3",
+  "originGitCommitIsDirty": false,
+  "invokedBy": "ci",
+  "requestedVersion": "3.0.0-next.1",
+  "ciProvider": "github",
+  "sdkVersion": "3.0.0-next.1"
+}

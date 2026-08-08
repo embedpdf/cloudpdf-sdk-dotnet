@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/CloudpdfApi.Test/CloudpdfApi.Test.csproj" />
+  <Project Path="src/CloudpdfApi/CloudpdfApi.csproj" />
+</Solution>
