@@ -1,0 +1,128 @@
+using CloudPDF.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+
+namespace CloudPDF;
+
+[JsonConverter(
+    typeof(DocFormsGet200ResponseFieldsItemCheckboxOrigin.DocFormsGet200ResponseFieldsItemCheckboxOriginSerializer)
+)]
+[Serializable]
+public readonly record struct DocFormsGet200ResponseFieldsItemCheckboxOrigin : IStringEnum
+{
+    public static readonly DocFormsGet200ResponseFieldsItemCheckboxOrigin Acroform = new(
+        Values.Acroform
+    );
+
+    public static readonly DocFormsGet200ResponseFieldsItemCheckboxOrigin Recovered = new(
+        Values.Recovered
+    );
+
+    public DocFormsGet200ResponseFieldsItemCheckboxOrigin(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static DocFormsGet200ResponseFieldsItemCheckboxOrigin FromCustom(string value)
+    {
+        return new DocFormsGet200ResponseFieldsItemCheckboxOrigin(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        DocFormsGet200ResponseFieldsItemCheckboxOrigin value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        DocFormsGet200ResponseFieldsItemCheckboxOrigin value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(DocFormsGet200ResponseFieldsItemCheckboxOrigin value) =>
+        value.Value;
+
+    public static explicit operator DocFormsGet200ResponseFieldsItemCheckboxOrigin(string value) =>
+        new(value);
+
+    internal class DocFormsGet200ResponseFieldsItemCheckboxOriginSerializer
+        : JsonConverter<DocFormsGet200ResponseFieldsItemCheckboxOrigin>
+    {
+        public override DocFormsGet200ResponseFieldsItemCheckboxOrigin Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new DocFormsGet200ResponseFieldsItemCheckboxOrigin(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            DocFormsGet200ResponseFieldsItemCheckboxOrigin value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+
+        public override DocFormsGet200ResponseFieldsItemCheckboxOrigin ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new DocFormsGet200ResponseFieldsItemCheckboxOrigin(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            DocFormsGet200ResponseFieldsItemCheckboxOrigin value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
+    }
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Acroform = "acroform";
+
+        public const string Recovered = "recovered";
+    }
+}
