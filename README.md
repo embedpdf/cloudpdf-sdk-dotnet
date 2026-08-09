@@ -1,9 +1,9 @@
-# Cloudpdf C# Library
+# CloudPDF .NET SDK
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Cloudpdf%2FC%23)
-[![nuget shield](https://img.shields.io/nuget/v/CloudpdfApi)](https://nuget.org/packages/CloudpdfApi)
+[![nuget shield](https://img.shields.io/nuget/v/CloudPDF)](https://nuget.org/packages/CloudPDF)
 
-The Cloudpdf C# library provides convenient access to the Cloudpdf APIs from C#.
+The official .NET SDK for the CloudPDF API.
 
 ## Table of Contents
 
@@ -29,7 +29,7 @@ This SDK requires:
 ## Installation
 
 ```sh
-dotnet add package CloudpdfApi
+dotnet add package CloudPDF
 ```
 
 ## Reference
@@ -41,9 +41,9 @@ A full reference for this library is available [here](./reference.md).
 Instantiate and use the client with the following:
 
 ```csharp
-using CloudpdfApi;
+using CloudPDF;
 
-var client = new CloudpdfApiClient("TOKEN");
+var client = new CloudPDFClient("TOKEN");
 await client.Tenants.CreateAsync(new TenantsCreateRequest { Id = "id" });
 ```
 
@@ -53,11 +53,11 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```csharp
-using CloudpdfApi;
+using CloudPDF;
 
 try {
     var response = await client.Tenants.CreateAsync(...);
-} catch (CloudpdfApiApiException e) {
+} catch (CloudPDFApiException e) {
     System.Console.WriteLine(e.Body);
     System.Console.WriteLine(e.StatusCode);
 
@@ -125,7 +125,7 @@ var response = await client.Tenants.CreateAsync(
 Access raw HTTP response data (status code, headers, URL) alongside parsed response data using the `.WithRawResponse()` method.
 
 ```csharp
-using CloudpdfApi;
+using CloudPDF;
 
 // Access raw response data (status code, headers, etc.) alongside the parsed response
 var result = await client.Tenants.CreateAsync(...).WithRawResponse();
@@ -205,7 +205,7 @@ var response = await client.Tenants.CreateAsync(
 This SDK uses forward-compatible enums that can handle unknown values gracefully.
 
 ```csharp
-using CloudpdfApi;
+using CloudPDF;
 
 // Using a built-in value
 var listDocumentsRequestState = ListDocumentsRequestState.Pending;
