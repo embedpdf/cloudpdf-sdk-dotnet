@@ -5,7 +5,7 @@ using global::System.Text.Json.Serialization;
 namespace CloudPDF;
 
 [Serializable]
-public record DocumentsUploadDirect200Response : IJsonOnDeserialized
+public record DocumentsUploadProxy200Response : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =

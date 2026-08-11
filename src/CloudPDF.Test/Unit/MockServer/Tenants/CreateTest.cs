@@ -24,6 +24,7 @@ public class CreateTest : BaseMockServerTest
                 "id": "id",
                 "name": "name",
                 "autoProvisioned": true,
+                "status": "active",
                 "createdAt": 1.1
               },
               "created": true
@@ -67,6 +68,7 @@ public class CreateTest : BaseMockServerTest
                 "id": "id",
                 "name": "name",
                 "autoProvisioned": true,
+                "status": "active",
                 "createdAt": 1.1
               },
               "created": true

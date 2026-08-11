@@ -20,6 +20,9 @@ public record TenantsList200ResponseTenantsItem : IJsonOnDeserialized
     [JsonPropertyName("autoProvisioned")]
     public required bool AutoProvisioned { get; set; }
 
+    [JsonPropertyName("status")]
+    public TenantsList200ResponseTenantsItemStatus? Status { get; set; }
+
     [JsonPropertyName("createdAt")]
     public required double CreatedAt { get; set; }
 

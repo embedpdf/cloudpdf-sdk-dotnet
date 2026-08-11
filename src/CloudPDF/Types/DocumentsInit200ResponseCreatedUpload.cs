@@ -30,11 +30,11 @@ public record DocumentsInit200ResponseCreatedUpload
     }
 
     /// <summary>
-    /// Create an instance of DocumentsInit200ResponseCreatedUpload with <see cref="DocumentsInit200ResponseCreatedUpload.Direct"/>.
+    /// Create an instance of DocumentsInit200ResponseCreatedUpload with <see cref="DocumentsInit200ResponseCreatedUpload.Proxy"/>.
     /// </summary>
-    public DocumentsInit200ResponseCreatedUpload(DocumentsInit200ResponseCreatedUpload.Direct value)
+    public DocumentsInit200ResponseCreatedUpload(DocumentsInit200ResponseCreatedUpload.Proxy value)
     {
-        Kind = "direct";
+        Kind = "proxy";
         Value = value.Value;
     }
 
@@ -55,9 +55,9 @@ public record DocumentsInit200ResponseCreatedUpload
     public bool IsPresigned => Kind == "presigned";
 
     /// <summary>
-    /// Returns true if <see cref="Kind"/> is "direct"
+    /// Returns true if <see cref="Kind"/> is "proxy"
     /// </summary>
-    public bool IsDirect => Kind == "direct";
+    public bool IsProxy => Kind == "proxy";
 
     /// <summary>
     /// Returns the value as a <see cref="CloudPDF.DocumentsInit200ResponseCreatedUploadPresigned"/> if <see cref="Kind"/> is 'presigned', otherwise throws an exception.
@@ -71,33 +71,33 @@ public record DocumentsInit200ResponseCreatedUpload
             );
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.DocumentsInit200ResponseCreatedUploadDirect"/> if <see cref="Kind"/> is 'direct', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.DocumentsInit200ResponseCreatedUploadProxy"/> if <see cref="Kind"/> is 'proxy', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'direct'.</exception>
-    public CloudPDF.DocumentsInit200ResponseCreatedUploadDirect AsDirect() =>
-        IsDirect
-            ? (CloudPDF.DocumentsInit200ResponseCreatedUploadDirect)Value!
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'proxy'.</exception>
+    public CloudPDF.DocumentsInit200ResponseCreatedUploadProxy AsProxy() =>
+        IsProxy
+            ? (CloudPDF.DocumentsInit200ResponseCreatedUploadProxy)Value!
             : throw new global::System.Exception(
-                "DocumentsInit200ResponseCreatedUpload.Kind is not 'direct'"
+                "DocumentsInit200ResponseCreatedUpload.Kind is not 'proxy'"
             );
 
     public T Match<T>(
         Func<CloudPDF.DocumentsInit200ResponseCreatedUploadPresigned, T> onPresigned,
-        Func<CloudPDF.DocumentsInit200ResponseCreatedUploadDirect, T> onDirect,
+        Func<CloudPDF.DocumentsInit200ResponseCreatedUploadProxy, T> onProxy,
         Func<string, object?, T> onUnknown_
     )
     {
         return Kind switch
         {
             "presigned" => onPresigned(AsPresigned()),
-            "direct" => onDirect(AsDirect()),
+            "proxy" => onProxy(AsProxy()),
             _ => onUnknown_(Kind, Value),
         };
     }
 
     public void Visit(
         Action<CloudPDF.DocumentsInit200ResponseCreatedUploadPresigned> onPresigned,
-        Action<CloudPDF.DocumentsInit200ResponseCreatedUploadDirect> onDirect,
+        Action<CloudPDF.DocumentsInit200ResponseCreatedUploadProxy> onProxy,
         Action<string, object?> onUnknown_
     )
     {
@@ -106,8 +106,8 @@ public record DocumentsInit200ResponseCreatedUpload
             case "presigned":
                 onPresigned(AsPresigned());
                 break;
-            case "direct":
-                onDirect(AsDirect());
+            case "proxy":
+                onProxy(AsProxy());
                 break;
             default:
                 onUnknown_(Kind, Value);
@@ -130,13 +130,13 @@ public record DocumentsInit200ResponseCreatedUpload
     }
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="CloudPDF.DocumentsInit200ResponseCreatedUploadDirect"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="CloudPDF.DocumentsInit200ResponseCreatedUploadProxy"/> and returns true if successful.
     /// </summary>
-    public bool TryAsDirect(out CloudPDF.DocumentsInit200ResponseCreatedUploadDirect? value)
+    public bool TryAsProxy(out CloudPDF.DocumentsInit200ResponseCreatedUploadProxy? value)
     {
-        if (Kind == "direct")
+        if (Kind == "proxy")
         {
-            value = (CloudPDF.DocumentsInit200ResponseCreatedUploadDirect)Value!;
+            value = (CloudPDF.DocumentsInit200ResponseCreatedUploadProxy)Value!;
             return true;
         }
         value = null;
@@ -150,7 +150,7 @@ public record DocumentsInit200ResponseCreatedUpload
     ) => new(value);
 
     public static implicit operator DocumentsInit200ResponseCreatedUpload(
-        DocumentsInit200ResponseCreatedUpload.Direct value
+        DocumentsInit200ResponseCreatedUpload.Proxy value
     ) => new(value);
 
     [Serializable]
@@ -201,12 +201,12 @@ public record DocumentsInit200ResponseCreatedUpload
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.DocumentsInit200ResponseCreatedUploadPresigned"
                         ),
-                "direct" =>
-                    jsonWithoutDiscriminator.Deserialize<CloudPDF.DocumentsInit200ResponseCreatedUploadDirect?>(
+                "proxy" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.DocumentsInit200ResponseCreatedUploadProxy?>(
                         options
                     )
                         ?? throw new JsonException(
-                            "Failed to deserialize CloudPDF.DocumentsInit200ResponseCreatedUploadDirect"
+                            "Failed to deserialize CloudPDF.DocumentsInit200ResponseCreatedUploadProxy"
                         ),
                 _ => json.Deserialize<object?>(options),
             };
@@ -223,7 +223,7 @@ public record DocumentsInit200ResponseCreatedUpload
                 value.Kind switch
                 {
                     "presigned" => JsonSerializer.SerializeToNode(value.Value, options),
-                    "direct" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "proxy" => JsonSerializer.SerializeToNode(value.Value, options),
                     _ => JsonSerializer.SerializeToNode(value.Value, options),
                 } ?? new JsonObject();
             json["kind"] = value.Kind;
@@ -273,22 +273,22 @@ public record DocumentsInit200ResponseCreatedUpload
     }
 
     /// <summary>
-    /// Discriminated union type for direct
+    /// Discriminated union type for proxy
     /// </summary>
     [Serializable]
-    public struct Direct
+    public struct Proxy
     {
-        public Direct(CloudPDF.DocumentsInit200ResponseCreatedUploadDirect value)
+        public Proxy(CloudPDF.DocumentsInit200ResponseCreatedUploadProxy value)
         {
             Value = value;
         }
 
-        internal CloudPDF.DocumentsInit200ResponseCreatedUploadDirect Value { get; set; }
+        internal CloudPDF.DocumentsInit200ResponseCreatedUploadProxy Value { get; set; }
 
         public override string ToString() => Value.ToString() ?? "null";
 
-        public static implicit operator DocumentsInit200ResponseCreatedUpload.Direct(
-            CloudPDF.DocumentsInit200ResponseCreatedUploadDirect value
+        public static implicit operator DocumentsInit200ResponseCreatedUpload.Proxy(
+            CloudPDF.DocumentsInit200ResponseCreatedUploadProxy value
         ) => new(value);
     }
 }

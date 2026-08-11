@@ -6,7 +6,7 @@ public partial class CloudPDFClient : ICloudPDFClient
 {
     private readonly RawClient _client;
 
-    public CloudPDFClient(string? token = null, ClientOptions? clientOptions = null)
+    public CloudPDFClient(string token, ClientOptions? clientOptions = null)
     {
         clientOptions ??= new ClientOptions();
         var platformHeaders = new Headers(
@@ -26,7 +26,7 @@ public partial class CloudPDFClient : ICloudPDFClient
         }
         var clientOptionsWithAuth = clientOptions.Clone();
         var authHeaders = new Headers(
-            new Dictionary<string, string>() { { "Authorization", $"Bearer {token ?? ""}" } }
+            new Dictionary<string, string>() { { "Authorization", $"Bearer {token}" } }
         );
         foreach (var header in authHeaders)
         {
@@ -35,6 +35,7 @@ public partial class CloudPDFClient : ICloudPDFClient
         _client = new RawClient(clientOptionsWithAuth);
         Deployment = new DeploymentClient(_client);
         Doc = new DocClient(_client);
+        Shares = new SharesClient(_client);
         Tenants = new TenantsClient(_client);
         Documents = new DocumentsClient(_client);
         Tokens = new TokensClient(_client);
@@ -43,6 +44,8 @@ public partial class CloudPDFClient : ICloudPDFClient
     public IDeploymentClient Deployment { get; }
 
     public IDocClient Doc { get; }
+
+    public ISharesClient Shares { get; }
 
     public ITenantsClient Tenants { get; }
 
