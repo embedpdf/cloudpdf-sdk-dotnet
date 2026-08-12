@@ -30,6 +30,9 @@ public record DocumentsInitRequest
     [JsonPropertyName("uploadTtlSec")]
     public double? UploadTtlSec { get; set; }
 
+    [JsonPropertyName("uploadPreference")]
+    public DocumentsInitRequestUploadPreference? UploadPreference { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

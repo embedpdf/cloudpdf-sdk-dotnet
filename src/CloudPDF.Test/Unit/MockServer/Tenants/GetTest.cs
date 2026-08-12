@@ -18,6 +18,7 @@ public class GetTest : BaseMockServerTest
                 "id": "id",
                 "name": "name",
                 "autoProvisioned": true,
+                "status": "active",
                 "createdAt": 1.1
               }
             }
@@ -52,6 +53,7 @@ public class GetTest : BaseMockServerTest
                 "id": "id",
                 "name": "name",
                 "autoProvisioned": true,
+                "status": "active",
                 "createdAt": 1.1
               }
             }

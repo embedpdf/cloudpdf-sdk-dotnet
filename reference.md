@@ -254,6 +254,286 @@ await client.Doc.TextAsync(
 </dl>
 </details>
 
+## Shares
+<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">ExchangeAsync</a>(SharesExchangeRequest { ... }) -> WithRawResponseTask&lt;SharesExchange200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Unauthenticated, but requires a browser Origin header, checked against the grant allowlist. Unknown, revoked, and disabled tokens are indistinguishable (404). Passphrase-protected grants return 422 SharePasswordRequired until `password` is supplied. Mounted only when the deployment can sign (HS256 mode).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.ExchangeAsync(new SharesExchangeRequest { ShareToken = "shareToken" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SharesExchangeRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">ListAsync</a>(ListSharesRequest { ... }) -> WithRawResponseTask&lt;SharesList200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.ListAsync(new ListSharesRequest { TenantId = "tenantId" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListSharesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">CreateAsync</a>(SharesCreateRequest { ... }) -> WithRawResponseTask&lt;SharesCreate200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The returned share id IS the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.CreateAsync(
+    new SharesCreateRequest
+    {
+        TenantId = "tenantId",
+        DocId = "docId",
+        Scope = new List<string>() { "scope" },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SharesCreateRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">GetAsync</a>(GetSharesRequest { ... }) -> WithRawResponseTask&lt;SharesGet200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.GetAsync(new GetSharesRequest { TenantId = "tenantId", ShareId = "shareId" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetSharesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">DeleteAsync</a>(DeleteSharesRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.DeleteAsync(
+    new DeleteSharesRequest { TenantId = "tenantId", ShareId = "shareId" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DeleteSharesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">UpdateAsync</a>(SharesUpdateRequest { ... }) -> WithRawResponseTask&lt;SharesUpdate200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.UpdateAsync(
+    new SharesUpdateRequest { TenantId = "tenantId", ShareId = "shareId" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SharesUpdateRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Tenants
 <details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">ListAsync</a>(ListTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsList200Response&gt;</code></summary>
 <dl>
@@ -418,6 +698,154 @@ await client.Tenants.DeleteAsync(new DeleteTenantsRequest { TenantId = "tenantId
 <dd>
 
 **request:** `DeleteTenantsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">ResumeAsync</a>(ResumeTenantsRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Tenants.ResumeAsync(new ResumeTenantsRequest { TenantId = "tenantId" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ResumeTenantsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">SuspendAsync</a>(TenantsSuspendRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Instantly reversible with resume. The API token is exempt, so a suspended tenant can still be inspected, exported, resumed, or deleted.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Tenants.SuspendAsync(new TenantsSuspendRequest { TenantId = "tenantId" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `TenantsSuspendRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">UsageAsync</a>(UsageTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsUsage200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Facts only — no limits or billing state. Views count share exchanges plus authorized /v1/access grants, deduplicated across the two.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Tenants.UsageAsync(new UsageTenantsRequest { TenantId = "tenantId" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `UsageTenantsRequest` 
     
 </dd>
 </dl>
@@ -670,6 +1098,62 @@ await client.Documents.ThumbnailAsync(
 <dd>
 
 **request:** `ThumbnailDocumentsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">UploadProxyAsync</a>(UploadProxyDocumentsRequest { ... }) -> WithRawResponseTask&lt;DocumentsUploadProxy200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Documents.UploadProxyAsync(
+    new UploadProxyDocumentsRequest { TenantId = "tenantId", Id = "id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `UploadProxyDocumentsRequest` 
     
 </dd>
 </dl>

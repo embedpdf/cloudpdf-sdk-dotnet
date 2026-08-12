@@ -24,6 +24,10 @@ public readonly record struct TokensIssueRequestTenantScopeItemOne : IStringEnum
         Values.TokensRevoke
     );
 
+    public static readonly TokensIssueRequestTenantScopeItemOne SharesManage = new(
+        Values.SharesManage
+    );
+
     public TokensIssueRequestTenantScopeItemOne(string value)
     {
         Value = value;
@@ -132,5 +136,7 @@ public readonly record struct TokensIssueRequestTenantScopeItemOne : IStringEnum
         public const string TokensIssueDoc = "tokens.issue-doc";
 
         public const string TokensRevoke = "tokens.revoke";
+
+        public const string SharesManage = "shares.manage";
     }
 }

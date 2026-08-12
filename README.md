@@ -44,7 +44,7 @@ Instantiate and use the client with the following:
 using CloudPDF;
 
 var client = new CloudPDFClient("TOKEN");
-await client.Tenants.CreateAsync(new TenantsCreateRequest { Id = "id" });
+await client.Shares.ExchangeAsync(new SharesExchangeRequest { ShareToken = "shareToken" });
 ```
 
 ## Exception Handling
@@ -56,7 +56,7 @@ will be thrown.
 using CloudPDF;
 
 try {
-    var response = await client.Tenants.CreateAsync(...);
+    var response = await client.Shares.ExchangeAsync(...);
 } catch (CloudPDFApiException e) {
     System.Console.WriteLine(e.Body);
     System.Console.WriteLine(e.StatusCode);
@@ -99,7 +99,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `MaxRetries` request option to configure this behavior.
 
 ```csharp
-var response = await client.Tenants.CreateAsync(
+var response = await client.Shares.ExchangeAsync(
     ...,
     new RequestOptions {
         MaxRetries: 0 // Override MaxRetries at the request level
@@ -112,7 +112,7 @@ var response = await client.Tenants.CreateAsync(
 The SDK defaults to a 30 second timeout. Use the `Timeout` option to configure this behavior.
 
 ```csharp
-var response = await client.Tenants.CreateAsync(
+var response = await client.Shares.ExchangeAsync(
     ...,
     new RequestOptions {
         Timeout: TimeSpan.FromSeconds(3) // Override timeout to 3s
@@ -128,7 +128,7 @@ Access raw HTTP response data (status code, headers, URL) alongside parsed respo
 using CloudPDF;
 
 // Access raw response data (status code, headers, etc.) alongside the parsed response
-var result = await client.Tenants.CreateAsync(...).WithRawResponse();
+var result = await client.Shares.ExchangeAsync(...).WithRawResponse();
 
 // Access the parsed data
 var data = result.Data;
@@ -145,7 +145,7 @@ if (headers.TryGetValue("X-Request-Id", out var requestId))
 }
 
 // For the default behavior, simply await without .WithRawResponse()
-var data = await client.Tenants.CreateAsync(...);
+var data = await client.Shares.ExchangeAsync(...);
 
 // .WithRawResponse() also works on streaming endpoints (returns IAsyncEnumerable<T> + RawResponse)
 // and on endpoints with no response body (returns RawResponse only).
@@ -156,7 +156,7 @@ var data = await client.Tenants.CreateAsync(...);
 If you would like to send additional headers as part of the request, use the `AdditionalHeaders` request option.
 
 ```csharp
-var response = await client.Tenants.CreateAsync(
+var response = await client.Shares.ExchangeAsync(
     ...,
     new RequestOptions {
         AdditionalHeaders = new Dictionary<string, string?>
@@ -172,7 +172,7 @@ var response = await client.Tenants.CreateAsync(
 If you would like to send additional query parameters as part of the request, use the `AdditionalQueryParameters` request option.
 
 ```csharp
-var response = await client.Tenants.CreateAsync(
+var response = await client.Shares.ExchangeAsync(
     ...,
     new RequestOptions {
         AdditionalQueryParameters = new Dictionary<string, string>
@@ -189,7 +189,7 @@ If you would like to send additional body properties as part of the request, use
 This is only applied to JSON requests.
 
 ```csharp
-var response = await client.Tenants.CreateAsync(
+var response = await client.Shares.ExchangeAsync(
     ...,
     new RequestOptions {
         AdditionalBodyProperties = new Dictionary<string, object>
