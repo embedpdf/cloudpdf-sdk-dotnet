@@ -638,10 +638,8 @@ public partial class DocumentsClient : IDocumentsClient
         }
     }
 
-    private async Task<WithRawResponse<DocumentsUploadDirect200Response>> UploadDirectAsyncCore(
-        string tenantId,
-        string id,
-        Stream request,
+    private async Task<WithRawResponse<DocumentsUploadProxy200Response>> UploadProxyAsyncCore(
+        UploadProxyDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -655,24 +653,21 @@ public partial class DocumentsClient : IDocumentsClient
             .Add(options?.AdditionalHeaders)
             .BuildAsync()
             .ConfigureAwait(false);
+        var multipartFormRequest_ = new MultipartFormRequest
+        {
+            Method = HttpMethod.Post,
+            Path = string.Format(
+                "v1/tenants/{0}/documents/{1}/upload-proxy",
+                ValueConvert.ToPathParameterString(request.TenantId),
+                ValueConvert.ToPathParameterString(request.Id)
+            ),
+            QueryString = _queryString,
+            Headers = _headers,
+            Options = options,
+        };
+        multipartFormRequest_.AddFileParameterPart("file", request.File);
         var response = await _client
-            .SendRequestAsync(
-                new StreamRequest
-                {
-                    Method = HttpMethod.Post,
-                    Path = string.Format(
-                        "v1/tenants/{0}/documents/{1}/upload-direct",
-                        ValueConvert.ToPathParameterString(tenantId),
-                        ValueConvert.ToPathParameterString(id)
-                    ),
-                    Body = request,
-                    QueryString = _queryString,
-                    Headers = _headers,
-                    ContentType = "application/pdf",
-                    Options = options,
-                },
-                cancellationToken
-            )
+            .SendRequestAsync(multipartFormRequest_, cancellationToken)
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
@@ -681,10 +676,10 @@ public partial class DocumentsClient : IDocumentsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsUploadDirect200Response>(
+                var responseData = JsonUtils.Deserialize<DocumentsUploadProxy200Response>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocumentsUploadDirect200Response>()
+                return new WithRawResponse<DocumentsUploadProxy200Response>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -722,6 +717,18 @@ public partial class DocumentsClient : IDocumentsClient
                     case 400:
                         throw new BadRequestError(
                             JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 409:
+                        throw new ConflictError(
+                            JsonUtils.Deserialize<DocumentsUploadProxy409Response>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -952,16 +959,22 @@ public partial class DocumentsClient : IDocumentsClient
         );
     }
 
-    public WithRawResponseTask<DocumentsUploadDirect200Response> UploadDirectAsync(
-        string tenantId,
-        string id,
-        Stream request,
+    /// <summary>
+    /// This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available.
+    /// </summary>
+    /// <example><code>
+    /// await client.Documents.UploadProxyAsync(
+    ///     new UploadProxyDocumentsRequest { TenantId = "tenantId", Id = "id" }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<DocumentsUploadProxy200Response> UploadProxyAsync(
+        UploadProxyDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsUploadDirect200Response>(
-            UploadDirectAsyncCore(tenantId, id, request, options, cancellationToken)
+        return new WithRawResponseTask<DocumentsUploadProxy200Response>(
+            UploadProxyAsyncCore(request, options, cancellationToken)
         );
     }
 

@@ -38,10 +38,11 @@ public partial interface IDocumentsClient
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocumentsUploadDirect200Response> UploadDirectAsync(
-        string tenantId,
-        string id,
-        Stream request,
+    /// <summary>
+    /// This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available.
+    /// </summary>
+    WithRawResponseTask<DocumentsUploadProxy200Response> UploadProxyAsync(
+        UploadProxyDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

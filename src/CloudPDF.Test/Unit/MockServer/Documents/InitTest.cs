@@ -83,6 +83,7 @@ public class InitTest : BaseMockServerTest
                 DedupMode = null,
                 DocId = null,
                 UploadTtlSec = null,
+                UploadPreference = null,
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

@@ -24,6 +24,10 @@ public readonly record struct DocRenderResponseCode : IStringEnum
         Values.DocPasswordIncorrect
     );
 
+    public static readonly DocRenderResponseCode SharePasswordRequired = new(
+        Values.SharePasswordRequired
+    );
+
     public static readonly DocRenderResponseCode Aborted = new(Values.Aborted);
 
     public static readonly DocRenderResponseCode Network = new(Values.Network);
@@ -161,6 +165,8 @@ public readonly record struct DocRenderResponseCode : IStringEnum
         public const string DocPasswordRequired = "DocPasswordRequired";
 
         public const string DocPasswordIncorrect = "DocPasswordIncorrect";
+
+        public const string SharePasswordRequired = "SharePasswordRequired";
 
         public const string Aborted = "Aborted";
 
