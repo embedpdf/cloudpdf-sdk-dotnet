@@ -24,6 +24,10 @@ public readonly record struct DocPagesMove400ResponseCode : IStringEnum
         Values.DocPasswordIncorrect
     );
 
+    public static readonly DocPagesMove400ResponseCode SharePasswordRequired = new(
+        Values.SharePasswordRequired
+    );
+
     public static readonly DocPagesMove400ResponseCode Aborted = new(Values.Aborted);
 
     public static readonly DocPagesMove400ResponseCode Network = new(Values.Network);
@@ -166,6 +170,8 @@ public readonly record struct DocPagesMove400ResponseCode : IStringEnum
         public const string DocPasswordRequired = "DocPasswordRequired";
 
         public const string DocPasswordIncorrect = "DocPasswordIncorrect";
+
+        public const string SharePasswordRequired = "SharePasswordRequired";
 
         public const string Aborted = "Aborted";
 

@@ -24,6 +24,10 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         Values.DocPasswordIncorrect
     );
 
+    public static readonly EngineErrorPayloadCode SharePasswordRequired = new(
+        Values.SharePasswordRequired
+    );
+
     public static readonly EngineErrorPayloadCode Aborted = new(Values.Aborted);
 
     public static readonly EngineErrorPayloadCode Network = new(Values.Network);
@@ -161,6 +165,8 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         public const string DocPasswordRequired = "DocPasswordRequired";
 
         public const string DocPasswordIncorrect = "DocPasswordIncorrect";
+
+        public const string SharePasswordRequired = "SharePasswordRequired";
 
         public const string Aborted = "Aborted";
 

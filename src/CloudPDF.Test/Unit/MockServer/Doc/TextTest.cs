@@ -15,7 +15,25 @@ public class TextTest : BaseMockServerTest
         const string mockResponse = """
             {
               "text": "text",
-              "charCount": 1
+              "charCount": 1,
+              "charMap": [
+                [
+                  {
+                    "key": "value"
+                  },
+                  {
+                    "key": "value"
+                  }
+                ],
+                [
+                  {
+                    "key": "value"
+                  },
+                  {
+                    "key": "value"
+                  }
+                ]
+              ]
             }
             """;
 
@@ -50,7 +68,14 @@ public class TextTest : BaseMockServerTest
         const string mockResponse = """
             {
               "text": "text",
-              "charCount": 1
+              "charCount": 1,
+              "charMap": [
+                [
+                  {
+                    "key": "value"
+                  }
+                ]
+              ]
             }
             """;
 

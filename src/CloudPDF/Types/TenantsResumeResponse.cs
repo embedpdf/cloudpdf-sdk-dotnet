@@ -5,17 +5,14 @@ using global::System.Text.Json.Serialization;
 namespace CloudPDF;
 
 [Serializable]
-public record DocumentsUploadDirect400ResponseError : IJsonOnDeserialized
+public record TenantsResumeResponse : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("code")]
-    public required string Code { get; set; }
-
-    [JsonPropertyName("message")]
-    public required string Message { get; set; }
+    [JsonPropertyName("error")]
+    public required TenantsResumeResponseError Error { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

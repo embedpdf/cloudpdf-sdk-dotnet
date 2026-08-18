@@ -17,6 +17,9 @@ public record DocText200Response : IJsonOnDeserialized
     [JsonPropertyName("charCount")]
     public required int CharCount { get; set; }
 
+    [JsonPropertyName("charMap")]
+    public IEnumerable<IEnumerable<object>>? CharMap { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

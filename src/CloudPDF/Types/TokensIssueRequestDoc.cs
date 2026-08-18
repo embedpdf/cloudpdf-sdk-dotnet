@@ -35,6 +35,9 @@ public record TokensIssueRequestDoc : IJsonOnDeserialized
     [JsonPropertyName("groups")]
     public IEnumerable<string>? Groups { get; set; }
 
+    [JsonPropertyName("origins")]
+    public IEnumerable<string>? Origins { get; set; }
+
     [JsonPropertyName("expiresIn")]
     public required int ExpiresIn { get; set; }
 

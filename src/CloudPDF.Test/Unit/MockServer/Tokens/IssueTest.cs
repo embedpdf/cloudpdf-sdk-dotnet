@@ -65,6 +65,7 @@ public class IssueTest : BaseMockServerTest
                             DisplayName = null,
                             GroupId = null,
                             Groups = null,
+                            Origins = null,
                             ExpiresIn = 7776000,
                         }
                     )

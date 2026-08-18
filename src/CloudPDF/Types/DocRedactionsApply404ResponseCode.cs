@@ -28,6 +28,10 @@ public readonly record struct DocRedactionsApply404ResponseCode : IStringEnum
         Values.DocPasswordIncorrect
     );
 
+    public static readonly DocRedactionsApply404ResponseCode SharePasswordRequired = new(
+        Values.SharePasswordRequired
+    );
+
     public static readonly DocRedactionsApply404ResponseCode Aborted = new(Values.Aborted);
 
     public static readonly DocRedactionsApply404ResponseCode Network = new(Values.Network);
@@ -174,6 +178,8 @@ public readonly record struct DocRedactionsApply404ResponseCode : IStringEnum
         public const string DocPasswordRequired = "DocPasswordRequired";
 
         public const string DocPasswordIncorrect = "DocPasswordIncorrect";
+
+        public const string SharePasswordRequired = "SharePasswordRequired";
 
         public const string Aborted = "Aborted";
 
