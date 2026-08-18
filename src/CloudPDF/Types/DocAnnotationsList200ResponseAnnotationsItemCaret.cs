@@ -80,6 +80,12 @@ public record DocAnnotationsList200ResponseAnnotationsItemCaret : IJsonOnDeseria
     [JsonPropertyName("rectDifferences")]
     public DocAnnotationsList200ResponseAnnotationsItemCaretRectDifferences? RectDifferences { get; set; }
 
+    [JsonPropertyName("rotation")]
+    public double? Rotation { get; set; }
+
+    [JsonPropertyName("unrotatedRect")]
+    public DocAnnotationsList200ResponseAnnotationsItemCaretUnrotatedRect? UnrotatedRect { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -24,6 +24,10 @@ public readonly record struct DocFormsExportDataResponseCode : IStringEnum
         Values.DocPasswordIncorrect
     );
 
+    public static readonly DocFormsExportDataResponseCode SharePasswordRequired = new(
+        Values.SharePasswordRequired
+    );
+
     public static readonly DocFormsExportDataResponseCode Aborted = new(Values.Aborted);
 
     public static readonly DocFormsExportDataResponseCode Network = new(Values.Network);
@@ -168,6 +172,8 @@ public readonly record struct DocFormsExportDataResponseCode : IStringEnum
         public const string DocPasswordRequired = "DocPasswordRequired";
 
         public const string DocPasswordIncorrect = "DocPasswordIncorrect";
+
+        public const string SharePasswordRequired = "SharePasswordRequired";
 
         public const string Aborted = "Aborted";
 
