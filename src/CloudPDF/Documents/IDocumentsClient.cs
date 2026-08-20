@@ -47,6 +47,15 @@ public partial interface IDocumentsClient
         CancellationToken cancellationToken = default
     );
 
+    /// <summary>
+    /// Default mode is synchronous and bounded: the response returns only after the transfer verified and committed (or failed). mode=async (connection sources only) answers 202 immediately and an in-process worker performs the transfer with leased, fenced retries; poll the document until ready/failed. The deployment import policy gates scheme, network range, and size; sources must declare a length. CloudPDF copies and owns the bytes — the source is never referenced in place. A 502 marks a retryable upstream failure: retry with the same idempotencyKey to resume the same document. URL sources are capabilities and never echoed back. Connection sources name operator-registered storage (bucket/prefix scope, allowed credential classes, and tenant bindings are deployment configuration); `revision` is provider-interpreted (S3 VersionId, GCS generation, Azure version id).
+    /// </summary>
+    WithRawResponseTask<DocumentsImportFrom200Response> ImportFromAsync(
+        DocumentsImportFromRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<DocumentsInit200Response> InitAsync(
         DocumentsInitRequest request,
         RequestOptions? options = null,
