@@ -3,5 +3,5 @@ namespace CloudPDF;
 [Serializable]
 internal class Version
 {
-    public const string Current = "3.0.0-next.6";
+    public const string Current = "3.0.0-next.7";
 }

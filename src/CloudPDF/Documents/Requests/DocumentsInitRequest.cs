@@ -21,6 +21,9 @@ public record DocumentsInitRequest
     [JsonPropertyName("idempotencyKey")]
     public string? IdempotencyKey { get; set; }
 
+    /// <summary>
+    /// always-create (default) creates a new document every time. reuse-existing returns a document that already holds the same content instead of storing it twice.
+    /// </summary>
     [JsonPropertyName("dedupMode")]
     public DocumentsInitRequestDedupMode? DedupMode { get; set; }
 

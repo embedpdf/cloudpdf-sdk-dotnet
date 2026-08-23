@@ -8,6 +8,9 @@ using global::System.Text.Json.Serialization;
 
 namespace CloudPDF;
 
+/// <summary>
+/// Where CloudPDF pulls the bytes from. The two shapes differ in WHO supplies the authority to read, not in which storage vendor holds the file.
+/// </summary>
 [JsonConverter(typeof(DocumentsImportFromRequestSource.JsonConverter))]
 [Serializable]
 public record DocumentsImportFromRequestSource
