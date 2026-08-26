@@ -11,7 +11,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>3.0.0-next.7</Version>
+    <Version>3.0.0-next.8</Version>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <FileVersion>3.0.0.0</FileVersion>
     <PackageReadmeFile Condition="Exists('..\..\README.md')">README.md</PackageReadmeFile>
