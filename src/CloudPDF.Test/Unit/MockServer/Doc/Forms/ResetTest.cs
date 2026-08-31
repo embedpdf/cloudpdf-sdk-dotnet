@@ -42,6 +42,7 @@ public class ResetTest : BaseMockServerTest
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
+                  "annotationsVersion": 1,
                   "pages": [
                     {
                       "pageObjectNumber": 1,
@@ -110,6 +111,7 @@ public class ResetTest : BaseMockServerTest
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
+                  "annotationsVersion": 1,
                   "pages": [
                     {
                       "pageObjectNumber": 1,

@@ -35,6 +35,9 @@ public record DocAnnotationsList200ResponseAnnotationsItemFileAttachment : IJson
     [JsonPropertyName("contents")]
     public string? Contents { get; set; }
 
+    [JsonPropertyName("subject")]
+    public string? Subject { get; set; }
+
     [JsonPropertyName("author")]
     public string? Author { get; set; }
 
