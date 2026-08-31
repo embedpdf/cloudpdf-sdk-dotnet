@@ -728,7 +728,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<DocumentsUploadProxy409Response>(responseBody),
+                            JsonUtils.Deserialize<object>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,

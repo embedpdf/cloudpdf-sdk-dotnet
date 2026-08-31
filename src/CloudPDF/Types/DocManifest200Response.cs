@@ -26,6 +26,9 @@ public record DocManifest200Response : IJsonOnDeserialized
     [JsonPropertyName("attachmentsVersion")]
     public int? AttachmentsVersion { get; set; }
 
+    [JsonPropertyName("annotationsVersion")]
+    public int? AnnotationsVersion { get; set; }
+
     [JsonPropertyName("auditHead")]
     public required int AuditHead { get; set; }
 

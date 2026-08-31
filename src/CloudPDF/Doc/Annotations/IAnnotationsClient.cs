@@ -4,6 +4,15 @@ namespace CloudPDF.Doc;
 
 public partial interface IAnnotationsClient
 {
+    /// <summary>
+    /// Returns one entry per page plus the audit-log cursor for reconciling subsequent document events. Page order is unspecified; join by `pageState.pageObjectNumber` when display order matters.
+    /// </summary>
+    WithRawResponseTask<DocAnnotationsListAll200Response> ListAllAsync(
+        ListAllAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<DocAnnotationsList200Response> ListAsync(
         ListAnnotationsRequest request,
         RequestOptions? options = null,

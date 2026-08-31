@@ -13,6 +13,128 @@ public partial class AnnotationsClient : IAnnotationsClient
         _client = client;
     }
 
+    private async Task<WithRawResponse<DocAnnotationsListAll200Response>> ListAllAsyncCore(
+        ListAllAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
+        var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
+            .Add("X-Document-Password", request.DocumentPassword)
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Get,
+                    Path = string.Format(
+                        "v1/docs/{0}/layers/{1}/annotations/items",
+                        ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName)
+                    ),
+                    QueryString = _queryString,
+                    Headers = _headers,
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<DocAnnotationsListAll200Response>(
+                    responseBody
+                )!;
+                return new WithRawResponse<DocAnnotationsListAll200Response>()
+                {
+                    Data = responseData,
+                    RawResponse = new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new CloudPDFApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e,
+                    rawResponse: new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 404:
+                        throw new NotFoundError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 409:
+                        throw new ConflictError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new CloudPDFApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody,
+                rawResponse: new CloudPDF.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
+            );
+        }
+    }
+
     private async Task<WithRawResponse<DocAnnotationsList200Response>> ListAsyncCore(
         ListAnnotationsRequest request,
         RequestOptions? options = null,
@@ -485,6 +607,25 @@ public partial class AnnotationsClient : IAnnotationsClient
                 }
             );
         }
+    }
+
+    /// <summary>
+    /// Returns one entry per page plus the audit-log cursor for reconciling subsequent document events. Page order is unspecified; join by `pageState.pageObjectNumber` when display order matters.
+    /// </summary>
+    /// <example><code>
+    /// await client.Doc.Annotations.ListAllAsync(
+    ///     new ListAllAnnotationsRequest { DocId = "docId", LayerName = "layerName" }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<DocAnnotationsListAll200Response> ListAllAsync(
+        ListAllAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<DocAnnotationsListAll200Response>(
+            ListAllAsyncCore(request, options, cancellationToken)
+        );
     }
 
     /// <example><code>

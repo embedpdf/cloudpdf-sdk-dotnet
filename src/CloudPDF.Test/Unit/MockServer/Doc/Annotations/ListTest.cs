@@ -56,6 +56,7 @@ public class ListTest : BaseMockServerTest
                     "top": 1.1
                   },
                   "contents": "contents",
+                  "subject": "subject",
                   "author": "author",
                   "created": "2024-01-15T09:30:00.000Z",
                   "modified": "2024-01-15T09:30:00.000Z",
@@ -378,6 +379,7 @@ public class ListTest : BaseMockServerTest
                     "top": 1.1
                   },
                   "contents": "contents",
+                  "subject": "subject",
                   "author": "author",
                   "created": "2024-01-15T09:30:00.000Z",
                   "modified": "2024-01-15T09:30:00.000Z",
@@ -746,6 +748,7 @@ public class ListTest : BaseMockServerTest
                     "top": 1.1
                   },
                   "contents": "contents",
+                  "subject": "subject",
                   "author": "author",
                   "created": "2024-01-15T09:30:00.000Z",
                   "modified": "2024-01-15T09:30:00.000Z",

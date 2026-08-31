@@ -19,6 +19,7 @@ public class ManifestTest : BaseMockServerTest
               "metadataVersion": 1,
               "actionsVersion": 1,
               "attachmentsVersion": 1,
+              "annotationsVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
               "scopes": {
@@ -98,6 +99,7 @@ public class ManifestTest : BaseMockServerTest
               "metadataVersion": 1,
               "actionsVersion": 1,
               "attachmentsVersion": 1,
+              "annotationsVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
               "scopes": {

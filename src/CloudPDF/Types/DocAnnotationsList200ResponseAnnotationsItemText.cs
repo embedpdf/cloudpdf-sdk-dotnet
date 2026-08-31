@@ -35,6 +35,9 @@ public record DocAnnotationsList200ResponseAnnotationsItemText : IJsonOnDeserial
     [JsonPropertyName("contents")]
     public string? Contents { get; set; }
 
+    [JsonPropertyName("subject")]
+    public string? Subject { get; set; }
+
     [JsonPropertyName("author")]
     public string? Author { get; set; }
 
@@ -76,6 +79,12 @@ public record DocAnnotationsList200ResponseAnnotationsItemText : IJsonOnDeserial
 
     [JsonPropertyName("icon")]
     public required DocAnnotationsList200ResponseAnnotationsItemTextIcon Icon { get; set; }
+
+    [JsonPropertyName("state")]
+    public string? State { get; set; }
+
+    [JsonPropertyName("stateModel")]
+    public string? StateModel { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

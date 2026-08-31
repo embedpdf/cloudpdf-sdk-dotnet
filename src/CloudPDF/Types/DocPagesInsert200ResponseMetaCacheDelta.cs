@@ -17,6 +17,9 @@ public record DocPagesInsert200ResponseMetaCacheDelta : IJsonOnDeserialized
     [JsonPropertyName("docVersion")]
     public required int DocVersion { get; set; }
 
+    [JsonPropertyName("annotationsVersion")]
+    public int? AnnotationsVersion { get; set; }
+
     [JsonPropertyName("pages")]
     public IEnumerable<DocPagesInsert200ResponseMetaCacheDeltaPagesItem> Pages { get; set; } =
         new List<DocPagesInsert200ResponseMetaCacheDeltaPagesItem>();
