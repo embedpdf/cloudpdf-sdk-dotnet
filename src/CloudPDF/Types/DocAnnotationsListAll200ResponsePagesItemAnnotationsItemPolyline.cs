@@ -69,7 +69,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolyline :
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolylineActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolylineColor Color { get; set; }

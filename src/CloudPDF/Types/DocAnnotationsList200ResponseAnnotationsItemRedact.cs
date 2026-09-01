@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemRedact : IJsonOnDeseri
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemRedactActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("quadPoints")]
     public IEnumerable<DocAnnotationsList200ResponseAnnotationsItemRedactQuadPointsItem> QuadPoints { get; set; } =

@@ -39,7 +39,7 @@ public record DocFormsGet200ResponseFieldsItemCombobox : IJsonOnDeserialized
     public required DocFormsGet200ResponseFieldsItemComboboxDefaultValueEntry DefaultValueEntry { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocFormsGet200ResponseFieldsItemComboboxActions? Actions { get; set; }
+    public PdfFieldActions? Actions { get; set; }
 
     [JsonPropertyName("widgets")]
     public IEnumerable<DocFormsGet200ResponseFieldsItemComboboxWidgetsItem> Widgets { get; set; } =

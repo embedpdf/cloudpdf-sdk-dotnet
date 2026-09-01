@@ -39,7 +39,7 @@ public record DocFormsGet200ResponseFieldsItemText : IJsonOnDeserialized
     public required DocFormsGet200ResponseFieldsItemTextDefaultValueEntry DefaultValueEntry { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocFormsGet200ResponseFieldsItemTextActions? Actions { get; set; }
+    public PdfFieldActions? Actions { get; set; }
 
     [JsonPropertyName("widgets")]
     public IEnumerable<DocFormsGet200ResponseFieldsItemTextWidgetsItem> Widgets { get; set; } =

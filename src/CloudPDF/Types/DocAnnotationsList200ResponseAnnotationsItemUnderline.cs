@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemUnderline : IJsonOnDes
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemUnderlineActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemUnderlineColor Color { get; set; }

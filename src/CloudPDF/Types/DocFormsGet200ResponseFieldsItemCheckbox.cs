@@ -39,7 +39,7 @@ public record DocFormsGet200ResponseFieldsItemCheckbox : IJsonOnDeserialized
     public required DocFormsGet200ResponseFieldsItemCheckboxDefaultValueEntry DefaultValueEntry { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocFormsGet200ResponseFieldsItemCheckboxActions? Actions { get; set; }
+    public PdfFieldActions? Actions { get; set; }
 
     [JsonPropertyName("widgets")]
     public IEnumerable<DocFormsGet200ResponseFieldsItemCheckboxWidgetsItem> Widgets { get; set; } =

@@ -70,7 +70,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemUnsupporte
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemUnsupportedActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("rawSubtypeCode")]
     public required int RawSubtypeCode { get; set; }

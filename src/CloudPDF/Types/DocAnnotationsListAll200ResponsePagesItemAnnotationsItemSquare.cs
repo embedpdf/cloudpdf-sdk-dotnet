@@ -69,7 +69,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemSquare : I
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemSquareActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemSquareColor Color { get; set; }

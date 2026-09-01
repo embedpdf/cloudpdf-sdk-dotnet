@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemFreeText : IJsonOnDese
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemFreeTextActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("intent")]
     public required DocAnnotationsList200ResponseAnnotationsItemFreeTextIntent Intent { get; set; }

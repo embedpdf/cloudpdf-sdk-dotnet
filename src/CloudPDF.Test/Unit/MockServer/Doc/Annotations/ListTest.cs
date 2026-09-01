@@ -74,9 +74,8 @@ public class ListTest : BaseMockServerTest
                   "actions": {
                     "activate": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -84,7 +83,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -95,9 +95,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "cursorEnter": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -105,7 +104,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -116,9 +116,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "cursorExit": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -126,7 +125,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -137,9 +137,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "mouseDown": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -147,7 +146,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -158,9 +158,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "mouseUp": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -168,7 +167,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -179,9 +179,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "focus": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -189,7 +188,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -200,9 +200,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "blur": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -210,7 +209,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -221,9 +221,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageOpen": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -231,7 +230,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -242,9 +242,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageClose": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -252,7 +251,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -263,9 +263,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageVisible": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -273,7 +272,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -284,9 +284,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageInvisible": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -294,7 +293,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -397,9 +397,8 @@ public class ListTest : BaseMockServerTest
                   "actions": {
                     "activate": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -407,7 +406,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -418,9 +418,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "cursorEnter": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -428,7 +427,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -439,9 +439,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "cursorExit": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -449,7 +448,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -460,9 +460,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "mouseDown": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -470,7 +469,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -481,9 +481,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "mouseUp": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -491,7 +490,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -502,9 +502,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "focus": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -512,7 +511,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -523,9 +523,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "blur": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -533,7 +532,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -544,9 +544,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageOpen": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -554,7 +553,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -565,9 +565,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageClose": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -575,7 +574,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -586,9 +586,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageVisible": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -596,7 +595,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -607,9 +607,8 @@ public class ListTest : BaseMockServerTest
                     },
                     "pageInvisible": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -617,7 +616,8 @@ public class ListTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,

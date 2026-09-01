@@ -69,7 +69,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemRedact : I
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemRedactActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("quadPoints")]
     public IEnumerable<DocAnnotationsListAll200ResponsePagesItemAnnotationsItemRedactQuadPointsItem> QuadPoints { get; set; } =

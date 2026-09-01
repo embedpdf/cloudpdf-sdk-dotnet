@@ -69,7 +69,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemSquiggly :
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemSquigglyActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemSquigglyColor Color { get; set; }
