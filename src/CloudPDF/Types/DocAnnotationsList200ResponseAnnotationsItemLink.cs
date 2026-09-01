@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemLink : IJsonOnDeserial
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemLinkActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("target")]
     public DocAnnotationsList200ResponseAnnotationsItemLinkTarget? Target { get; set; }

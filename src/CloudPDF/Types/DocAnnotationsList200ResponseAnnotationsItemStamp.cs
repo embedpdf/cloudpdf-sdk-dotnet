@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemStamp : IJsonOnDeseria
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemStampActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("name")]
     public string? Name { get; set; }

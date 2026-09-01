@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemStrikeout : IJsonOnDes
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemStrikeoutActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemStrikeoutColor Color { get; set; }

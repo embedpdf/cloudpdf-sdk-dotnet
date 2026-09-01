@@ -13,7 +13,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLinkTarget
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("destination")]
-    public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLinkTargetGotoDestination Destination { get; set; }
+    public required PdfDestination Destination { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

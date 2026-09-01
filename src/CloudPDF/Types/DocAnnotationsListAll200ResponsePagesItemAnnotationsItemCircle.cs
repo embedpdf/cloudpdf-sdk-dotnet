@@ -69,7 +69,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemCircle : I
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemCircleActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemCircleColor Color { get; set; }

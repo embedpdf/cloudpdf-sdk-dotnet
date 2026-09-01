@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemPolyline : IJsonOnDese
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemPolylineActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemPolylineColor Color { get; set; }

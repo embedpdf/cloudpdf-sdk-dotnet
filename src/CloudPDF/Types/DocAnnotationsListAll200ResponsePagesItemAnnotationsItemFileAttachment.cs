@@ -70,7 +70,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFileAttach
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFileAttachmentActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFileAttachmentColor Color { get; set; }

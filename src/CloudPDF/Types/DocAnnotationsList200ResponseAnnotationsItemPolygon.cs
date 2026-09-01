@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemPolygon : IJsonOnDeser
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemPolygonActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemPolygonColor Color { get; set; }

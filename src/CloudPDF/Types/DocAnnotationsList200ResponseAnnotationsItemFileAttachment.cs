@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemFileAttachment : IJson
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemFileAttachmentActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemFileAttachmentColor Color { get; set; }

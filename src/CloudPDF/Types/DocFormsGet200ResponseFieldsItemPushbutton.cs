@@ -39,7 +39,7 @@ public record DocFormsGet200ResponseFieldsItemPushbutton : IJsonOnDeserialized
     public required DocFormsGet200ResponseFieldsItemPushbuttonDefaultValueEntry DefaultValueEntry { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocFormsGet200ResponseFieldsItemPushbuttonActions? Actions { get; set; }
+    public PdfFieldActions? Actions { get; set; }
 
     [JsonPropertyName("widgets")]
     public IEnumerable<DocFormsGet200ResponseFieldsItemPushbuttonWidgetsItem> Widgets { get; set; } =

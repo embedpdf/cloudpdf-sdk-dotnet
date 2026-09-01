@@ -70,7 +70,7 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemStrikeout
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemStrikeoutActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemStrikeoutColor Color { get; set; }

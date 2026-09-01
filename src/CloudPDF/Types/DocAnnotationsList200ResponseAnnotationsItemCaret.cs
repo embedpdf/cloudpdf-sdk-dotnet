@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemCaret : IJsonOnDeseria
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemCaretActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemCaretColor Color { get; set; }

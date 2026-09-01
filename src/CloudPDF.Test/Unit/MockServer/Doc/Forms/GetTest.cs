@@ -43,9 +43,8 @@ public class GetTest : BaseMockServerTest
                   "actions": {
                     "keystroke": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -53,7 +52,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -64,9 +64,8 @@ public class GetTest : BaseMockServerTest
                     },
                     "format": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -74,7 +73,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -85,9 +85,8 @@ public class GetTest : BaseMockServerTest
                     },
                     "validate": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -95,7 +94,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -106,9 +106,8 @@ public class GetTest : BaseMockServerTest
                     },
                     "calculate": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -116,7 +115,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -169,9 +169,8 @@ public class GetTest : BaseMockServerTest
                   "actions": {
                     "keystroke": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -179,7 +178,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -190,9 +190,8 @@ public class GetTest : BaseMockServerTest
                     },
                     "format": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -200,7 +199,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -211,9 +211,8 @@ public class GetTest : BaseMockServerTest
                     },
                     "validate": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -221,7 +220,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,
@@ -232,9 +232,8 @@ public class GetTest : BaseMockServerTest
                     },
                     "calculate": {
                       "root": {
-                        "type": "unknown",
+                        "type": "javascript",
                         "subtype": "subtype",
-                        "script": "script",
                         "next": [
                           {
                             "key": "value"
@@ -242,7 +241,8 @@ public class GetTest : BaseMockServerTest
                           {
                             "key": "value"
                           }
-                        ]
+                        ],
+                        "script": "script"
                       },
                       "incomplete": true,
                       "warningFlags": 1,

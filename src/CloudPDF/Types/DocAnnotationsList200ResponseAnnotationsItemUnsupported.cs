@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemUnsupported : IJsonOnD
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemUnsupportedActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("rawSubtypeCode")]
     public required int RawSubtypeCode { get; set; }

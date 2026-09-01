@@ -69,7 +69,7 @@ public record DocAnnotationsList200ResponseAnnotationsItemLine : IJsonOnDeserial
     public string? UpdatedBy { get; set; }
 
     [JsonPropertyName("actions")]
-    public DocAnnotationsList200ResponseAnnotationsItemLineActions? Actions { get; set; }
+    public PdfAnnotationActions? Actions { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemLineColor Color { get; set; }
