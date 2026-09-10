@@ -39,4 +39,16 @@ public partial interface IAnnotationsClient
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
+
+    WithRawResponseTask<global::System.IO.Stream> ExportAppearanceAsync(
+        ExportAppearanceAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<DocAnnotationsFlatten200Response> FlattenAsync(
+        FlattenAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 }

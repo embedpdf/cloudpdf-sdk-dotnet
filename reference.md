@@ -1664,6 +1664,108 @@ await client.Doc.Annotations.UpdateAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ExportAppearanceAsync</a>(ExportAppearanceAnnotationsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Annotations.ExportAppearanceAsync(
+    new ExportAppearanceAnnotationsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Pon = 1,
+        Body = new Dictionary<string, object?>()
+        {
+            {
+                "string",
+                new Dictionary<object, object?>() { { "key", "value" } }
+            },
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ExportAppearanceAnnotationsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">FlattenAsync</a>(FlattenAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsFlatten200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Annotations.FlattenAsync(
+    new FlattenAnnotationsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Pon = 1,
+        Body = new Dictionary<string, object?>() { { "key", "value" } },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `FlattenAnnotationsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Doc Forms
 <details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">GetAsync</a>(GetFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsGet200Response&gt;</code></summary>
 <dl>
@@ -2247,6 +2349,100 @@ await client.Doc.Pages.MoveAsync(
 <dd>
 
 **request:** `MovePagesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetNameAsync</a>(SetNamePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetName200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Pages.SetNameAsync(
+    new SetNamePagesRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Body = new Dictionary<string, object?>() { { "key", "value" } },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SetNamePagesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">RemoveNameAsync</a>(RemoveNamePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesRemoveName200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Pages.RemoveNameAsync(
+    new RemoveNamePagesRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Body = new Dictionary<string, object?>() { { "key", "value" } },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `RemoveNamePagesRequest` 
     
 </dd>
 </dl>

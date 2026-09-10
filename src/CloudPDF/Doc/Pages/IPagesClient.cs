@@ -49,6 +49,18 @@ public partial interface IPagesClient
         CancellationToken cancellationToken = default
     );
 
+    WithRawResponseTask<DocPagesSetName200Response> SetNameAsync(
+        SetNamePagesRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<DocPagesRemoveName200Response> RemoveNameAsync(
+        RemoveNamePagesRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<DocPagesRotate200Response> RotateAsync(
         RotatePagesRequest request,
         RequestOptions? options = null,
