@@ -20,6 +20,12 @@ public record DocAnnotationsFlatten200ResponseMetaCacheDelta : IJsonOnDeserializ
     [JsonPropertyName("annotationsVersion")]
     public int? AnnotationsVersion { get; set; }
 
+    [JsonPropertyName("layerVersion")]
+    public int? LayerVersion { get; set; }
+
+    [JsonPropertyName("working")]
+    public bool? Working { get; set; }
+
     [JsonPropertyName("pages")]
     public IEnumerable<DocAnnotationsFlatten200ResponseMetaCacheDeltaPagesItem> Pages { get; set; } =
         new List<DocAnnotationsFlatten200ResponseMetaCacheDeltaPagesItem>();

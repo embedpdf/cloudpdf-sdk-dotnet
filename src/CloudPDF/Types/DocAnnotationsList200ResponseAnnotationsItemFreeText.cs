@@ -75,13 +75,16 @@ public record DocAnnotationsList200ResponseAnnotationsItemFreeText : IJsonOnDese
     public required DocAnnotationsList200ResponseAnnotationsItemFreeTextIntent Intent { get; set; }
 
     [JsonPropertyName("fontFamily")]
-    public required DocAnnotationsList200ResponseAnnotationsItemFreeTextFontFamily FontFamily { get; set; }
+    public required string FontFamily { get; set; }
 
     [JsonPropertyName("fontSize")]
     public required double FontSize { get; set; }
 
     [JsonPropertyName("textAlign")]
     public required DocAnnotationsList200ResponseAnnotationsItemFreeTextTextAlign TextAlign { get; set; }
+
+    [JsonPropertyName("richText")]
+    public required DocAnnotationsList200ResponseAnnotationsItemFreeTextRichText RichText { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsList200ResponseAnnotationsItemFreeTextColor Color { get; set; }

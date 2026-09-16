@@ -20,6 +20,12 @@ public record DocPagesDelete200ResponseMetaCacheDelta : IJsonOnDeserialized
     [JsonPropertyName("annotationsVersion")]
     public int? AnnotationsVersion { get; set; }
 
+    [JsonPropertyName("layerVersion")]
+    public int? LayerVersion { get; set; }
+
+    [JsonPropertyName("working")]
+    public bool? Working { get; set; }
+
     [JsonPropertyName("pages")]
     public IEnumerable<DocPagesDelete200ResponseMetaCacheDeltaPagesItem> Pages { get; set; } =
         new List<DocPagesDelete200ResponseMetaCacheDeltaPagesItem>();

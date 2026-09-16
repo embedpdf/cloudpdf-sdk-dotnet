@@ -20,6 +20,12 @@ public record DocPagesInsertBlank200ResponseMetaCacheDelta : IJsonOnDeserialized
     [JsonPropertyName("annotationsVersion")]
     public int? AnnotationsVersion { get; set; }
 
+    [JsonPropertyName("layerVersion")]
+    public int? LayerVersion { get; set; }
+
+    [JsonPropertyName("working")]
+    public bool? Working { get; set; }
+
     [JsonPropertyName("pages")]
     public IEnumerable<DocPagesInsertBlank200ResponseMetaCacheDeltaPagesItem> Pages { get; set; } =
         new List<DocPagesInsertBlank200ResponseMetaCacheDeltaPagesItem>();

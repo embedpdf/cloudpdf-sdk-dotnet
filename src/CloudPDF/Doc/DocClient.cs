@@ -16,6 +16,8 @@ public partial class DocClient : IDocClient
         Metadata = new MetadataClient(_client);
         Pages = new PagesClient(_client);
         Redactions = new RedactionsClient(_client);
+        Signatures = new SignaturesClient(_client);
+        Versions = new VersionsClient(_client);
     }
 
     public IAnnotationsClient Annotations { get; }
@@ -27,6 +29,10 @@ public partial class DocClient : IDocClient
     public IPagesClient Pages { get; }
 
     public IRedactionsClient Redactions { get; }
+
+    public ISignaturesClient Signatures { get; }
+
+    public IVersionsClient Versions { get; }
 
     private async Task<WithRawResponse<DocHead200Response>> HeadAsyncCore(
         HeadDocRequest request,

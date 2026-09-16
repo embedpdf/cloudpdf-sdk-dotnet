@@ -20,6 +20,12 @@ public record DocFormsSetValue200ResponseMetaCacheDelta : IJsonOnDeserialized
     [JsonPropertyName("annotationsVersion")]
     public int? AnnotationsVersion { get; set; }
 
+    [JsonPropertyName("layerVersion")]
+    public int? LayerVersion { get; set; }
+
+    [JsonPropertyName("working")]
+    public bool? Working { get; set; }
+
     [JsonPropertyName("pages")]
     public IEnumerable<DocFormsSetValue200ResponseMetaCacheDeltaPagesItem> Pages { get; set; } =
         new List<DocFormsSetValue200ResponseMetaCacheDeltaPagesItem>();

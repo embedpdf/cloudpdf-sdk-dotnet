@@ -2549,3 +2549,651 @@ await client.Doc.Redactions.ApplyAsync(
 </dl>
 </details>
 
+## Doc Signatures
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">ListAsync</a>(ListSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesList200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Describes the bytes the layer is over: the base version's signatures plus the layer's own edits as the last revision. Signed bytes (contents, digests, revision prefixes) are served per base version under /versions.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Signatures.ListAsync(
+    new ListSignaturesRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListSignaturesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">AbortAsync</a>(AbortSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesAbort200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Signatures.AbortAsync(
+    new AbortSignaturesRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        SigningId = "signingId",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `AbortSignaturesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">CompleteAsync</a>(DocSignaturesCompleteRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesComplete200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+`cms` is the detached CMS over the prepared digest, base64. `expectedVersion` must be what prepare returned. Idempotent by signing id: the same CMS again answers `already-completed`. Every layer of the document then sits over the new version; refetch the manifest after a completion.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Signatures.CompleteAsync(
+    new DocSignaturesCompleteRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        SigningId = "signingId",
+        Cms = "cms",
+        ExpectedVersion = new DocSignaturesCompleteRequestExpectedVersion
+        {
+            BaseSha256 = "baseSha256",
+            EditsVersion = 1,
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocSignaturesCompleteRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">AnalysisAsync</a>(AnalysisSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesAnalysis200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Exactly one of `since.signature=<index>` or `since.revision=<index>`; the layer's pending edits are the end. `level=fill|annotate|lta|none` evaluates exploratorily and never becomes a verdict. For history between two base revisions use the version analysis.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Signatures.AnalysisAsync(
+    new AnalysisSignaturesRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `AnalysisSignaturesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">PrepareAsync</a>(PrepareSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesPrepare200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The multipart envelope: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock, appearance) and an optional `resource:<key>` PDF part the body's `appearance.resource` names. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is aborted, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Signatures.PrepareAsync(
+    new PrepareSignaturesRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `PrepareSignaturesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Doc Versions
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">ListAsync</a>(ListVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsList200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Every completed signature publishes a new version. Never cached: the list grows.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Versions.ListAsync(new ListVersionsRequest { DocId = "docId" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">AnalysisAsync</a>(AnalysisVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsAnalysis200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Exactly one of `since.signature` / `since.revision`; `until=<revision>` defaults to the last. The same answer for every layer and every caller.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Versions.AnalysisAsync(
+    new AnalysisVersionsRequest { DocId = "docId", Sha = "sha" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `AnalysisVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">DownloadAsync</a>(DownloadVersionsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Versions.DownloadAsync(
+    new DownloadVersionsRequest { DocId = "docId", Sha = "sha" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DownloadVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">RevisionAsync</a>(RevisionVersionsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Versions.RevisionAsync(
+    new RevisionVersionsRequest
+    {
+        DocId = "docId",
+        Sha = "sha",
+        Index = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `RevisionVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">SignaturesAsync</a>(SignaturesVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsSignatures200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Versions.SignaturesAsync(
+    new SignaturesVersionsRequest { DocId = "docId", Sha = "sha" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SignaturesVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">SignatureContentsAsync</a>(SignatureContentsVersionsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+`fieldKey` is the field's fully qualified name, token-text encoded (the same encoding attachment keys use).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Versions.SignatureContentsAsync(
+    new SignatureContentsVersionsRequest
+    {
+        DocId = "docId",
+        Sha = "sha",
+        FieldKey = "fieldKey",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SignatureContentsVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">SignatureDigestAsync</a>(SignatureDigestVersionsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+What a CMS verifier compares its message digest to.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Versions.SignatureDigestAsync(
+    new SignatureDigestVersionsRequest
+    {
+        DocId = "docId",
+        Sha = "sha",
+        FieldKey = "fieldKey",
+        Algorithm = SignatureDigestVersionsRequestAlgorithm.Sha1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `SignatureDigestVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+

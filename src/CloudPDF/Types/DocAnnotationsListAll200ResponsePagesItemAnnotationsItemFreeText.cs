@@ -75,13 +75,16 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFreeText :
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFreeTextIntent Intent { get; set; }
 
     [JsonPropertyName("fontFamily")]
-    public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFreeTextFontFamily FontFamily { get; set; }
+    public required string FontFamily { get; set; }
 
     [JsonPropertyName("fontSize")]
     public required double FontSize { get; set; }
 
     [JsonPropertyName("textAlign")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFreeTextTextAlign TextAlign { get; set; }
+
+    [JsonPropertyName("richText")]
+    public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFreeTextRichText RichText { get; set; }
 
     [JsonPropertyName("color")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemFreeTextColor Color { get; set; }

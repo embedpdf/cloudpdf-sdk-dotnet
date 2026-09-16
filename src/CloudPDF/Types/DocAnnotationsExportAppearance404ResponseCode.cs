@@ -84,6 +84,29 @@ public readonly record struct DocAnnotationsExportAppearance404ResponseCode : IS
         Values.MalformedPdf
     );
 
+    public static readonly DocAnnotationsExportAppearance404ResponseCode SigningPending = new(
+        Values.SigningPending
+    );
+
+    public static readonly DocAnnotationsExportAppearance404ResponseCode SigningExpired = new(
+        Values.SigningExpired
+    );
+
+    public static readonly DocAnnotationsExportAppearance404ResponseCode SigningVersionMismatch =
+        new(Values.SigningVersionMismatch);
+
+    public static readonly DocAnnotationsExportAppearance404ResponseCode SignatureRefused = new(
+        Values.SignatureRefused
+    );
+
+    public static readonly DocAnnotationsExportAppearance404ResponseCode ProtectedDocument = new(
+        Values.ProtectedDocument
+    );
+
+    public static readonly DocAnnotationsExportAppearance404ResponseCode StaleBase = new(
+        Values.StaleBase
+    );
+
     public DocAnnotationsExportAppearance404ResponseCode(string value)
     {
         Value = value;
@@ -224,5 +247,17 @@ public readonly record struct DocAnnotationsExportAppearance404ResponseCode : IS
         public const string NotImplemented = "NotImplemented";
 
         public const string MalformedPdf = "MalformedPdf";
+
+        public const string SigningPending = "SigningPending";
+
+        public const string SigningExpired = "SigningExpired";
+
+        public const string SigningVersionMismatch = "SigningVersionMismatch";
+
+        public const string SignatureRefused = "SignatureRefused";
+
+        public const string ProtectedDocument = "ProtectedDocument";
+
+        public const string StaleBase = "StaleBase";
     }
 }

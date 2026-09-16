@@ -58,6 +58,22 @@ public readonly record struct DocDownloadResponseCode : IStringEnum
 
     public static readonly DocDownloadResponseCode MalformedPdf = new(Values.MalformedPdf);
 
+    public static readonly DocDownloadResponseCode SigningPending = new(Values.SigningPending);
+
+    public static readonly DocDownloadResponseCode SigningExpired = new(Values.SigningExpired);
+
+    public static readonly DocDownloadResponseCode SigningVersionMismatch = new(
+        Values.SigningVersionMismatch
+    );
+
+    public static readonly DocDownloadResponseCode SignatureRefused = new(Values.SignatureRefused);
+
+    public static readonly DocDownloadResponseCode ProtectedDocument = new(
+        Values.ProtectedDocument
+    );
+
+    public static readonly DocDownloadResponseCode StaleBase = new(Values.StaleBase);
+
     public DocDownloadResponseCode(string value)
     {
         Value = value;
@@ -191,5 +207,17 @@ public readonly record struct DocDownloadResponseCode : IStringEnum
         public const string NotImplemented = "NotImplemented";
 
         public const string MalformedPdf = "MalformedPdf";
+
+        public const string SigningPending = "SigningPending";
+
+        public const string SigningExpired = "SigningExpired";
+
+        public const string SigningVersionMismatch = "SigningVersionMismatch";
+
+        public const string SignatureRefused = "SignatureRefused";
+
+        public const string ProtectedDocument = "ProtectedDocument";
+
+        public const string StaleBase = "StaleBase";
     }
 }

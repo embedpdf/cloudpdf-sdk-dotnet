@@ -9,6 +9,8 @@ public partial interface IDocClient
     public IMetadataClient Metadata { get; }
     public IPagesClient Pages { get; }
     public IRedactionsClient Redactions { get; }
+    public ISignaturesClient Signatures { get; }
+    public IVersionsClient Versions { get; }
     WithRawResponseTask<DocHead200Response> HeadAsync(
         HeadDocRequest request,
         RequestOptions? options = null,
