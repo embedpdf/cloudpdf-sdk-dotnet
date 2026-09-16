@@ -43,6 +43,8 @@ public class DeleteTest : BaseMockServerTest
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "layerVersion": 1,
+                  "working": true,
                   "pages": [
                     {
                       "pageObjectNumber": 1,
@@ -113,6 +115,8 @@ public class DeleteTest : BaseMockServerTest
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "layerVersion": 1,
+                  "working": true,
                   "pages": [
                     {
                       "pageObjectNumber": 1,

@@ -58,6 +58,20 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
 
     public static readonly EngineErrorPayloadCode MalformedPdf = new(Values.MalformedPdf);
 
+    public static readonly EngineErrorPayloadCode SigningPending = new(Values.SigningPending);
+
+    public static readonly EngineErrorPayloadCode SigningExpired = new(Values.SigningExpired);
+
+    public static readonly EngineErrorPayloadCode SigningVersionMismatch = new(
+        Values.SigningVersionMismatch
+    );
+
+    public static readonly EngineErrorPayloadCode SignatureRefused = new(Values.SignatureRefused);
+
+    public static readonly EngineErrorPayloadCode ProtectedDocument = new(Values.ProtectedDocument);
+
+    public static readonly EngineErrorPayloadCode StaleBase = new(Values.StaleBase);
+
     public EngineErrorPayloadCode(string value)
     {
         Value = value;
@@ -191,5 +205,17 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         public const string NotImplemented = "NotImplemented";
 
         public const string MalformedPdf = "MalformedPdf";
+
+        public const string SigningPending = "SigningPending";
+
+        public const string SigningExpired = "SigningExpired";
+
+        public const string SigningVersionMismatch = "SigningVersionMismatch";
+
+        public const string SignatureRefused = "SignatureRefused";
+
+        public const string ProtectedDocument = "ProtectedDocument";
+
+        public const string StaleBase = "StaleBase";
     }
 }

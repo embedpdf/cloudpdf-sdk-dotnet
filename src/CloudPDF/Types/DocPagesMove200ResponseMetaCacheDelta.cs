@@ -20,6 +20,12 @@ public record DocPagesMove200ResponseMetaCacheDelta : IJsonOnDeserialized
     [JsonPropertyName("annotationsVersion")]
     public int? AnnotationsVersion { get; set; }
 
+    [JsonPropertyName("layerVersion")]
+    public int? LayerVersion { get; set; }
+
+    [JsonPropertyName("working")]
+    public bool? Working { get; set; }
+
     [JsonPropertyName("pages")]
     public IEnumerable<DocPagesMove200ResponseMetaCacheDeltaPagesItem> Pages { get; set; } =
         new List<DocPagesMove200ResponseMetaCacheDeltaPagesItem>();

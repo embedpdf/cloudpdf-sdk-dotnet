@@ -70,6 +70,28 @@ public readonly record struct DocFormsImportData400ResponseCode : IStringEnum
         Values.MalformedPdf
     );
 
+    public static readonly DocFormsImportData400ResponseCode SigningPending = new(
+        Values.SigningPending
+    );
+
+    public static readonly DocFormsImportData400ResponseCode SigningExpired = new(
+        Values.SigningExpired
+    );
+
+    public static readonly DocFormsImportData400ResponseCode SigningVersionMismatch = new(
+        Values.SigningVersionMismatch
+    );
+
+    public static readonly DocFormsImportData400ResponseCode SignatureRefused = new(
+        Values.SignatureRefused
+    );
+
+    public static readonly DocFormsImportData400ResponseCode ProtectedDocument = new(
+        Values.ProtectedDocument
+    );
+
+    public static readonly DocFormsImportData400ResponseCode StaleBase = new(Values.StaleBase);
+
     public DocFormsImportData400ResponseCode(string value)
     {
         Value = value;
@@ -204,5 +226,17 @@ public readonly record struct DocFormsImportData400ResponseCode : IStringEnum
         public const string NotImplemented = "NotImplemented";
 
         public const string MalformedPdf = "MalformedPdf";
+
+        public const string SigningPending = "SigningPending";
+
+        public const string SigningExpired = "SigningExpired";
+
+        public const string SigningVersionMismatch = "SigningVersionMismatch";
+
+        public const string SignatureRefused = "SignatureRefused";
+
+        public const string ProtectedDocument = "ProtectedDocument";
+
+        public const string StaleBase = "StaleBase";
     }
 }

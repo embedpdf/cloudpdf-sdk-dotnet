@@ -35,6 +35,15 @@ public record DocManifest200Response : IJsonOnDeserialized
     [JsonPropertyName("baseSha")]
     public required string BaseSha { get; set; }
 
+    [JsonPropertyName("layerVersion")]
+    public int? LayerVersion { get; set; }
+
+    [JsonPropertyName("working")]
+    public bool? Working { get; set; }
+
+    [JsonPropertyName("baseByteLength")]
+    public int? BaseByteLength { get; set; }
+
     [JsonPropertyName("scopes")]
     public DocManifest200ResponseScopes? Scopes { get; set; }
 

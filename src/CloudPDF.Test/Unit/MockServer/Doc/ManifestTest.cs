@@ -22,6 +22,9 @@ public class ManifestTest : BaseMockServerTest
               "annotationsVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
+              "layerVersion": 1,
+              "working": true,
+              "baseByteLength": 1,
               "scopes": {
                 "content": "base",
                 "annotations": "base",
@@ -102,6 +105,9 @@ public class ManifestTest : BaseMockServerTest
               "annotationsVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
+              "layerVersion": 1,
+              "working": true,
+              "baseByteLength": 1,
               "scopes": {
                 "content": "base",
                 "annotations": "base",
