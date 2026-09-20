@@ -11,6 +11,18 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLine : IJs
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    [JsonPropertyName("intent")]
+    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLineIntent? Intent { get; set; }
+
+    [JsonPropertyName("measure")]
+    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLineMeasure? Measure { get; set; }
+
+    [JsonPropertyName("caption")]
+    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLineCaption? Caption { get; set; }
+
+    [JsonPropertyName("leader")]
+    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLineLeader? Leader { get; set; }
+
     [JsonPropertyName("ref")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemLineRef Ref { get; set; }
 

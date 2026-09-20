@@ -4,6 +4,18 @@ namespace CloudPDF.Doc;
 
 public partial interface IPagesClient
 {
+    WithRawResponseTask<DocPagesSetScale200Response> SetScaleAsync(
+        DocPagesSetScaleRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<IEnumerable<DocPagesViewports200ResponseItem>> ViewportsAsync(
+        ViewportsPagesRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<DocPagesDelete200Response> DeleteAsync(
         DeletePagesRequest request,
         RequestOptions? options = null,
