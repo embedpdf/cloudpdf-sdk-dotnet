@@ -11,6 +11,15 @@ public record DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolygon : 
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    [JsonPropertyName("intent")]
+    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolygonIntent? Intent { get; set; }
+
+    [JsonPropertyName("measure")]
+    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolygonMeasure? Measure { get; set; }
+
+    [JsonPropertyName("caption")]
+    public DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolygonCaption? Caption { get; set; }
+
     [JsonPropertyName("ref")]
     public required DocAnnotationsListAll200ResponsePagesItemAnnotationsItemPolygonRef Ref { get; set; }
 

@@ -11,6 +11,18 @@ public record DocAnnotationsList200ResponseAnnotationsItemLine : IJsonOnDeserial
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    [JsonPropertyName("intent")]
+    public DocAnnotationsList200ResponseAnnotationsItemLineIntent? Intent { get; set; }
+
+    [JsonPropertyName("measure")]
+    public DocAnnotationsList200ResponseAnnotationsItemLineMeasure? Measure { get; set; }
+
+    [JsonPropertyName("caption")]
+    public DocAnnotationsList200ResponseAnnotationsItemLineCaption? Caption { get; set; }
+
+    [JsonPropertyName("leader")]
+    public DocAnnotationsList200ResponseAnnotationsItemLineLeader? Leader { get; set; }
+
     [JsonPropertyName("ref")]
     public required DocAnnotationsList200ResponseAnnotationsItemLineRef Ref { get; set; }
 

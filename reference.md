@@ -2035,6 +2035,100 @@ await client.Doc.Metadata.GetAsync(
 </details>
 
 ## Doc Pages
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetScaleAsync</a>(DocPagesSetScaleRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetScale200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Pages.SetScaleAsync(
+    new DocPagesSetScaleRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Pon = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocPagesSetScaleRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ViewportsAsync</a>(ViewportsPagesRequest { ... }) -> WithRawResponseTask&lt;IEnumerable&lt;DocPagesViewports200ResponseItem&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Pages.ViewportsAsync(
+    new ViewportsPagesRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Pon = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ViewportsPagesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">DeleteAsync</a>(DeletePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesDelete200Response&gt;</code></summary>
 <dl>
 <dd>

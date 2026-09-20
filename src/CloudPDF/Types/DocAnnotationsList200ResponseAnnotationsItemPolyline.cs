@@ -11,6 +11,15 @@ public record DocAnnotationsList200ResponseAnnotationsItemPolyline : IJsonOnDese
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    [JsonPropertyName("intent")]
+    public DocAnnotationsList200ResponseAnnotationsItemPolylineIntent? Intent { get; set; }
+
+    [JsonPropertyName("measure")]
+    public DocAnnotationsList200ResponseAnnotationsItemPolylineMeasure? Measure { get; set; }
+
+    [JsonPropertyName("caption")]
+    public DocAnnotationsList200ResponseAnnotationsItemPolylineCaption? Caption { get; set; }
+
     [JsonPropertyName("ref")]
     public required DocAnnotationsList200ResponseAnnotationsItemPolylineRef Ref { get; set; }
 
