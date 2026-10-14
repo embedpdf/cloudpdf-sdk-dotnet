@@ -44,12 +44,6 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         Values.RuntimeUnavailable
     );
 
-    public static readonly EngineErrorPayloadCode InvalidReference = new(Values.InvalidReference);
-
-    public static readonly EngineErrorPayloadCode WeakAnnotationSessionConflict = new(
-        Values.WeakAnnotationSessionConflict
-    );
-
     public static readonly EngineErrorPayloadCode LayerVersionConflict = new(
         Values.LayerVersionConflict
     );
@@ -71,6 +65,22 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
     public static readonly EngineErrorPayloadCode ProtectedDocument = new(Values.ProtectedDocument);
 
     public static readonly EngineErrorPayloadCode StaleBase = new(Values.StaleBase);
+
+    public static readonly EngineErrorPayloadCode PayloadTooLarge = new(Values.PayloadTooLarge);
+
+    public static readonly EngineErrorPayloadCode ObjectNumberUnavailable = new(
+        Values.ObjectNumberUnavailable
+    );
+
+    public static readonly EngineErrorPayloadCode LayerFull = new(Values.LayerFull);
+
+    public static readonly EngineErrorPayloadCode ChangeConflict = new(Values.ChangeConflict);
+
+    public static readonly EngineErrorPayloadCode UndoUnavailable = new(Values.UndoUnavailable);
+
+    public static readonly EngineErrorPayloadCode IdempotencyKeyReused = new(
+        Values.IdempotencyKeyReused
+    );
 
     public EngineErrorPayloadCode(string value)
     {
@@ -196,10 +206,6 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
 
         public const string RuntimeUnavailable = "RuntimeUnavailable";
 
-        public const string InvalidReference = "InvalidReference";
-
-        public const string WeakAnnotationSessionConflict = "WeakAnnotationSessionConflict";
-
         public const string LayerVersionConflict = "LayerVersionConflict";
 
         public const string NotImplemented = "NotImplemented";
@@ -217,5 +223,17 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         public const string ProtectedDocument = "ProtectedDocument";
 
         public const string StaleBase = "StaleBase";
+
+        public const string PayloadTooLarge = "PayloadTooLarge";
+
+        public const string ObjectNumberUnavailable = "ObjectNumberUnavailable";
+
+        public const string LayerFull = "LayerFull";
+
+        public const string ChangeConflict = "ChangeConflict";
+
+        public const string UndoUnavailable = "UndoUnavailable";
+
+        public const string IdempotencyKeyReused = "IdempotencyKeyReused";
     }
 }

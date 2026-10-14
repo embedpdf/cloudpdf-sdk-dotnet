@@ -22,54 +22,247 @@ public class SetNameTest : BaseMockServerTest
 
         const string mockResponse = """
             {
-              "meta": {
-                "affectedPages": [
+              "layout": {
+                "pageCount": 1,
+                "pages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
+                    "index": 1,
+                    "ref": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
                     },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
+                    "label": "label",
+                    "size": {
+                      "width": 1.1,
+                      "height": 1.1
+                    },
+                    "rotation": 1.1,
+                    "userUnit": 1.1,
+                    "tabOrder": "rows",
+                    "boxes": {
+                      "media": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "crop": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "bleed": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "trim": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "art": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      }
+                    },
+                    "pdfCropBox": {
+                      "left": 1.1,
+                      "bottom": 1.1,
+                      "right": 1.1,
+                      "top": 1.1
+                    },
+                    "actions": {
+                      "open": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warningFlags": 1,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      },
+                      "close": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warningFlags": 1,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      }
                     }
                   },
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
+                    "index": 1,
+                    "ref": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
                     },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
+                    "label": "label",
+                    "size": {
+                      "width": 1.1,
+                      "height": 1.1
+                    },
+                    "rotation": 1.1,
+                    "userUnit": 1.1,
+                    "tabOrder": "rows",
+                    "boxes": {
+                      "media": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "crop": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "bleed": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "trim": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "art": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      }
+                    },
+                    "pdfCropBox": {
+                      "left": 1.1,
+                      "bottom": 1.1,
+                      "right": 1.1,
+                      "top": 1.1
+                    },
+                    "actions": {
+                      "open": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warningFlags": 1,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      },
+                      "close": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warningFlags": 1,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      }
                     }
+                  }
+                ],
+                "namedPages": [
+                  {
+                    "name": "name",
+                    "target": {
+                      "kind": "page",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      }
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "target": {
+                      "kind": "page",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "meta": {
+                "affectedPages": [
+                  {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     },
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;
@@ -118,36 +311,107 @@ public class SetNameTest : BaseMockServerTest
 
         const string mockResponse = """
             {
+              "layout": {
+                "pageCount": 1,
+                "pages": [
+                  {
+                    "index": 1,
+                    "ref": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "size": {
+                      "width": 1.1,
+                      "height": 1.1
+                    },
+                    "rotation": 1.1,
+                    "userUnit": 1.1,
+                    "boxes": {
+                      "media": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "crop": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "bleed": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "trim": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "art": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      }
+                    },
+                    "pdfCropBox": {
+                      "left": 1.1,
+                      "bottom": 1.1,
+                      "right": 1.1,
+                      "top": 1.1
+                    }
+                  }
+                ],
+                "namedPages": [
+                  {
+                    "name": "name",
+                    "target": {
+                      "kind": "page",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      }
+                    }
+                  }
+                ]
+              },
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;

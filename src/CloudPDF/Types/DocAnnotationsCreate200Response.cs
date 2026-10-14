@@ -1,26 +1,27 @@
 using CloudPDF.Core;
+using global::System.Text.Json;
 using global::System.Text.Json.Serialization;
 
 namespace CloudPDF;
 
 [Serializable]
-public record DocAnnotationsCreate200Response : IJsonOnDeserialized, IJsonOnSerializing
+public record DocAnnotationsCreate200Response : IJsonOnDeserialized
 {
     [JsonExtensionData]
-    private readonly IDictionary<string, object?> _extensionData =
-        new Dictionary<string, object?>();
+    private readonly IDictionary<string, JsonElement> _extensionData =
+        new Dictionary<string, JsonElement>();
+
+    [JsonPropertyName("annotation")]
+    public required Annotation Annotation { get; set; }
 
     [JsonPropertyName("meta")]
-    public required DocAnnotationsCreate200ResponseMeta Meta { get; set; }
+    public required AnnotationMutationMeta Meta { get; set; }
 
     [JsonIgnore]
-    public AdditionalProperties AdditionalProperties { get; set; } = new();
+    public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 
     void IJsonOnDeserialized.OnDeserialized() =>
         AdditionalProperties.CopyFromExtensionData(_extensionData);
-
-    void IJsonOnSerializing.OnSerializing() =>
-        AdditionalProperties.CopyToExtensionData(_extensionData);
 
     /// <inheritdoc />
     public override string ToString()

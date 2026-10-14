@@ -5,12 +5,12 @@ namespace CloudPDF;
 /// </summary>
 [Serializable]
 public class UnprocessableEntityError(
-    SharesExchange422Response body,
+    AdminErrorPayload body,
     CloudPDF.RawResponse? rawResponse = null
 ) : CloudPDFApiException("UnprocessableEntityError", 422, body, rawResponse: rawResponse)
 {
     /// <summary>
     /// The body of the response that triggered the exception.
     /// </summary>
-    public new SharesExchange422Response Body => body;
+    public new AdminErrorPayload Body => body;
 }

@@ -17,6 +17,9 @@ public record DocManifest200ResponseScopes : IJsonOnDeserialized
     [JsonPropertyName("annotations")]
     public required DocManifest200ResponseScopesAnnotations Annotations { get; set; }
 
+    [JsonPropertyName("forms")]
+    public required DocManifest200ResponseScopesForms Forms { get; set; }
+
     [JsonPropertyName("layout")]
     public required DocManifest200ResponseScopesLayout Layout { get; set; }
 

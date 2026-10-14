@@ -141,6 +141,152 @@ public partial class DocClient : IDocClient
         }
     }
 
+    private async Task<WithRawResponse<DocChanges200Response>> ChangesAsyncCore(
+        DocChangesRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
+        var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
+            .Add("X-Document-Password", request.DocumentPassword)
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Post,
+                    Path = string.Format(
+                        "v1/docs/{0}/layers/{1}/changes",
+                        ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName)
+                    ),
+                    Body = request,
+                    QueryString = _queryString,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<DocChanges200Response>(responseBody)!;
+                return new WithRawResponse<DocChanges200Response>()
+                {
+                    Data = responseData,
+                    RawResponse = new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new CloudPDFApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e,
+                    rawResponse: new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 404:
+                        throw new NotFoundError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 409:
+                        throw new ConflictError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 413:
+                        throw new ContentTooLargeError(
+                            JsonUtils.Deserialize<EngineErrorPayload>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new CloudPDFApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody,
+                rawResponse: new CloudPDF.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
+            );
+        }
+    }
+
     private async Task<WithRawResponse<global::System.IO.Stream>> DownloadAsyncCore(
         DownloadDocRequest request,
         RequestOptions? options = null,
@@ -361,7 +507,7 @@ public partial class DocClient : IDocClient
                         "v1/docs/{0}/layers/{1}/render/pages/{2}/data",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Pon)
+                        ValueConvert.ToPathParameterString(request.PageKey)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -449,7 +595,7 @@ public partial class DocClient : IDocClient
                         "v1/docs/{0}/layers/{1}/text/pages/{2}/data",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Pon)
+                        ValueConvert.ToPathParameterString(request.PageKey)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -547,6 +693,33 @@ public partial class DocClient : IDocClient
         );
     }
 
+    /// <summary>
+    /// Each change stands on its own and names itself by `opId`: a refused change rolls back alone, and the answer lists every change in order, applied with its result or refused with its error. Asked again under its `opId`, a change gets the same answer, refusals included; a different change under an answered `opId` is refused (IdempotencyKeyReused). `{ opId, undoOf }` undoes an earlier change of the caller, here or in an earlier request; an undo leaves alone what was changed since, and the undo of an undo redoes. A redaction, a flatten, a form repair or a completed signature ends undo for the changes before it (UndoUnavailable). Each op is checked against its own capability: annotation ops need `doc.annotate.modify`, form values `doc.forms.fill`, form structure `doc.forms.modify`, metadata `doc.metadata.modify`. Bytes (a stamp's drawing, an attached file, a signature's artwork) travel as multipart: a JSON `body` part, each op naming its files by role as `resources: { &lt;role&gt;: '&lt;key&gt;' }`, and each file as the part `resource:&lt;key&gt;`. At most 64 changes per request and 512 ops per change.
+    /// </summary>
+    /// <example><code>
+    /// await client.Doc.ChangesAsync(
+    ///     new DocChangesRequest
+    ///     {
+    ///         DocId = "docId",
+    ///         LayerName = "layerName",
+    ///         Changes = new List&lt;DocChangesRequestChangesItem&gt;()
+    ///         {
+    ///             new DocChangesRequestChangesItem { OpId = "opId" },
+    ///         },
+    ///     }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<DocChanges200Response> ChangesAsync(
+        DocChangesRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<DocChanges200Response>(
+            ChangesAsyncCore(request, options, cancellationToken)
+        );
+    }
+
     /// <example><code>
     /// await client.Doc.DownloadAsync(new DownloadDocRequest { DocId = "docId", LayerName = "layerName" });
     /// </code></example>
@@ -584,7 +757,7 @@ public partial class DocClient : IDocClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Pon = 1,
+    ///         PageKey = "pageKey",
     ///     }
     /// );
     /// </code></example>
@@ -605,7 +778,7 @@ public partial class DocClient : IDocClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Pon = 1,
+    ///         PageKey = "pageKey",
     ///     }
     /// );
     /// </code></example>

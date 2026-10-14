@@ -236,7 +236,7 @@ public partial class TokensClient : ITokensClient
     ///     {
     ///         TenantId = "tenantId",
     ///         Body = new TokensIssueRequest(
-    ///             new TokensIssueRequest.Doc(
+    ///             new CloudPDF.TokensIssueRequest.Doc(
     ///                 new TokensIssueRequestDoc
     ///                 {
     ///                     Sub = "sub",

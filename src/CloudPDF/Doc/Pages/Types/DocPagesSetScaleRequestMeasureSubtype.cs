@@ -10,7 +10,9 @@ namespace CloudPDF.Doc;
 [Serializable]
 public readonly record struct DocPagesSetScaleRequestMeasureSubtype : IStringEnum
 {
-    public static readonly DocPagesSetScaleRequestMeasureSubtype Rl = new(Values.Rl);
+    public static readonly DocPagesSetScaleRequestMeasureSubtype Rectilinear = new(
+        Values.Rectilinear
+    );
 
     public DocPagesSetScaleRequestMeasureSubtype(string value)
     {
@@ -111,6 +113,6 @@ public readonly record struct DocPagesSetScaleRequestMeasureSubtype : IStringEnu
     [Serializable]
     public static class Values
     {
-        public const string Rl = "RL";
+        public const string Rectilinear = "rectilinear";
     }
 }

@@ -14,756 +14,690 @@ public class ListAllTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "pages": [
+              "annotations": [
                 {
-                  "pageState": {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
+                  "subtype": "highlight",
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
                     },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
+                    "objectNumber": 1
+                  },
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "hasAppearance": true,
+                  "appearanceState": "appearanceState",
+                  "nm": "nm",
+                  "rect": {
+                    "x": 1.1,
+                    "y": 1.1,
+                    "width": 1.1,
+                    "height": 1.1
+                  },
+                  "contents": "contents",
+                  "subject": "subject",
+                  "blendMode": "normal",
+                  "invisible": true,
+                  "hidden": true,
+                  "print": true,
+                  "noZoom": true,
+                  "noRotate": true,
+                  "noView": true,
+                  "readOnly": true,
+                  "locked": true,
+                  "toggleNoView": true,
+                  "lockedContents": true,
+                  "reply": {
+                    "to": {
+                      "kind": "objectNumber",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
+                      "objectNumber": 1
+                    },
+                    "type": "reply"
+                  },
+                  "popup": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "groupId": "x",
+                  "author": "author",
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "modifiedAt": "2024-01-15T09:30:00.000Z",
+                  "userId": "userId",
+                  "createdBy": "createdBy",
+                  "modifiedBy": "modifiedBy",
+                  "importedBy": "importedBy",
+                  "actions": {
+                    "activate": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "cursorEnter": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "cursorExit": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "mouseDown": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "mouseUp": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "focus": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "blur": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageOpen": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageClose": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageVisible": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageInvisible": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
                     }
                   },
-                  "annotations": [
+                  "color": "color",
+                  "opacity": 1,
+                  "quadPoints": [
                     {
-                      "subtype": "highlight",
-                      "ref": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
+                      "upperLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "pageObjectNumber": 1,
-                      "index": 1,
-                      "identityQuality": "durable",
-                      "nm": "nm",
-                      "flags": {
-                        "invisible": true,
-                        "hidden": true,
-                        "print": true,
-                        "noZoom": true,
-                        "noRotate": true,
-                        "noView": true,
-                        "readOnly": true,
-                        "locked": true,
-                        "toggleNoView": true,
-                        "lockedContents": true
+                      "upperRight": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "rect": {
-                        "left": 1.1,
-                        "bottom": 1.1,
-                        "right": 1.1,
-                        "top": 1.1
+                      "lowerLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "contents": "contents",
-                      "subject": "subject",
-                      "author": "author",
-                      "created": "2024-01-15T09:30:00.000Z",
-                      "modified": "2024-01-15T09:30:00.000Z",
-                      "blendMode": "normal",
-                      "inReplyTo": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
-                      },
-                      "replyType": "reply",
-                      "userId": "userId",
-                      "groupId": "groupId",
-                      "createdBy": "createdBy",
-                      "updatedBy": "updatedBy",
-                      "actions": {
-                        "activate": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorEnter": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorExit": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseDown": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseUp": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "focus": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "blur": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageOpen": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageClose": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageVisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageInvisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        }
-                      },
-                      "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255
-                      },
-                      "opacity": 1,
-                      "quadPoints": [
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        },
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        }
-                      ]
+                      "lowerRight": {
+                        "x": 1.1,
+                        "y": 1.1
+                      }
                     },
                     {
-                      "subtype": "highlight",
-                      "ref": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
+                      "upperLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "pageObjectNumber": 1,
-                      "index": 1,
-                      "identityQuality": "durable",
-                      "nm": "nm",
-                      "flags": {
-                        "invisible": true,
-                        "hidden": true,
-                        "print": true,
-                        "noZoom": true,
-                        "noRotate": true,
-                        "noView": true,
-                        "readOnly": true,
-                        "locked": true,
-                        "toggleNoView": true,
-                        "lockedContents": true
+                      "upperRight": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "rect": {
-                        "left": 1.1,
-                        "bottom": 1.1,
-                        "right": 1.1,
-                        "top": 1.1
+                      "lowerLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "contents": "contents",
-                      "subject": "subject",
-                      "author": "author",
-                      "created": "2024-01-15T09:30:00.000Z",
-                      "modified": "2024-01-15T09:30:00.000Z",
-                      "blendMode": "normal",
-                      "inReplyTo": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
-                      },
-                      "replyType": "reply",
-                      "userId": "userId",
-                      "groupId": "groupId",
-                      "createdBy": "createdBy",
-                      "updatedBy": "updatedBy",
-                      "actions": {
-                        "activate": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorEnter": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorExit": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseDown": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseUp": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "focus": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "blur": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageOpen": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageClose": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageVisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageInvisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        }
-                      },
-                      "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255
-                      },
-                      "opacity": 1,
-                      "quadPoints": [
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        },
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        }
-                      ]
+                      "lowerRight": {
+                        "x": 1.1,
+                        "y": 1.1
+                      }
                     }
                   ]
                 },
                 {
-                  "pageState": {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
+                  "subtype": "highlight",
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
                     },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
+                    "objectNumber": 1
+                  },
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "hasAppearance": true,
+                  "appearanceState": "appearanceState",
+                  "nm": "nm",
+                  "rect": {
+                    "x": 1.1,
+                    "y": 1.1,
+                    "width": 1.1,
+                    "height": 1.1
+                  },
+                  "contents": "contents",
+                  "subject": "subject",
+                  "blendMode": "normal",
+                  "invisible": true,
+                  "hidden": true,
+                  "print": true,
+                  "noZoom": true,
+                  "noRotate": true,
+                  "noView": true,
+                  "readOnly": true,
+                  "locked": true,
+                  "toggleNoView": true,
+                  "lockedContents": true,
+                  "reply": {
+                    "to": {
+                      "kind": "objectNumber",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
+                      "objectNumber": 1
+                    },
+                    "type": "reply"
+                  },
+                  "popup": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "groupId": "x",
+                  "author": "author",
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "modifiedAt": "2024-01-15T09:30:00.000Z",
+                  "userId": "userId",
+                  "createdBy": "createdBy",
+                  "modifiedBy": "modifiedBy",
+                  "importedBy": "importedBy",
+                  "actions": {
+                    "activate": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "cursorEnter": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "cursorExit": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "mouseDown": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "mouseUp": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "focus": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "blur": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageOpen": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageClose": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageVisible": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
+                    },
+                    "pageInvisible": {
+                      "root": {
+                        "type": "javascript",
+                        "subtype": "subtype",
+                        "next": [
+                          {
+                            "key": "value"
+                          },
+                          {
+                            "key": "value"
+                          }
+                        ],
+                        "script": "script"
+                      },
+                      "incomplete": true,
+                      "warningFlags": 1,
+                      "warnings": [
+                        "cycle-dropped",
+                        "cycle-dropped"
+                      ]
                     }
                   },
-                  "annotations": [
+                  "color": "color",
+                  "opacity": 1,
+                  "quadPoints": [
                     {
-                      "subtype": "highlight",
-                      "ref": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
+                      "upperLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "pageObjectNumber": 1,
-                      "index": 1,
-                      "identityQuality": "durable",
-                      "nm": "nm",
-                      "flags": {
-                        "invisible": true,
-                        "hidden": true,
-                        "print": true,
-                        "noZoom": true,
-                        "noRotate": true,
-                        "noView": true,
-                        "readOnly": true,
-                        "locked": true,
-                        "toggleNoView": true,
-                        "lockedContents": true
+                      "upperRight": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "rect": {
-                        "left": 1.1,
-                        "bottom": 1.1,
-                        "right": 1.1,
-                        "top": 1.1
+                      "lowerLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "contents": "contents",
-                      "subject": "subject",
-                      "author": "author",
-                      "created": "2024-01-15T09:30:00.000Z",
-                      "modified": "2024-01-15T09:30:00.000Z",
-                      "blendMode": "normal",
-                      "inReplyTo": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
-                      },
-                      "replyType": "reply",
-                      "userId": "userId",
-                      "groupId": "groupId",
-                      "createdBy": "createdBy",
-                      "updatedBy": "updatedBy",
-                      "actions": {
-                        "activate": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorEnter": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorExit": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseDown": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseUp": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "focus": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "blur": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageOpen": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageClose": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageVisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageInvisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        }
-                      },
-                      "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255
-                      },
-                      "opacity": 1,
-                      "quadPoints": [
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        },
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        }
-                      ]
+                      "lowerRight": {
+                        "x": 1.1,
+                        "y": 1.1
+                      }
                     },
                     {
-                      "subtype": "highlight",
-                      "ref": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
+                      "upperLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "pageObjectNumber": 1,
-                      "index": 1,
-                      "identityQuality": "durable",
-                      "nm": "nm",
-                      "flags": {
-                        "invisible": true,
-                        "hidden": true,
-                        "print": true,
-                        "noZoom": true,
-                        "noRotate": true,
-                        "noView": true,
-                        "readOnly": true,
-                        "locked": true,
-                        "toggleNoView": true,
-                        "lockedContents": true
+                      "upperRight": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "rect": {
-                        "left": 1.1,
-                        "bottom": 1.1,
-                        "right": 1.1,
-                        "top": 1.1
+                      "lowerLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "contents": "contents",
-                      "subject": "subject",
-                      "author": "author",
-                      "created": "2024-01-15T09:30:00.000Z",
-                      "modified": "2024-01-15T09:30:00.000Z",
-                      "blendMode": "normal",
-                      "inReplyTo": {
-                        "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
-                      },
-                      "replyType": "reply",
-                      "userId": "userId",
-                      "groupId": "groupId",
-                      "createdBy": "createdBy",
-                      "updatedBy": "updatedBy",
-                      "actions": {
-                        "activate": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorEnter": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "cursorExit": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseDown": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "mouseUp": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "focus": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "blur": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageOpen": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageClose": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageVisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        },
-                        "pageInvisible": {
-                          "incomplete": true,
-                          "warningFlags": 1,
-                          "warnings": [
-                            "cycle-dropped",
-                            "cycle-dropped"
-                          ]
-                        }
-                      },
-                      "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255
-                      },
-                      "opacity": 1,
-                      "quadPoints": [
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        },
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        }
-                      ]
+                      "lowerRight": {
+                        "x": 1.1,
+                        "y": 1.1
+                      }
                     }
                   ]
+                }
+              ],
+              "pages": [
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
+                },
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
                 }
               ],
               "auditHead": 1
@@ -795,77 +729,99 @@ public class ListAllTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "pages": [
+              "annotations": [
                 {
-                  "pageState": {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
+                  "subtype": "highlight",
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
                     },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "objectNumber": 1
                   },
-                  "annotations": [
-                    {
-                      "subtype": "highlight",
-                      "ref": {
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "hasAppearance": true,
+                  "appearanceState": "appearanceState",
+                  "nm": "nm",
+                  "rect": {
+                    "x": 1.1,
+                    "y": 1.1,
+                    "width": 1.1,
+                    "height": 1.1
+                  },
+                  "contents": "contents",
+                  "subject": "subject",
+                  "blendMode": "normal",
+                  "invisible": true,
+                  "hidden": true,
+                  "print": true,
+                  "noZoom": true,
+                  "noRotate": true,
+                  "noView": true,
+                  "readOnly": true,
+                  "locked": true,
+                  "toggleNoView": true,
+                  "lockedContents": true,
+                  "reply": {
+                    "to": {
+                      "kind": "objectNumber",
+                      "page": {
                         "kind": "objectNumber",
-                        "pageObjectNumber": 1,
-                        "annotObjectNumber": 1
+                        "objectNumber": 1
                       },
-                      "pageObjectNumber": 1,
-                      "index": 1,
-                      "identityQuality": "durable",
-                      "flags": {
-                        "invisible": true,
-                        "hidden": true,
-                        "print": true,
-                        "noZoom": true,
-                        "noRotate": true,
-                        "noView": true,
-                        "readOnly": true,
-                        "locked": true,
-                        "toggleNoView": true,
-                        "lockedContents": true
+                      "objectNumber": 1
+                    },
+                    "type": "reply"
+                  },
+                  "popup": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "groupId": "groupId",
+                  "author": "author",
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "modifiedAt": "2024-01-15T09:30:00.000Z",
+                  "userId": "userId",
+                  "createdBy": "createdBy",
+                  "modifiedBy": "modifiedBy",
+                  "importedBy": "importedBy",
+                  "actions": {},
+                  "color": "color",
+                  "opacity": 1.1,
+                  "quadPoints": [
+                    {
+                      "upperLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "rect": {
-                        "left": 1.1,
-                        "bottom": 1.1,
-                        "right": 1.1,
-                        "top": 1.1
+                      "upperRight": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "blendMode": "normal",
-                      "color": {
-                        "r": 1,
-                        "g": 1,
-                        "b": 1
+                      "lowerLeft": {
+                        "x": 1.1,
+                        "y": 1.1
                       },
-                      "opacity": 1.1,
-                      "quadPoints": [
-                        {
-                          "p1": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p2": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p3": {
-                            "x": 1.1,
-                            "y": 1.1
-                          },
-                          "p4": {
-                            "x": 1.1,
-                            "y": 1.1
-                          }
-                        }
-                      ]
+                      "lowerRight": {
+                        "x": 1.1,
+                        "y": 1.1
+                      }
                     }
                   ]
+                }
+              ],
+              "pages": [
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
                 }
               ],
               "auditHead": 1

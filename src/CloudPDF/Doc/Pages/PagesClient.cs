@@ -24,6 +24,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -38,7 +39,7 @@ public partial class PagesClient : IPagesClient
                         "v1/docs/{0}/layers/{1}/pages/{2}/scale",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Pon)
+                        ValueConvert.ToPathParameterString(request.PageKey)
                     ),
                     Body = request,
                     QueryString = _queryString,
@@ -138,9 +139,7 @@ public partial class PagesClient : IPagesClient
         }
     }
 
-    private async Task<
-        WithRawResponse<IEnumerable<DocPagesViewports200ResponseItem>>
-    > ViewportsAsyncCore(
+    private async Task<WithRawResponse<DocPagesViewports200Response>> ViewportsAsyncCore(
         ViewportsPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -165,7 +164,7 @@ public partial class PagesClient : IPagesClient
                         "v1/docs/{0}/layers/{1}/pages/{2}/viewports",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Pon)
+                        ValueConvert.ToPathParameterString(request.PageKey)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -181,10 +180,10 @@ public partial class PagesClient : IPagesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<
-                    IEnumerable<DocPagesViewports200ResponseItem>
-                >(responseBody)!;
-                return new WithRawResponse<IEnumerable<DocPagesViewports200ResponseItem>>()
+                var responseData = JsonUtils.Deserialize<DocPagesViewports200Response>(
+                    responseBody
+                )!;
+                return new WithRawResponse<DocPagesViewports200Response>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -262,6 +261,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -485,6 +485,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -607,6 +608,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -726,6 +728,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -839,128 +842,6 @@ public partial class PagesClient : IPagesClient
         }
     }
 
-    private async Task<WithRawResponse<DocPagesMove200Response>> MoveAsyncCore(
-        MovePagesRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 0)
-            .MergeAdditional(options?.AdditionalQueryParameters)
-            .Build();
-        var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
-            .Add("X-Document-Password", request.DocumentPassword)
-            .Add(_client.Options.Headers)
-            .Add(_client.Options.AdditionalHeaders)
-            .Add(options?.AdditionalHeaders)
-            .BuildAsync()
-            .ConfigureAwait(false);
-        var response = await _client
-            .SendRequestAsync(
-                new JsonRequest
-                {
-                    Method = HttpMethod.Post,
-                    Path = string.Format(
-                        "v1/docs/{0}/layers/{1}/pages/move",
-                        ValueConvert.ToPathParameterString(request.DocId),
-                        ValueConvert.ToPathParameterString(request.LayerName)
-                    ),
-                    Body = request.Body,
-                    QueryString = _queryString,
-                    Headers = _headers,
-                    ContentType = "application/json",
-                    Options = options,
-                },
-                cancellationToken
-            )
-            .ConfigureAwait(false);
-        if (response.StatusCode is >= 200 and < 400)
-        {
-            var responseBody = await response
-                .Raw.Content.ReadAsStringAsync(cancellationToken)
-                .ConfigureAwait(false);
-            try
-            {
-                var responseData = JsonUtils.Deserialize<DocPagesMove200Response>(responseBody)!;
-                return new WithRawResponse<DocPagesMove200Response>()
-                {
-                    Data = responseData,
-                    RawResponse = new CloudPDF.RawResponse()
-                    {
-                        StatusCode = response.Raw.StatusCode,
-                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
-                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
-                    },
-                };
-            }
-            catch (JsonException e)
-            {
-                throw new CloudPDFApiException(
-                    "Failed to deserialize response",
-                    response.StatusCode,
-                    responseBody,
-                    e,
-                    rawResponse: new CloudPDF.RawResponse()
-                    {
-                        StatusCode = response.Raw.StatusCode,
-                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
-                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
-                    }
-                );
-            }
-        }
-        {
-            var responseBody = await response
-                .Raw.Content.ReadAsStringAsync(cancellationToken)
-                .ConfigureAwait(false);
-            try
-            {
-                switch (response.StatusCode)
-                {
-                    case 400:
-                        throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
-                            rawResponse: new CloudPDF.RawResponse()
-                            {
-                                StatusCode = response.Raw.StatusCode,
-                                Url =
-                                    response.Raw.RequestMessage?.RequestUri
-                                    ?? new Uri("about:blank"),
-                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
-                            }
-                        );
-                    case 404:
-                        throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
-                            rawResponse: new CloudPDF.RawResponse()
-                            {
-                                StatusCode = response.Raw.StatusCode,
-                                Url =
-                                    response.Raw.RequestMessage?.RequestUri
-                                    ?? new Uri("about:blank"),
-                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
-                            }
-                        );
-                }
-            }
-            catch (JsonException)
-            {
-                // unable to map error response, throwing generic error
-            }
-            throw new CloudPDFApiException(
-                $"Error with status code {response.StatusCode}",
-                response.StatusCode,
-                responseBody,
-                rawResponse: new CloudPDF.RawResponse()
-                {
-                    StatusCode = response.Raw.StatusCode,
-                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
-                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
-                }
-            );
-        }
-    }
-
     private async Task<WithRawResponse<DocPagesSetName200Response>> SetNameAsyncCore(
         SetNamePagesRequest request,
         RequestOptions? options = null,
@@ -972,6 +853,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -1094,6 +976,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -1207,6 +1090,129 @@ public partial class PagesClient : IPagesClient
         }
     }
 
+    private async Task<WithRawResponse<DocPagesReorder200Response>> ReorderAsyncCore(
+        DocPagesReorderRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
+        var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
+            .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Post,
+                    Path = string.Format(
+                        "v1/docs/{0}/layers/{1}/pages/reorder",
+                        ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName)
+                    ),
+                    Body = request,
+                    QueryString = _queryString,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<DocPagesReorder200Response>(responseBody)!;
+                return new WithRawResponse<DocPagesReorder200Response>()
+                {
+                    Data = responseData,
+                    RawResponse = new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new CloudPDFApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e,
+                    rawResponse: new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 404:
+                        throw new NotFoundError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new CloudPDFApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody,
+                rawResponse: new CloudPDF.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
+            );
+        }
+    }
+
     private async Task<WithRawResponse<DocPagesRotate200Response>> RotateAsyncCore(
         RotatePagesRequest request,
         RequestOptions? options = null,
@@ -1218,6 +1224,7 @@ public partial class PagesClient : IPagesClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -1335,7 +1342,7 @@ public partial class PagesClient : IPagesClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Pon = 1,
+    ///         PageKey = "pageKey",
     ///     }
     /// );
     /// </code></example>
@@ -1356,17 +1363,17 @@ public partial class PagesClient : IPagesClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Pon = 1,
+    ///         PageKey = "pageKey",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<IEnumerable<DocPagesViewports200ResponseItem>> ViewportsAsync(
+    public WithRawResponseTask<DocPagesViewports200Response> ViewportsAsync(
         ViewportsPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<IEnumerable<DocPagesViewports200ResponseItem>>(
+        return new WithRawResponseTask<DocPagesViewports200Response>(
             ViewportsAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1393,7 +1400,7 @@ public partial class PagesClient : IPagesClient
     }
 
     /// <summary>
-    /// A read, not a mutation: the source document is untouched and no event is published. Body is `{"pageObjectNumbers": number[]}`; the response body is the new PDF.
+    /// A read, not a mutation: the source document is untouched and no event is published. Body is `{"pages": PageRef[]}`; the response body is the new PDF.
     /// </summary>
     /// <example><code>
     /// await client.Doc.Pages.ExtractAsync(
@@ -1444,7 +1451,7 @@ public partial class PagesClient : IPagesClient
     }
 
     /// <summary>
-    /// Multipart mutation envelope: a `body` field holding `{"destIndex"?: number}` (omitted → append) plus a `resource:source` file part carrying the standalone PDF whose pages are copied in. The inserted copies get fresh page object numbers, returned in insertion order.
+    /// Multipart: a JSON `body` part `{"position"?: PagePosition, "resources": {"source": "&lt;key&gt;"}}` (position omitted → the end), and the standalone PDF whose pages are copied in as the part `resource:&lt;key&gt;`. The inserted copies get fresh page object numbers, returned in insertion order.
     /// </summary>
     /// <example><code>
     /// await client.Doc.Pages.InsertAsync(
@@ -1463,7 +1470,7 @@ public partial class PagesClient : IPagesClient
     }
 
     /// <summary>
-    /// Body is `{"size": {"width", "height"}, "count"?, "destIndex"?}` — size in PDF points, count in [1, 100], destIndex omitted → append.
+    /// Body is `{"size": {"width", "height"}, "count"?, "position"?}` — size in PDF points, count in [1, 100], `position` a `PagePosition` (omitted → the end).
     /// </summary>
     /// <example><code>
     /// await client.Doc.Pages.InsertBlankAsync(
@@ -1483,27 +1490,6 @@ public partial class PagesClient : IPagesClient
     {
         return new WithRawResponseTask<DocPagesInsertBlank200Response>(
             InsertBlankAsyncCore(request, options, cancellationToken)
-        );
-    }
-
-    /// <example><code>
-    /// await client.Doc.Pages.MoveAsync(
-    ///     new MovePagesRequest
-    ///     {
-    ///         DocId = "docId",
-    ///         LayerName = "layerName",
-    ///         Body = new Dictionary&lt;string, object?&gt;() { { "key", "value" } },
-    ///     }
-    /// );
-    /// </code></example>
-    public WithRawResponseTask<DocPagesMove200Response> MoveAsync(
-        MovePagesRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        return new WithRawResponseTask<DocPagesMove200Response>(
-            MoveAsyncCore(request, options, cancellationToken)
         );
     }
 
@@ -1546,6 +1532,31 @@ public partial class PagesClient : IPagesClient
     {
         return new WithRawResponseTask<DocPagesRemoveName200Response>(
             RemoveNameAsyncCore(request, options, cancellationToken)
+        );
+    }
+
+    /// <example><code>
+    /// await client.Doc.Pages.ReorderAsync(
+    ///     new DocPagesReorderRequest
+    ///     {
+    ///         DocId = "docId",
+    ///         LayerName = "layerName",
+    ///         Pages = new List&lt;PageRef&gt;()
+    ///         {
+    ///             new PageRef { Kind = PageRefKind.ObjectNumber, ObjectNumber = 1 },
+    ///         },
+    ///         Position = PagePositionZero.Start,
+    ///     }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<DocPagesReorder200Response> ReorderAsync(
+        DocPagesReorderRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<DocPagesReorder200Response>(
+            ReorderAsyncCore(request, options, cancellationToken)
         );
     }
 

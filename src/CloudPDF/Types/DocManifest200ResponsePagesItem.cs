@@ -11,8 +11,8 @@ public record DocManifest200ResponsePagesItem : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("state")]
-    public required DocManifest200ResponsePagesItemState State { get; set; }
+    [JsonPropertyName("page")]
+    public required PageRef Page { get; set; }
 
     [JsonPropertyName("cache")]
     public required DocManifest200ResponsePagesItemCache Cache { get; set; }

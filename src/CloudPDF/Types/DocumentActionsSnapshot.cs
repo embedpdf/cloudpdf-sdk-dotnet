@@ -19,7 +19,7 @@ public record DocumentActionsSnapshot : IJsonOnDeserialized
     public PdfActionTree? OpenAction { get; set; }
 
     [JsonPropertyName("openDestination")]
-    public PdfDestination? OpenDestination { get; set; }
+    public PageDestination? OpenDestination { get; set; }
 
     [JsonPropertyName("willClose")]
     public PdfActionTree? WillClose { get; set; }

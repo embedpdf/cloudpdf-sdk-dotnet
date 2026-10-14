@@ -14,7 +14,7 @@ public partial class RedactionsClient : IRedactionsClient
     }
 
     private async Task<WithRawResponse<DocRedactionsApply200Response>> ApplyAsyncCore(
-        ApplyRedactionsRequest request,
+        DocRedactionsApplyRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -24,6 +24,7 @@ public partial class RedactionsClient : IRedactionsClient
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
             .Add("X-Document-Password", request.DocumentPassword)
+            .Add("Idempotency-Key", request.IdempotencyKey)
             .Add(_client.Options.Headers)
             .Add(_client.Options.AdditionalHeaders)
             .Add(options?.AdditionalHeaders)
@@ -39,7 +40,7 @@ public partial class RedactionsClient : IRedactionsClient
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName)
                     ),
-                    Body = request.Body,
+                    Body = request,
                     QueryString = _queryString,
                     Headers = _headers,
                     ContentType = "application/json",
@@ -139,16 +140,11 @@ public partial class RedactionsClient : IRedactionsClient
 
     /// <example><code>
     /// await client.Doc.Redactions.ApplyAsync(
-    ///     new ApplyRedactionsRequest
-    ///     {
-    ///         DocId = "docId",
-    ///         LayerName = "layerName",
-    ///         Body = new Dictionary&lt;string, object?&gt;() { { "key", "value" } },
-    ///     }
+    ///     new DocRedactionsApplyRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
     public WithRawResponseTask<DocRedactionsApply200Response> ApplyAsync(
-        ApplyRedactionsRequest request,
+        DocRedactionsApplyRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )

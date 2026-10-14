@@ -23,17 +23,8 @@ public record TokensIssueRequestDoc : IJsonOnDeserialized
     [JsonPropertyName("scope")]
     public IEnumerable<string> Scope { get; set; } = new List<string>();
 
-    [JsonPropertyName("userId")]
-    public string? UserId { get; set; }
-
-    [JsonPropertyName("displayName")]
-    public string? DisplayName { get; set; }
-
-    [JsonPropertyName("groupId")]
-    public string? GroupId { get; set; }
-
-    [JsonPropertyName("groups")]
-    public IEnumerable<string>? Groups { get; set; }
+    [JsonPropertyName("identity")]
+    public TokensIssueRequestDocIdentity? Identity { get; set; }
 
     [JsonPropertyName("origins")]
     public IEnumerable<string>? Origins { get; set; }

@@ -12,8 +12,11 @@ public record ExportAppearanceAnnotationsRequest
     [JsonIgnore]
     public required string LayerName { get; set; }
 
+    /// <summary>
+    /// The page's address, `obj:N`: the page's indirect object number, the durable identity every `PageLayout.ref` carries. Mirrors `annotKey` and `fieldKey`.
+    /// </summary>
     [JsonIgnore]
-    public required int Pon { get; set; }
+    public required string PageKey { get; set; }
 
     /// <summary>
     /// Base64-encoded password for an encrypted document. Valid only with the API token (403 anywhere else). An encrypted document answers 422 DocPasswordRequired when the header is absent. Viewer doc JWTs use the SDK password-session flow instead.

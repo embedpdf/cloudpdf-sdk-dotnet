@@ -4,32 +4,44 @@ namespace CloudPDF.Doc;
 
 public partial interface IFormsClient
 {
-    WithRawResponseTask<DocFormsGet200Response> GetAsync(
-        GetFormsRequest request,
+    WithRawResponseTask<DocFormsList200Response> ListAsync(
+        ListFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<global::System.IO.Stream> ExportDataAsync(
-        ExportDataFormsRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    WithRawResponseTask<DocFormsImportData200Response> ImportDataAsync(
-        ImportDataFormsRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    WithRawResponseTask<DocFormsReset200Response> ResetAsync(
-        ResetFormsRequest request,
+    WithRawResponseTask<DocFormsReorderCalculations200Response> ReorderCalculationsAsync(
+        DocFormsReorderCalculationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
     WithRawResponseTask<DocFormsSetValue200Response> SetValueAsync(
         SetValueFormsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<DocFormsReset200Response> ResetAsync(
+        DocFormsResetRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<DocFormsDeleteWidget200Response> DeleteWidgetAsync(
+        DeleteWidgetFormsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<DocFormsUpdateWidget200Response> UpdateWidgetAsync(
+        DocFormsUpdateWidgetRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<DocFormsReorderWidgets200Response> ReorderWidgetsAsync(
+        DocFormsReorderWidgetsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

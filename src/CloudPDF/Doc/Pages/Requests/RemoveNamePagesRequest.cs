@@ -18,6 +18,12 @@ public record RemoveNamePagesRequest
     [JsonIgnore]
     public string? DocumentPassword { get; set; }
 
+    /// <summary>
+    /// Names the change: 1 to 255 printable ASCII characters. A retry under the same key on the same layer answers with what the first request committed, and changes nothing.
+    /// </summary>
+    [JsonIgnore]
+    public string? IdempotencyKey { get; set; }
+
     [JsonIgnore]
     public Dictionary<string, object?> Body { get; set; } = new Dictionary<string, object?>();
 

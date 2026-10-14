@@ -27,7 +27,7 @@ public record DocSignaturesComplete200Response : IJsonOnDeserialized
     public required DocSignaturesComplete200ResponseProtection Protection { get; set; }
 
     [JsonPropertyName("meta")]
-    public required DocSignaturesComplete200ResponseMeta Meta { get; set; }
+    public required MutationMeta Meta { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -13,63 +13,108 @@ public class ApplyTest : BaseMockServerTest
     public async Task MockServerTest_1()
     {
         const string requestJson = """
-            {
-              "string": {
-                "key": "value"
-              }
-            }
+            {}
             """;
 
         const string mockResponse = """
             {
+              "scope": {
+                "pages": [
+                  {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  }
+                ],
+                "annotations": [
+                  {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  }
+                ]
+              },
+              "results": [
+                {
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "status": "applied",
+                  "removedAnnotationCount": 1
+                },
+                {
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "status": "applied",
+                  "removedAnnotationCount": 1
+                }
+              ],
+              "removedAnnotationCount": 1,
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   },
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     },
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;
@@ -91,17 +136,12 @@ public class ApplyTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Redactions.ApplyAsync(
-            new ApplyRedactionsRequest
+            new DocRedactionsApplyRequest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Body = new Dictionary<string, object?>()
-                {
-                    {
-                        "string",
-                        new Dictionary<object, object?>() { { "key", "value" } }
-                    },
-                },
+                Pages = null,
+                Annotations = null,
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -111,43 +151,73 @@ public class ApplyTest : BaseMockServerTest
     public async Task MockServerTest_2()
     {
         const string requestJson = """
-            {
-              "key": "value"
-            }
+            {}
             """;
 
         const string mockResponse = """
             {
+              "scope": {
+                "pages": [
+                  {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  }
+                ],
+                "annotations": [
+                  {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  }
+                ]
+              },
+              "results": [
+                {
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "status": "applied",
+                  "removedAnnotationCount": 1
+                }
+              ],
+              "removedAnnotationCount": 1,
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;
@@ -169,12 +239,7 @@ public class ApplyTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Redactions.ApplyAsync(
-            new ApplyRedactionsRequest
-            {
-                DocId = "docId",
-                LayerName = "layerName",
-                Body = new Dictionary<string, object?>() { { "key", "value" } },
-            }
+            new DocRedactionsApplyRequest { DocId = "docId", LayerName = "layerName" }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

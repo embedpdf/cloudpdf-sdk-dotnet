@@ -29,6 +29,9 @@ public record DocManifest200Response : IJsonOnDeserialized
     [JsonPropertyName("annotationsVersion")]
     public int? AnnotationsVersion { get; set; }
 
+    [JsonPropertyName("formsVersion")]
+    public int? FormsVersion { get; set; }
+
     [JsonPropertyName("auditHead")]
     public required int AuditHead { get; set; }
 
@@ -46,6 +49,9 @@ public record DocManifest200Response : IJsonOnDeserialized
 
     [JsonPropertyName("scopes")]
     public DocManifest200ResponseScopes? Scopes { get; set; }
+
+    [JsonPropertyName("protection")]
+    public DocManifest200ResponseProtection? Protection { get; set; }
 
     [JsonPropertyName("pages")]
     public IEnumerable<DocManifest200ResponsePagesItem> Pages { get; set; } =

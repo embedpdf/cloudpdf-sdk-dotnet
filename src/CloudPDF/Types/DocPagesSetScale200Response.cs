@@ -11,11 +11,11 @@ public record DocPagesSetScale200Response : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("pageObjectNumber")]
-    public required int PageObjectNumber { get; set; }
+    [JsonPropertyName("page")]
+    public required PageRef Page { get; set; }
 
     [JsonPropertyName("meta")]
-    public required DocPagesSetScale200ResponseMeta Meta { get; set; }
+    public required MutationMeta Meta { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

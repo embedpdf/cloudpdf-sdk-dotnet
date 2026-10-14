@@ -15,13 +15,13 @@ public record DocVersionsSignatures200ResponseSignaturesItem : IJsonOnDeserializ
     public required int Index { get; set; }
 
     [JsonPropertyName("field")]
-    public required DocVersionsSignatures200ResponseSignaturesItemField Field { get; set; }
+    public required FormFieldRef Field { get; set; }
 
     [JsonPropertyName("fieldName")]
     public required string FieldName { get; set; }
 
     [JsonPropertyName("widget")]
-    public DocVersionsSignatures200ResponseSignaturesItemWidget? Widget { get; set; }
+    public FormWidget? Widget { get; set; }
 
     [JsonPropertyName("signed")]
     public required bool Signed { get; set; }

@@ -1,5 +1,6 @@
 using CloudPDF;
 using CloudPDF.Core;
+using CloudPDF.Doc.Metadata;
 using global::System.Text.Json;
 
 namespace CloudPDF.Doc;
@@ -11,9 +12,12 @@ public partial class MetadataClient : IMetadataClient
     internal MetadataClient(RawClient client)
     {
         _client = client;
+        Custom = new CustomClient(_client);
     }
 
-    private async Task<WithRawResponse<DocMetadataGet200Response>> GetAsyncCore(
+    public ICustomClient Custom { get; }
+
+    private async Task<WithRawResponse<DocumentMetadata>> GetAsyncCore(
         GetMetadataRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -53,8 +57,8 @@ public partial class MetadataClient : IMetadataClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocMetadataGet200Response>(responseBody)!;
-                return new WithRawResponse<DocMetadataGet200Response>()
+                var responseData = JsonUtils.Deserialize<DocumentMetadata>(responseBody)!;
+                return new WithRawResponse<DocumentMetadata>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -126,13 +130,13 @@ public partial class MetadataClient : IMetadataClient
     ///     new GetMetadataRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocMetadataGet200Response> GetAsync(
+    public WithRawResponseTask<DocumentMetadata> GetAsync(
         GetMetadataRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocMetadataGet200Response>(
+        return new WithRawResponseTask<DocumentMetadata>(
             GetAsyncCore(request, options, cancellationToken)
         );
     }
