@@ -34,12 +34,23 @@ public class ListTest : BaseMockServerTest
                   "index": 1,
                   "field": {
                     "kind": "objectNumber",
-                    "fieldObjectNumber": 1
+                    "objectNumber": 1
                   },
                   "fieldName": "fieldName",
                   "widget": {
-                    "annotObjectNumber": 1,
-                    "pageObjectNumber": 1
+                    "ref": {
+                      "kind": "objectNumber",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1,
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    }
                   },
                   "signed": true,
                   "kind": "signature",
@@ -61,7 +72,7 @@ public class ListTest : BaseMockServerTest
                     "reason": "reason",
                     "location": "location",
                     "contactInfo": "contactInfo",
-                    "claimedTime": "claimedTime"
+                    "signedAt": "2024-01-15T09:30:00.000Z"
                   },
                   "docMdp": 1.1,
                   "catalogCertification": true,
@@ -106,12 +117,23 @@ public class ListTest : BaseMockServerTest
                   "index": 1,
                   "field": {
                     "kind": "objectNumber",
-                    "fieldObjectNumber": 1
+                    "objectNumber": 1
                   },
                   "fieldName": "fieldName",
                   "widget": {
-                    "annotObjectNumber": 1,
-                    "pageObjectNumber": 1
+                    "ref": {
+                      "kind": "objectNumber",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1,
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    }
                   },
                   "signed": true,
                   "kind": "signature",
@@ -133,7 +155,7 @@ public class ListTest : BaseMockServerTest
                     "reason": "reason",
                     "location": "location",
                     "contactInfo": "contactInfo",
-                    "claimedTime": "claimedTime"
+                    "signedAt": "2024-01-15T09:30:00.000Z"
                   },
                   "docMdp": 1.1,
                   "catalogCertification": true,
@@ -252,12 +274,11 @@ public class ListTest : BaseMockServerTest
                   "index": 1,
                   "field": {
                     "kind": "objectNumber",
-                    "fieldObjectNumber": 1
+                    "objectNumber": 1
                   },
                   "fieldName": "fieldName",
                   "widget": {
-                    "annotObjectNumber": 1,
-                    "pageObjectNumber": 1
+                    "objectNumber": 1
                   },
                   "signed": true,
                   "kind": "signature",

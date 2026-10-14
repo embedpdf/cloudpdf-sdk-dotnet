@@ -54,17 +54,14 @@ public class IssueTest : BaseMockServerTest
             {
                 TenantId = "tenantId",
                 Body = new TokensIssueRequest(
-                    new TokensIssueRequest.Doc(
+                    new CloudPDF.TokensIssueRequest.Doc(
                         new TokensIssueRequestDoc
                         {
                             Sub = "x",
                             DocId = "docId",
                             LayerName = null,
                             Scope = new List<string>() { "scope", "scope" },
-                            UserId = null,
-                            DisplayName = null,
-                            GroupId = null,
-                            Groups = null,
+                            Identity = null,
                             Origins = null,
                             ExpiresIn = 7776000,
                         }
@@ -119,7 +116,7 @@ public class IssueTest : BaseMockServerTest
             {
                 TenantId = "tenantId",
                 Body = new TokensIssueRequest(
-                    new TokensIssueRequest.Doc(
+                    new CloudPDF.TokensIssueRequest.Doc(
                         new TokensIssueRequestDoc
                         {
                             Sub = "sub",

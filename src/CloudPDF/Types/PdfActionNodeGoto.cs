@@ -18,7 +18,7 @@ public record PdfActionNodeGoto : IJsonOnDeserialized
     public IEnumerable<object> Next { get; set; } = new List<object>();
 
     [JsonPropertyName("destination")]
-    public required PdfDestination Destination { get; set; }
+    public required PageDestination Destination { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -20,12 +20,9 @@ public class GetTest : BaseMockServerTest
               "keywords": "keywords",
               "producer": "producer",
               "creator": "creator",
-              "created": "2024-01-15T09:30:00.000Z",
-              "modified": "2024-01-15T09:30:00.000Z",
-              "trapped": "true",
-              "custom": {
-                "custom": "custom"
-              }
+              "createdAt": "2024-01-15T09:30:00.000Z",
+              "modifiedAt": "2024-01-15T09:30:00.000Z",
+              "trapped": "true"
             }
             """;
 
@@ -60,12 +57,9 @@ public class GetTest : BaseMockServerTest
               "keywords": "keywords",
               "producer": "producer",
               "creator": "creator",
-              "created": "2024-01-15T09:30:00.000Z",
-              "modified": "2024-01-15T09:30:00.000Z",
-              "trapped": "true",
-              "custom": {
-                "key": "value"
-              }
+              "createdAt": "2024-01-15T09:30:00.000Z",
+              "modifiedAt": "2024-01-15T09:30:00.000Z",
+              "trapped": "true"
             }
             """;
 

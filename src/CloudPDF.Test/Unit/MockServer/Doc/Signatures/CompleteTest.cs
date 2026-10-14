@@ -29,12 +29,23 @@ public class CompleteTest : BaseMockServerTest
                 "index": 1,
                 "field": {
                   "kind": "objectNumber",
-                  "fieldObjectNumber": 1
+                  "objectNumber": 1
                 },
                 "fieldName": "fieldName",
                 "widget": {
-                  "annotObjectNumber": 1,
-                  "pageObjectNumber": 1
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "objectNumber": 1,
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  }
                 },
                 "signed": true,
                 "kind": "signature",
@@ -56,7 +67,7 @@ public class CompleteTest : BaseMockServerTest
                   "reason": "reason",
                   "location": "location",
                   "contactInfo": "contactInfo",
-                  "claimedTime": "claimedTime"
+                  "signedAt": "2024-01-15T09:30:00.000Z"
                 },
                 "docMdp": 1.1,
                 "catalogCertification": true,
@@ -143,51 +154,51 @@ public class CompleteTest : BaseMockServerTest
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   },
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     },
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;
@@ -245,12 +256,23 @@ public class CompleteTest : BaseMockServerTest
                 "index": 1,
                 "field": {
                   "kind": "objectNumber",
-                  "fieldObjectNumber": 1
+                  "objectNumber": 1
                 },
                 "fieldName": "fieldName",
                 "widget": {
-                  "annotObjectNumber": 1,
-                  "pageObjectNumber": 1
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "objectNumber": 1,
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  }
                 },
                 "signed": true,
                 "kind": "signature",
@@ -269,7 +291,7 @@ public class CompleteTest : BaseMockServerTest
                   "reason": "reason",
                   "location": "location",
                   "contactInfo": "contactInfo",
-                  "claimedTime": "claimedTime"
+                  "signedAt": "2024-01-15T09:30:00.000Z"
                 },
                 "docMdp": 1.1,
                 "catalogCertification": true,
@@ -331,33 +353,36 @@ public class CompleteTest : BaseMockServerTest
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;

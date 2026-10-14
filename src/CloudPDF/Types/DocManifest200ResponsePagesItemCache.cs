@@ -17,6 +17,9 @@ public record DocManifest200ResponsePagesItemCache : IJsonOnDeserialized
     [JsonPropertyName("annotationVersion")]
     public required int AnnotationVersion { get; set; }
 
+    [JsonPropertyName("widgetVersion")]
+    public required int WidgetVersion { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

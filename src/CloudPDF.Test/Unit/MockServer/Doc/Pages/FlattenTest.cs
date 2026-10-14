@@ -22,54 +22,81 @@ public class FlattenTest : BaseMockServerTest
 
         const string mockResponse = """
             {
+              "pages": [
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
+                },
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
+                }
+              ],
+              "usage": "display",
+              "results": [
+                {
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "status": "applied"
+                },
+                {
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "status": "applied"
+                }
+              ],
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   },
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     },
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;
@@ -118,36 +145,55 @@ public class FlattenTest : BaseMockServerTest
 
         const string mockResponse = """
             {
+              "pages": [
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
+                }
+              ],
+              "usage": "display",
+              "results": [
+                {
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "status": "applied"
+                }
+              ],
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;

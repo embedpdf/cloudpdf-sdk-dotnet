@@ -862,7 +862,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 502:
                         throw new BadGatewayError(
-                            JsonUtils.Deserialize<DocumentsImportFrom502Response>(responseBody),
+                            JsonUtils.Deserialize<AdminErrorPayload>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,

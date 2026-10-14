@@ -20,6 +20,7 @@ public class ManifestTest : BaseMockServerTest
               "actionsVersion": 1,
               "attachmentsVersion": 1,
               "annotationsVersion": 1,
+              "formsVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
               "layerVersion": 1,
@@ -28,44 +29,68 @@ public class ManifestTest : BaseMockServerTest
               "scopes": {
                 "content": "base",
                 "annotations": "base",
+                "forms": "base",
                 "layout": "base",
                 "attachments": "base",
                 "metadata": "base",
                 "actions": "base"
               },
+              "protection": {
+                "enforced": "none",
+                "judged": "none",
+                "certification": {
+                  "signatureIndex": 1,
+                  "permission": 1.1
+                },
+                "fieldLocks": [
+                  {
+                    "signatureIndex": 1,
+                    "source": "fieldmdp",
+                    "spec": {
+                      "action": "all",
+                      "fields": [
+                        "fields",
+                        "fields"
+                      ],
+                      "permission": 1.1
+                    }
+                  },
+                  {
+                    "signatureIndex": 1,
+                    "source": "fieldmdp",
+                    "spec": {
+                      "action": "all",
+                      "fields": [
+                        "fields",
+                        "fields"
+                      ],
+                      "permission": 1.1
+                    }
+                  }
+                ],
+                "policyVersion": 1
+              },
               "pages": [
                 {
-                  "state": {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   },
                   "cache": {
                     "contentVersion": 1,
-                    "annotationVersion": 1
+                    "annotationVersion": 1,
+                    "widgetVersion": 1
                   }
                 },
                 {
-                  "state": {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   },
                   "cache": {
                     "contentVersion": 1,
-                    "annotationVersion": 1
+                    "annotationVersion": 1,
+                    "widgetVersion": 1
                   }
                 }
               ]
@@ -103,6 +128,7 @@ public class ManifestTest : BaseMockServerTest
               "actionsVersion": 1,
               "attachmentsVersion": 1,
               "annotationsVersion": 1,
+              "formsVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
               "layerVersion": 1,
@@ -111,27 +137,43 @@ public class ManifestTest : BaseMockServerTest
               "scopes": {
                 "content": "base",
                 "annotations": "base",
+                "forms": "base",
                 "layout": "base",
                 "attachments": "base",
                 "metadata": "base",
                 "actions": "base"
               },
+              "protection": {
+                "enforced": "none",
+                "judged": "none",
+                "certification": {
+                  "signatureIndex": 1,
+                  "permission": 1.1
+                },
+                "fieldLocks": [
+                  {
+                    "signatureIndex": 1,
+                    "source": "fieldmdp",
+                    "spec": {
+                      "action": "all",
+                      "fields": [
+                        "fields"
+                      ]
+                    }
+                  }
+                ],
+                "policyVersion": 1
+              },
               "pages": [
                 {
-                  "state": {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   },
                   "cache": {
                     "contentVersion": 1,
-                    "annotationVersion": 1
+                    "annotationVersion": 1,
+                    "widgetVersion": 1
                   }
                 }
               ]

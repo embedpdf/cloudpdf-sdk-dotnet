@@ -123,7 +123,7 @@ public partial class SharesClient : ISharesClient
                         );
                     case 410:
                         throw new GoneError(
-                            JsonUtils.Deserialize<SharesExchange410Response>(responseBody),
+                            JsonUtils.Deserialize<AdminErrorPayload>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -135,7 +135,7 @@ public partial class SharesClient : ISharesClient
                         );
                     case 422:
                         throw new UnprocessableEntityError(
-                            JsonUtils.Deserialize<SharesExchange422Response>(responseBody),
+                            JsonUtils.Deserialize<AdminErrorPayload>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -747,7 +747,7 @@ public partial class SharesClient : ISharesClient
     }
 
     /// <summary>
-    /// The returned share id IS the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
+    /// The returned share id is the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
     /// </summary>
     /// <example><code>
     /// await client.Shares.CreateAsync(

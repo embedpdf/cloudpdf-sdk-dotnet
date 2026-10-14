@@ -18,7 +18,7 @@ public partial interface ISharesClient
     );
 
     /// <summary>
-    /// The returned share id IS the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
+    /// The returned share id is the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
     /// </summary>
     WithRawResponseTask<SharesCreate200Response> CreateAsync(
         SharesCreateRequest request,

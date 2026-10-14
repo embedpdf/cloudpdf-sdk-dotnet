@@ -123,8 +123,8 @@ public partial class SignaturesClient : ISignaturesClient
         }
     }
 
-    private async Task<WithRawResponse<DocSignaturesAbort200Response>> AbortAsyncCore(
-        AbortSignaturesRequest request,
+    private async Task<WithRawResponse<DocSignaturesCancel200Response>> CancelAsyncCore(
+        CancelSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -164,10 +164,10 @@ public partial class SignaturesClient : ISignaturesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocSignaturesAbort200Response>(
+                var responseData = JsonUtils.Deserialize<DocSignaturesCancel200Response>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocSignaturesAbort200Response>()
+                return new WithRawResponse<DocSignaturesCancel200Response>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -649,8 +649,8 @@ public partial class SignaturesClient : ISignaturesClient
     }
 
     /// <example><code>
-    /// await client.Doc.Signatures.AbortAsync(
-    ///     new AbortSignaturesRequest
+    /// await client.Doc.Signatures.CancelAsync(
+    ///     new CancelSignaturesRequest
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
@@ -658,14 +658,14 @@ public partial class SignaturesClient : ISignaturesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocSignaturesAbort200Response> AbortAsync(
-        AbortSignaturesRequest request,
+    public WithRawResponseTask<DocSignaturesCancel200Response> CancelAsync(
+        CancelSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocSignaturesAbort200Response>(
-            AbortAsyncCore(request, options, cancellationToken)
+        return new WithRawResponseTask<DocSignaturesCancel200Response>(
+            CancelAsyncCore(request, options, cancellationToken)
         );
     }
 
@@ -719,7 +719,7 @@ public partial class SignaturesClient : ISignaturesClient
     }
 
     /// <summary>
-    /// The multipart envelope: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock, appearance) and an optional `resource:&lt;key&gt;` PDF part the body's `appearance.resource` names. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is aborted, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
+    /// Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '&lt;key&gt;' }`, and that PDF as the part `resource:&lt;key&gt;`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
     /// </summary>
     /// <example><code>
     /// await client.Doc.Signatures.PrepareAsync(

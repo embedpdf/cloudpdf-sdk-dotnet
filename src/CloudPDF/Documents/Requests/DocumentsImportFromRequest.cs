@@ -10,7 +10,7 @@ public record DocumentsImportFromRequest
     public required string TenantId { get; set; }
 
     /// <summary>
-    /// Where CloudPDF pulls the bytes from. The two shapes differ in WHO supplies the authority to read, not in which storage vendor holds the file.
+    /// Where CloudPDF pulls the bytes from. The two shapes differ in who supplies the authority to read, not in which storage vendor holds the file.
     /// </summary>
     [JsonPropertyName("source")]
     public required DocumentsImportFromRequestSource Source { get; set; }

@@ -23,8 +23,8 @@ public record DocVersionsSignatures200ResponseSignaturesItemSigner : IJsonOnDese
     [JsonPropertyName("contactInfo")]
     public string? ContactInfo { get; set; }
 
-    [JsonPropertyName("claimedTime")]
-    public string? ClaimedTime { get; set; }
+    [JsonPropertyName("signedAt")]
+    public DateTime? SignedAt { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

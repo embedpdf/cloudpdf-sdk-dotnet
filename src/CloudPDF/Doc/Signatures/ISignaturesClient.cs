@@ -13,8 +13,8 @@ public partial interface ISignaturesClient
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocSignaturesAbort200Response> AbortAsync(
-        AbortSignaturesRequest request,
+    WithRawResponseTask<DocSignaturesCancel200Response> CancelAsync(
+        CancelSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
@@ -38,7 +38,7 @@ public partial interface ISignaturesClient
     );
 
     /// <summary>
-    /// The multipart envelope: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock, appearance) and an optional `resource:&lt;key&gt;` PDF part the body's `appearance.resource` names. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is aborted, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
+    /// Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '&lt;key&gt;' }`, and that PDF as the part `resource:&lt;key&gt;`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
     /// </summary>
     WithRawResponseTask<DocSignaturesPrepare200Response> PrepareAsync(
         PrepareSignaturesRequest request,

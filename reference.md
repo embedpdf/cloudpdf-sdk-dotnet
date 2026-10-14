@@ -66,6 +66,70 @@ await client.Doc.HeadAsync(new HeadDocRequest { DocId = "docId" });
 </dl>
 </details>
 
+<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">ChangesAsync</a>(DocChangesRequest { ... }) -> WithRawResponseTask&lt;DocChanges200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Each change stands on its own and names itself by `opId`: a refused change rolls back alone, and the answer lists every change in order, applied with its result or refused with its error. Asked again under its `opId`, a change gets the same answer, refusals included; a different change under an answered `opId` is refused (IdempotencyKeyReused). `{ opId, undoOf }` undoes an earlier change of the caller, here or in an earlier request; an undo leaves alone what was changed since, and the undo of an undo redoes. A redaction, a flatten, a form repair or a completed signature ends undo for the changes before it (UndoUnavailable). Each op is checked against its own capability: annotation ops need `doc.annotate.modify`, form values `doc.forms.fill`, form structure `doc.forms.modify`, metadata `doc.metadata.modify`. Bytes (a stamp's drawing, an attached file, a signature's artwork) travel as multipart: a JSON `body` part, each op naming its files by role as `resources: { <role>: '<key>' }`, and each file as the part `resource:<key>`. At most 64 changes per request and 512 ops per change.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.ChangesAsync(
+    new DocChangesRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Changes = new List<DocChangesRequestChangesItem>()
+        {
+            new DocChangesRequestChangesItem { OpId = "opId" },
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocChangesRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">DownloadAsync</a>(DownloadDocRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
 <dl>
 <dd>
@@ -178,7 +242,7 @@ await client.Doc.RenderAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
     }
 );
 ```
@@ -225,7 +289,7 @@ await client.Doc.TextAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
     }
 );
 ```
@@ -361,7 +425,7 @@ await client.Shares.ListAsync(new ListSharesRequest { TenantId = "tenantId" });
 <dl>
 <dd>
 
-The returned share id IS the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
+The returned share id is the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
 </dd>
 </dl>
 </dd>
@@ -1309,7 +1373,7 @@ await client.Tokens.IssueAsync(
     {
         TenantId = "tenantId",
         Body = new TokensIssueRequest(
-            new TokensIssueRequest.Doc(
+            new CloudPDF.TokensIssueRequest.Doc(
                 new TokensIssueRequestDoc
                 {
                     Sub = "sub",
@@ -1402,7 +1466,7 @@ await client.Tokens.RevokeAsync(new TokensRevokeRequest { TenantId = "tenantId",
 </details>
 
 ## Doc Annotations
-<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ListAllAsync</a>(ListAllAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsListAll200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ListAllAsync</a>(ListAllAnnotationsRequest { ... }) -> WithRawResponseTask&lt;AnnotationList&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1414,7 +1478,7 @@ await client.Tokens.RevokeAsync(new TokensRevokeRequest { TenantId = "tenantId",
 <dl>
 <dd>
 
-Returns one entry per page plus the audit-log cursor for reconciling subsequent document events. Page order is unspecified; join by `pageState.pageObjectNumber` when display order matters.
+Returns one entry per page plus the audit-log cursor for reconciling subsequent document events. Page order is unspecified; join by `page` (a `PageRef`) when display order matters.
 </dd>
 </dl>
 </dd>
@@ -1458,7 +1522,7 @@ await client.Doc.Annotations.ListAllAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ListAsync</a>(ListAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsList200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ListAsync</a>(ListAnnotationsRequest { ... }) -> WithRawResponseTask&lt;AnnotationList&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1476,7 +1540,7 @@ await client.Doc.Annotations.ListAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
     }
 );
 ```
@@ -1537,7 +1601,7 @@ await client.Doc.Annotations.CreateAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
         Body = new Dictionary<string, object?>() { { "key", "value" } },
     }
 );
@@ -1585,7 +1649,7 @@ await client.Doc.Annotations.DeleteAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
         AnnotKey = "annotKey",
     }
 );
@@ -1633,7 +1697,7 @@ await client.Doc.Annotations.UpdateAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
         AnnotKey = "annotKey",
         Body = new Dictionary<string, object?>() { { "key", "value" } },
     }
@@ -1664,6 +1728,54 @@ await client.Doc.Annotations.UpdateAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ReadAppearanceAsync</a>(ReadAppearanceAnnotationsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Annotations.ReadAppearanceAsync(
+    new ReadAppearanceAnnotationsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        PageKey = "pageKey",
+        AnnotKey = "annotKey",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReadAppearanceAnnotationsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ExportAppearanceAsync</a>(ExportAppearanceAnnotationsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
 <dl>
 <dd>
@@ -1682,7 +1794,7 @@ await client.Doc.Annotations.ExportAppearanceAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
         Body = new Dictionary<string, object?>()
         {
             {
@@ -1736,7 +1848,7 @@ await client.Doc.Annotations.FlattenAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
         Body = new Dictionary<string, object?>() { { "key", "value" } },
     }
 );
@@ -1766,8 +1878,68 @@ await client.Doc.Annotations.FlattenAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ReorderAsync</a>(DocAnnotationsReorderRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsReorder200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Annotations.ReorderAsync(
+    new DocAnnotationsReorderRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        PageKey = "pageKey",
+        Refs = new List<AnnotationRef>()
+        {
+            new AnnotationRef(
+                new AnnotationRef.ObjectNumber(
+                    new AnnotationRefObjectNumber
+                    {
+                        Page = new PageRef { Kind = PageRefKind.ObjectNumber, ObjectNumber = 1 },
+                        ObjectNumber = 1,
+                    }
+                )
+            ),
+        },
+        Position = AnnotationPositionZero.Start,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocAnnotationsReorderRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Doc Forms
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">GetAsync</a>(GetFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsGet200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ListAsync</a>(ListFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsList200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1780,7 +1952,7 @@ await client.Doc.Annotations.FlattenAsync(
 <dd>
 
 ```csharp
-await client.Doc.Forms.GetAsync(new GetFormsRequest { DocId = "docId", LayerName = "layerName" });
+await client.Doc.Forms.ListAsync(new ListFormsRequest { DocId = "docId", LayerName = "layerName" });
 ```
 </dd>
 </dl>
@@ -1795,7 +1967,7 @@ await client.Doc.Forms.GetAsync(new GetFormsRequest { DocId = "docId", LayerName
 <dl>
 <dd>
 
-**request:** `GetFormsRequest` 
+**request:** `ListFormsRequest` 
     
 </dd>
 </dl>
@@ -1807,7 +1979,7 @@ await client.Doc.Forms.GetAsync(new GetFormsRequest { DocId = "docId", LayerName
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ExportDataAsync</a>(ExportDataFormsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ReorderCalculationsAsync</a>(DocFormsReorderCalculationsRequest { ... }) -> WithRawResponseTask&lt;DocFormsReorderCalculations200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1820,54 +1992,18 @@ await client.Doc.Forms.GetAsync(new GetFormsRequest { DocId = "docId", LayerName
 <dd>
 
 ```csharp
-await client.Doc.Forms.ExportDataAsync(
-    new ExportDataFormsRequest { DocId = "docId", LayerName = "layerName" }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `ExportDataFormsRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ImportDataAsync</a>(ImportDataFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsImportData200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Forms.ImportDataAsync(
-    new ImportDataFormsRequest
+await client.Doc.Forms.ReorderCalculationsAsync(
+    new DocFormsReorderCalculationsRequest
     {
         DocId = "docId",
         LayerName = "layerName",
-        Body = new Dictionary<string, object?>() { { "key", "value" } },
+        Fields = new List<FormFieldRef>()
+        {
+            new FormFieldRef(
+                new FormFieldRef.ObjectNumber(new FormFieldRefObjectNumber { ObjectNumber = 1 })
+            ),
+        },
+        Position = FieldPositionZero.Start,
     }
 );
 ```
@@ -1884,54 +2020,7 @@ await client.Doc.Forms.ImportDataAsync(
 <dl>
 <dd>
 
-**request:** `ImportDataFormsRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ResetAsync</a>(ResetFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsReset200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Forms.ResetAsync(
-    new ResetFormsRequest
-    {
-        DocId = "docId",
-        LayerName = "layerName",
-        FieldKey = "fieldKey",
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `ResetFormsRequest` 
+**request:** `DocFormsReorderCalculationsRequest` 
     
 </dd>
 </dl>
@@ -1991,8 +2080,207 @@ await client.Doc.Forms.SetValueAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ResetAsync</a>(DocFormsResetRequest { ... }) -> WithRawResponseTask&lt;DocFormsReset200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Forms.ResetAsync(
+    new DocFormsResetRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocFormsResetRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">DeleteWidgetAsync</a>(DeleteWidgetFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsDeleteWidget200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Forms.DeleteWidgetAsync(
+    new DeleteWidgetFormsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        PageKey = "pageKey",
+        AnnotKey = "annotKey",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DeleteWidgetFormsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">UpdateWidgetAsync</a>(DocFormsUpdateWidgetRequest { ... }) -> WithRawResponseTask&lt;DocFormsUpdateWidget200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Forms.UpdateWidgetAsync(
+    new DocFormsUpdateWidgetRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        PageKey = "pageKey",
+        AnnotKey = "annotKey",
+        Patch = new WidgetPatch(),
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocFormsUpdateWidgetRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ReorderWidgetsAsync</a>(DocFormsReorderWidgetsRequest { ... }) -> WithRawResponseTask&lt;DocFormsReorderWidgets200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Forms.ReorderWidgetsAsync(
+    new DocFormsReorderWidgetsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        PageKey = "pageKey",
+        Widgets = new List<AnnotationRef>()
+        {
+            new AnnotationRef(
+                new AnnotationRef.ObjectNumber(
+                    new AnnotationRefObjectNumber
+                    {
+                        Page = new PageRef { Kind = PageRefKind.ObjectNumber, ObjectNumber = 1 },
+                        ObjectNumber = 1,
+                    }
+                )
+            ),
+        },
+        Position = AnnotationPositionZero.Start,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocFormsReorderWidgetsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Doc Metadata
-<details><summary><code>client.Doc.Metadata.<a href="/src/CloudPDF/Doc/Metadata/MetadataClient.cs">GetAsync</a>(GetMetadataRequest { ... }) -> WithRawResponseTask&lt;DocMetadataGet200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Metadata.<a href="/src/CloudPDF/Doc/Metadata/MetadataClient.cs">GetAsync</a>(GetMetadataRequest { ... }) -> WithRawResponseTask&lt;DocumentMetadata&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2053,7 +2341,7 @@ await client.Doc.Pages.SetScaleAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
     }
 );
 ```
@@ -2082,7 +2370,7 @@ await client.Doc.Pages.SetScaleAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ViewportsAsync</a>(ViewportsPagesRequest { ... }) -> WithRawResponseTask&lt;IEnumerable&lt;DocPagesViewports200ResponseItem&gt;&gt;</code></summary>
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ViewportsAsync</a>(ViewportsPagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesViewports200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2100,7 +2388,7 @@ await client.Doc.Pages.ViewportsAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Pon = 1,
+        PageKey = "pageKey",
     }
 );
 ```
@@ -2188,7 +2476,7 @@ await client.Doc.Pages.DeleteAsync(
 <dl>
 <dd>
 
-A read, not a mutation: the source document is untouched and no event is published. Body is `{"pageObjectNumbers": number[]}`; the response body is the new PDF.
+A read, not a mutation: the source document is untouched and no event is published. Body is `{"pages": PageRef[]}`; the response body is the new PDF.
 </dd>
 </dl>
 </dd>
@@ -2302,7 +2590,7 @@ await client.Doc.Pages.FlattenAsync(
 <dl>
 <dd>
 
-Multipart mutation envelope: a `body` field holding `{"destIndex"?: number}` (omitted → append) plus a `resource:source` file part carrying the standalone PDF whose pages are copied in. The inserted copies get fresh page object numbers, returned in insertion order.
+Multipart: a JSON `body` part `{"position"?: PagePosition, "resources": {"source": "<key>"}}` (position omitted → the end), and the standalone PDF whose pages are copied in as the part `resource:<key>`. The inserted copies get fresh page object numbers, returned in insertion order.
 </dd>
 </dl>
 </dd>
@@ -2358,7 +2646,7 @@ await client.Doc.Pages.InsertAsync(
 <dl>
 <dd>
 
-Body is `{"size": {"width", "height"}, "count"?, "destIndex"?}` — size in PDF points, count in [1, 100], destIndex omitted → append.
+Body is `{"size": {"width", "height"}, "count"?, "position"?}` — size in PDF points, count in [1, 100], `position` a `PagePosition` (omitted → the end).
 </dd>
 </dl>
 </dd>
@@ -2396,53 +2684,6 @@ await client.Doc.Pages.InsertBlankAsync(
 <dd>
 
 **request:** `InsertBlankPagesRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">MoveAsync</a>(MovePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesMove200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Pages.MoveAsync(
-    new MovePagesRequest
-    {
-        DocId = "docId",
-        LayerName = "layerName",
-        Body = new Dictionary<string, object?>() { { "key", "value" } },
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `MovePagesRequest` 
     
 </dd>
 </dl>
@@ -2548,6 +2789,57 @@ await client.Doc.Pages.RemoveNameAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ReorderAsync</a>(DocPagesReorderRequest { ... }) -> WithRawResponseTask&lt;DocPagesReorder200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Pages.ReorderAsync(
+    new DocPagesReorderRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Pages = new List<PageRef>()
+        {
+            new PageRef { Kind = PageRefKind.ObjectNumber, ObjectNumber = 1 },
+        },
+        Position = PagePositionZero.Start,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocPagesReorderRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">RotateAsync</a>(RotatePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesRotate200Response&gt;</code></summary>
 <dl>
 <dd>
@@ -2596,7 +2888,7 @@ await client.Doc.Pages.RotateAsync(
 </details>
 
 ## Doc Redactions
-<details><summary><code>client.Doc.Redactions.<a href="/src/CloudPDF/Doc/Redactions/RedactionsClient.cs">ApplyAsync</a>(ApplyRedactionsRequest { ... }) -> WithRawResponseTask&lt;DocRedactionsApply200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Redactions.<a href="/src/CloudPDF/Doc/Redactions/RedactionsClient.cs">ApplyAsync</a>(DocRedactionsApplyRequest { ... }) -> WithRawResponseTask&lt;DocRedactionsApply200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2610,12 +2902,7 @@ await client.Doc.Pages.RotateAsync(
 
 ```csharp
 await client.Doc.Redactions.ApplyAsync(
-    new ApplyRedactionsRequest
-    {
-        DocId = "docId",
-        LayerName = "layerName",
-        Body = new Dictionary<string, object?>() { { "key", "value" } },
-    }
+    new DocRedactionsApplyRequest { DocId = "docId", LayerName = "layerName" }
 );
 ```
 </dd>
@@ -2631,7 +2918,7 @@ await client.Doc.Redactions.ApplyAsync(
 <dl>
 <dd>
 
-**request:** `ApplyRedactionsRequest` 
+**request:** `DocRedactionsApplyRequest` 
     
 </dd>
 </dl>
@@ -2700,7 +2987,7 @@ await client.Doc.Signatures.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">AbortAsync</a>(AbortSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesAbort200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">CancelAsync</a>(CancelSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesCancel200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2713,8 +3000,8 @@ await client.Doc.Signatures.ListAsync(
 <dd>
 
 ```csharp
-await client.Doc.Signatures.AbortAsync(
-    new AbortSignaturesRequest
+await client.Doc.Signatures.CancelAsync(
+    new CancelSignaturesRequest
     {
         DocId = "docId",
         LayerName = "layerName",
@@ -2735,7 +3022,7 @@ await client.Doc.Signatures.AbortAsync(
 <dl>
 <dd>
 
-**request:** `AbortSignaturesRequest` 
+**request:** `CancelSignaturesRequest` 
     
 </dd>
 </dl>
@@ -2882,7 +3169,7 @@ await client.Doc.Signatures.AnalysisAsync(
 <dl>
 <dd>
 
-The multipart envelope: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock, appearance) and an optional `resource:<key>` PDF part the body's `appearance.resource` names. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is aborted, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
+Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '<key>' }`, and that PDF as the part `resource:<key>`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
 </dd>
 </dl>
 </dd>
@@ -3280,6 +3567,49 @@ await client.Doc.Versions.SignatureDigestAsync(
 <dd>
 
 **request:** `SignatureDigestVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Doc Metadata Custom
+<details><summary><code>client.Doc.Metadata.Custom.<a href="/src/CloudPDF/Doc/Metadata/Custom/CustomClient.cs">GetAsync</a>(GetCustomRequest { ... }) -> WithRawResponseTask&lt;Dictionary&lt;string, string&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Metadata.Custom.GetAsync(
+    new GetCustomRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetCustomRequest` 
     
 </dd>
 </dl>

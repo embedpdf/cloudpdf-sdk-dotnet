@@ -14,63 +14,70 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "pageState": {
-                "pageObjectNumber": 1,
-                "revision": {
-                  "docSessionId": "docSessionId",
-                  "pageObjectNumber": 1,
-                  "generation": 1
-                },
-                "weakAnnotationState": {
-                  "kind": "unknown"
-                }
-              },
               "annotations": [
                 {
                   "subtype": "highlight",
                   "ref": {
                     "kind": "objectNumber",
-                    "pageObjectNumber": 1,
-                    "annotObjectNumber": 1
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
                   },
-                  "pageObjectNumber": 1,
-                  "index": 1,
-                  "identityQuality": "durable",
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "hasAppearance": true,
+                  "appearanceState": "appearanceState",
                   "nm": "nm",
-                  "flags": {
-                    "invisible": true,
-                    "hidden": true,
-                    "print": true,
-                    "noZoom": true,
-                    "noRotate": true,
-                    "noView": true,
-                    "readOnly": true,
-                    "locked": true,
-                    "toggleNoView": true,
-                    "lockedContents": true
-                  },
                   "rect": {
-                    "left": 1.1,
-                    "bottom": 1.1,
-                    "right": 1.1,
-                    "top": 1.1
+                    "x": 1.1,
+                    "y": 1.1,
+                    "width": 1.1,
+                    "height": 1.1
                   },
                   "contents": "contents",
                   "subject": "subject",
-                  "author": "author",
-                  "created": "2024-01-15T09:30:00.000Z",
-                  "modified": "2024-01-15T09:30:00.000Z",
                   "blendMode": "normal",
-                  "inReplyTo": {
-                    "kind": "objectNumber",
-                    "pageObjectNumber": 1,
-                    "annotObjectNumber": 1
+                  "invisible": true,
+                  "hidden": true,
+                  "print": true,
+                  "noZoom": true,
+                  "noRotate": true,
+                  "noView": true,
+                  "readOnly": true,
+                  "locked": true,
+                  "toggleNoView": true,
+                  "lockedContents": true,
+                  "reply": {
+                    "to": {
+                      "kind": "objectNumber",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
+                      "objectNumber": 1
+                    },
+                    "type": "reply"
                   },
-                  "replyType": "reply",
+                  "popup": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "groupId": "x",
+                  "author": "author",
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "modifiedAt": "2024-01-15T09:30:00.000Z",
                   "userId": "userId",
-                  "groupId": "groupId",
                   "createdBy": "createdBy",
-                  "updatedBy": "updatedBy",
+                  "modifiedBy": "modifiedBy",
+                  "importedBy": "importedBy",
                   "actions": {
                     "activate": {
                       "root": {
@@ -304,45 +311,41 @@ public class ListTest : BaseMockServerTest
                       ]
                     }
                   },
-                  "color": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255
-                  },
+                  "color": "color",
                   "opacity": 1,
                   "quadPoints": [
                     {
-                      "p1": {
+                      "upperLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p2": {
+                      "upperRight": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p3": {
+                      "lowerLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p4": {
+                      "lowerRight": {
                         "x": 1.1,
                         "y": 1.1
                       }
                     },
                     {
-                      "p1": {
+                      "upperLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p2": {
+                      "upperRight": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p3": {
+                      "lowerLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p4": {
+                      "lowerRight": {
                         "x": 1.1,
                         "y": 1.1
                       }
@@ -353,47 +356,65 @@ public class ListTest : BaseMockServerTest
                   "subtype": "highlight",
                   "ref": {
                     "kind": "objectNumber",
-                    "pageObjectNumber": 1,
-                    "annotObjectNumber": 1
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
                   },
-                  "pageObjectNumber": 1,
-                  "index": 1,
-                  "identityQuality": "durable",
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "hasAppearance": true,
+                  "appearanceState": "appearanceState",
                   "nm": "nm",
-                  "flags": {
-                    "invisible": true,
-                    "hidden": true,
-                    "print": true,
-                    "noZoom": true,
-                    "noRotate": true,
-                    "noView": true,
-                    "readOnly": true,
-                    "locked": true,
-                    "toggleNoView": true,
-                    "lockedContents": true
-                  },
                   "rect": {
-                    "left": 1.1,
-                    "bottom": 1.1,
-                    "right": 1.1,
-                    "top": 1.1
+                    "x": 1.1,
+                    "y": 1.1,
+                    "width": 1.1,
+                    "height": 1.1
                   },
                   "contents": "contents",
                   "subject": "subject",
-                  "author": "author",
-                  "created": "2024-01-15T09:30:00.000Z",
-                  "modified": "2024-01-15T09:30:00.000Z",
                   "blendMode": "normal",
-                  "inReplyTo": {
-                    "kind": "objectNumber",
-                    "pageObjectNumber": 1,
-                    "annotObjectNumber": 1
+                  "invisible": true,
+                  "hidden": true,
+                  "print": true,
+                  "noZoom": true,
+                  "noRotate": true,
+                  "noView": true,
+                  "readOnly": true,
+                  "locked": true,
+                  "toggleNoView": true,
+                  "lockedContents": true,
+                  "reply": {
+                    "to": {
+                      "kind": "objectNumber",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
+                      "objectNumber": 1
+                    },
+                    "type": "reply"
                   },
-                  "replyType": "reply",
+                  "popup": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "groupId": "x",
+                  "author": "author",
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "modifiedAt": "2024-01-15T09:30:00.000Z",
                   "userId": "userId",
-                  "groupId": "groupId",
                   "createdBy": "createdBy",
-                  "updatedBy": "updatedBy",
+                  "modifiedBy": "modifiedBy",
+                  "importedBy": "importedBy",
                   "actions": {
                     "activate": {
                       "root": {
@@ -627,52 +648,59 @@ public class ListTest : BaseMockServerTest
                       ]
                     }
                   },
-                  "color": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255
-                  },
+                  "color": "color",
                   "opacity": 1,
                   "quadPoints": [
                     {
-                      "p1": {
+                      "upperLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p2": {
+                      "upperRight": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p3": {
+                      "lowerLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p4": {
+                      "lowerRight": {
                         "x": 1.1,
                         "y": 1.1
                       }
                     },
                     {
-                      "p1": {
+                      "upperLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p2": {
+                      "upperRight": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p3": {
+                      "lowerLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p4": {
+                      "lowerRight": {
                         "x": 1.1,
                         "y": 1.1
                       }
                     }
                   ]
                 }
-              ]
+              ],
+              "pages": [
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
+                },
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
+                }
+              ],
+              "auditHead": 1
             }
             """;
 
@@ -680,7 +708,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/annotations/pages/1/items")
+                    .WithPath("/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items")
                     .UsingGet()
             )
             .RespondWith(
@@ -695,7 +723,7 @@ public class ListTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Pon = 1,
+                PageKey = "pageKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -706,91 +734,102 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "pageState": {
-                "pageObjectNumber": 1,
-                "revision": {
-                  "docSessionId": "docSessionId",
-                  "pageObjectNumber": 1,
-                  "generation": 1
-                },
-                "weakAnnotationState": {
-                  "kind": "unknown"
-                }
-              },
               "annotations": [
                 {
                   "subtype": "highlight",
                   "ref": {
                     "kind": "objectNumber",
-                    "pageObjectNumber": 1,
-                    "annotObjectNumber": 1
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
                   },
-                  "pageObjectNumber": 1,
-                  "index": 1,
-                  "identityQuality": "durable",
+                  "page": {
+                    "kind": "objectNumber",
+                    "objectNumber": 1
+                  },
+                  "hasAppearance": true,
+                  "appearanceState": "appearanceState",
                   "nm": "nm",
-                  "flags": {
-                    "invisible": true,
-                    "hidden": true,
-                    "print": true,
-                    "noZoom": true,
-                    "noRotate": true,
-                    "noView": true,
-                    "readOnly": true,
-                    "locked": true,
-                    "toggleNoView": true,
-                    "lockedContents": true
-                  },
                   "rect": {
-                    "left": 1.1,
-                    "bottom": 1.1,
-                    "right": 1.1,
-                    "top": 1.1
+                    "x": 1.1,
+                    "y": 1.1,
+                    "width": 1.1,
+                    "height": 1.1
                   },
                   "contents": "contents",
                   "subject": "subject",
-                  "author": "author",
-                  "created": "2024-01-15T09:30:00.000Z",
-                  "modified": "2024-01-15T09:30:00.000Z",
                   "blendMode": "normal",
-                  "inReplyTo": {
+                  "invisible": true,
+                  "hidden": true,
+                  "print": true,
+                  "noZoom": true,
+                  "noRotate": true,
+                  "noView": true,
+                  "readOnly": true,
+                  "locked": true,
+                  "toggleNoView": true,
+                  "lockedContents": true,
+                  "reply": {
+                    "to": {
+                      "kind": "objectNumber",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
+                      "objectNumber": 1
+                    },
+                    "type": "reply"
+                  },
+                  "popup": {
                     "kind": "objectNumber",
-                    "pageObjectNumber": 1,
-                    "annotObjectNumber": 1
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
                   },
-                  "replyType": "reply",
-                  "userId": "userId",
                   "groupId": "groupId",
+                  "author": "author",
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "modifiedAt": "2024-01-15T09:30:00.000Z",
+                  "userId": "userId",
                   "createdBy": "createdBy",
-                  "updatedBy": "updatedBy",
-                  "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1
-                  },
+                  "modifiedBy": "modifiedBy",
+                  "importedBy": "importedBy",
+                  "actions": {},
+                  "color": "color",
                   "opacity": 1.1,
                   "quadPoints": [
                     {
-                      "p1": {
+                      "upperLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p2": {
+                      "upperRight": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p3": {
+                      "lowerLeft": {
                         "x": 1.1,
                         "y": 1.1
                       },
-                      "p4": {
+                      "lowerRight": {
                         "x": 1.1,
                         "y": 1.1
                       }
                     }
                   ]
                 }
-              ]
+              ],
+              "pages": [
+                {
+                  "kind": "objectNumber",
+                  "objectNumber": 1
+                }
+              ],
+              "auditHead": 1
             }
             """;
 
@@ -798,7 +837,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/annotations/pages/1/items")
+                    .WithPath("/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items")
                     .UsingGet()
             )
             .RespondWith(
@@ -813,7 +852,7 @@ public class ListTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Pon = 1,
+                PageKey = "pageKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

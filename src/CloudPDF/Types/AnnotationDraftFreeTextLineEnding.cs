@@ -1,0 +1,152 @@
+using CloudPDF.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
+
+namespace CloudPDF;
+
+[JsonConverter(
+    typeof(AnnotationDraftFreeTextLineEnding.AnnotationDraftFreeTextLineEndingSerializer)
+)]
+[Serializable]
+public readonly record struct AnnotationDraftFreeTextLineEnding : IStringEnum
+{
+    public static readonly AnnotationDraftFreeTextLineEnding None = new(Values.None);
+
+    public static readonly AnnotationDraftFreeTextLineEnding Square = new(Values.Square);
+
+    public static readonly AnnotationDraftFreeTextLineEnding Circle = new(Values.Circle);
+
+    public static readonly AnnotationDraftFreeTextLineEnding Diamond = new(Values.Diamond);
+
+    public static readonly AnnotationDraftFreeTextLineEnding OpenArrow = new(Values.OpenArrow);
+
+    public static readonly AnnotationDraftFreeTextLineEnding ClosedArrow = new(Values.ClosedArrow);
+
+    public static readonly AnnotationDraftFreeTextLineEnding Butt = new(Values.Butt);
+
+    public static readonly AnnotationDraftFreeTextLineEnding ROpenArrow = new(Values.ROpenArrow);
+
+    public static readonly AnnotationDraftFreeTextLineEnding RClosedArrow = new(
+        Values.RClosedArrow
+    );
+
+    public static readonly AnnotationDraftFreeTextLineEnding Slash = new(Values.Slash);
+
+    public AnnotationDraftFreeTextLineEnding(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static AnnotationDraftFreeTextLineEnding FromCustom(string value)
+    {
+        return new AnnotationDraftFreeTextLineEnding(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(AnnotationDraftFreeTextLineEnding value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(AnnotationDraftFreeTextLineEnding value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(AnnotationDraftFreeTextLineEnding value) => value.Value;
+
+    public static explicit operator AnnotationDraftFreeTextLineEnding(string value) => new(value);
+
+    internal class AnnotationDraftFreeTextLineEndingSerializer
+        : JsonConverter<AnnotationDraftFreeTextLineEnding>
+    {
+        public override AnnotationDraftFreeTextLineEnding Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new AnnotationDraftFreeTextLineEnding(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            AnnotationDraftFreeTextLineEnding value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+
+        public override AnnotationDraftFreeTextLineEnding ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new AnnotationDraftFreeTextLineEnding(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            AnnotationDraftFreeTextLineEnding value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
+    }
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string None = "none";
+
+        public const string Square = "square";
+
+        public const string Circle = "circle";
+
+        public const string Diamond = "diamond";
+
+        public const string OpenArrow = "open-arrow";
+
+        public const string ClosedArrow = "closed-arrow";
+
+        public const string Butt = "butt";
+
+        public const string ROpenArrow = "r-open-arrow";
+
+        public const string RClosedArrow = "r-closed-arrow";
+
+        public const string Slash = "slash";
+    }
+}

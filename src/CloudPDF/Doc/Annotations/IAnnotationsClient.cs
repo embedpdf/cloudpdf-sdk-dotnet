@@ -5,15 +5,15 @@ namespace CloudPDF.Doc;
 public partial interface IAnnotationsClient
 {
     /// <summary>
-    /// Returns one entry per page plus the audit-log cursor for reconciling subsequent document events. Page order is unspecified; join by `pageState.pageObjectNumber` when display order matters.
+    /// Returns one entry per page plus the audit-log cursor for reconciling subsequent document events. Page order is unspecified; join by `page` (a `PageRef`) when display order matters.
     /// </summary>
-    WithRawResponseTask<DocAnnotationsListAll200Response> ListAllAsync(
+    WithRawResponseTask<AnnotationList> ListAllAsync(
         ListAllAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocAnnotationsList200Response> ListAsync(
+    WithRawResponseTask<AnnotationList> ListAsync(
         ListAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -40,6 +40,12 @@ public partial interface IAnnotationsClient
         CancellationToken cancellationToken = default
     );
 
+    WithRawResponseTask<global::System.IO.Stream> ReadAppearanceAsync(
+        ReadAppearanceAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<global::System.IO.Stream> ExportAppearanceAsync(
         ExportAppearanceAnnotationsRequest request,
         RequestOptions? options = null,
@@ -48,6 +54,12 @@ public partial interface IAnnotationsClient
 
     WithRawResponseTask<DocAnnotationsFlatten200Response> FlattenAsync(
         FlattenAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    WithRawResponseTask<DocAnnotationsReorder200Response> ReorderAsync(
+        DocAnnotationsReorderRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

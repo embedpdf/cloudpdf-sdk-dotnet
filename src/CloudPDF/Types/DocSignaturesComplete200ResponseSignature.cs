@@ -15,13 +15,13 @@ public record DocSignaturesComplete200ResponseSignature : IJsonOnDeserialized
     public required int Index { get; set; }
 
     [JsonPropertyName("field")]
-    public required DocSignaturesComplete200ResponseSignatureField Field { get; set; }
+    public required FormFieldRef Field { get; set; }
 
     [JsonPropertyName("fieldName")]
     public required string FieldName { get; set; }
 
     [JsonPropertyName("widget")]
-    public DocSignaturesComplete200ResponseSignatureWidget? Widget { get; set; }
+    public FormWidget? Widget { get; set; }
 
     [JsonPropertyName("signed")]
     public required bool Signed { get; set; }

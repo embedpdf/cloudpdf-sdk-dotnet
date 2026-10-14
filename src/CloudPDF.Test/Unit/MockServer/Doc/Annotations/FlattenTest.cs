@@ -22,54 +22,83 @@ public class FlattenTest : BaseMockServerTest
 
         const string mockResponse = """
             {
+              "page": {
+                "kind": "objectNumber",
+                "objectNumber": 1
+              },
+              "usage": "display",
+              "results": [
+                {
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "status": "applied"
+                },
+                {
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "status": "applied"
+                }
+              ],
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   },
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     },
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;
@@ -78,7 +107,9 @@ public class FlattenTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/annotations/pages/1/items/flatten")
+                    .WithPath(
+                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/flatten"
+                    )
                     .WithHeader("Content-Type", "application/json")
                     .UsingPost()
                     .WithBodyAsJson(requestJson)
@@ -95,7 +126,7 @@ public class FlattenTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Pon = 1,
+                PageKey = "pageKey",
                 Body = new Dictionary<string, object?>()
                 {
                     {
@@ -119,36 +150,57 @@ public class FlattenTest : BaseMockServerTest
 
         const string mockResponse = """
             {
+              "page": {
+                "kind": "objectNumber",
+                "objectNumber": 1
+              },
+              "usage": "display",
+              "results": [
+                {
+                  "ref": {
+                    "kind": "objectNumber",
+                    "page": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "objectNumber": 1
+                  },
+                  "status": "applied"
+                }
+              ],
               "meta": {
                 "affectedPages": [
                   {
-                    "pageObjectNumber": 1,
-                    "revision": {
-                      "docSessionId": "docSessionId",
-                      "pageObjectNumber": 1,
-                      "generation": 1
-                    },
-                    "weakAnnotationState": {
-                      "kind": "unknown"
-                    }
+                    "kind": "objectNumber",
+                    "objectNumber": 1
                   }
                 ],
                 "cacheDelta": {
                   "previousDocVersion": 1,
                   "docVersion": 1,
                   "annotationsVersion": 1,
+                  "formsVersion": 1,
+                  "layoutVersion": 1,
+                  "metadataVersion": 1,
+                  "attachmentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
                     {
-                      "pageObjectNumber": 1,
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      },
                       "cache": {
                         "contentVersion": 1,
-                        "annotationVersion": 1
+                        "annotationVersion": 1,
+                        "widgetVersion": 1
                       }
                     }
                   ]
-                }
+                },
+                "opId": "opId",
+                "undoable": true
               }
             }
             """;
@@ -157,7 +209,9 @@ public class FlattenTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/annotations/pages/1/items/flatten")
+                    .WithPath(
+                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/flatten"
+                    )
                     .WithHeader("Content-Type", "application/json")
                     .UsingPost()
                     .WithBodyAsJson(requestJson)
@@ -174,7 +228,7 @@ public class FlattenTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Pon = 1,
+                PageKey = "pageKey",
                 Body = new Dictionary<string, object?>() { { "key", "value" } },
             }
         );

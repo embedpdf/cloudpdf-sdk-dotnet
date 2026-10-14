@@ -41,7 +41,7 @@ public class TextTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/text/pages/1/data")
+                    .WithPath("/v1/docs/docId/layers/layerName/text/pages/pageKey/data")
                     .UsingGet()
             )
             .RespondWith(
@@ -56,7 +56,7 @@ public class TextTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Pon = 1,
+                PageKey = "pageKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -83,7 +83,7 @@ public class TextTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/text/pages/1/data")
+                    .WithPath("/v1/docs/docId/layers/layerName/text/pages/pageKey/data")
                     .UsingGet()
             )
             .RespondWith(
@@ -98,7 +98,7 @@ public class TextTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Pon = 1,
+                PageKey = "pageKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
