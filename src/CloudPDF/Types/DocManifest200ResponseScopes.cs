@@ -32,6 +32,9 @@ public record DocManifest200ResponseScopes : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public required DocManifest200ResponseScopesActions Actions { get; set; }
 
+    [JsonPropertyName("outline")]
+    public required DocManifest200ResponseScopesOutline Outline { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

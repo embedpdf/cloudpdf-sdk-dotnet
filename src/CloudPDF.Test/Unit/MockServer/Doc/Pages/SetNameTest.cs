@@ -234,6 +234,7 @@ public class SetNameTest : BaseMockServerTest
                   "layoutVersion": 1,
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
+                  "outlineVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -394,6 +395,7 @@ public class SetNameTest : BaseMockServerTest
                   "layoutVersion": 1,
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
+                  "outlineVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [

@@ -46,6 +46,15 @@ public partial interface IAnnotationsClient
         CancellationToken cancellationToken = default
     );
 
+    /// <summary>
+    /// A file that decodes past the server's limit is refused (PayloadTooLarge).
+    /// </summary>
+    WithRawResponseTask<global::System.IO.Stream> ReadFileAsync(
+        ReadFileAnnotationsRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<global::System.IO.Stream> ExportAppearanceAsync(
         ExportAppearanceAnnotationsRequest request,
         RequestOptions? options = null,

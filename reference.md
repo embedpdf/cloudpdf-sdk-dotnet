@@ -78,7 +78,7 @@ await client.Doc.HeadAsync(new HeadDocRequest { DocId = "docId" });
 <dl>
 <dd>
 
-Each change stands on its own and names itself by `opId`: a refused change rolls back alone, and the answer lists every change in order, applied with its result or refused with its error. Asked again under its `opId`, a change gets the same answer, refusals included; a different change under an answered `opId` is refused (IdempotencyKeyReused). `{ opId, undoOf }` undoes an earlier change of the caller, here or in an earlier request; an undo leaves alone what was changed since, and the undo of an undo redoes. A redaction, a flatten, a form repair or a completed signature ends undo for the changes before it (UndoUnavailable). Each op is checked against its own capability: annotation ops need `doc.annotate.modify`, form values `doc.forms.fill`, form structure `doc.forms.modify`, metadata `doc.metadata.modify`. Bytes (a stamp's drawing, an attached file, a signature's artwork) travel as multipart: a JSON `body` part, each op naming its files by role as `resources: { <role>: '<key>' }`, and each file as the part `resource:<key>`. At most 64 changes per request and 512 ops per change.
+Each change stands on its own and names itself by `opId`: a refused change rolls back alone, and the answer lists every change in order, applied with its result or refused with its error. Asked again under its `opId`, a change gets the same answer, refusals included; a different change under an answered `opId` is refused (IdempotencyKeyReused). `{ opId, undoOf }` undoes an earlier change of the caller, here or in an earlier request; an undo leaves alone what was changed since, and the undo of an undo redoes. A redaction, a flatten, a form repair or a completed signature ends undo for the changes before it (UndoUnavailable). Each op is checked against its own capability: annotation ops need `doc.annotate.modify`, form values `doc.forms.fill`, form structure `doc.forms.modify`, metadata `doc.metadata.modify`, outline `doc.outline.modify`, pages `doc.pages.assemble`, embedded files `doc.attachments.modify`. Bytes (a stamp's drawing, an attached file, a signature's artwork, a PDF whose pages come in) travel as multipart: a JSON `body` part, each op naming its files by role as `resources: { <role>: '<key>' }`, and each file as the part `resource:<key>`. At most 64 changes per request and 512 ops per change.
 </dd>
 </dl>
 </dd>
@@ -1776,6 +1776,68 @@ await client.Doc.Annotations.ReadAppearanceAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ReadFileAsync</a>(ReadFileAnnotationsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A file that decodes past the server's limit is refused (PayloadTooLarge).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Annotations.ReadFileAsync(
+    new ReadFileAnnotationsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        PageKey = "pageKey",
+        AnnotKey = "annotKey",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ReadFileAnnotationsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ExportAppearanceAsync</a>(ExportAppearanceAnnotationsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
 <dl>
 <dd>
@@ -1927,6 +1989,124 @@ await client.Doc.Annotations.ReorderAsync(
 <dd>
 
 **request:** `DocAnnotationsReorderRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Doc Attachments
+<details><summary><code>client.Doc.Attachments.<a href="/src/CloudPDF/Doc/Attachments/AttachmentsClient.cs">DownloadAsync</a>(DownloadAttachmentsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A file that decodes past the server's limit is refused (PayloadTooLarge).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Attachments.DownloadAsync(
+    new DownloadAttachmentsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        FileKey = "fileKey",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DownloadAttachmentsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Attachments.<a href="/src/CloudPDF/Doc/Attachments/AttachmentsClient.cs">ListAsync</a>(ListAttachmentsRequest { ... }) -> WithRawResponseTask&lt;AttachmentList&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A file-attachment annotation's file is listed with the annotation; read its bytes with `doc.annotations.readFile`.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Attachments.ListAsync(
+    new ListAttachmentsRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListAttachmentsRequest` 
     
 </dd>
 </dl>
@@ -2322,6 +2502,49 @@ await client.Doc.Metadata.GetAsync(
 </dl>
 </details>
 
+## Doc Outline
+<details><summary><code>client.Doc.Outline.<a href="/src/CloudPDF/Doc/Outline/OutlineClient.cs">GetAsync</a>(GetOutlineRequest { ... }) -> WithRawResponseTask&lt;DocumentOutline&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Outline.GetAsync(
+    new GetOutlineRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetOutlineRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Doc Pages
 <details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetScaleAsync</a>(DocPagesSetScaleRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetScale200Response&gt;</code></summary>
 <dl>
@@ -2417,53 +2640,6 @@ await client.Doc.Pages.ViewportsAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">DeleteAsync</a>(DeletePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesDelete200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Pages.DeleteAsync(
-    new DeletePagesRequest
-    {
-        DocId = "docId",
-        LayerName = "layerName",
-        Body = new Dictionary<string, object?>() { { "key", "value" } },
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `DeletePagesRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ExtractAsync</a>(ExtractPagesRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
 <dl>
 <dd>
@@ -2476,7 +2652,7 @@ await client.Doc.Pages.DeleteAsync(
 <dl>
 <dd>
 
-A read, not a mutation: the source document is untouched and no event is published. Body is `{"pages": PageRef[]}`; the response body is the new PDF.
+A read, not a mutation: the source document is untouched and no event is published. Body is `{"pages": PageRef[], "flatten"?: {"usage"?: "display" | "print"}, "includeAnnotations"?: boolean, "includeFormFields"?: boolean}`; the response body is the new PDF. With `flatten` the copy is the pages as they draw for `usage` (`"print"`: a print copy): the annotations and form fields painted in, nothing interactive left, layers in their state for the usage. A flattened copy takes `doc.download` or `doc.download.flattened`, and paints only what the caller may read; `includeAnnotations` and `includeFormFields` choose what it paints, and are refused without `flatten`.
 </dd>
 </dl>
 </dd>
@@ -2578,123 +2754,6 @@ await client.Doc.Pages.FlattenAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">InsertAsync</a>(InsertPagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesInsert200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Multipart: a JSON `body` part `{"position"?: PagePosition, "resources": {"source": "<key>"}}` (position omitted → the end), and the standalone PDF whose pages are copied in as the part `resource:<key>`. The inserted copies get fresh page object numbers, returned in insertion order.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Pages.InsertAsync(
-    new InsertPagesRequest { DocId = "docId", LayerName = "layerName" }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `InsertPagesRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">InsertBlankAsync</a>(InsertBlankPagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesInsertBlank200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Body is `{"size": {"width", "height"}, "count"?, "position"?}` — size in PDF points, count in [1, 100], `position` a `PagePosition` (omitted → the end).
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Pages.InsertBlankAsync(
-    new InsertBlankPagesRequest
-    {
-        DocId = "docId",
-        LayerName = "layerName",
-        Body = new Dictionary<string, object?>() { { "key", "value" } },
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `InsertBlankPagesRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetNameAsync</a>(SetNamePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetName200Response&gt;</code></summary>
 <dl>
 <dd>
@@ -2778,104 +2837,6 @@ await client.Doc.Pages.RemoveNameAsync(
 <dd>
 
 **request:** `RemoveNamePagesRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ReorderAsync</a>(DocPagesReorderRequest { ... }) -> WithRawResponseTask&lt;DocPagesReorder200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Pages.ReorderAsync(
-    new DocPagesReorderRequest
-    {
-        DocId = "docId",
-        LayerName = "layerName",
-        Pages = new List<PageRef>()
-        {
-            new PageRef { Kind = PageRefKind.ObjectNumber, ObjectNumber = 1 },
-        },
-        Position = PagePositionZero.Start,
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `DocPagesReorderRequest` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">RotateAsync</a>(RotatePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesRotate200Response&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Doc.Pages.RotateAsync(
-    new RotatePagesRequest
-    {
-        DocId = "docId",
-        LayerName = "layerName",
-        Body = new Dictionary<string, object?>() { { "key", "value" } },
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `RotatePagesRequest` 
     
 </dd>
 </dl>
