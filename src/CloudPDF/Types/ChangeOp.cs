@@ -199,6 +199,105 @@ public record ChangeOp
     }
 
     /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.OutlineCreate"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.OutlineCreate value)
+    {
+        Type = "outline.create";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.OutlineUpdate"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.OutlineUpdate value)
+    {
+        Type = "outline.update";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.OutlineMove"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.OutlineMove value)
+    {
+        Type = "outline.move";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.OutlineDelete"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.OutlineDelete value)
+    {
+        Type = "outline.delete";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.PagesRotate"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.PagesRotate value)
+    {
+        Type = "pages.rotate";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.PagesReorder"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.PagesReorder value)
+    {
+        Type = "pages.reorder";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.PagesDelete"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.PagesDelete value)
+    {
+        Type = "pages.delete";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.PagesInsertBlank"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.PagesInsertBlank value)
+    {
+        Type = "pages.insertBlank";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.PagesInsert"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.PagesInsert value)
+    {
+        Type = "pages.insert";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.AttachmentsCreate"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.AttachmentsCreate value)
+    {
+        Type = "attachments.create";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.AttachmentsDelete"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.AttachmentsDelete value)
+    {
+        Type = "attachments.delete";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Discriminant value
     /// </summary>
     [JsonPropertyName("type")]
@@ -308,6 +407,61 @@ public record ChangeOp
     /// Returns true if <see cref="Type"/> is "metadata.updateCustom"
     /// </summary>
     public bool IsMetadataUpdateCustom => Type == "metadata.updateCustom";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.create"
+    /// </summary>
+    public bool IsOutlineCreate => Type == "outline.create";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.update"
+    /// </summary>
+    public bool IsOutlineUpdate => Type == "outline.update";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.move"
+    /// </summary>
+    public bool IsOutlineMove => Type == "outline.move";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.delete"
+    /// </summary>
+    public bool IsOutlineDelete => Type == "outline.delete";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.rotate"
+    /// </summary>
+    public bool IsPagesRotate => Type == "pages.rotate";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.reorder"
+    /// </summary>
+    public bool IsPagesReorder => Type == "pages.reorder";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.delete"
+    /// </summary>
+    public bool IsPagesDelete => Type == "pages.delete";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.insertBlank"
+    /// </summary>
+    public bool IsPagesInsertBlank => Type == "pages.insertBlank";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.insert"
+    /// </summary>
+    public bool IsPagesInsert => Type == "pages.insert";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "attachments.create"
+    /// </summary>
+    public bool IsAttachmentsCreate => Type == "attachments.create";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "attachments.delete"
+    /// </summary>
+    public bool IsAttachmentsDelete => Type == "attachments.delete";
 
     /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeOpAnnotationsCreate"/> if <see cref="Type"/> is 'annotations.create', otherwise throws an exception.
@@ -493,6 +647,105 @@ public record ChangeOp
             ? (CloudPDF.ChangeOpMetadataUpdateCustom)Value!
             : throw new global::System.Exception("ChangeOp.Type is not 'metadata.updateCustom'");
 
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpOutlineCreate"/> if <see cref="Type"/> is 'outline.create', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.create'.</exception>
+    public CloudPDF.ChangeOpOutlineCreate AsOutlineCreate() =>
+        IsOutlineCreate
+            ? (CloudPDF.ChangeOpOutlineCreate)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'outline.create'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpOutlineUpdate"/> if <see cref="Type"/> is 'outline.update', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.update'.</exception>
+    public CloudPDF.ChangeOpOutlineUpdate AsOutlineUpdate() =>
+        IsOutlineUpdate
+            ? (CloudPDF.ChangeOpOutlineUpdate)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'outline.update'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpOutlineMove"/> if <see cref="Type"/> is 'outline.move', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.move'.</exception>
+    public CloudPDF.ChangeOpOutlineMove AsOutlineMove() =>
+        IsOutlineMove
+            ? (CloudPDF.ChangeOpOutlineMove)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'outline.move'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpOutlineDelete"/> if <see cref="Type"/> is 'outline.delete', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.delete'.</exception>
+    public CloudPDF.ChangeOpOutlineDelete AsOutlineDelete() =>
+        IsOutlineDelete
+            ? (CloudPDF.ChangeOpOutlineDelete)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'outline.delete'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpPagesRotate"/> if <see cref="Type"/> is 'pages.rotate', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.rotate'.</exception>
+    public CloudPDF.ChangeOpPagesRotate AsPagesRotate() =>
+        IsPagesRotate
+            ? (CloudPDF.ChangeOpPagesRotate)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'pages.rotate'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpPagesReorder"/> if <see cref="Type"/> is 'pages.reorder', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.reorder'.</exception>
+    public CloudPDF.ChangeOpPagesReorder AsPagesReorder() =>
+        IsPagesReorder
+            ? (CloudPDF.ChangeOpPagesReorder)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'pages.reorder'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpPagesDelete"/> if <see cref="Type"/> is 'pages.delete', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.delete'.</exception>
+    public CloudPDF.ChangeOpPagesDelete AsPagesDelete() =>
+        IsPagesDelete
+            ? (CloudPDF.ChangeOpPagesDelete)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'pages.delete'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpPagesInsertBlank"/> if <see cref="Type"/> is 'pages.insertBlank', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.insertBlank'.</exception>
+    public CloudPDF.ChangeOpPagesInsertBlank AsPagesInsertBlank() =>
+        IsPagesInsertBlank
+            ? (CloudPDF.ChangeOpPagesInsertBlank)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'pages.insertBlank'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpPagesInsert"/> if <see cref="Type"/> is 'pages.insert', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.insert'.</exception>
+    public CloudPDF.ChangeOpPagesInsert AsPagesInsert() =>
+        IsPagesInsert
+            ? (CloudPDF.ChangeOpPagesInsert)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'pages.insert'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpAttachmentsCreate"/> if <see cref="Type"/> is 'attachments.create', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'attachments.create'.</exception>
+    public CloudPDF.ChangeOpAttachmentsCreate AsAttachmentsCreate() =>
+        IsAttachmentsCreate
+            ? (CloudPDF.ChangeOpAttachmentsCreate)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'attachments.create'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpAttachmentsDelete"/> if <see cref="Type"/> is 'attachments.delete', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'attachments.delete'.</exception>
+    public CloudPDF.ChangeOpAttachmentsDelete AsAttachmentsDelete() =>
+        IsAttachmentsDelete
+            ? (CloudPDF.ChangeOpAttachmentsDelete)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'attachments.delete'");
+
     public T Match<T>(
         Func<CloudPDF.ChangeOpAnnotationsCreate, T> onAnnotationsCreate,
         Func<CloudPDF.ChangeOpAnnotationsUpdate, T> onAnnotationsUpdate,
@@ -514,6 +767,17 @@ public record ChangeOp
         Func<CloudPDF.ChangeOpFormsSetSignatureAppearance, T> onFormsSetSignatureAppearance,
         Func<CloudPDF.ChangeOpMetadataUpdate, T> onMetadataUpdate,
         Func<CloudPDF.ChangeOpMetadataUpdateCustom, T> onMetadataUpdateCustom,
+        Func<CloudPDF.ChangeOpOutlineCreate, T> onOutlineCreate,
+        Func<CloudPDF.ChangeOpOutlineUpdate, T> onOutlineUpdate,
+        Func<CloudPDF.ChangeOpOutlineMove, T> onOutlineMove,
+        Func<CloudPDF.ChangeOpOutlineDelete, T> onOutlineDelete,
+        Func<CloudPDF.ChangeOpPagesRotate, T> onPagesRotate,
+        Func<CloudPDF.ChangeOpPagesReorder, T> onPagesReorder,
+        Func<CloudPDF.ChangeOpPagesDelete, T> onPagesDelete,
+        Func<CloudPDF.ChangeOpPagesInsertBlank, T> onPagesInsertBlank,
+        Func<CloudPDF.ChangeOpPagesInsert, T> onPagesInsert,
+        Func<CloudPDF.ChangeOpAttachmentsCreate, T> onAttachmentsCreate,
+        Func<CloudPDF.ChangeOpAttachmentsDelete, T> onAttachmentsDelete,
         Func<string, object?, T> onUnknown_
     )
     {
@@ -541,6 +805,17 @@ public record ChangeOp
             ),
             "metadata.update" => onMetadataUpdate(AsMetadataUpdate()),
             "metadata.updateCustom" => onMetadataUpdateCustom(AsMetadataUpdateCustom()),
+            "outline.create" => onOutlineCreate(AsOutlineCreate()),
+            "outline.update" => onOutlineUpdate(AsOutlineUpdate()),
+            "outline.move" => onOutlineMove(AsOutlineMove()),
+            "outline.delete" => onOutlineDelete(AsOutlineDelete()),
+            "pages.rotate" => onPagesRotate(AsPagesRotate()),
+            "pages.reorder" => onPagesReorder(AsPagesReorder()),
+            "pages.delete" => onPagesDelete(AsPagesDelete()),
+            "pages.insertBlank" => onPagesInsertBlank(AsPagesInsertBlank()),
+            "pages.insert" => onPagesInsert(AsPagesInsert()),
+            "attachments.create" => onAttachmentsCreate(AsAttachmentsCreate()),
+            "attachments.delete" => onAttachmentsDelete(AsAttachmentsDelete()),
             _ => onUnknown_(Type, Value),
         };
     }
@@ -566,6 +841,17 @@ public record ChangeOp
         Action<CloudPDF.ChangeOpFormsSetSignatureAppearance> onFormsSetSignatureAppearance,
         Action<CloudPDF.ChangeOpMetadataUpdate> onMetadataUpdate,
         Action<CloudPDF.ChangeOpMetadataUpdateCustom> onMetadataUpdateCustom,
+        Action<CloudPDF.ChangeOpOutlineCreate> onOutlineCreate,
+        Action<CloudPDF.ChangeOpOutlineUpdate> onOutlineUpdate,
+        Action<CloudPDF.ChangeOpOutlineMove> onOutlineMove,
+        Action<CloudPDF.ChangeOpOutlineDelete> onOutlineDelete,
+        Action<CloudPDF.ChangeOpPagesRotate> onPagesRotate,
+        Action<CloudPDF.ChangeOpPagesReorder> onPagesReorder,
+        Action<CloudPDF.ChangeOpPagesDelete> onPagesDelete,
+        Action<CloudPDF.ChangeOpPagesInsertBlank> onPagesInsertBlank,
+        Action<CloudPDF.ChangeOpPagesInsert> onPagesInsert,
+        Action<CloudPDF.ChangeOpAttachmentsCreate> onAttachmentsCreate,
+        Action<CloudPDF.ChangeOpAttachmentsDelete> onAttachmentsDelete,
         Action<string, object?> onUnknown_
     )
     {
@@ -630,6 +916,39 @@ public record ChangeOp
                 break;
             case "metadata.updateCustom":
                 onMetadataUpdateCustom(AsMetadataUpdateCustom());
+                break;
+            case "outline.create":
+                onOutlineCreate(AsOutlineCreate());
+                break;
+            case "outline.update":
+                onOutlineUpdate(AsOutlineUpdate());
+                break;
+            case "outline.move":
+                onOutlineMove(AsOutlineMove());
+                break;
+            case "outline.delete":
+                onOutlineDelete(AsOutlineDelete());
+                break;
+            case "pages.rotate":
+                onPagesRotate(AsPagesRotate());
+                break;
+            case "pages.reorder":
+                onPagesReorder(AsPagesReorder());
+                break;
+            case "pages.delete":
+                onPagesDelete(AsPagesDelete());
+                break;
+            case "pages.insertBlank":
+                onPagesInsertBlank(AsPagesInsertBlank());
+                break;
+            case "pages.insert":
+                onPagesInsert(AsPagesInsert());
+                break;
+            case "attachments.create":
+                onAttachmentsCreate(AsAttachmentsCreate());
+                break;
+            case "attachments.delete":
+                onAttachmentsDelete(AsAttachmentsDelete());
                 break;
             default:
                 onUnknown_(Type, Value);
@@ -919,6 +1238,160 @@ public record ChangeOp
         return false;
     }
 
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpOutlineCreate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineCreate(out CloudPDF.ChangeOpOutlineCreate? value)
+    {
+        if (Type == "outline.create")
+        {
+            value = (CloudPDF.ChangeOpOutlineCreate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpOutlineUpdate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineUpdate(out CloudPDF.ChangeOpOutlineUpdate? value)
+    {
+        if (Type == "outline.update")
+        {
+            value = (CloudPDF.ChangeOpOutlineUpdate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpOutlineMove"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineMove(out CloudPDF.ChangeOpOutlineMove? value)
+    {
+        if (Type == "outline.move")
+        {
+            value = (CloudPDF.ChangeOpOutlineMove)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpOutlineDelete"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineDelete(out CloudPDF.ChangeOpOutlineDelete? value)
+    {
+        if (Type == "outline.delete")
+        {
+            value = (CloudPDF.ChangeOpOutlineDelete)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpPagesRotate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesRotate(out CloudPDF.ChangeOpPagesRotate? value)
+    {
+        if (Type == "pages.rotate")
+        {
+            value = (CloudPDF.ChangeOpPagesRotate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpPagesReorder"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesReorder(out CloudPDF.ChangeOpPagesReorder? value)
+    {
+        if (Type == "pages.reorder")
+        {
+            value = (CloudPDF.ChangeOpPagesReorder)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpPagesDelete"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesDelete(out CloudPDF.ChangeOpPagesDelete? value)
+    {
+        if (Type == "pages.delete")
+        {
+            value = (CloudPDF.ChangeOpPagesDelete)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpPagesInsertBlank"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesInsertBlank(out CloudPDF.ChangeOpPagesInsertBlank? value)
+    {
+        if (Type == "pages.insertBlank")
+        {
+            value = (CloudPDF.ChangeOpPagesInsertBlank)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpPagesInsert"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesInsert(out CloudPDF.ChangeOpPagesInsert? value)
+    {
+        if (Type == "pages.insert")
+        {
+            value = (CloudPDF.ChangeOpPagesInsert)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpAttachmentsCreate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsAttachmentsCreate(out CloudPDF.ChangeOpAttachmentsCreate? value)
+    {
+        if (Type == "attachments.create")
+        {
+            value = (CloudPDF.ChangeOpAttachmentsCreate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpAttachmentsDelete"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsAttachmentsDelete(out CloudPDF.ChangeOpAttachmentsDelete? value)
+    {
+        if (Type == "attachments.delete")
+        {
+            value = (CloudPDF.ChangeOpAttachmentsDelete)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
     public override string ToString() => JsonUtils.Serialize(this);
 
     public static implicit operator ChangeOp(ChangeOp.AnnotationsCreate value) => new(value);
@@ -961,6 +1434,28 @@ public record ChangeOp
     public static implicit operator ChangeOp(ChangeOp.MetadataUpdate value) => new(value);
 
     public static implicit operator ChangeOp(ChangeOp.MetadataUpdateCustom value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.OutlineCreate value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.OutlineUpdate value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.OutlineMove value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.OutlineDelete value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.PagesRotate value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.PagesReorder value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.PagesDelete value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.PagesInsertBlank value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.PagesInsert value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.AttachmentsCreate value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.AttachmentsDelete value) => new(value);
 
     [Serializable]
     internal sealed class JsonConverter : JsonConverter<ChangeOp>
@@ -1125,6 +1620,67 @@ public record ChangeOp
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeOpMetadataUpdateCustom"
                         ),
+                "outline.create" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpOutlineCreate?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpOutlineCreate"
+                        ),
+                "outline.update" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpOutlineUpdate?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpOutlineUpdate"
+                        ),
+                "outline.move" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpOutlineMove?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpOutlineMove"
+                        ),
+                "outline.delete" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpOutlineDelete?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpOutlineDelete"
+                        ),
+                "pages.rotate" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpPagesRotate?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpPagesRotate"
+                        ),
+                "pages.reorder" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpPagesReorder?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpPagesReorder"
+                        ),
+                "pages.delete" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpPagesDelete?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpPagesDelete"
+                        ),
+                "pages.insertBlank" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpPagesInsertBlank?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpPagesInsertBlank"
+                        ),
+                "pages.insert" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpPagesInsert?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpPagesInsert"
+                        ),
+                "attachments.create" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpAttachmentsCreate?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpAttachmentsCreate"
+                        ),
+                "attachments.delete" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpAttachmentsDelete?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpAttachmentsDelete"
+                        ),
                 _ => json.Deserialize<object?>(options),
             };
             return new ChangeOp(discriminator, value);
@@ -1168,6 +1724,17 @@ public record ChangeOp
                     ),
                     "metadata.update" => JsonSerializer.SerializeToNode(value.Value, options),
                     "metadata.updateCustom" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.create" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.update" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.move" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.delete" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.rotate" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.reorder" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.delete" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.insertBlank" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.insert" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "attachments.create" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "attachments.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     _ => JsonSerializer.SerializeToNode(value.Value, options),
                 } ?? new JsonObject();
             json["type"] = value.Type;
@@ -1589,6 +2156,222 @@ public record ChangeOp
 
         public static implicit operator ChangeOp.MetadataUpdateCustom(
             CloudPDF.ChangeOpMetadataUpdateCustom value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.create
+    /// </summary>
+    [Serializable]
+    public struct OutlineCreate
+    {
+        public OutlineCreate(CloudPDF.ChangeOpOutlineCreate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpOutlineCreate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.OutlineCreate(
+            CloudPDF.ChangeOpOutlineCreate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.update
+    /// </summary>
+    [Serializable]
+    public struct OutlineUpdate
+    {
+        public OutlineUpdate(CloudPDF.ChangeOpOutlineUpdate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpOutlineUpdate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.OutlineUpdate(
+            CloudPDF.ChangeOpOutlineUpdate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.move
+    /// </summary>
+    [Serializable]
+    public struct OutlineMove
+    {
+        public OutlineMove(CloudPDF.ChangeOpOutlineMove value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpOutlineMove Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.OutlineMove(CloudPDF.ChangeOpOutlineMove value) =>
+            new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.delete
+    /// </summary>
+    [Serializable]
+    public struct OutlineDelete
+    {
+        public OutlineDelete(CloudPDF.ChangeOpOutlineDelete value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpOutlineDelete Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.OutlineDelete(
+            CloudPDF.ChangeOpOutlineDelete value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.rotate
+    /// </summary>
+    [Serializable]
+    public struct PagesRotate
+    {
+        public PagesRotate(CloudPDF.ChangeOpPagesRotate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpPagesRotate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.PagesRotate(CloudPDF.ChangeOpPagesRotate value) =>
+            new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.reorder
+    /// </summary>
+    [Serializable]
+    public struct PagesReorder
+    {
+        public PagesReorder(CloudPDF.ChangeOpPagesReorder value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpPagesReorder Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.PagesReorder(
+            CloudPDF.ChangeOpPagesReorder value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.delete
+    /// </summary>
+    [Serializable]
+    public struct PagesDelete
+    {
+        public PagesDelete(CloudPDF.ChangeOpPagesDelete value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpPagesDelete Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.PagesDelete(CloudPDF.ChangeOpPagesDelete value) =>
+            new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.insertBlank
+    /// </summary>
+    [Serializable]
+    public struct PagesInsertBlank
+    {
+        public PagesInsertBlank(CloudPDF.ChangeOpPagesInsertBlank value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpPagesInsertBlank Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.PagesInsertBlank(
+            CloudPDF.ChangeOpPagesInsertBlank value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.insert
+    /// </summary>
+    [Serializable]
+    public struct PagesInsert
+    {
+        public PagesInsert(CloudPDF.ChangeOpPagesInsert value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpPagesInsert Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.PagesInsert(CloudPDF.ChangeOpPagesInsert value) =>
+            new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for attachments.create
+    /// </summary>
+    [Serializable]
+    public struct AttachmentsCreate
+    {
+        public AttachmentsCreate(CloudPDF.ChangeOpAttachmentsCreate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpAttachmentsCreate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.AttachmentsCreate(
+            CloudPDF.ChangeOpAttachmentsCreate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for attachments.delete
+    /// </summary>
+    [Serializable]
+    public struct AttachmentsDelete
+    {
+        public AttachmentsDelete(CloudPDF.ChangeOpAttachmentsDelete value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpAttachmentsDelete Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.AttachmentsDelete(
+            CloudPDF.ChangeOpAttachmentsDelete value
         ) => new(value);
     }
 }

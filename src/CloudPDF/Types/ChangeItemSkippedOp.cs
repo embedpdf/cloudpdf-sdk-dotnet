@@ -58,9 +58,39 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
         Values.MetadataUpdateCustom
     );
 
+    public static readonly ChangeItemSkippedOp OutlineCreate = new(Values.OutlineCreate);
+
+    public static readonly ChangeItemSkippedOp OutlineUpdate = new(Values.OutlineUpdate);
+
+    public static readonly ChangeItemSkippedOp OutlineMove = new(Values.OutlineMove);
+
+    public static readonly ChangeItemSkippedOp OutlineDelete = new(Values.OutlineDelete);
+
+    public static readonly ChangeItemSkippedOp PagesRotate = new(Values.PagesRotate);
+
+    public static readonly ChangeItemSkippedOp PagesReorder = new(Values.PagesReorder);
+
+    public static readonly ChangeItemSkippedOp PagesDelete = new(Values.PagesDelete);
+
+    public static readonly ChangeItemSkippedOp PagesInsertBlank = new(Values.PagesInsertBlank);
+
+    public static readonly ChangeItemSkippedOp PagesInsert = new(Values.PagesInsert);
+
+    public static readonly ChangeItemSkippedOp AttachmentsCreate = new(Values.AttachmentsCreate);
+
+    public static readonly ChangeItemSkippedOp AttachmentsDelete = new(Values.AttachmentsDelete);
+
     public static readonly ChangeItemSkippedOp AnnotationsRestore = new(Values.AnnotationsRestore);
 
     public static readonly ChangeItemSkippedOp FormsRestore = new(Values.FormsRestore);
+
+    public static readonly ChangeItemSkippedOp FormsRestoreWidget = new(Values.FormsRestoreWidget);
+
+    public static readonly ChangeItemSkippedOp OutlineRestore = new(Values.OutlineRestore);
+
+    public static readonly ChangeItemSkippedOp PagesRestore = new(Values.PagesRestore);
+
+    public static readonly ChangeItemSkippedOp AttachmentsRestore = new(Values.AttachmentsRestore);
 
     public ChangeItemSkippedOp(string value)
     {
@@ -198,8 +228,38 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
 
         public const string MetadataUpdateCustom = "metadata.updateCustom";
 
+        public const string OutlineCreate = "outline.create";
+
+        public const string OutlineUpdate = "outline.update";
+
+        public const string OutlineMove = "outline.move";
+
+        public const string OutlineDelete = "outline.delete";
+
+        public const string PagesRotate = "pages.rotate";
+
+        public const string PagesReorder = "pages.reorder";
+
+        public const string PagesDelete = "pages.delete";
+
+        public const string PagesInsertBlank = "pages.insertBlank";
+
+        public const string PagesInsert = "pages.insert";
+
+        public const string AttachmentsCreate = "attachments.create";
+
+        public const string AttachmentsDelete = "attachments.delete";
+
         public const string AnnotationsRestore = "annotations.restore";
 
         public const string FormsRestore = "forms.restore";
+
+        public const string FormsRestoreWidget = "forms.restoreWidget";
+
+        public const string OutlineRestore = "outline.restore";
+
+        public const string PagesRestore = "pages.restore";
+
+        public const string AttachmentsRestore = "attachments.restore";
     }
 }

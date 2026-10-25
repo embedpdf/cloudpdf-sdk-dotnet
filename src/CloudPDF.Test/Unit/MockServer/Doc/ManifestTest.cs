@@ -21,6 +21,7 @@ public class ManifestTest : BaseMockServerTest
               "attachmentsVersion": 1,
               "annotationsVersion": 1,
               "formsVersion": 1,
+              "outlineVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
               "layerVersion": 1,
@@ -33,7 +34,8 @@ public class ManifestTest : BaseMockServerTest
                 "layout": "base",
                 "attachments": "base",
                 "metadata": "base",
-                "actions": "base"
+                "actions": "base",
+                "outline": "base"
               },
               "protection": {
                 "enforced": "none",
@@ -129,6 +131,7 @@ public class ManifestTest : BaseMockServerTest
               "attachmentsVersion": 1,
               "annotationsVersion": 1,
               "formsVersion": 1,
+              "outlineVersion": 1,
               "auditHead": 1,
               "baseSha": "baseSha",
               "layerVersion": 1,
@@ -141,7 +144,8 @@ public class ManifestTest : BaseMockServerTest
                 "layout": "base",
                 "attachments": "base",
                 "metadata": "base",
-                "actions": "base"
+                "actions": "base",
+                "outline": "base"
               },
               "protection": {
                 "enforced": "none",

@@ -235,6 +235,132 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.OutlineCreate"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.OutlineCreate value)
+    {
+        Type = "outline.create";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.OutlineUpdate"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.OutlineUpdate value)
+    {
+        Type = "outline.update";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.OutlineMove"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.OutlineMove value)
+    {
+        Type = "outline.move";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.OutlineDelete"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.OutlineDelete value)
+    {
+        Type = "outline.delete";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.OutlineRestore"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.OutlineRestore value)
+    {
+        Type = "outline.restore";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesRotate"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesRotate value)
+    {
+        Type = "pages.rotate";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesReorder"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesReorder value)
+    {
+        Type = "pages.reorder";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesDelete"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesDelete value)
+    {
+        Type = "pages.delete";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesInsertBlank"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesInsertBlank value)
+    {
+        Type = "pages.insertBlank";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesInsert"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesInsert value)
+    {
+        Type = "pages.insert";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesRestore"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesRestore value)
+    {
+        Type = "pages.restore";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.AttachmentsCreate"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.AttachmentsCreate value)
+    {
+        Type = "attachments.create";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.AttachmentsDelete"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.AttachmentsDelete value)
+    {
+        Type = "attachments.delete";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.AttachmentsRestore"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.AttachmentsRestore value)
+    {
+        Type = "attachments.restore";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Discriminant value
     /// </summary>
     [JsonPropertyName("type")]
@@ -364,6 +490,76 @@ public record ChangeItem
     /// Returns true if <see cref="Type"/> is "metadata.updateCustom"
     /// </summary>
     public bool IsMetadataUpdateCustom => Type == "metadata.updateCustom";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.create"
+    /// </summary>
+    public bool IsOutlineCreate => Type == "outline.create";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.update"
+    /// </summary>
+    public bool IsOutlineUpdate => Type == "outline.update";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.move"
+    /// </summary>
+    public bool IsOutlineMove => Type == "outline.move";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.delete"
+    /// </summary>
+    public bool IsOutlineDelete => Type == "outline.delete";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "outline.restore"
+    /// </summary>
+    public bool IsOutlineRestore => Type == "outline.restore";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.rotate"
+    /// </summary>
+    public bool IsPagesRotate => Type == "pages.rotate";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.reorder"
+    /// </summary>
+    public bool IsPagesReorder => Type == "pages.reorder";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.delete"
+    /// </summary>
+    public bool IsPagesDelete => Type == "pages.delete";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.insertBlank"
+    /// </summary>
+    public bool IsPagesInsertBlank => Type == "pages.insertBlank";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.insert"
+    /// </summary>
+    public bool IsPagesInsert => Type == "pages.insert";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.restore"
+    /// </summary>
+    public bool IsPagesRestore => Type == "pages.restore";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "attachments.create"
+    /// </summary>
+    public bool IsAttachmentsCreate => Type == "attachments.create";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "attachments.delete"
+    /// </summary>
+    public bool IsAttachmentsDelete => Type == "attachments.delete";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "attachments.restore"
+    /// </summary>
+    public bool IsAttachmentsRestore => Type == "attachments.restore";
 
     /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeItemSkipped"/> if <see cref="Type"/> is 'skipped', otherwise throws an exception.
@@ -587,6 +783,132 @@ public record ChangeItem
             ? (CloudPDF.ChangeItemMetadataUpdateCustom)Value!
             : throw new global::System.Exception("ChangeItem.Type is not 'metadata.updateCustom'");
 
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemOutlineCreate"/> if <see cref="Type"/> is 'outline.create', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.create'.</exception>
+    public CloudPDF.ChangeItemOutlineCreate AsOutlineCreate() =>
+        IsOutlineCreate
+            ? (CloudPDF.ChangeItemOutlineCreate)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'outline.create'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemOutlineUpdate"/> if <see cref="Type"/> is 'outline.update', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.update'.</exception>
+    public CloudPDF.ChangeItemOutlineUpdate AsOutlineUpdate() =>
+        IsOutlineUpdate
+            ? (CloudPDF.ChangeItemOutlineUpdate)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'outline.update'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemOutlineMove"/> if <see cref="Type"/> is 'outline.move', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.move'.</exception>
+    public CloudPDF.ChangeItemOutlineMove AsOutlineMove() =>
+        IsOutlineMove
+            ? (CloudPDF.ChangeItemOutlineMove)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'outline.move'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemOutlineDelete"/> if <see cref="Type"/> is 'outline.delete', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.delete'.</exception>
+    public CloudPDF.ChangeItemOutlineDelete AsOutlineDelete() =>
+        IsOutlineDelete
+            ? (CloudPDF.ChangeItemOutlineDelete)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'outline.delete'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemOutlineRestore"/> if <see cref="Type"/> is 'outline.restore', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'outline.restore'.</exception>
+    public CloudPDF.ChangeItemOutlineRestore AsOutlineRestore() =>
+        IsOutlineRestore
+            ? (CloudPDF.ChangeItemOutlineRestore)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'outline.restore'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesRotate"/> if <see cref="Type"/> is 'pages.rotate', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.rotate'.</exception>
+    public CloudPDF.ChangeItemPagesRotate AsPagesRotate() =>
+        IsPagesRotate
+            ? (CloudPDF.ChangeItemPagesRotate)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.rotate'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesReorder"/> if <see cref="Type"/> is 'pages.reorder', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.reorder'.</exception>
+    public CloudPDF.ChangeItemPagesReorder AsPagesReorder() =>
+        IsPagesReorder
+            ? (CloudPDF.ChangeItemPagesReorder)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.reorder'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesDelete"/> if <see cref="Type"/> is 'pages.delete', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.delete'.</exception>
+    public CloudPDF.ChangeItemPagesDelete AsPagesDelete() =>
+        IsPagesDelete
+            ? (CloudPDF.ChangeItemPagesDelete)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.delete'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesInsertBlank"/> if <see cref="Type"/> is 'pages.insertBlank', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.insertBlank'.</exception>
+    public CloudPDF.ChangeItemPagesInsertBlank AsPagesInsertBlank() =>
+        IsPagesInsertBlank
+            ? (CloudPDF.ChangeItemPagesInsertBlank)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.insertBlank'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesInsert"/> if <see cref="Type"/> is 'pages.insert', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.insert'.</exception>
+    public CloudPDF.ChangeItemPagesInsert AsPagesInsert() =>
+        IsPagesInsert
+            ? (CloudPDF.ChangeItemPagesInsert)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.insert'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesRestore"/> if <see cref="Type"/> is 'pages.restore', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.restore'.</exception>
+    public CloudPDF.ChangeItemPagesRestore AsPagesRestore() =>
+        IsPagesRestore
+            ? (CloudPDF.ChangeItemPagesRestore)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.restore'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemAttachmentsCreate"/> if <see cref="Type"/> is 'attachments.create', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'attachments.create'.</exception>
+    public CloudPDF.ChangeItemAttachmentsCreate AsAttachmentsCreate() =>
+        IsAttachmentsCreate
+            ? (CloudPDF.ChangeItemAttachmentsCreate)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'attachments.create'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemAttachmentsDelete"/> if <see cref="Type"/> is 'attachments.delete', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'attachments.delete'.</exception>
+    public CloudPDF.ChangeItemAttachmentsDelete AsAttachmentsDelete() =>
+        IsAttachmentsDelete
+            ? (CloudPDF.ChangeItemAttachmentsDelete)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'attachments.delete'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemAttachmentsRestore"/> if <see cref="Type"/> is 'attachments.restore', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'attachments.restore'.</exception>
+    public CloudPDF.ChangeItemAttachmentsRestore AsAttachmentsRestore() =>
+        IsAttachmentsRestore
+            ? (CloudPDF.ChangeItemAttachmentsRestore)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'attachments.restore'");
+
     public T Match<T>(
         Func<CloudPDF.ChangeItemSkipped, T> onSkipped,
         Func<CloudPDF.ChangeItemAnnotationsCreate, T> onAnnotationsCreate,
@@ -612,6 +934,20 @@ public record ChangeItem
         Func<CloudPDF.ChangeItemFormsUpdateWidget, T> onFormsUpdateWidget,
         Func<CloudPDF.ChangeItemMetadataUpdate, T> onMetadataUpdate,
         Func<CloudPDF.ChangeItemMetadataUpdateCustom, T> onMetadataUpdateCustom,
+        Func<CloudPDF.ChangeItemOutlineCreate, T> onOutlineCreate,
+        Func<CloudPDF.ChangeItemOutlineUpdate, T> onOutlineUpdate,
+        Func<CloudPDF.ChangeItemOutlineMove, T> onOutlineMove,
+        Func<CloudPDF.ChangeItemOutlineDelete, T> onOutlineDelete,
+        Func<CloudPDF.ChangeItemOutlineRestore, T> onOutlineRestore,
+        Func<CloudPDF.ChangeItemPagesRotate, T> onPagesRotate,
+        Func<CloudPDF.ChangeItemPagesReorder, T> onPagesReorder,
+        Func<CloudPDF.ChangeItemPagesDelete, T> onPagesDelete,
+        Func<CloudPDF.ChangeItemPagesInsertBlank, T> onPagesInsertBlank,
+        Func<CloudPDF.ChangeItemPagesInsert, T> onPagesInsert,
+        Func<CloudPDF.ChangeItemPagesRestore, T> onPagesRestore,
+        Func<CloudPDF.ChangeItemAttachmentsCreate, T> onAttachmentsCreate,
+        Func<CloudPDF.ChangeItemAttachmentsDelete, T> onAttachmentsDelete,
+        Func<CloudPDF.ChangeItemAttachmentsRestore, T> onAttachmentsRestore,
         Func<string, object?, T> onUnknown_
     )
     {
@@ -643,6 +979,20 @@ public record ChangeItem
             "forms.updateWidget" => onFormsUpdateWidget(AsFormsUpdateWidget()),
             "metadata.update" => onMetadataUpdate(AsMetadataUpdate()),
             "metadata.updateCustom" => onMetadataUpdateCustom(AsMetadataUpdateCustom()),
+            "outline.create" => onOutlineCreate(AsOutlineCreate()),
+            "outline.update" => onOutlineUpdate(AsOutlineUpdate()),
+            "outline.move" => onOutlineMove(AsOutlineMove()),
+            "outline.delete" => onOutlineDelete(AsOutlineDelete()),
+            "outline.restore" => onOutlineRestore(AsOutlineRestore()),
+            "pages.rotate" => onPagesRotate(AsPagesRotate()),
+            "pages.reorder" => onPagesReorder(AsPagesReorder()),
+            "pages.delete" => onPagesDelete(AsPagesDelete()),
+            "pages.insertBlank" => onPagesInsertBlank(AsPagesInsertBlank()),
+            "pages.insert" => onPagesInsert(AsPagesInsert()),
+            "pages.restore" => onPagesRestore(AsPagesRestore()),
+            "attachments.create" => onAttachmentsCreate(AsAttachmentsCreate()),
+            "attachments.delete" => onAttachmentsDelete(AsAttachmentsDelete()),
+            "attachments.restore" => onAttachmentsRestore(AsAttachmentsRestore()),
             _ => onUnknown_(Type, Value),
         };
     }
@@ -672,6 +1022,20 @@ public record ChangeItem
         Action<CloudPDF.ChangeItemFormsUpdateWidget> onFormsUpdateWidget,
         Action<CloudPDF.ChangeItemMetadataUpdate> onMetadataUpdate,
         Action<CloudPDF.ChangeItemMetadataUpdateCustom> onMetadataUpdateCustom,
+        Action<CloudPDF.ChangeItemOutlineCreate> onOutlineCreate,
+        Action<CloudPDF.ChangeItemOutlineUpdate> onOutlineUpdate,
+        Action<CloudPDF.ChangeItemOutlineMove> onOutlineMove,
+        Action<CloudPDF.ChangeItemOutlineDelete> onOutlineDelete,
+        Action<CloudPDF.ChangeItemOutlineRestore> onOutlineRestore,
+        Action<CloudPDF.ChangeItemPagesRotate> onPagesRotate,
+        Action<CloudPDF.ChangeItemPagesReorder> onPagesReorder,
+        Action<CloudPDF.ChangeItemPagesDelete> onPagesDelete,
+        Action<CloudPDF.ChangeItemPagesInsertBlank> onPagesInsertBlank,
+        Action<CloudPDF.ChangeItemPagesInsert> onPagesInsert,
+        Action<CloudPDF.ChangeItemPagesRestore> onPagesRestore,
+        Action<CloudPDF.ChangeItemAttachmentsCreate> onAttachmentsCreate,
+        Action<CloudPDF.ChangeItemAttachmentsDelete> onAttachmentsDelete,
+        Action<CloudPDF.ChangeItemAttachmentsRestore> onAttachmentsRestore,
         Action<string, object?> onUnknown_
     )
     {
@@ -748,6 +1112,48 @@ public record ChangeItem
                 break;
             case "metadata.updateCustom":
                 onMetadataUpdateCustom(AsMetadataUpdateCustom());
+                break;
+            case "outline.create":
+                onOutlineCreate(AsOutlineCreate());
+                break;
+            case "outline.update":
+                onOutlineUpdate(AsOutlineUpdate());
+                break;
+            case "outline.move":
+                onOutlineMove(AsOutlineMove());
+                break;
+            case "outline.delete":
+                onOutlineDelete(AsOutlineDelete());
+                break;
+            case "outline.restore":
+                onOutlineRestore(AsOutlineRestore());
+                break;
+            case "pages.rotate":
+                onPagesRotate(AsPagesRotate());
+                break;
+            case "pages.reorder":
+                onPagesReorder(AsPagesReorder());
+                break;
+            case "pages.delete":
+                onPagesDelete(AsPagesDelete());
+                break;
+            case "pages.insertBlank":
+                onPagesInsertBlank(AsPagesInsertBlank());
+                break;
+            case "pages.insert":
+                onPagesInsert(AsPagesInsert());
+                break;
+            case "pages.restore":
+                onPagesRestore(AsPagesRestore());
+                break;
+            case "attachments.create":
+                onAttachmentsCreate(AsAttachmentsCreate());
+                break;
+            case "attachments.delete":
+                onAttachmentsDelete(AsAttachmentsDelete());
+                break;
+            case "attachments.restore":
+                onAttachmentsRestore(AsAttachmentsRestore());
                 break;
             default:
                 onUnknown_(Type, Value);
@@ -1095,6 +1501,202 @@ public record ChangeItem
         return false;
     }
 
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemOutlineCreate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineCreate(out CloudPDF.ChangeItemOutlineCreate? value)
+    {
+        if (Type == "outline.create")
+        {
+            value = (CloudPDF.ChangeItemOutlineCreate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemOutlineUpdate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineUpdate(out CloudPDF.ChangeItemOutlineUpdate? value)
+    {
+        if (Type == "outline.update")
+        {
+            value = (CloudPDF.ChangeItemOutlineUpdate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemOutlineMove"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineMove(out CloudPDF.ChangeItemOutlineMove? value)
+    {
+        if (Type == "outline.move")
+        {
+            value = (CloudPDF.ChangeItemOutlineMove)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemOutlineDelete"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineDelete(out CloudPDF.ChangeItemOutlineDelete? value)
+    {
+        if (Type == "outline.delete")
+        {
+            value = (CloudPDF.ChangeItemOutlineDelete)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemOutlineRestore"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsOutlineRestore(out CloudPDF.ChangeItemOutlineRestore? value)
+    {
+        if (Type == "outline.restore")
+        {
+            value = (CloudPDF.ChangeItemOutlineRestore)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesRotate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesRotate(out CloudPDF.ChangeItemPagesRotate? value)
+    {
+        if (Type == "pages.rotate")
+        {
+            value = (CloudPDF.ChangeItemPagesRotate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesReorder"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesReorder(out CloudPDF.ChangeItemPagesReorder? value)
+    {
+        if (Type == "pages.reorder")
+        {
+            value = (CloudPDF.ChangeItemPagesReorder)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesDelete"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesDelete(out CloudPDF.ChangeItemPagesDelete? value)
+    {
+        if (Type == "pages.delete")
+        {
+            value = (CloudPDF.ChangeItemPagesDelete)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesInsertBlank"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesInsertBlank(out CloudPDF.ChangeItemPagesInsertBlank? value)
+    {
+        if (Type == "pages.insertBlank")
+        {
+            value = (CloudPDF.ChangeItemPagesInsertBlank)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesInsert"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesInsert(out CloudPDF.ChangeItemPagesInsert? value)
+    {
+        if (Type == "pages.insert")
+        {
+            value = (CloudPDF.ChangeItemPagesInsert)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesRestore"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesRestore(out CloudPDF.ChangeItemPagesRestore? value)
+    {
+        if (Type == "pages.restore")
+        {
+            value = (CloudPDF.ChangeItemPagesRestore)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemAttachmentsCreate"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsAttachmentsCreate(out CloudPDF.ChangeItemAttachmentsCreate? value)
+    {
+        if (Type == "attachments.create")
+        {
+            value = (CloudPDF.ChangeItemAttachmentsCreate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemAttachmentsDelete"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsAttachmentsDelete(out CloudPDF.ChangeItemAttachmentsDelete? value)
+    {
+        if (Type == "attachments.delete")
+        {
+            value = (CloudPDF.ChangeItemAttachmentsDelete)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemAttachmentsRestore"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsAttachmentsRestore(out CloudPDF.ChangeItemAttachmentsRestore? value)
+    {
+        if (Type == "attachments.restore")
+        {
+            value = (CloudPDF.ChangeItemAttachmentsRestore)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
     public override string ToString() => JsonUtils.Serialize(this);
 
     public static implicit operator ChangeItem(ChangeItem.Skipped value) => new(value);
@@ -1147,6 +1749,34 @@ public record ChangeItem
     public static implicit operator ChangeItem(ChangeItem.MetadataUpdate value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.MetadataUpdateCustom value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.OutlineCreate value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.OutlineUpdate value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.OutlineMove value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.OutlineDelete value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.OutlineRestore value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesRotate value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesReorder value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesDelete value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesInsertBlank value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesInsert value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesRestore value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.AttachmentsCreate value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.AttachmentsDelete value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.AttachmentsRestore value) => new(value);
 
     [Serializable]
     internal sealed class JsonConverter : JsonConverter<ChangeItem>
@@ -1341,6 +1971,86 @@ public record ChangeItem
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeItemMetadataUpdateCustom"
                         ),
+                "outline.create" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemOutlineCreate?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemOutlineCreate"
+                        ),
+                "outline.update" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemOutlineUpdate?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemOutlineUpdate"
+                        ),
+                "outline.move" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemOutlineMove?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemOutlineMove"
+                        ),
+                "outline.delete" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemOutlineDelete?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemOutlineDelete"
+                        ),
+                "outline.restore" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemOutlineRestore?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemOutlineRestore"
+                        ),
+                "pages.rotate" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesRotate?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemPagesRotate"
+                        ),
+                "pages.reorder" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesReorder?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemPagesReorder"
+                        ),
+                "pages.delete" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesDelete?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemPagesDelete"
+                        ),
+                "pages.insertBlank" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesInsertBlank?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemPagesInsertBlank"
+                        ),
+                "pages.insert" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesInsert?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemPagesInsert"
+                        ),
+                "pages.restore" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesRestore?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemPagesRestore"
+                        ),
+                "attachments.create" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemAttachmentsCreate?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemAttachmentsCreate"
+                        ),
+                "attachments.delete" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemAttachmentsDelete?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemAttachmentsDelete"
+                        ),
+                "attachments.restore" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemAttachmentsRestore?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemAttachmentsRestore"
+                        ),
                 _ => json.Deserialize<object?>(options),
             };
             return new ChangeItem(discriminator, value);
@@ -1388,6 +2098,20 @@ public record ChangeItem
                     "forms.updateWidget" => JsonSerializer.SerializeToNode(value.Value, options),
                     "metadata.update" => JsonSerializer.SerializeToNode(value.Value, options),
                     "metadata.updateCustom" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.create" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.update" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.move" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.delete" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "outline.restore" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.rotate" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.reorder" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.delete" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.insertBlank" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.insert" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.restore" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "attachments.create" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "attachments.delete" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "attachments.restore" => JsonSerializer.SerializeToNode(value.Value, options),
                     _ => JsonSerializer.SerializeToNode(value.Value, options),
                 } ?? new JsonObject();
             json["type"] = value.Type;
@@ -1892,6 +2616,286 @@ public record ChangeItem
 
         public static implicit operator ChangeItem.MetadataUpdateCustom(
             CloudPDF.ChangeItemMetadataUpdateCustom value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.create
+    /// </summary>
+    [Serializable]
+    public struct OutlineCreate
+    {
+        public OutlineCreate(CloudPDF.ChangeItemOutlineCreate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemOutlineCreate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.OutlineCreate(
+            CloudPDF.ChangeItemOutlineCreate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.update
+    /// </summary>
+    [Serializable]
+    public struct OutlineUpdate
+    {
+        public OutlineUpdate(CloudPDF.ChangeItemOutlineUpdate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemOutlineUpdate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.OutlineUpdate(
+            CloudPDF.ChangeItemOutlineUpdate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.move
+    /// </summary>
+    [Serializable]
+    public struct OutlineMove
+    {
+        public OutlineMove(CloudPDF.ChangeItemOutlineMove value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemOutlineMove Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.OutlineMove(
+            CloudPDF.ChangeItemOutlineMove value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.delete
+    /// </summary>
+    [Serializable]
+    public struct OutlineDelete
+    {
+        public OutlineDelete(CloudPDF.ChangeItemOutlineDelete value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemOutlineDelete Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.OutlineDelete(
+            CloudPDF.ChangeItemOutlineDelete value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for outline.restore
+    /// </summary>
+    [Serializable]
+    public struct OutlineRestore
+    {
+        public OutlineRestore(CloudPDF.ChangeItemOutlineRestore value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemOutlineRestore Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.OutlineRestore(
+            CloudPDF.ChangeItemOutlineRestore value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.rotate
+    /// </summary>
+    [Serializable]
+    public struct PagesRotate
+    {
+        public PagesRotate(CloudPDF.ChangeItemPagesRotate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesRotate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesRotate(
+            CloudPDF.ChangeItemPagesRotate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.reorder
+    /// </summary>
+    [Serializable]
+    public struct PagesReorder
+    {
+        public PagesReorder(CloudPDF.ChangeItemPagesReorder value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesReorder Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesReorder(
+            CloudPDF.ChangeItemPagesReorder value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.delete
+    /// </summary>
+    [Serializable]
+    public struct PagesDelete
+    {
+        public PagesDelete(CloudPDF.ChangeItemPagesDelete value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesDelete Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesDelete(
+            CloudPDF.ChangeItemPagesDelete value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.insertBlank
+    /// </summary>
+    [Serializable]
+    public struct PagesInsertBlank
+    {
+        public PagesInsertBlank(CloudPDF.ChangeItemPagesInsertBlank value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesInsertBlank Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesInsertBlank(
+            CloudPDF.ChangeItemPagesInsertBlank value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.insert
+    /// </summary>
+    [Serializable]
+    public struct PagesInsert
+    {
+        public PagesInsert(CloudPDF.ChangeItemPagesInsert value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesInsert Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesInsert(
+            CloudPDF.ChangeItemPagesInsert value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.restore
+    /// </summary>
+    [Serializable]
+    public struct PagesRestore
+    {
+        public PagesRestore(CloudPDF.ChangeItemPagesRestore value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesRestore Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesRestore(
+            CloudPDF.ChangeItemPagesRestore value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for attachments.create
+    /// </summary>
+    [Serializable]
+    public struct AttachmentsCreate
+    {
+        public AttachmentsCreate(CloudPDF.ChangeItemAttachmentsCreate value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemAttachmentsCreate Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.AttachmentsCreate(
+            CloudPDF.ChangeItemAttachmentsCreate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for attachments.delete
+    /// </summary>
+    [Serializable]
+    public struct AttachmentsDelete
+    {
+        public AttachmentsDelete(CloudPDF.ChangeItemAttachmentsDelete value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemAttachmentsDelete Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.AttachmentsDelete(
+            CloudPDF.ChangeItemAttachmentsDelete value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for attachments.restore
+    /// </summary>
+    [Serializable]
+    public struct AttachmentsRestore
+    {
+        public AttachmentsRestore(CloudPDF.ChangeItemAttachmentsRestore value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemAttachmentsRestore Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.AttachmentsRestore(
+            CloudPDF.ChangeItemAttachmentsRestore value
         ) => new(value);
     }
 }

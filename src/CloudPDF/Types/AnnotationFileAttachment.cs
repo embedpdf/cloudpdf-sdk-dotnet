@@ -111,7 +111,7 @@ public record AnnotationFileAttachment : IJsonOnDeserialized
     public required AnnotationFileAttachmentIcon Icon { get; set; }
 
     [JsonPropertyName("file")]
-    public AnnotationFileAttachmentFile? File { get; set; }
+    public AttachmentFileInfo? File { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

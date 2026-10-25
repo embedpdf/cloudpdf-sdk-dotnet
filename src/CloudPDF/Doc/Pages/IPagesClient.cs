@@ -16,14 +16,8 @@ public partial interface IPagesClient
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocPagesDelete200Response> DeleteAsync(
-        DeletePagesRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
     /// <summary>
-    /// A read, not a mutation: the source document is untouched and no event is published. Body is `{"pages": PageRef[]}`; the response body is the new PDF.
+    /// A read, not a mutation: the source document is untouched and no event is published. Body is `{"pages": PageRef[], "flatten"?: {"usage"?: "display" | "print"}, "includeAnnotations"?: boolean, "includeFormFields"?: boolean}`; the response body is the new PDF. With `flatten` the copy is the pages as they draw for `usage` (`"print"`: a print copy): the annotations and form fields painted in, nothing interactive left, layers in their state for the usage. A flattened copy takes `doc.download` or `doc.download.flattened`, and paints only what the caller may read; `includeAnnotations` and `includeFormFields` choose what it paints, and are refused without `flatten`.
     /// </summary>
     WithRawResponseTask<global::System.IO.Stream> ExtractAsync(
         ExtractPagesRequest request,
@@ -37,24 +31,6 @@ public partial interface IPagesClient
         CancellationToken cancellationToken = default
     );
 
-    /// <summary>
-    /// Multipart: a JSON `body` part `{"position"?: PagePosition, "resources": {"source": "&lt;key&gt;"}}` (position omitted → the end), and the standalone PDF whose pages are copied in as the part `resource:&lt;key&gt;`. The inserted copies get fresh page object numbers, returned in insertion order.
-    /// </summary>
-    WithRawResponseTask<DocPagesInsert200Response> InsertAsync(
-        InsertPagesRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Body is `{"size": {"width", "height"}, "count"?, "position"?}` — size in PDF points, count in [1, 100], `position` a `PagePosition` (omitted → the end).
-    /// </summary>
-    WithRawResponseTask<DocPagesInsertBlank200Response> InsertBlankAsync(
-        InsertBlankPagesRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
     WithRawResponseTask<DocPagesSetName200Response> SetNameAsync(
         SetNamePagesRequest request,
         RequestOptions? options = null,
@@ -63,18 +39,6 @@ public partial interface IPagesClient
 
     WithRawResponseTask<DocPagesRemoveName200Response> RemoveNameAsync(
         RemoveNamePagesRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    WithRawResponseTask<DocPagesReorder200Response> ReorderAsync(
-        DocPagesReorderRequest request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    WithRawResponseTask<DocPagesRotate200Response> RotateAsync(
-        RotatePagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

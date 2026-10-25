@@ -32,6 +32,9 @@ public record CacheDelta : IJsonOnDeserialized
     [JsonPropertyName("attachmentsVersion")]
     public int? AttachmentsVersion { get; set; }
 
+    [JsonPropertyName("outlineVersion")]
+    public int? OutlineVersion { get; set; }
+
     [JsonPropertyName("layerVersion")]
     public int? LayerVersion { get; set; }
 

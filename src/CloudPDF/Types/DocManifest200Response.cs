@@ -32,6 +32,9 @@ public record DocManifest200Response : IJsonOnDeserialized
     [JsonPropertyName("formsVersion")]
     public int? FormsVersion { get; set; }
 
+    [JsonPropertyName("outlineVersion")]
+    public int? OutlineVersion { get; set; }
+
     [JsonPropertyName("auditHead")]
     public required int AuditHead { get; set; }
 
