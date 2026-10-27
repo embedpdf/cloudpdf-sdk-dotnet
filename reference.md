@@ -170,6 +170,62 @@ await client.Doc.DownloadAsync(new DownloadDocRequest { DocId = "docId", LayerNa
 </dl>
 </details>
 
+<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">DownloadLinkAsync</a>(DocDownloadLinkRequest { ... }) -> WithRawResponseTask&lt;DocDownloadLink200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The link opens the layer as it is when created: once the layer changes, it answers 404, so create it right before handing it over. It downloads that one file and nothing else, and a password-protected document is checked when the link is created. Deployments that verify tokens with their own keys (JWKS) mint links on their backend: a doc token with `layer_name`, a `download: { docVersion, mode: "incremental" }` claim and a short `exp`, passed as `link` on the versioned download URL.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.DownloadLinkAsync(
+    new DocDownloadLinkRequest { DocId = "docId", LayerName = "layerName" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocDownloadLinkRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">ManifestAsync</a>(ManifestDocRequest { ... }) -> WithRawResponseTask&lt;DocManifest200Response&gt;</code></summary>
 <dl>
 <dd>
@@ -331,7 +387,7 @@ await client.Doc.TextAsync(
 <dl>
 <dd>
 
-Unauthenticated, but requires a browser Origin header, checked against the grant allowlist. Unknown, revoked, and disabled tokens are indistinguishable (404). Passphrase-protected grants return 422 SharePasswordRequired until `password` is supplied. Mounted only when the deployment can sign (HS256 mode).
+Unauthenticated, but requires a browser Origin header, checked against the grant allowlist. Unknown, revoked, and disabled tokens are indistinguishable (404). Passphrase-protected grants return 422 SharePasswordRequired until `password` is supplied. A link that asks its visitors who they are on open returns 422 VisitorIdentityRequired until the required answers are given; `error.details` carries `fields` (what the link asks), `missing`, `invalid`, `purpose` and `privacyUrl`. A link that asks before the first change issues the session at once with `visitor.identityRequest`, and writes answer 403 VisitorIdentityRequired with the same details until the visitor exchanges again with their answers. Answers that can not be taken answer 422 on any link. Mounted only when the deployment can sign (HS256 mode).
 </dd>
 </dl>
 </dd>
@@ -587,6 +643,62 @@ await client.Shares.UpdateAsync(
 <dd>
 
 **request:** `SharesUpdateRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">ArchiveAsync</a>(ArchiveSharesRequest { ... }) -> WithRawResponseTask&lt;SharesArchive200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Archiving is final: an archived link never exchanges again, and to share again you create a new link. Pausing (`disabled`) is the reversible stop. An archived link no longer counts as using its shared layer, so that layer can be deleted.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.ArchiveAsync(
+    new ArchiveSharesRequest { TenantId = "tenantId", ShareId = "shareId" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ArchiveSharesRequest` 
     
 </dd>
 </dl>
@@ -3571,6 +3683,212 @@ await client.Doc.Metadata.Custom.GetAsync(
 <dd>
 
 **request:** `GetCustomRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Documents Layers
+<details><summary><code>client.Documents.Layers.<a href="/src/CloudPDF/Documents/Layers/LayersClient.cs">ListAsync</a>(ListLayersRequest { ... }) -> WithRawResponseTask&lt;DocumentsLayersList200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Documents.Layers.ListAsync(new ListLayersRequest { TenantId = "tenantId", Id = "id" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListLayersRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Documents.Layers.<a href="/src/CloudPDF/Documents/Layers/LayersClient.cs">DeleteAsync</a>(DeleteLayersRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Documents.Layers.DeleteAsync(
+    new DeleteLayersRequest
+    {
+        TenantId = "tenantId",
+        Id = "id",
+        LayerName = "layerName",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DeleteLayersRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Shares Visitors
+<details><summary><code>client.Shares.Visitors.<a href="/src/CloudPDF/Shares/Visitors/VisitorsClient.cs">ListAsync</a>(ListVisitorsRequest { ... }) -> WithRawResponseTask&lt;SharesVisitorsList200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+An archived link's visitors are listed too.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.Visitors.ListAsync(
+    new ListVisitorsRequest { TenantId = "tenantId", ShareId = "shareId" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListVisitorsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Shares.Visitors.<a href="/src/CloudPDF/Shares/Visitors/VisitorsClient.cs">DeleteAsync</a>(DeleteVisitorsRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Their handle brings them back as a new visitor, who is asked again. Deleting a visitor already deleted changes nothing.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Shares.Visitors.DeleteAsync(
+    new DeleteVisitorsRequest
+    {
+        TenantId = "tenantId",
+        ShareId = "shareId",
+        VisitorId = "visitorId",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DeleteVisitorsRequest` 
     
 </dd>
 </dl>

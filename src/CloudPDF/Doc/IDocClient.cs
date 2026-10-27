@@ -34,6 +34,15 @@ public partial interface IDocClient
         CancellationToken cancellationToken = default
     );
 
+    /// <summary>
+    /// The link opens the layer as it is when created: once the layer changes, it answers 404, so create it right before handing it over. It downloads that one file and nothing else, and a password-protected document is checked when the link is created. Deployments that verify tokens with their own keys (JWKS) mint links on their backend: a doc token with `layer_name`, a `download: { docVersion, mode: "incremental" }` claim and a short `exp`, passed as `link` on the versioned download URL.
+    /// </summary>
+    WithRawResponseTask<DocDownloadLink200Response> DownloadLinkAsync(
+        DocDownloadLinkRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<DocManifest200Response> ManifestAsync(
         ManifestDocRequest request,
         RequestOptions? options = null,

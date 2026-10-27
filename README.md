@@ -218,25 +218,25 @@ This SDK uses forward-compatible enums that can handle unknown values gracefully
 using CloudPDF;
 
 // Using a built-in value
-var listDocumentsRequestState = ListDocumentsRequestState.Pending;
+var sharesCreateRequestLayerMode = SharesCreateRequestLayerMode.Shared;
 
 // Using a custom value
-var customListDocumentsRequestState = ListDocumentsRequestState.FromCustom("custom-value");
+var customSharesCreateRequestLayerMode = SharesCreateRequestLayerMode.FromCustom("custom-value");
 
 // Using in a switch statement
-switch (listDocumentsRequestState.Value)
+switch (sharesCreateRequestLayerMode.Value)
 {
-    case ListDocumentsRequestState.Values.Pending:
-        Console.WriteLine("Pending");
+    case SharesCreateRequestLayerMode.Values.Shared:
+        Console.WriteLine("Shared");
         break;
     default:
-        Console.WriteLine($"Unknown value: {listDocumentsRequestState.Value}");
+        Console.WriteLine($"Unknown value: {sharesCreateRequestLayerMode.Value}");
         break;
 }
 
 // Explicit casting
-string listDocumentsRequestStateString = (string)ListDocumentsRequestState.Pending;
-ListDocumentsRequestState listDocumentsRequestStateFromString = (ListDocumentsRequestState)"pending";
+string sharesCreateRequestLayerModeString = (string)SharesCreateRequestLayerMode.Shared;
+SharesCreateRequestLayerMode sharesCreateRequestLayerModeFromString = (SharesCreateRequestLayerMode)"shared";
 ```
 
 ## Contributing

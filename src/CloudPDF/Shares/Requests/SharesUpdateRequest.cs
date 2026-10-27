@@ -12,6 +12,21 @@ public record SharesUpdateRequest
     [JsonIgnore]
     public required string ShareId { get; set; }
 
+    [JsonPropertyName("layerMode")]
+    public SharesUpdateRequestLayerMode? LayerMode { get; set; }
+
+    [JsonPropertyName("layerName")]
+    public string? LayerName { get; set; }
+
+    [JsonPropertyName("keepVisitorLayers")]
+    public bool? KeepVisitorLayers { get; set; }
+
+    [JsonPropertyName("visitorIdleSeconds")]
+    public int? VisitorIdleSeconds { get; set; }
+
+    [JsonPropertyName("visitorIdentity")]
+    public SharesUpdateRequestVisitorIdentity? VisitorIdentity { get; set; }
+
     [JsonPropertyName("scope")]
     public IEnumerable<string>? Scope { get; set; }
 

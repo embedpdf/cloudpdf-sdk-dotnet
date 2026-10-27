@@ -1,4 +1,5 @@
 using CloudPDF.Core;
+using CloudPDF.Documents;
 using global::System.Text.Json;
 
 namespace CloudPDF;
@@ -10,7 +11,10 @@ public partial class DocumentsClient : IDocumentsClient
     internal DocumentsClient(RawClient client)
     {
         _client = client;
+        Layers = new LayersClient(_client);
     }
+
+    public ILayersClient Layers { get; }
 
     private async Task<WithRawResponse<DocumentsList200Response>> ListAsyncCore(
         ListDocumentsRequest request,

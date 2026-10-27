@@ -380,6 +380,128 @@ public partial class DocClient : IDocClient
         }
     }
 
+    private async Task<WithRawResponse<DocDownloadLink200Response>> DownloadLinkAsyncCore(
+        DocDownloadLinkRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 0)
+            .MergeAdditional(options?.AdditionalQueryParameters)
+            .Build();
+        var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
+            .Add("X-Document-Password", request.DocumentPassword)
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Post,
+                    Path = string.Format(
+                        "v1/docs/{0}/layers/{1}/download-link",
+                        ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName)
+                    ),
+                    Body = request,
+                    QueryString = _queryString,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                var responseData = JsonUtils.Deserialize<DocDownloadLink200Response>(responseBody)!;
+                return new WithRawResponse<DocDownloadLink200Response>()
+                {
+                    Data = responseData,
+                    RawResponse = new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new CloudPDFApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e,
+                    rawResponse: new CloudPDF.RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    }
+                );
+            }
+        }
+        {
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 404:
+                        throw new NotFoundError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                    case 501:
+                        throw new NotImplementedError(
+                            JsonUtils.Deserialize<EngineErrorPayload>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new CloudPDFApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody,
+                rawResponse: new CloudPDF.RawResponse()
+                {
+                    StatusCode = response.Raw.StatusCode,
+                    Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                    Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                }
+            );
+        }
+    }
+
     private async Task<WithRawResponse<DocManifest200Response>> ManifestAsyncCore(
         ManifestDocRequest request,
         RequestOptions? options = null,
@@ -737,6 +859,25 @@ public partial class DocClient : IDocClient
     {
         return new WithRawResponseTask<global::System.IO.Stream>(
             DownloadAsyncCore(request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// The link opens the layer as it is when created: once the layer changes, it answers 404, so create it right before handing it over. It downloads that one file and nothing else, and a password-protected document is checked when the link is created. Deployments that verify tokens with their own keys (JWKS) mint links on their backend: a doc token with `layer_name`, a `download: { docVersion, mode: "incremental" }` claim and a short `exp`, passed as `link` on the versioned download URL.
+    /// </summary>
+    /// <example><code>
+    /// await client.Doc.DownloadLinkAsync(
+    ///     new DocDownloadLinkRequest { DocId = "docId", LayerName = "layerName" }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<DocDownloadLink200Response> DownloadLinkAsync(
+        DocDownloadLinkRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<DocDownloadLink200Response>(
+            DownloadLinkAsyncCore(request, options, cancellationToken)
         );
     }
 

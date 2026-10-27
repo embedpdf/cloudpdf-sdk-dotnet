@@ -20,8 +20,20 @@ public record SharesCreate200ResponseShare : IJsonOnDeserialized
     [JsonPropertyName("docId")]
     public required string DocId { get; set; }
 
+    [JsonPropertyName("layerMode")]
+    public required SharesCreate200ResponseShareLayerMode LayerMode { get; set; }
+
     [JsonPropertyName("layerName")]
-    public required string LayerName { get; set; }
+    public string? LayerName { get; set; }
+
+    [JsonPropertyName("keepVisitorLayers")]
+    public required bool KeepVisitorLayers { get; set; }
+
+    [JsonPropertyName("visitorIdleSeconds")]
+    public double? VisitorIdleSeconds { get; set; }
+
+    [JsonPropertyName("visitorIdentity")]
+    public SharesCreate200ResponseShareVisitorIdentity? VisitorIdentity { get; set; }
 
     [JsonPropertyName("scope")]
     public IEnumerable<string> Scope { get; set; } = new List<string>();
@@ -37,6 +49,9 @@ public record SharesCreate200ResponseShare : IJsonOnDeserialized
 
     [JsonPropertyName("disabled")]
     public required bool Disabled { get; set; }
+
+    [JsonPropertyName("archivedAt")]
+    public double? ArchivedAt { get; set; }
 
     [JsonPropertyName("expiresAt")]
     public double? ExpiresAt { get; set; }

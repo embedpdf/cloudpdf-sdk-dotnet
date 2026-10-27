@@ -12,8 +12,20 @@ public record SharesCreateRequest
     [JsonPropertyName("docId")]
     public required string DocId { get; set; }
 
+    [JsonPropertyName("layerMode")]
+    public SharesCreateRequestLayerMode? LayerMode { get; set; }
+
     [JsonPropertyName("layerName")]
     public string? LayerName { get; set; }
+
+    [JsonPropertyName("keepVisitorLayers")]
+    public bool? KeepVisitorLayers { get; set; }
+
+    [JsonPropertyName("visitorIdleSeconds")]
+    public int? VisitorIdleSeconds { get; set; }
+
+    [JsonPropertyName("visitorIdentity")]
+    public SharesCreateRequestVisitorIdentity? VisitorIdentity { get; set; }
 
     [JsonPropertyName("scope")]
     public IEnumerable<string> Scope { get; set; } = new List<string>();

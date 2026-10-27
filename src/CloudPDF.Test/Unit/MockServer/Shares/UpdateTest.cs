@@ -22,7 +22,22 @@ public class UpdateTest : BaseMockServerTest
                 "id": "id",
                 "tenantId": "tenantId",
                 "docId": "docId",
+                "layerMode": "shared",
                 "layerName": "layerName",
+                "keepVisitorLayers": true,
+                "visitorIdleSeconds": 1.1,
+                "visitorIdentity": {
+                  "fields": {
+                    "displayName": "required",
+                    "email": "required",
+                    "title": "required",
+                    "organization": "required",
+                    "organizationalUnit": "required"
+                  },
+                  "ask": "on-open",
+                  "purpose": "x",
+                  "privacyUrl": "privacyUrl"
+                },
                 "scope": [
                   "scope",
                   "scope"
@@ -34,6 +49,7 @@ public class UpdateTest : BaseMockServerTest
                 "passwordProtected": true,
                 "sessionTtlSeconds": 1.1,
                 "disabled": true,
+                "archivedAt": 1.1,
                 "expiresAt": 1.1,
                 "exchangeCount": 1.1,
                 "lastExchangedAt": 1.1,
@@ -65,6 +81,11 @@ public class UpdateTest : BaseMockServerTest
             {
                 TenantId = "tenantId",
                 ShareId = "shareId",
+                LayerMode = null,
+                LayerName = null,
+                KeepVisitorLayers = null,
+                VisitorIdleSeconds = null,
+                VisitorIdentity = null,
                 Scope = null,
                 Origins = null,
                 Password = null,
@@ -89,7 +110,16 @@ public class UpdateTest : BaseMockServerTest
                 "id": "id",
                 "tenantId": "tenantId",
                 "docId": "docId",
+                "layerMode": "shared",
                 "layerName": "layerName",
+                "keepVisitorLayers": true,
+                "visitorIdleSeconds": 1.1,
+                "visitorIdentity": {
+                  "fields": {},
+                  "ask": "on-open",
+                  "purpose": "purpose",
+                  "privacyUrl": "privacyUrl"
+                },
                 "scope": [
                   "scope"
                 ],
@@ -99,6 +129,7 @@ public class UpdateTest : BaseMockServerTest
                 "passwordProtected": true,
                 "sessionTtlSeconds": 1.1,
                 "disabled": true,
+                "archivedAt": 1.1,
                 "expiresAt": 1.1,
                 "exchangeCount": 1.1,
                 "lastExchangedAt": 1.1,

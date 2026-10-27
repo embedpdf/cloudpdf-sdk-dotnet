@@ -18,6 +18,9 @@ public record ListSharesRequest
     [JsonIgnore]
     public string? DocId { get; set; }
 
+    [JsonIgnore]
+    public bool? Archived { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

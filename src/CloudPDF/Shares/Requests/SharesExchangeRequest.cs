@@ -12,6 +12,15 @@ public record SharesExchangeRequest
     [JsonPropertyName("password")]
     public string? Password { get; set; }
 
+    [JsonPropertyName("visitorHandle")]
+    public string? VisitorHandle { get; set; }
+
+    [JsonPropertyName("restart")]
+    public bool? Restart { get; set; }
+
+    [JsonPropertyName("visitorIdentity")]
+    public SharesExchangeRequestVisitorIdentity? VisitorIdentity { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

@@ -82,6 +82,12 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         Values.IdempotencyKeyReused
     );
 
+    public static readonly EngineErrorPayloadCode LayerDeleted = new(Values.LayerDeleted);
+
+    public static readonly EngineErrorPayloadCode VisitorIdentityRequired = new(
+        Values.VisitorIdentityRequired
+    );
+
     public EngineErrorPayloadCode(string value)
     {
         Value = value;
@@ -235,5 +241,9 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         public const string UndoUnavailable = "UndoUnavailable";
 
         public const string IdempotencyKeyReused = "IdempotencyKeyReused";
+
+        public const string LayerDeleted = "LayerDeleted";
+
+        public const string VisitorIdentityRequired = "VisitorIdentityRequired";
     }
 }

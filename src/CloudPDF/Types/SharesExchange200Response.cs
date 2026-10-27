@@ -20,6 +20,12 @@ public record SharesExchange200Response : IJsonOnDeserialized
     [JsonPropertyName("layerName")]
     public required string LayerName { get; set; }
 
+    [JsonPropertyName("layerMode")]
+    public required SharesExchange200ResponseLayerMode LayerMode { get; set; }
+
+    [JsonPropertyName("visitor")]
+    public required SharesExchange200ResponseVisitor Visitor { get; set; }
+
     [JsonPropertyName("expiresAt")]
     public required double ExpiresAt { get; set; }
 
