@@ -18,7 +18,22 @@ public class GetTest : BaseMockServerTest
                 "id": "id",
                 "tenantId": "tenantId",
                 "docId": "docId",
+                "layerMode": "shared",
                 "layerName": "layerName",
+                "keepVisitorLayers": true,
+                "visitorIdleSeconds": 1.1,
+                "visitorIdentity": {
+                  "fields": {
+                    "displayName": "required",
+                    "email": "required",
+                    "title": "required",
+                    "organization": "required",
+                    "organizationalUnit": "required"
+                  },
+                  "ask": "on-open",
+                  "purpose": "x",
+                  "privacyUrl": "privacyUrl"
+                },
                 "scope": [
                   "scope",
                   "scope"
@@ -30,6 +45,7 @@ public class GetTest : BaseMockServerTest
                 "passwordProtected": true,
                 "sessionTtlSeconds": 1.1,
                 "disabled": true,
+                "archivedAt": 1.1,
                 "expiresAt": 1.1,
                 "exchangeCount": 1.1,
                 "lastExchangedAt": 1.1,
@@ -69,7 +85,16 @@ public class GetTest : BaseMockServerTest
                 "id": "id",
                 "tenantId": "tenantId",
                 "docId": "docId",
+                "layerMode": "shared",
                 "layerName": "layerName",
+                "keepVisitorLayers": true,
+                "visitorIdleSeconds": 1.1,
+                "visitorIdentity": {
+                  "fields": {},
+                  "ask": "on-open",
+                  "purpose": "purpose",
+                  "privacyUrl": "privacyUrl"
+                },
                 "scope": [
                   "scope"
                 ],
@@ -79,6 +104,7 @@ public class GetTest : BaseMockServerTest
                 "passwordProtected": true,
                 "sessionTtlSeconds": 1.1,
                 "disabled": true,
+                "archivedAt": 1.1,
                 "expiresAt": 1.1,
                 "exchangeCount": 1.1,
                 "lastExchangedAt": 1.1,

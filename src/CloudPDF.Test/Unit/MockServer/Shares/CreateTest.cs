@@ -28,7 +28,22 @@ public class CreateTest : BaseMockServerTest
                 "id": "id",
                 "tenantId": "tenantId",
                 "docId": "docId",
+                "layerMode": "shared",
                 "layerName": "layerName",
+                "keepVisitorLayers": true,
+                "visitorIdleSeconds": 1.1,
+                "visitorIdentity": {
+                  "fields": {
+                    "displayName": "required",
+                    "email": "required",
+                    "title": "required",
+                    "organization": "required",
+                    "organizationalUnit": "required"
+                  },
+                  "ask": "on-open",
+                  "purpose": "x",
+                  "privacyUrl": "privacyUrl"
+                },
                 "scope": [
                   "scope",
                   "scope"
@@ -40,6 +55,7 @@ public class CreateTest : BaseMockServerTest
                 "passwordProtected": true,
                 "sessionTtlSeconds": 1.1,
                 "disabled": true,
+                "archivedAt": 1.1,
                 "expiresAt": 1.1,
                 "exchangeCount": 1.1,
                 "lastExchangedAt": 1.1,
@@ -71,7 +87,11 @@ public class CreateTest : BaseMockServerTest
             {
                 TenantId = "tenantId",
                 DocId = "docId",
+                LayerMode = null,
                 LayerName = null,
+                KeepVisitorLayers = null,
+                VisitorIdleSeconds = null,
+                VisitorIdentity = null,
                 Scope = new List<string>() { "scope", "scope" },
                 Origins = null,
                 Password = null,
@@ -100,7 +120,16 @@ public class CreateTest : BaseMockServerTest
                 "id": "id",
                 "tenantId": "tenantId",
                 "docId": "docId",
+                "layerMode": "shared",
                 "layerName": "layerName",
+                "keepVisitorLayers": true,
+                "visitorIdleSeconds": 1.1,
+                "visitorIdentity": {
+                  "fields": {},
+                  "ask": "on-open",
+                  "purpose": "purpose",
+                  "privacyUrl": "privacyUrl"
+                },
                 "scope": [
                   "scope"
                 ],
@@ -110,6 +139,7 @@ public class CreateTest : BaseMockServerTest
                 "passwordProtected": true,
                 "sessionTtlSeconds": 1.1,
                 "disabled": true,
+                "archivedAt": 1.1,
                 "expiresAt": 1.1,
                 "exchangeCount": 1.1,
                 "lastExchangedAt": 1.1,

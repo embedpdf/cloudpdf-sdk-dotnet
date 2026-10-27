@@ -23,6 +23,30 @@ public class ExchangeTest : BaseMockServerTest
               "token": "token",
               "docId": "docId",
               "layerName": "layerName",
+              "layerMode": "shared",
+              "visitor": {
+                "handle": "handle",
+                "keep": true,
+                "identityRequest": {
+                  "fields": {
+                    "displayName": "required",
+                    "email": "required",
+                    "title": "required",
+                    "organization": "required",
+                    "organizationalUnit": "required"
+                  },
+                  "missing": [
+                    "displayName",
+                    "displayName"
+                  ],
+                  "invalid": [
+                    "displayName",
+                    "displayName"
+                  ],
+                  "purpose": "purpose",
+                  "privacyUrl": "privacyUrl"
+                }
+              },
               "expiresAt": 1.1
             }
             """;
@@ -44,7 +68,14 @@ public class ExchangeTest : BaseMockServerTest
             );
 
         var response = await Client.Shares.ExchangeAsync(
-            new SharesExchangeRequest { ShareToken = "shareToken", Password = null }
+            new SharesExchangeRequest
+            {
+                ShareToken = "shareToken",
+                Password = null,
+                VisitorHandle = null,
+                Restart = null,
+                VisitorIdentity = null,
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
@@ -63,6 +94,22 @@ public class ExchangeTest : BaseMockServerTest
               "token": "token",
               "docId": "docId",
               "layerName": "layerName",
+              "layerMode": "shared",
+              "visitor": {
+                "handle": "handle",
+                "keep": true,
+                "identityRequest": {
+                  "fields": {},
+                  "missing": [
+                    "displayName"
+                  ],
+                  "invalid": [
+                    "displayName"
+                  ],
+                  "purpose": "purpose",
+                  "privacyUrl": "privacyUrl"
+                }
+              },
               "expiresAt": 1.1
             }
             """;

@@ -17,6 +17,9 @@ public record AdminErrorPayloadError : IJsonOnDeserialized
     [JsonPropertyName("message")]
     public required string Message { get; set; }
 
+    [JsonPropertyName("details")]
+    public Dictionary<string, object?>? Details { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

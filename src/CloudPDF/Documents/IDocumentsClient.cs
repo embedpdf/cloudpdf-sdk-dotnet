@@ -1,7 +1,10 @@
+using CloudPDF.Documents;
+
 namespace CloudPDF;
 
 public partial interface IDocumentsClient
 {
+    public ILayersClient Layers { get; }
     WithRawResponseTask<DocumentsList200Response> ListAsync(
         ListDocumentsRequest request,
         RequestOptions? options = null,
