@@ -64,8 +64,6 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
 
     public static readonly EngineErrorPayloadCode ProtectedDocument = new(Values.ProtectedDocument);
 
-    public static readonly EngineErrorPayloadCode StaleBase = new(Values.StaleBase);
-
     public static readonly EngineErrorPayloadCode PayloadTooLarge = new(Values.PayloadTooLarge);
 
     public static readonly EngineErrorPayloadCode ObjectNumberUnavailable = new(
@@ -227,8 +225,6 @@ public readonly record struct EngineErrorPayloadCode : IStringEnum
         public const string SignatureRefused = "SignatureRefused";
 
         public const string ProtectedDocument = "ProtectedDocument";
-
-        public const string StaleBase = "StaleBase";
 
         public const string PayloadTooLarge = "PayloadTooLarge";
 

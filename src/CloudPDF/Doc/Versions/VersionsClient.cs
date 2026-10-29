@@ -35,8 +35,9 @@ public partial class VersionsClient : IVersionsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format(
-                        "v1/docs/{0}/versions",
-                        ValueConvert.ToPathParameterString(request.DocId)
+                        "v1/docs/{0}/layers/{1}/versions",
+                        ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -147,8 +148,9 @@ public partial class VersionsClient : IVersionsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format(
-                        "v1/docs/{0}/versions/analysis/{1}",
+                        "v1/docs/{0}/layers/{1}/versions/analysis/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.Sha)
                     ),
                     QueryString = _queryString,
@@ -269,8 +271,9 @@ public partial class VersionsClient : IVersionsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format(
-                        "v1/docs/{0}/versions/download/{1}",
+                        "v1/docs/{0}/layers/{1}/versions/download/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.Sha)
                     ),
                     QueryString = _queryString,
@@ -356,8 +359,9 @@ public partial class VersionsClient : IVersionsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format(
-                        "v1/docs/{0}/versions/revisions/{1}/{2}",
+                        "v1/docs/{0}/layers/{1}/versions/revisions/{2}/{3}",
                         ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.Sha),
                         ValueConvert.ToPathParameterString(request.Index)
                     ),
@@ -444,8 +448,9 @@ public partial class VersionsClient : IVersionsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format(
-                        "v1/docs/{0}/versions/signatures/{1}",
+                        "v1/docs/{0}/layers/{1}/versions/signatures/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.Sha)
                     ),
                     QueryString = _queryString,
@@ -554,8 +559,9 @@ public partial class VersionsClient : IVersionsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format(
-                        "v1/docs/{0}/versions/signatures/{1}/{2}/contents",
+                        "v1/docs/{0}/layers/{1}/versions/signatures/{2}/{3}/contents",
                         ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.Sha),
                         ValueConvert.ToPathParameterString(request.FieldKey)
                     ),
@@ -642,8 +648,9 @@ public partial class VersionsClient : IVersionsClient
                 {
                     Method = HttpMethod.Get,
                     Path = string.Format(
-                        "v1/docs/{0}/versions/signatures/{1}/{2}/digest/{3}",
+                        "v1/docs/{0}/layers/{1}/versions/signatures/{2}/{3}/digest/{4}",
                         ValueConvert.ToPathParameterString(request.DocId),
+                        ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.Sha),
                         ValueConvert.ToPathParameterString(request.FieldKey),
                         ValueConvert.ToPathParameterString(request.Algorithm)
@@ -710,10 +717,12 @@ public partial class VersionsClient : IVersionsClient
     }
 
     /// <summary>
-    /// Every completed signature publishes a new version. Never cached: the list grows.
+    /// Every completed signature makes a new version of its layer; another layer's versions are never listed. Never cached: the list grows.
     /// </summary>
     /// <example><code>
-    /// await client.Doc.Versions.ListAsync(new ListVersionsRequest { DocId = "docId" });
+    /// await client.Doc.Versions.ListAsync(
+    ///     new ListVersionsRequest { DocId = "docId", LayerName = "layerName" }
+    /// );
     /// </code></example>
     public WithRawResponseTask<DocVersionsList200Response> ListAsync(
         ListVersionsRequest request,
@@ -727,11 +736,16 @@ public partial class VersionsClient : IVersionsClient
     }
 
     /// <summary>
-    /// Exactly one of `since.signature` / `since.revision`; `until=&lt;revision&gt;` defaults to the last. The same answer for every layer and every caller.
+    /// Exactly one of `since.signature` / `since.revision`; `until=&lt;revision&gt;` defaults to the last. The same answer for every caller.
     /// </summary>
     /// <example><code>
     /// await client.Doc.Versions.AnalysisAsync(
-    ///     new AnalysisVersionsRequest { DocId = "docId", Sha = "sha" }
+    ///     new AnalysisVersionsRequest
+    ///     {
+    ///         DocId = "docId",
+    ///         LayerName = "layerName",
+    ///         Sha = "sha",
+    ///     }
     /// );
     /// </code></example>
     public WithRawResponseTask<DocVersionsAnalysis200Response> AnalysisAsync(
@@ -747,7 +761,12 @@ public partial class VersionsClient : IVersionsClient
 
     /// <example><code>
     /// await client.Doc.Versions.DownloadAsync(
-    ///     new DownloadVersionsRequest { DocId = "docId", Sha = "sha" }
+    ///     new DownloadVersionsRequest
+    ///     {
+    ///         DocId = "docId",
+    ///         LayerName = "layerName",
+    ///         Sha = "sha",
+    ///     }
     /// );
     /// </code></example>
     public WithRawResponseTask<global::System.IO.Stream> DownloadAsync(
@@ -766,6 +785,7 @@ public partial class VersionsClient : IVersionsClient
     ///     new RevisionVersionsRequest
     ///     {
     ///         DocId = "docId",
+    ///         LayerName = "layerName",
     ///         Sha = "sha",
     ///         Index = 1,
     ///     }
@@ -784,7 +804,12 @@ public partial class VersionsClient : IVersionsClient
 
     /// <example><code>
     /// await client.Doc.Versions.SignaturesAsync(
-    ///     new SignaturesVersionsRequest { DocId = "docId", Sha = "sha" }
+    ///     new SignaturesVersionsRequest
+    ///     {
+    ///         DocId = "docId",
+    ///         LayerName = "layerName",
+    ///         Sha = "sha",
+    ///     }
     /// );
     /// </code></example>
     public WithRawResponseTask<DocVersionsSignatures200Response> SignaturesAsync(
@@ -806,6 +831,7 @@ public partial class VersionsClient : IVersionsClient
     ///     new SignatureContentsVersionsRequest
     ///     {
     ///         DocId = "docId",
+    ///         LayerName = "layerName",
     ///         Sha = "sha",
     ///         FieldKey = "fieldKey",
     ///     }
@@ -830,6 +856,7 @@ public partial class VersionsClient : IVersionsClient
     ///     new SignatureDigestVersionsRequest
     ///     {
     ///         DocId = "docId",
+    ///         LayerName = "layerName",
     ///         Sha = "sha",
     ///         FieldKey = "fieldKey",
     ///         Algorithm = SignatureDigestVersionsRequestAlgorithm.Sha1,

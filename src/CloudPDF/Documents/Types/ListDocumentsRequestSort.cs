@@ -4,15 +4,17 @@ using global::System.Text.Json.Serialization;
 
 namespace CloudPDF;
 
-[JsonConverter(
-    typeof(TokensIssueRequestTenantScopeItemZero.TokensIssueRequestTenantScopeItemZeroSerializer)
-)]
+[JsonConverter(typeof(ListDocumentsRequestSort.ListDocumentsRequestSortSerializer))]
 [Serializable]
-public readonly record struct TokensIssueRequestTenantScopeItemZero : IStringEnum
+public readonly record struct ListDocumentsRequestSort : IStringEnum
 {
-    public static readonly TokensIssueRequestTenantScopeItemZero All = new(Values.All);
+    public static readonly ListDocumentsRequestSort CreatedAt = new(Values.CreatedAt);
 
-    public TokensIssueRequestTenantScopeItemZero(string value)
+    public static readonly ListDocumentsRequestSort Name = new(Values.Name);
+
+    public static readonly ListDocumentsRequestSort Size = new(Values.Size);
+
+    public ListDocumentsRequestSort(string value)
     {
         Value = value;
     }
@@ -25,9 +27,9 @@ public readonly record struct TokensIssueRequestTenantScopeItemZero : IStringEnu
     /// <summary>
     /// Create a string enum with the given value.
     /// </summary>
-    public static TokensIssueRequestTenantScopeItemZero FromCustom(string value)
+    public static ListDocumentsRequestSort FromCustom(string value)
     {
-        return new TokensIssueRequestTenantScopeItemZero(value);
+        return new ListDocumentsRequestSort(value);
     }
 
     public bool Equals(string? other)
@@ -43,22 +45,19 @@ public readonly record struct TokensIssueRequestTenantScopeItemZero : IStringEnu
         return Value;
     }
 
-    public static bool operator ==(TokensIssueRequestTenantScopeItemZero value1, string value2) =>
+    public static bool operator ==(ListDocumentsRequestSort value1, string value2) =>
         value1.Value.Equals(value2);
 
-    public static bool operator !=(TokensIssueRequestTenantScopeItemZero value1, string value2) =>
+    public static bool operator !=(ListDocumentsRequestSort value1, string value2) =>
         !value1.Value.Equals(value2);
 
-    public static explicit operator string(TokensIssueRequestTenantScopeItemZero value) =>
-        value.Value;
+    public static explicit operator string(ListDocumentsRequestSort value) => value.Value;
 
-    public static explicit operator TokensIssueRequestTenantScopeItemZero(string value) =>
-        new(value);
+    public static explicit operator ListDocumentsRequestSort(string value) => new(value);
 
-    internal class TokensIssueRequestTenantScopeItemZeroSerializer
-        : JsonConverter<TokensIssueRequestTenantScopeItemZero>
+    internal class ListDocumentsRequestSortSerializer : JsonConverter<ListDocumentsRequestSort>
     {
-        public override TokensIssueRequestTenantScopeItemZero Read(
+        public override ListDocumentsRequestSort Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -69,19 +68,19 @@ public readonly record struct TokensIssueRequestTenantScopeItemZero : IStringEnu
                 ?? throw new global::System.Exception(
                     "The JSON value could not be read as a string."
                 );
-            return new TokensIssueRequestTenantScopeItemZero(stringValue);
+            return new ListDocumentsRequestSort(stringValue);
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            TokensIssueRequestTenantScopeItemZero value,
+            ListDocumentsRequestSort value,
             JsonSerializerOptions options
         )
         {
             writer.WriteStringValue(value.Value);
         }
 
-        public override TokensIssueRequestTenantScopeItemZero ReadAsPropertyName(
+        public override ListDocumentsRequestSort ReadAsPropertyName(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -92,12 +91,12 @@ public readonly record struct TokensIssueRequestTenantScopeItemZero : IStringEnu
                 ?? throw new global::System.Exception(
                     "The JSON property name could not be read as a string."
                 );
-            return new TokensIssueRequestTenantScopeItemZero(stringValue);
+            return new ListDocumentsRequestSort(stringValue);
         }
 
         public override void WriteAsPropertyName(
             Utf8JsonWriter writer,
-            TokensIssueRequestTenantScopeItemZero value,
+            ListDocumentsRequestSort value,
             JsonSerializerOptions options
         )
         {
@@ -111,6 +110,10 @@ public readonly record struct TokensIssueRequestTenantScopeItemZero : IStringEnu
     [Serializable]
     public static class Values
     {
-        public const string All = "*";
+        public const string CreatedAt = "createdAt";
+
+        public const string Name = "name";
+
+        public const string Size = "size";
     }
 }

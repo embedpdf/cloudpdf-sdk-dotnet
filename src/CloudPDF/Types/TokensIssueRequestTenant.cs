@@ -1,7 +1,6 @@
 using CloudPDF.Core;
 using global::System.Text.Json;
 using global::System.Text.Json.Serialization;
-using OneOf;
 
 namespace CloudPDF;
 
@@ -16,12 +15,7 @@ public record TokensIssueRequestTenant : IJsonOnDeserialized
     public required string Sub { get; set; }
 
     [JsonPropertyName("scope")]
-    public IEnumerable<
-        OneOf<TokensIssueRequestTenantScopeItemZero, TokensIssueRequestTenantScopeItemOne>
-    > Scope { get; set; } =
-        new List<
-            OneOf<TokensIssueRequestTenantScopeItemZero, TokensIssueRequestTenantScopeItemOne>
-        >();
+    public IEnumerable<string> Scope { get; set; } = new List<string>();
 
     [JsonPropertyName("expiresIn")]
     public required int ExpiresIn { get; set; }

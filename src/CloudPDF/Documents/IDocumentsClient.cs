@@ -23,6 +23,15 @@ public partial interface IDocumentsClient
         CancellationToken cancellationToken = default
     );
 
+    /// <summary>
+    /// A document that is being deleted answers 404.
+    /// </summary>
+    WithRawResponseTask<DocumentsUpdate200Response> UpdateAsync(
+        DocumentsUpdateRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask<DocumentsCommit200Response> CommitAsync(
         DocumentsCommitRequest request,
         RequestOptions? options = null,

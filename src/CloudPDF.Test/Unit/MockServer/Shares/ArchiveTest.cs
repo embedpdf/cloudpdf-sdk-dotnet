@@ -34,6 +34,15 @@ public class ArchiveTest : BaseMockServerTest
                   "purpose": "x",
                   "privacyUrl": "privacyUrl"
                 },
+                "identity": {
+                  "userId": "x",
+                  "displayName": "x",
+                  "email": "x",
+                  "title": "x",
+                  "organization": "x",
+                  "organizationalUnit": "x",
+                  "groupId": "x"
+                },
                 "scope": [
                   "scope",
                   "scope"
@@ -94,6 +103,15 @@ public class ArchiveTest : BaseMockServerTest
                   "ask": "on-open",
                   "purpose": "purpose",
                   "privacyUrl": "privacyUrl"
+                },
+                "identity": {
+                  "userId": "userId",
+                  "displayName": "displayName",
+                  "email": "email",
+                  "title": "title",
+                  "organization": "organization",
+                  "organizationalUnit": "organizationalUnit",
+                  "groupId": "groupId"
                 },
                 "scope": [
                   "scope"

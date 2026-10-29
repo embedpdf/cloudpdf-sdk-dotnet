@@ -38,6 +38,7 @@ public partial class CloudPDFClient : ICloudPDFClient
         Shares = new SharesClient(_client);
         Tenants = new TenantsClient(_client);
         Documents = new DocumentsClient(_client);
+        Folders = new FoldersClient(_client);
         Tokens = new TokensClient(_client);
     }
 
@@ -50,6 +51,8 @@ public partial class CloudPDFClient : ICloudPDFClient
     public ITenantsClient Tenants { get; }
 
     public IDocumentsClient Documents { get; }
+
+    public IFoldersClient Folders { get; }
 
     public ITokensClient Tokens { get; }
 }

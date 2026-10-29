@@ -1154,6 +1154,67 @@ await client.Documents.DeleteAsync(new DeleteDocumentsRequest { TenantId = "tena
 </dl>
 </details>
 
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">UpdateAsync</a>(DocumentsUpdateRequest { ... }) -> WithRawResponseTask&lt;DocumentsUpdate200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A document that is being deleted answers 404.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Documents.UpdateAsync(
+    new DocumentsUpdateRequest
+    {
+        TenantId = "tenantId",
+        Id = "id",
+        Name = "name",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DocumentsUpdateRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">CommitAsync</a>(DocumentsCommitRequest { ... }) -> WithRawResponseTask&lt;DocumentsCommit200Response&gt;</code></summary>
 <dl>
 <dd>
@@ -1441,6 +1502,316 @@ await client.Documents.InitAsync(
 <dd>
 
 **request:** `DocumentsInitRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Folders
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">ListAsync</a>(ListFoldersRequest { ... }) -> WithRawResponseTask&lt;FoldersList200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Folders.ListAsync(new ListFoldersRequest { TenantId = "tenantId" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListFoldersRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">CreateAsync</a>(FoldersCreateRequest { ... }) -> WithRawResponseTask&lt;FoldersCreate200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+409 Conflict carries `details.reason`: `name-taken` (a sibling has the name, ignoring case; `details.name`) or `too-deep` (folders nest at most 100 levels; `details.maxDepth`). 404 when the parent folder does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Folders.CreateAsync(new FoldersCreateRequest { TenantId = "tenantId", Name = "name" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `FoldersCreateRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">GetAsync</a>(GetFoldersRequest { ... }) -> WithRawResponseTask&lt;FoldersGet200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Folders.GetAsync(
+    new GetFoldersRequest { TenantId = "tenantId", FolderId = "folderId" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetFoldersRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">DeleteAsync</a>(DeleteFoldersRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Without recursive, a folder with anything inside is refused: 409 Conflict with `details.reason` `not-empty` and what it holds, counted over every level below, in `details.folders` and `details.documents`. With recursive=true, the folder and every folder under it go at once, and every document in them stops opening, leaves every list and stops answering its share links at once; their stored files and links are removed in the background. Uploads into those folders that have not committed cannot commit.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Folders.DeleteAsync(
+    new DeleteFoldersRequest { TenantId = "tenantId", FolderId = "folderId" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DeleteFoldersRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">UpdateAsync</a>(FoldersUpdateRequest { ... }) -> WithRawResponseTask&lt;FoldersUpdate200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+409 Conflict with `details.reason` `name-taken` when a sibling has the name, ignoring case.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Folders.UpdateAsync(
+    new FoldersUpdateRequest
+    {
+        TenantId = "tenantId",
+        FolderId = "folderId",
+        Name = "name",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `FoldersUpdateRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">MoveIntoAsync</a>(FoldersMoveIntoRequest { ... }) -> WithRawResponseTask</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Up to 1,000 ids in total. A folder moves with everything in it. 404 NotFound names the ids that do not exist or are being deleted in `details.documentIds` and `details.folderIds`. 409 Conflict carries `details.reason`: `cycle` (the destination is a moved folder or inside one; `details.folderId`), `too-deep` (the move would nest folders deeper than 100 levels; `details.maxDepth`) or `name-taken` (a moved folder's name is taken in the destination, ignoring case; `details.name`).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Folders.MoveIntoAsync(
+    new FoldersMoveIntoRequest { TenantId = "tenantId", FolderId = "folderId" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `FoldersMoveIntoRequest` 
     
 </dd>
 </dl>
@@ -3119,7 +3490,7 @@ await client.Doc.Signatures.CancelAsync(
 <dl>
 <dd>
 
-`cms` is the detached CMS over the prepared digest, base64. `expectedVersion` must be what prepare returned. Idempotent by signing id: the same CMS again answers `already-completed`. Every layer of the document then sits over the new version; refetch the manifest after a completion.
+`cms` is the detached CMS over the prepared digest, base64. `expectedVersion` must be what prepare returned. Idempotent by signing id: the same CMS again answers `already-completed`. The new version is the layer's own: only this layer moves to it, and the document and every other layer stay as they were. Refetch the manifest after a completion.
 </dd>
 </dl>
 </dd>
@@ -3242,7 +3613,7 @@ await client.Doc.Signatures.AnalysisAsync(
 <dl>
 <dd>
 
-Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '<key>' }`, and that PDF as the part `resource:<key>`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). A layer behind the document head cannot sign (StaleBase).
+Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '<key>' }`, and that PDF as the part `resource:<key>`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). The signature is made over the layer's own base: the upload, or the version its last signature made.
 </dd>
 </dl>
 </dd>
@@ -3299,7 +3670,7 @@ await client.Doc.Signatures.PrepareAsync(
 <dl>
 <dd>
 
-Every completed signature publishes a new version. Never cached: the list grows.
+Every completed signature makes a new version of its layer; another layer's versions are never listed. Never cached: the list grows.
 </dd>
 </dl>
 </dd>
@@ -3314,7 +3685,9 @@ Every completed signature publishes a new version. Never cached: the list grows.
 <dd>
 
 ```csharp
-await client.Doc.Versions.ListAsync(new ListVersionsRequest { DocId = "docId" });
+await client.Doc.Versions.ListAsync(
+    new ListVersionsRequest { DocId = "docId", LayerName = "layerName" }
+);
 ```
 </dd>
 </dl>
@@ -3353,7 +3726,7 @@ await client.Doc.Versions.ListAsync(new ListVersionsRequest { DocId = "docId" })
 <dl>
 <dd>
 
-Exactly one of `since.signature` / `since.revision`; `until=<revision>` defaults to the last. The same answer for every layer and every caller.
+Exactly one of `since.signature` / `since.revision`; `until=<revision>` defaults to the last. The same answer for every caller.
 </dd>
 </dl>
 </dd>
@@ -3369,7 +3742,12 @@ Exactly one of `since.signature` / `since.revision`; `until=<revision>` defaults
 
 ```csharp
 await client.Doc.Versions.AnalysisAsync(
-    new AnalysisVersionsRequest { DocId = "docId", Sha = "sha" }
+    new AnalysisVersionsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Sha = "sha",
+    }
 );
 ```
 </dd>
@@ -3411,7 +3789,12 @@ await client.Doc.Versions.AnalysisAsync(
 
 ```csharp
 await client.Doc.Versions.DownloadAsync(
-    new DownloadVersionsRequest { DocId = "docId", Sha = "sha" }
+    new DownloadVersionsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Sha = "sha",
+    }
 );
 ```
 </dd>
@@ -3456,6 +3839,7 @@ await client.Doc.Versions.RevisionAsync(
     new RevisionVersionsRequest
     {
         DocId = "docId",
+        LayerName = "layerName",
         Sha = "sha",
         Index = 1,
     }
@@ -3500,7 +3884,12 @@ await client.Doc.Versions.RevisionAsync(
 
 ```csharp
 await client.Doc.Versions.SignaturesAsync(
-    new SignaturesVersionsRequest { DocId = "docId", Sha = "sha" }
+    new SignaturesVersionsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Sha = "sha",
+    }
 );
 ```
 </dd>
@@ -3559,6 +3948,7 @@ await client.Doc.Versions.SignatureContentsAsync(
     new SignatureContentsVersionsRequest
     {
         DocId = "docId",
+        LayerName = "layerName",
         Sha = "sha",
         FieldKey = "fieldKey",
     }
@@ -3620,6 +4010,7 @@ await client.Doc.Versions.SignatureDigestAsync(
     new SignatureDigestVersionsRequest
     {
         DocId = "docId",
+        LayerName = "layerName",
         Sha = "sha",
         FieldKey = "fieldKey",
         Algorithm = SignatureDigestVersionsRequestAlgorithm.Sha1,

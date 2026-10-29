@@ -38,6 +38,15 @@ public class UpdateTest : BaseMockServerTest
                   "purpose": "x",
                   "privacyUrl": "privacyUrl"
                 },
+                "identity": {
+                  "userId": "x",
+                  "displayName": "x",
+                  "email": "x",
+                  "title": "x",
+                  "organization": "x",
+                  "organizationalUnit": "x",
+                  "groupId": "x"
+                },
                 "scope": [
                   "scope",
                   "scope"
@@ -86,6 +95,7 @@ public class UpdateTest : BaseMockServerTest
                 KeepVisitorLayers = null,
                 VisitorIdleSeconds = null,
                 VisitorIdentity = null,
+                Identity = null,
                 Scope = null,
                 Origins = null,
                 Password = null,
@@ -119,6 +129,15 @@ public class UpdateTest : BaseMockServerTest
                   "ask": "on-open",
                   "purpose": "purpose",
                   "privacyUrl": "privacyUrl"
+                },
+                "identity": {
+                  "userId": "userId",
+                  "displayName": "displayName",
+                  "email": "email",
+                  "title": "title",
+                  "organization": "organization",
+                  "organizationalUnit": "organizationalUnit",
+                  "groupId": "groupId"
                 },
                 "scope": [
                   "scope"

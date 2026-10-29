@@ -35,6 +35,15 @@ public class ListTest : BaseMockServerTest
                     "purpose": "x",
                     "privacyUrl": "privacyUrl"
                   },
+                  "identity": {
+                    "userId": "x",
+                    "displayName": "x",
+                    "email": "x",
+                    "title": "x",
+                    "organization": "x",
+                    "organizationalUnit": "x",
+                    "groupId": "x"
+                  },
                   "scope": [
                     "scope",
                     "scope"
@@ -73,6 +82,15 @@ public class ListTest : BaseMockServerTest
                     "ask": "on-open",
                     "purpose": "x",
                     "privacyUrl": "privacyUrl"
+                  },
+                  "identity": {
+                    "userId": "x",
+                    "displayName": "x",
+                    "email": "x",
+                    "title": "x",
+                    "organization": "x",
+                    "organizationalUnit": "x",
+                    "groupId": "x"
                   },
                   "scope": [
                     "scope",
@@ -136,6 +154,7 @@ public class ListTest : BaseMockServerTest
                     "fields": {},
                     "ask": "on-open"
                   },
+                  "identity": {},
                   "scope": [
                     "scope"
                   ],

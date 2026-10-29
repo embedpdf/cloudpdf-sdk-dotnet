@@ -25,6 +25,8 @@ public class InitTest : BaseMockServerTest
               "document": {
                 "id": "id",
                 "tenantId": "tenantId",
+                "name": "name",
+                "folderId": "folderId",
                 "state": "pending",
                 "baseSha": "baseSha",
                 "storageSizeBytes": 1.1,
@@ -78,6 +80,8 @@ public class InitTest : BaseMockServerTest
                 TenantId = "tenantId",
                 ContentLength = 1,
                 ContentSha256 = "contentSha256",
+                Name = null,
+                FolderId = null,
                 Metadata = null,
                 IdempotencyKey = null,
                 DedupMode = null,
@@ -105,6 +109,8 @@ public class InitTest : BaseMockServerTest
               "document": {
                 "id": "id",
                 "tenantId": "tenantId",
+                "name": "name",
+                "folderId": "folderId",
                 "state": "pending",
                 "baseSha": "baseSha",
                 "storageSizeBytes": 1.1,

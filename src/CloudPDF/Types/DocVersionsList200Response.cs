@@ -11,8 +11,8 @@ public record DocVersionsList200Response : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("head")]
-    public required string Head { get; set; }
+    [JsonPropertyName("baseSha")]
+    public required string BaseSha { get; set; }
 
     [JsonPropertyName("versions")]
     public IEnumerable<DocVersionsList200ResponseVersionsItem> Versions { get; set; } =

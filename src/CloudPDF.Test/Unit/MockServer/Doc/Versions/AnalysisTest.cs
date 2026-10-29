@@ -104,7 +104,7 @@ public class AnalysisTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/versions/analysis/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/analysis/sha")
                     .UsingGet()
             )
             .RespondWith(
@@ -115,7 +115,12 @@ public class AnalysisTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Versions.AnalysisAsync(
-            new AnalysisVersionsRequest { DocId = "docId", Sha = "sha" }
+            new AnalysisVersionsRequest
+            {
+                DocId = "docId",
+                LayerName = "layerName",
+                Sha = "sha",
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
@@ -192,7 +197,7 @@ public class AnalysisTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/versions/analysis/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/analysis/sha")
                     .UsingGet()
             )
             .RespondWith(
@@ -203,7 +208,12 @@ public class AnalysisTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Versions.AnalysisAsync(
-            new AnalysisVersionsRequest { DocId = "docId", Sha = "sha" }
+            new AnalysisVersionsRequest
+            {
+                DocId = "docId",
+                LayerName = "layerName",
+                Sha = "sha",
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

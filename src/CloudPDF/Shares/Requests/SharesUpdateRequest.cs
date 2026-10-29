@@ -27,6 +27,9 @@ public record SharesUpdateRequest
     [JsonPropertyName("visitorIdentity")]
     public SharesUpdateRequestVisitorIdentity? VisitorIdentity { get; set; }
 
+    [JsonPropertyName("identity")]
+    public Identity? Identity { get; set; }
+
     [JsonPropertyName("scope")]
     public IEnumerable<string>? Scope { get; set; }
 

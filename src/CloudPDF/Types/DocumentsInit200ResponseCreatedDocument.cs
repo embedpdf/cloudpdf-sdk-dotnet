@@ -17,6 +17,15 @@ public record DocumentsInit200ResponseCreatedDocument : IJsonOnDeserialized
     [JsonPropertyName("tenantId")]
     public required string TenantId { get; set; }
 
+    [JsonPropertyName("name")]
+    public required string Name { get; set; }
+
+    /// <summary>
+    /// The folder the document is in, or root.
+    /// </summary>
+    [JsonPropertyName("folderId")]
+    public required string FolderId { get; set; }
+
     [JsonPropertyName("state")]
     public required DocumentsInit200ResponseCreatedDocumentState State { get; set; }
 

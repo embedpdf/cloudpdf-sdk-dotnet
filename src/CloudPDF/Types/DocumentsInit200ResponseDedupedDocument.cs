@@ -17,6 +17,15 @@ public record DocumentsInit200ResponseDedupedDocument : IJsonOnDeserialized
     [JsonPropertyName("tenantId")]
     public required string TenantId { get; set; }
 
+    [JsonPropertyName("name")]
+    public required string Name { get; set; }
+
+    /// <summary>
+    /// The folder the document is in, or root.
+    /// </summary>
+    [JsonPropertyName("folderId")]
+    public required string FolderId { get; set; }
+
     [JsonPropertyName("state")]
     public required DocumentsInit200ResponseDedupedDocumentState State { get; set; }
 
