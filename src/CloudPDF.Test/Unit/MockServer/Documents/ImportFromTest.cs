@@ -27,6 +27,8 @@ public class ImportFromTest : BaseMockServerTest
               "document": {
                 "id": "id",
                 "tenantId": "tenantId",
+                "name": "name",
+                "folderId": "folderId",
                 "state": "pending",
                 "baseSha": "baseSha",
                 "storageSizeBytes": 1.1,
@@ -72,6 +74,8 @@ public class ImportFromTest : BaseMockServerTest
                     )
                 ),
                 Expected = null,
+                Name = null,
+                FolderId = null,
                 Metadata = null,
                 IdempotencyKey = null,
                 DedupMode = null,
@@ -100,6 +104,8 @@ public class ImportFromTest : BaseMockServerTest
               "document": {
                 "id": "id",
                 "tenantId": "tenantId",
+                "name": "name",
+                "folderId": "folderId",
                 "state": "pending",
                 "baseSha": "baseSha",
                 "storageSizeBytes": 1.1,

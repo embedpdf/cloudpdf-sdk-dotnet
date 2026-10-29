@@ -35,6 +35,9 @@ public record SharesArchive200ResponseShare : IJsonOnDeserialized
     [JsonPropertyName("visitorIdentity")]
     public SharesArchive200ResponseShareVisitorIdentity? VisitorIdentity { get; set; }
 
+    [JsonPropertyName("identity")]
+    public Identity? Identity { get; set; }
+
     [JsonPropertyName("scope")]
     public IEnumerable<string> Scope { get; set; } = new List<string>();
 

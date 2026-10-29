@@ -14,7 +14,7 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "head": "head",
+              "baseSha": "baseSha",
               "versions": [
                 {
                   "sha256": "sha256",
@@ -42,7 +42,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/versions")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions")
                     .UsingGet()
             )
             .RespondWith(
@@ -53,7 +53,7 @@ public class ListTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Versions.ListAsync(
-            new ListVersionsRequest { DocId = "docId" }
+            new ListVersionsRequest { DocId = "docId", LayerName = "layerName" }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
@@ -63,7 +63,7 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "head": "head",
+              "baseSha": "baseSha",
               "versions": [
                 {
                   "sha256": "sha256",
@@ -82,7 +82,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/versions")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions")
                     .UsingGet()
             )
             .RespondWith(
@@ -93,7 +93,7 @@ public class ListTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Versions.ListAsync(
-            new ListVersionsRequest { DocId = "docId" }
+            new ListVersionsRequest { DocId = "docId", LayerName = "layerName" }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

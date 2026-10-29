@@ -15,6 +15,18 @@ public record DocumentsInitRequest
     [JsonPropertyName("contentSha256")]
     public required string ContentSha256 { get; set; }
 
+    /// <summary>
+    /// What people call the document: shown in dashboards, searched and sorted by. 1 to 255 characters, no control characters, no leading or trailing whitespace. Names need not be unique.
+    /// </summary>
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// A folder id, or root for the top level.
+    /// </summary>
+    [JsonPropertyName("folderId")]
+    public string? FolderId { get; set; }
+
     [JsonPropertyName("metadata")]
     public Dictionary<string, object?>? Metadata { get; set; }
 

@@ -10,6 +10,9 @@ public record DownloadVersionsRequest
     public required string DocId { get; set; }
 
     [JsonIgnore]
+    public required string LayerName { get; set; }
+
+    [JsonIgnore]
     public required string Sha { get; set; }
 
     /// <summary>

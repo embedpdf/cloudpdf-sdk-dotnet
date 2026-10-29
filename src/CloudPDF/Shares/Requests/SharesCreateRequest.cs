@@ -27,6 +27,9 @@ public record SharesCreateRequest
     [JsonPropertyName("visitorIdentity")]
     public SharesCreateRequestVisitorIdentity? VisitorIdentity { get; set; }
 
+    [JsonPropertyName("identity")]
+    public Identity? Identity { get; set; }
+
     [JsonPropertyName("scope")]
     public IEnumerable<string> Scope { get; set; } = new List<string>();
 

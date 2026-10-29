@@ -239,7 +239,7 @@ public class SignaturesTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/versions/signatures/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/signatures/sha")
                     .UsingGet()
             )
             .RespondWith(
@@ -250,7 +250,12 @@ public class SignaturesTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Versions.SignaturesAsync(
-            new SignaturesVersionsRequest { DocId = "docId", Sha = "sha" }
+            new SignaturesVersionsRequest
+            {
+                DocId = "docId",
+                LayerName = "layerName",
+                Sha = "sha",
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
@@ -341,7 +346,7 @@ public class SignaturesTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/versions/signatures/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/signatures/sha")
                     .UsingGet()
             )
             .RespondWith(
@@ -352,7 +357,12 @@ public class SignaturesTest : BaseMockServerTest
             );
 
         var response = await Client.Doc.Versions.SignaturesAsync(
-            new SignaturesVersionsRequest { DocId = "docId", Sha = "sha" }
+            new SignaturesVersionsRequest
+            {
+                DocId = "docId",
+                LayerName = "layerName",
+                Sha = "sha",
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

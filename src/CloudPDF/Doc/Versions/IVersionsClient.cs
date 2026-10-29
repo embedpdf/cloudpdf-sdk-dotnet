@@ -5,7 +5,7 @@ namespace CloudPDF.Doc;
 public partial interface IVersionsClient
 {
     /// <summary>
-    /// Every completed signature publishes a new version. Never cached: the list grows.
+    /// Every completed signature makes a new version of its layer; another layer's versions are never listed. Never cached: the list grows.
     /// </summary>
     WithRawResponseTask<DocVersionsList200Response> ListAsync(
         ListVersionsRequest request,
@@ -14,7 +14,7 @@ public partial interface IVersionsClient
     );
 
     /// <summary>
-    /// Exactly one of `since.signature` / `since.revision`; `until=&lt;revision&gt;` defaults to the last. The same answer for every layer and every caller.
+    /// Exactly one of `since.signature` / `since.revision`; `until=&lt;revision&gt;` defaults to the last. The same answer for every caller.
     /// </summary>
     WithRawResponseTask<DocVersionsAnalysis200Response> AnalysisAsync(
         AnalysisVersionsRequest request,

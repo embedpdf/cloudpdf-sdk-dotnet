@@ -24,7 +24,7 @@ public record TokensIssueRequestDoc : IJsonOnDeserialized
     public IEnumerable<string> Scope { get; set; } = new List<string>();
 
     [JsonPropertyName("identity")]
-    public TokensIssueRequestDocIdentity? Identity { get; set; }
+    public Identity? Identity { get; set; }
 
     [JsonPropertyName("origins")]
     public IEnumerable<string>? Origins { get; set; }

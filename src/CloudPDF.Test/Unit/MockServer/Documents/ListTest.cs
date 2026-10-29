@@ -18,6 +18,8 @@ public class ListTest : BaseMockServerTest
                 {
                   "id": "id",
                   "tenantId": "tenantId",
+                  "name": "name",
+                  "folderId": "folderId",
                   "state": "pending",
                   "baseSha": "baseSha",
                   "storageSizeBytes": 1.1,
@@ -37,6 +39,8 @@ public class ListTest : BaseMockServerTest
                 {
                   "id": "id",
                   "tenantId": "tenantId",
+                  "name": "name",
+                  "folderId": "folderId",
                   "state": "pending",
                   "baseSha": "baseSha",
                   "storageSizeBytes": 1.1,
@@ -87,6 +91,8 @@ public class ListTest : BaseMockServerTest
                 {
                   "id": "id",
                   "tenantId": "tenantId",
+                  "name": "name",
+                  "folderId": "folderId",
                   "state": "pending",
                   "baseSha": "baseSha",
                   "storageSizeBytes": 1.1,
