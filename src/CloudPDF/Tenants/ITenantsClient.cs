@@ -45,7 +45,7 @@ public partial interface ITenantsClient
     );
 
     /// <summary>
-    /// Facts only — no limits or billing state. Views count share exchanges plus authorized /v1/access grants, deduplicated across the two.
+    /// Facts only — no limits or billing state. Views count grant exchanges plus authorized /v1/access requests, deduplicated across the two.
     /// </summary>
     WithRawResponseTask<TenantsUsage200Response> UsageAsync(
         UsageTenantsRequest request,

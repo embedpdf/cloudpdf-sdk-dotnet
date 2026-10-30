@@ -17,8 +17,8 @@ public record DocumentsLayersList200ResponseLayersItem : IJsonOnDeserialized
     [JsonPropertyName("layerName")]
     public required string LayerName { get; set; }
 
-    [JsonPropertyName("shareId")]
-    public string? ShareId { get; set; }
+    [JsonPropertyName("grantId")]
+    public string? GrantId { get; set; }
 
     [JsonPropertyName("visitorId")]
     public string? VisitorId { get; set; }

@@ -4,7 +4,7 @@ public partial interface ICloudPDFClient
 {
     public IDeploymentClient Deployment { get; }
     public IDocClient Doc { get; }
-    public ISharesClient Shares { get; }
+    public IGrantsClient Grants { get; }
     public ITenantsClient Tenants { get; }
     public IDocumentsClient Documents { get; }
     public IFoldersClient Folders { get; }
