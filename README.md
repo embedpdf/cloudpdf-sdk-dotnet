@@ -218,25 +218,25 @@ This SDK uses forward-compatible enums that can handle unknown values gracefully
 using CloudPDF;
 
 // Using a built-in value
-var sharesCreateRequestLayerMode = SharesCreateRequestLayerMode.Shared;
+var grantsCreateRequestLayerMode = GrantsCreateRequestLayerMode.Shared;
 
 // Using a custom value
-var customSharesCreateRequestLayerMode = SharesCreateRequestLayerMode.FromCustom("custom-value");
+var customGrantsCreateRequestLayerMode = GrantsCreateRequestLayerMode.FromCustom("custom-value");
 
 // Using in a switch statement
-switch (sharesCreateRequestLayerMode.Value)
+switch (grantsCreateRequestLayerMode.Value)
 {
-    case SharesCreateRequestLayerMode.Values.Shared:
+    case GrantsCreateRequestLayerMode.Values.Shared:
         Console.WriteLine("Shared");
         break;
     default:
-        Console.WriteLine($"Unknown value: {sharesCreateRequestLayerMode.Value}");
+        Console.WriteLine($"Unknown value: {grantsCreateRequestLayerMode.Value}");
         break;
 }
 
 // Explicit casting
-string sharesCreateRequestLayerModeString = (string)SharesCreateRequestLayerMode.Shared;
-SharesCreateRequestLayerMode sharesCreateRequestLayerModeFromString = (SharesCreateRequestLayerMode)"shared";
+string grantsCreateRequestLayerModeString = (string)GrantsCreateRequestLayerMode.Shared;
+GrantsCreateRequestLayerMode grantsCreateRequestLayerModeFromString = (GrantsCreateRequestLayerMode)"shared";
 ```
 
 ## Contributing

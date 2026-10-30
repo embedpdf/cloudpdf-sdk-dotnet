@@ -19,7 +19,7 @@ public record ListLayersRequest
     public string? Cursor { get; set; }
 
     [JsonIgnore]
-    public string? ShareId { get; set; }
+    public string? GrantId { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

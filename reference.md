@@ -374,8 +374,8 @@ await client.Doc.TextAsync(
 </dl>
 </details>
 
-## Shares
-<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">ExchangeAsync</a>(SharesExchangeRequest { ... }) -> WithRawResponseTask&lt;SharesExchange200Response&gt;</code></summary>
+## Grants
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ExchangeAsync</a>(GrantsExchangeRequest { ... }) -> WithRawResponseTask&lt;GrantsExchange200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -387,7 +387,7 @@ await client.Doc.TextAsync(
 <dl>
 <dd>
 
-Unauthenticated, but requires a browser Origin header, checked against the grant allowlist. Unknown, revoked, and disabled tokens are indistinguishable (404). Passphrase-protected grants return 422 SharePasswordRequired until `password` is supplied. A link that asks its visitors who they are on open returns 422 VisitorIdentityRequired until the required answers are given; `error.details` carries `fields` (what the link asks), `missing`, `invalid`, `purpose` and `privacyUrl`. A link that asks before the first change issues the session at once with `visitor.identityRequest`, and writes answer 403 VisitorIdentityRequired with the same details until the visitor exchanges again with their answers. Answers that can not be taken answer 422 on any link. Mounted only when the deployment can sign (HS256 mode).
+Unauthenticated, but requires a browser Origin header, checked against the grant allowlist. Unknown, deleted, paused and archived grants are indistinguishable (404). Passphrase-protected grants return 422 GrantPassphraseRequired until `passphrase` is supplied. A grant that asks its visitors who they are on open returns 422 VisitorIdentityRequired until the required answers are given; `error.details` carries `fields` (what the grant asks), `missing`, `invalid`, `purpose` and `privacyUrl`. A grant that asks before the first change issues the session at once with `visitor.identityRequest`, and writes answer 403 VisitorIdentityRequired with the same details until the visitor exchanges again with their answers. Answers that can not be taken answer 422 on any grant. Mounted only when the deployment can sign (HS256 mode).
 </dd>
 </dl>
 </dd>
@@ -402,7 +402,7 @@ Unauthenticated, but requires a browser Origin header, checked against the grant
 <dd>
 
 ```csharp
-await client.Shares.ExchangeAsync(new SharesExchangeRequest { ShareToken = "shareToken" });
+await client.Grants.ExchangeAsync(new GrantsExchangeRequest { Grant = "grant" });
 ```
 </dd>
 </dl>
@@ -417,7 +417,7 @@ await client.Shares.ExchangeAsync(new SharesExchangeRequest { ShareToken = "shar
 <dl>
 <dd>
 
-**request:** `SharesExchangeRequest` 
+**request:** `GrantsExchangeRequest` 
     
 </dd>
 </dl>
@@ -429,7 +429,7 @@ await client.Shares.ExchangeAsync(new SharesExchangeRequest { ShareToken = "shar
 </dl>
 </details>
 
-<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">ListAsync</a>(ListSharesRequest { ... }) -> WithRawResponseTask&lt;SharesList200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ListAsync</a>(ListGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsList200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -442,7 +442,7 @@ await client.Shares.ExchangeAsync(new SharesExchangeRequest { ShareToken = "shar
 <dd>
 
 ```csharp
-await client.Shares.ListAsync(new ListSharesRequest { TenantId = "tenantId" });
+await client.Grants.ListAsync(new ListGrantsRequest { TenantId = "tenantId" });
 ```
 </dd>
 </dl>
@@ -457,7 +457,7 @@ await client.Shares.ListAsync(new ListSharesRequest { TenantId = "tenantId" });
 <dl>
 <dd>
 
-**request:** `ListSharesRequest` 
+**request:** `ListGrantsRequest` 
     
 </dd>
 </dl>
@@ -469,7 +469,7 @@ await client.Shares.ListAsync(new ListSharesRequest { TenantId = "tenantId" });
 </dl>
 </details>
 
-<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">CreateAsync</a>(SharesCreateRequest { ... }) -> WithRawResponseTask&lt;SharesCreate200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">CreateAsync</a>(GrantsCreateRequest { ... }) -> WithRawResponseTask&lt;GrantsCreate200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -481,7 +481,7 @@ await client.Shares.ListAsync(new ListSharesRequest { TenantId = "tenantId" });
 <dl>
 <dd>
 
-The returned share id is the public share token. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
+The returned id is what a link page or an embed opens. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
 </dd>
 </dl>
 </dd>
@@ -496,8 +496,8 @@ The returned share id is the public share token. Mounted only when the deploymen
 <dd>
 
 ```csharp
-await client.Shares.CreateAsync(
-    new SharesCreateRequest
+await client.Grants.CreateAsync(
+    new GrantsCreateRequest
     {
         TenantId = "tenantId",
         DocId = "docId",
@@ -518,7 +518,7 @@ await client.Shares.CreateAsync(
 <dl>
 <dd>
 
-**request:** `SharesCreateRequest` 
+**request:** `GrantsCreateRequest` 
     
 </dd>
 </dl>
@@ -530,7 +530,7 @@ await client.Shares.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">GetAsync</a>(GetSharesRequest { ... }) -> WithRawResponseTask&lt;SharesGet200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">GetAsync</a>(GetGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsGet200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -543,7 +543,7 @@ await client.Shares.CreateAsync(
 <dd>
 
 ```csharp
-await client.Shares.GetAsync(new GetSharesRequest { TenantId = "tenantId", ShareId = "shareId" });
+await client.Grants.GetAsync(new GetGrantsRequest { TenantId = "tenantId", GrantId = "grantId" });
 ```
 </dd>
 </dl>
@@ -558,7 +558,7 @@ await client.Shares.GetAsync(new GetSharesRequest { TenantId = "tenantId", Share
 <dl>
 <dd>
 
-**request:** `GetSharesRequest` 
+**request:** `GetGrantsRequest` 
     
 </dd>
 </dl>
@@ -570,7 +570,7 @@ await client.Shares.GetAsync(new GetSharesRequest { TenantId = "tenantId", Share
 </dl>
 </details>
 
-<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">DeleteAsync</a>(DeleteSharesRequest { ... }) -> WithRawResponseTask</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">DeleteAsync</a>(DeleteGrantsRequest { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -583,8 +583,8 @@ await client.Shares.GetAsync(new GetSharesRequest { TenantId = "tenantId", Share
 <dd>
 
 ```csharp
-await client.Shares.DeleteAsync(
-    new DeleteSharesRequest { TenantId = "tenantId", ShareId = "shareId" }
+await client.Grants.DeleteAsync(
+    new DeleteGrantsRequest { TenantId = "tenantId", GrantId = "grantId" }
 );
 ```
 </dd>
@@ -600,7 +600,7 @@ await client.Shares.DeleteAsync(
 <dl>
 <dd>
 
-**request:** `DeleteSharesRequest` 
+**request:** `DeleteGrantsRequest` 
     
 </dd>
 </dl>
@@ -612,7 +612,7 @@ await client.Shares.DeleteAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">UpdateAsync</a>(SharesUpdateRequest { ... }) -> WithRawResponseTask&lt;SharesUpdate200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">UpdateAsync</a>(GrantsUpdateRequest { ... }) -> WithRawResponseTask&lt;GrantsUpdate200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -625,8 +625,8 @@ await client.Shares.DeleteAsync(
 <dd>
 
 ```csharp
-await client.Shares.UpdateAsync(
-    new SharesUpdateRequest { TenantId = "tenantId", ShareId = "shareId" }
+await client.Grants.UpdateAsync(
+    new GrantsUpdateRequest { TenantId = "tenantId", GrantId = "grantId" }
 );
 ```
 </dd>
@@ -642,7 +642,7 @@ await client.Shares.UpdateAsync(
 <dl>
 <dd>
 
-**request:** `SharesUpdateRequest` 
+**request:** `GrantsUpdateRequest` 
     
 </dd>
 </dl>
@@ -654,7 +654,7 @@ await client.Shares.UpdateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Shares.<a href="/src/CloudPDF/Shares/SharesClient.cs">ArchiveAsync</a>(ArchiveSharesRequest { ... }) -> WithRawResponseTask&lt;SharesArchive200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ArchiveAsync</a>(ArchiveGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsArchive200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -666,7 +666,7 @@ await client.Shares.UpdateAsync(
 <dl>
 <dd>
 
-Archiving is final: an archived link never exchanges again, and to share again you create a new link. Pausing (`disabled`) is the reversible stop. An archived link no longer counts as using its shared layer, so that layer can be deleted.
+Archiving is final: an archived grant never exchanges again, and to give access again you create a new grant. Pausing (`disabled`) is the reversible stop. An archived grant no longer counts as using its shared layer, so that layer can be deleted.
 </dd>
 </dl>
 </dd>
@@ -681,8 +681,8 @@ Archiving is final: an archived link never exchanges again, and to share again y
 <dd>
 
 ```csharp
-await client.Shares.ArchiveAsync(
-    new ArchiveSharesRequest { TenantId = "tenantId", ShareId = "shareId" }
+await client.Grants.ArchiveAsync(
+    new ArchiveGrantsRequest { TenantId = "tenantId", GrantId = "grantId" }
 );
 ```
 </dd>
@@ -698,7 +698,7 @@ await client.Shares.ArchiveAsync(
 <dl>
 <dd>
 
-**request:** `ArchiveSharesRequest` 
+**request:** `ArchiveGrantsRequest` 
     
 </dd>
 </dl>
@@ -991,7 +991,7 @@ await client.Tenants.SuspendAsync(new TenantsSuspendRequest { TenantId = "tenant
 <dl>
 <dd>
 
-Facts only — no limits or billing state. Views count share exchanges plus authorized /v1/access grants, deduplicated across the two.
+Facts only — no limits or billing state. Views count grant exchanges plus authorized /v1/access requests, deduplicated across the two.
 </dd>
 </dl>
 </dd>
@@ -1662,7 +1662,7 @@ await client.Folders.GetAsync(
 <dl>
 <dd>
 
-Without recursive, a folder with anything inside is refused: 409 Conflict with `details.reason` `not-empty` and what it holds, counted over every level below, in `details.folders` and `details.documents`. With recursive=true, the folder and every folder under it go at once, and every document in them stops opening, leaves every list and stops answering its share links at once; their stored files and links are removed in the background. Uploads into those folders that have not committed cannot commit.
+Without recursive, a folder with anything inside is refused: 409 Conflict with `details.reason` `not-empty` and what it holds, counted over every level below, in `details.folders` and `details.documents`. With recursive=true, the folder and every folder under it go at once, and every document in them stops opening, leaves every list and stops answering its grants at once; their stored files and grants are removed in the background. Uploads into those folders that have not committed cannot commit.
 </dd>
 </dl>
 </dd>
@@ -4173,8 +4173,8 @@ await client.Documents.Layers.DeleteAsync(
 </dl>
 </details>
 
-## Shares Visitors
-<details><summary><code>client.Shares.Visitors.<a href="/src/CloudPDF/Shares/Visitors/VisitorsClient.cs">ListAsync</a>(ListVisitorsRequest { ... }) -> WithRawResponseTask&lt;SharesVisitorsList200Response&gt;</code></summary>
+## Grants Visitors
+<details><summary><code>client.Grants.Visitors.<a href="/src/CloudPDF/Grants/Visitors/VisitorsClient.cs">ListAsync</a>(ListVisitorsRequest { ... }) -> WithRawResponseTask&lt;GrantsVisitorsList200Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4186,7 +4186,7 @@ await client.Documents.Layers.DeleteAsync(
 <dl>
 <dd>
 
-An archived link's visitors are listed too.
+An archived grant's visitors are listed too.
 </dd>
 </dl>
 </dd>
@@ -4201,8 +4201,8 @@ An archived link's visitors are listed too.
 <dd>
 
 ```csharp
-await client.Shares.Visitors.ListAsync(
-    new ListVisitorsRequest { TenantId = "tenantId", ShareId = "shareId" }
+await client.Grants.Visitors.ListAsync(
+    new ListVisitorsRequest { TenantId = "tenantId", GrantId = "grantId" }
 );
 ```
 </dd>
@@ -4230,7 +4230,7 @@ await client.Shares.Visitors.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Shares.Visitors.<a href="/src/CloudPDF/Shares/Visitors/VisitorsClient.cs">DeleteAsync</a>(DeleteVisitorsRequest { ... }) -> WithRawResponseTask</code></summary>
+<details><summary><code>client.Grants.Visitors.<a href="/src/CloudPDF/Grants/Visitors/VisitorsClient.cs">DeleteAsync</a>(DeleteVisitorsRequest { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>
 
@@ -4257,11 +4257,11 @@ Their handle brings them back as a new visitor, who is asked again. Deleting a v
 <dd>
 
 ```csharp
-await client.Shares.Visitors.DeleteAsync(
+await client.Grants.Visitors.DeleteAsync(
     new DeleteVisitorsRequest
     {
         TenantId = "tenantId",
-        ShareId = "shareId",
+        GrantId = "grantId",
         VisitorId = "visitorId",
     }
 );

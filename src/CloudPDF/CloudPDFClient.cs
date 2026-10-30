@@ -35,7 +35,7 @@ public partial class CloudPDFClient : ICloudPDFClient
         _client = new RawClient(clientOptionsWithAuth);
         Deployment = new DeploymentClient(_client);
         Doc = new DocClient(_client);
-        Shares = new SharesClient(_client);
+        Grants = new GrantsClient(_client);
         Tenants = new TenantsClient(_client);
         Documents = new DocumentsClient(_client);
         Folders = new FoldersClient(_client);
@@ -46,7 +46,7 @@ public partial class CloudPDFClient : ICloudPDFClient
 
     public IDocClient Doc { get; }
 
-    public ISharesClient Shares { get; }
+    public IGrantsClient Grants { get; }
 
     public ITenantsClient Tenants { get; }
 

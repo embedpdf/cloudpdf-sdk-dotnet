@@ -22,7 +22,7 @@ public partial class LayersClient : ILayersClient
         var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 3)
             .Add("limit", request.Limit)
             .Add("cursor", request.Cursor)
-            .Add("shareId", request.ShareId)
+            .Add("grantId", request.GrantId)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
