@@ -23,6 +23,9 @@ public record OutlineMutationMeta : IJsonOnDeserialized
     [JsonPropertyName("undoable")]
     public required bool Undoable { get; set; }
 
+    [JsonPropertyName("missingCharacters")]
+    public IEnumerable<string>? MissingCharacters { get; set; }
+
     [JsonPropertyName("changed")]
     public IEnumerable<OutlineItemRef> Changed { get; set; } = new List<OutlineItemRef>();
 

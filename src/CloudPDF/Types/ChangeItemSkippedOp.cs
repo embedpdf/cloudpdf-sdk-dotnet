@@ -76,6 +76,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
 
     public static readonly ChangeItemSkippedOp PagesInsert = new(Values.PagesInsert);
 
+    public static readonly ChangeItemSkippedOp PagesCopy = new(Values.PagesCopy);
+
     public static readonly ChangeItemSkippedOp AttachmentsCreate = new(Values.AttachmentsCreate);
 
     public static readonly ChangeItemSkippedOp AttachmentsDelete = new(Values.AttachmentsDelete);
@@ -245,6 +247,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
         public const string PagesInsertBlank = "pages.insertBlank";
 
         public const string PagesInsert = "pages.insert";
+
+        public const string PagesCopy = "pages.copy";
 
         public const string AttachmentsCreate = "attachments.create";
 

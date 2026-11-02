@@ -18,6 +18,10 @@ public record ChangeItemPagesRotateLayout : IJsonOnDeserialized
     public IEnumerable<ChangeItemPagesRotateLayoutPagesItem> Pages { get; set; } =
         new List<ChangeItemPagesRotateLayoutPagesItem>();
 
+    [JsonPropertyName("labels")]
+    public IEnumerable<ChangeItemPagesRotateLayoutLabelsItem> Labels { get; set; } =
+        new List<ChangeItemPagesRotateLayoutLabelsItem>();
+
     [JsonPropertyName("namedPages")]
     public IEnumerable<ChangeItemPagesRotateLayoutNamedPagesItem> NamedPages { get; set; } =
         new List<ChangeItemPagesRotateLayoutNamedPagesItem>();

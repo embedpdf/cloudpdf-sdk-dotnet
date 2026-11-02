@@ -18,6 +18,9 @@ public record ChangeOpPagesInsert : IJsonOnDeserialized
     [JsonPropertyName("position")]
     public OneOf<PagePositionZero, PagePositionAfter>? Position { get; set; }
 
+    [JsonPropertyName("objectNumbers")]
+    public IEnumerable<int>? ObjectNumbers { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

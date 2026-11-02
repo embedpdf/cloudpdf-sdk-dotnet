@@ -23,6 +23,9 @@ public record AnnotationPatchRedact : IJsonOnDeserialized
     [JsonPropertyName("appearanceState")]
     public object? AppearanceState { get; set; }
 
+    [JsonPropertyName("structurePosition")]
+    public object? StructurePosition { get; set; }
+
     [JsonPropertyName("nm")]
     public string? Nm { get; set; }
 

@@ -38,6 +38,10 @@ public class UpdateTest : BaseMockServerTest
                 },
                 "hasAppearance": true,
                 "appearanceState": "appearanceState",
+                "structurePosition": [
+                  1,
+                  1
+                ],
                 "nm": "nm",
                 "rect": {
                   "x": 1.1,
@@ -383,6 +387,7 @@ public class UpdateTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -412,6 +417,10 @@ public class UpdateTest : BaseMockServerTest
                 },
                 "opId": "opId",
                 "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters",
+                  "missingCharacters"
+                ],
                 "changed": [
                   {
                     "kind": "objectNumber",
@@ -498,6 +507,9 @@ public class UpdateTest : BaseMockServerTest
                 },
                 "hasAppearance": true,
                 "appearanceState": "appearanceState",
+                "structurePosition": [
+                  1
+                ],
                 "nm": "nm",
                 "rect": {
                   "x": 1.1,
@@ -667,6 +679,7 @@ public class UpdateTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -685,6 +698,9 @@ public class UpdateTest : BaseMockServerTest
                 },
                 "opId": "opId",
                 "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters"
+                ],
                 "changed": [
                   {
                     "kind": "objectNumber",

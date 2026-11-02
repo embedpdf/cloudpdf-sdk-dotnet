@@ -31,6 +31,10 @@ public class ListAllTest : BaseMockServerTest
                   },
                   "hasAppearance": true,
                   "appearanceState": "appearanceState",
+                  "structurePosition": [
+                    1,
+                    1
+                  ],
                   "nm": "nm",
                   "rect": {
                     "x": 1.1,
@@ -368,6 +372,10 @@ public class ListAllTest : BaseMockServerTest
                   },
                   "hasAppearance": true,
                   "appearanceState": "appearanceState",
+                  "structurePosition": [
+                    1,
+                    1
+                  ],
                   "nm": "nm",
                   "rect": {
                     "x": 1.1,
@@ -746,6 +754,9 @@ public class ListAllTest : BaseMockServerTest
                   },
                   "hasAppearance": true,
                   "appearanceState": "appearanceState",
+                  "structurePosition": [
+                    1
+                  ],
                   "nm": "nm",
                   "rect": {
                     "x": 1.1,

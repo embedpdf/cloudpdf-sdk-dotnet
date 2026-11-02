@@ -23,6 +23,9 @@ public record FormMutationMeta : IJsonOnDeserialized
     [JsonPropertyName("undoable")]
     public required bool Undoable { get; set; }
 
+    [JsonPropertyName("missingCharacters")]
+    public IEnumerable<string>? MissingCharacters { get; set; }
+
     [JsonPropertyName("changedFields")]
     public IEnumerable<FormFieldRef> ChangedFields { get; set; } = new List<FormFieldRef>();
 

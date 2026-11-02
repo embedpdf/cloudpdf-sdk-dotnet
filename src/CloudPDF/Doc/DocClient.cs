@@ -13,6 +13,7 @@ public partial class DocClient : IDocClient
         _client = client;
         Annotations = new AnnotationsClient(_client);
         Attachments = new AttachmentsClient(_client);
+        Fonts = new FontsClient(_client);
         Forms = new FormsClient(_client);
         Metadata = new MetadataClient(_client);
         Outline = new OutlineClient(_client);
@@ -25,6 +26,8 @@ public partial class DocClient : IDocClient
     public IAnnotationsClient Annotations { get; }
 
     public IAttachmentsClient Attachments { get; }
+
+    public IFontsClient Fonts { get; }
 
     public IFormsClient Forms { get; }
 

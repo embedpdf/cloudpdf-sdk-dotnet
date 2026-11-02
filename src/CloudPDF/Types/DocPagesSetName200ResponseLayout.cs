@@ -18,6 +18,10 @@ public record DocPagesSetName200ResponseLayout : IJsonOnDeserialized
     public IEnumerable<DocPagesSetName200ResponseLayoutPagesItem> Pages { get; set; } =
         new List<DocPagesSetName200ResponseLayoutPagesItem>();
 
+    [JsonPropertyName("labels")]
+    public IEnumerable<DocPagesSetName200ResponseLayoutLabelsItem> Labels { get; set; } =
+        new List<DocPagesSetName200ResponseLayoutLabelsItem>();
+
     [JsonPropertyName("namedPages")]
     public IEnumerable<DocPagesSetName200ResponseLayoutNamedPagesItem> NamedPages { get; set; } =
         new List<DocPagesSetName200ResponseLayoutNamedPagesItem>();

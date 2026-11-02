@@ -23,6 +23,9 @@ public record AnnotationMutationMeta : IJsonOnDeserialized
     [JsonPropertyName("undoable")]
     public required bool Undoable { get; set; }
 
+    [JsonPropertyName("missingCharacters")]
+    public IEnumerable<string>? MissingCharacters { get; set; }
+
     [JsonPropertyName("changed")]
     public IEnumerable<AnnotationRef> Changed { get; set; } = new List<AnnotationRef>();
 

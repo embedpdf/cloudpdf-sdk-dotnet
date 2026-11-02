@@ -19,7 +19,7 @@ public partial class ClientOptions
 #else
         set;
 #endif
-    } = "";
+    } = CloudPDFEnvironment.Saas;
 
     /// <summary>
     /// The http client used to make requests.

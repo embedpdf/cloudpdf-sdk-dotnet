@@ -61,6 +61,7 @@ public class ReorderCalculationsTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -90,6 +91,10 @@ public class ReorderCalculationsTest : BaseMockServerTest
                 },
                 "opId": "opId",
                 "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters",
+                  "missingCharacters"
+                ],
                 "changedFields": [
                   {
                     "kind": "objectNumber",
@@ -247,6 +252,7 @@ public class ReorderCalculationsTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -265,6 +271,9 @@ public class ReorderCalculationsTest : BaseMockServerTest
                 },
                 "opId": "opId",
                 "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters"
+                ],
                 "changedFields": [
                   {
                     "kind": "objectNumber",

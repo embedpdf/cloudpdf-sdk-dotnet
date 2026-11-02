@@ -481,7 +481,7 @@ await client.Grants.ListAsync(new ListGrantsRequest { TenantId = "tenantId" });
 <dl>
 <dd>
 
-The returned id is what a link page or an embed opens. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
+The returned id is what a link page or an embed opens. Its scope gives only document permissions the caller holds itself, as tokens.issue does. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
 </dd>
 </dl>
 </dd>
@@ -1219,6 +1219,20 @@ await client.Documents.UpdateAsync(
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+An upload token commits only the documents it started; any other document answers 404.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -1358,7 +1372,7 @@ await client.Documents.ThumbnailAsync(
 <dl>
 <dd>
 
-This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available.
+This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available. An upload token sends files only to the documents it started.
 </dd>
 </dl>
 </dd>
@@ -1469,6 +1483,20 @@ await client.Documents.ImportFromAsync(
 <details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">InitAsync</a>(DocumentsInitRequest { ... }) -> WithRawResponseTask&lt;DocumentsInit200Response&gt;</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; contentLength must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -1836,7 +1864,7 @@ await client.Folders.MoveIntoAsync(
 <dl>
 <dd>
 
-kind "tenant" requires the API token — authority mints only downward. Mounted only when the deployment can sign (HS256 mode); asymmetric deployments mint with their own private key.
+Authority mints only downward: kind "doc" gives only document permissions the caller holds itself, kind "tenant" requires the API token, and kind "upload" requires docs.create instead of tokens.issue-doc, since an upload token can do only what docs.create allows. Mounted only when the deployment can sign (HS256 mode); asymmetric deployments mint with their own private key.
 </dd>
 </dl>
 </dd>
@@ -2590,6 +2618,97 @@ await client.Doc.Attachments.ListAsync(
 <dd>
 
 **request:** `ListAttachmentsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Doc Fonts
+<details><summary><code>client.Doc.Fonts.<a href="/src/CloudPDF/Doc/Fonts/FontsClient.cs">ListAsync</a>(ListFontsRequest { ... }) -> WithRawResponseTask&lt;FontList&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Fonts.ListAsync(new ListFontsRequest { DocId = "docId", LayerName = "layerName" });
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListFontsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Fonts.<a href="/src/CloudPDF/Doc/Fonts/FontsClient.cs">ResolveAsync</a>(ResolveFontsRequest { ... }) -> WithRawResponseTask&lt;FontResolution&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Fonts.ResolveAsync(
+    new ResolveFontsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        Body = new FontResolveRequest
+        {
+            Runs = new List<FontResolveRun>() { new FontResolveRun { Text = "text" } },
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ResolveFontsRequest` 
     
 </dd>
 </dl>
@@ -4031,6 +4150,115 @@ await client.Doc.Versions.SignatureDigestAsync(
 <dd>
 
 **request:** `SignatureDigestVersionsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Doc Fonts Programs
+<details><summary><code>client.Doc.Fonts.Programs.<a href="/src/CloudPDF/Doc/Fonts/Programs/ProgramsClient.cs">DownloadAsync</a>(DownloadProgramsRequest { ... }) -> WithRawResponseTask&lt;Stream&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A document token needs any one of the listed capabilities: one that may write text in the document. A file the list says can't be downloaded (`canDownload: false`) is not found.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Fonts.Programs.DownloadAsync(
+    new DownloadProgramsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        DisplayHash = "displayHash",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `DownloadProgramsRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Doc.Fonts.Programs.<a href="/src/CloudPDF/Doc/Fonts/Programs/ProgramsClient.cs">GetAsync</a>(GetProgramsRequest { ... }) -> WithRawResponseTask&lt;FontProgramInfo&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Doc.Fonts.Programs.GetAsync(
+    new GetProgramsRequest
+    {
+        DocId = "docId",
+        LayerName = "layerName",
+        DisplayHash = "displayHash",
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetProgramsRequest` 
     
 </dd>
 </dl>

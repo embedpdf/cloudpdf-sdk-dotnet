@@ -18,6 +18,10 @@ public record ChangeItemPagesInsertBlankLayout : IJsonOnDeserialized
     public IEnumerable<ChangeItemPagesInsertBlankLayoutPagesItem> Pages { get; set; } =
         new List<ChangeItemPagesInsertBlankLayoutPagesItem>();
 
+    [JsonPropertyName("labels")]
+    public IEnumerable<ChangeItemPagesInsertBlankLayoutLabelsItem> Labels { get; set; } =
+        new List<ChangeItemPagesInsertBlankLayoutLabelsItem>();
+
     [JsonPropertyName("namedPages")]
     public IEnumerable<ChangeItemPagesInsertBlankLayoutNamedPagesItem> NamedPages { get; set; } =
         new List<ChangeItemPagesInsertBlankLayoutNamedPagesItem>();

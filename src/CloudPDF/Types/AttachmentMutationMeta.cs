@@ -23,6 +23,9 @@ public record AttachmentMutationMeta : IJsonOnDeserialized
     [JsonPropertyName("undoable")]
     public required bool Undoable { get; set; }
 
+    [JsonPropertyName("missingCharacters")]
+    public IEnumerable<string>? MissingCharacters { get; set; }
+
     [JsonPropertyName("changed")]
     public IEnumerable<AttachmentRef> Changed { get; set; } = new List<AttachmentRef>();
 

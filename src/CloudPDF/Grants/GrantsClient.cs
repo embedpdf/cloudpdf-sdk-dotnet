@@ -700,6 +700,18 @@ public partial class GrantsClient : IGrantsClient
                                 Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
                             }
                         );
+                    case 403:
+                        throw new ForbiddenError(
+                            JsonUtils.Deserialize<object>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 404:
                         throw new NotFoundError(
                             JsonUtils.Deserialize<object>(responseBody),
@@ -883,7 +895,7 @@ public partial class GrantsClient : IGrantsClient
     }
 
     /// <summary>
-    /// The returned id is what a link page or an embed opens. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
+    /// The returned id is what a link page or an embed opens. Its scope gives only document permissions the caller holds itself, as tokens.issue does. Mounted only when the deployment can sign (HS256 mode) — exchange mints session JWTs, so grants exist only where minting does.
     /// </summary>
     /// <example><code>
     /// await client.Grants.CreateAsync(

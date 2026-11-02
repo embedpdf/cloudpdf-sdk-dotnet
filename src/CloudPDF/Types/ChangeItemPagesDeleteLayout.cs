@@ -18,6 +18,10 @@ public record ChangeItemPagesDeleteLayout : IJsonOnDeserialized
     public IEnumerable<ChangeItemPagesDeleteLayoutPagesItem> Pages { get; set; } =
         new List<ChangeItemPagesDeleteLayoutPagesItem>();
 
+    [JsonPropertyName("labels")]
+    public IEnumerable<ChangeItemPagesDeleteLayoutLabelsItem> Labels { get; set; } =
+        new List<ChangeItemPagesDeleteLayoutLabelsItem>();
+
     [JsonPropertyName("namedPages")]
     public IEnumerable<ChangeItemPagesDeleteLayoutNamedPagesItem> NamedPages { get; set; } =
         new List<ChangeItemPagesDeleteLayoutNamedPagesItem>();
