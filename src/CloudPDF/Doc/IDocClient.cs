@@ -6,6 +6,7 @@ public partial interface IDocClient
 {
     public IAnnotationsClient Annotations { get; }
     public IAttachmentsClient Attachments { get; }
+    public IFontsClient Fonts { get; }
     public IFormsClient Forms { get; }
     public IMetadataClient Metadata { get; }
     public IOutlineClient Outline { get; }

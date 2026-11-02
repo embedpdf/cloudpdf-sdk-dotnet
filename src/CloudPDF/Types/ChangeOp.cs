@@ -280,6 +280,15 @@ public record ChangeOp
     }
 
     /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.PagesCopy"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.PagesCopy value)
+    {
+        Type = "pages.copy";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Create an instance of ChangeOp with <see cref="ChangeOp.AttachmentsCreate"/>.
     /// </summary>
     public ChangeOp(ChangeOp.AttachmentsCreate value)
@@ -452,6 +461,11 @@ public record ChangeOp
     /// Returns true if <see cref="Type"/> is "pages.insert"
     /// </summary>
     public bool IsPagesInsert => Type == "pages.insert";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.copy"
+    /// </summary>
+    public bool IsPagesCopy => Type == "pages.copy";
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "attachments.create"
@@ -729,6 +743,15 @@ public record ChangeOp
             : throw new global::System.Exception("ChangeOp.Type is not 'pages.insert'");
 
     /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpPagesCopy"/> if <see cref="Type"/> is 'pages.copy', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.copy'.</exception>
+    public CloudPDF.ChangeOpPagesCopy AsPagesCopy() =>
+        IsPagesCopy
+            ? (CloudPDF.ChangeOpPagesCopy)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'pages.copy'");
+
+    /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeOpAttachmentsCreate"/> if <see cref="Type"/> is 'attachments.create', otherwise throws an exception.
     /// </summary>
     /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'attachments.create'.</exception>
@@ -776,6 +799,7 @@ public record ChangeOp
         Func<CloudPDF.ChangeOpPagesDelete, T> onPagesDelete,
         Func<CloudPDF.ChangeOpPagesInsertBlank, T> onPagesInsertBlank,
         Func<CloudPDF.ChangeOpPagesInsert, T> onPagesInsert,
+        Func<CloudPDF.ChangeOpPagesCopy, T> onPagesCopy,
         Func<CloudPDF.ChangeOpAttachmentsCreate, T> onAttachmentsCreate,
         Func<CloudPDF.ChangeOpAttachmentsDelete, T> onAttachmentsDelete,
         Func<string, object?, T> onUnknown_
@@ -814,6 +838,7 @@ public record ChangeOp
             "pages.delete" => onPagesDelete(AsPagesDelete()),
             "pages.insertBlank" => onPagesInsertBlank(AsPagesInsertBlank()),
             "pages.insert" => onPagesInsert(AsPagesInsert()),
+            "pages.copy" => onPagesCopy(AsPagesCopy()),
             "attachments.create" => onAttachmentsCreate(AsAttachmentsCreate()),
             "attachments.delete" => onAttachmentsDelete(AsAttachmentsDelete()),
             _ => onUnknown_(Type, Value),
@@ -850,6 +875,7 @@ public record ChangeOp
         Action<CloudPDF.ChangeOpPagesDelete> onPagesDelete,
         Action<CloudPDF.ChangeOpPagesInsertBlank> onPagesInsertBlank,
         Action<CloudPDF.ChangeOpPagesInsert> onPagesInsert,
+        Action<CloudPDF.ChangeOpPagesCopy> onPagesCopy,
         Action<CloudPDF.ChangeOpAttachmentsCreate> onAttachmentsCreate,
         Action<CloudPDF.ChangeOpAttachmentsDelete> onAttachmentsDelete,
         Action<string, object?> onUnknown_
@@ -943,6 +969,9 @@ public record ChangeOp
                 break;
             case "pages.insert":
                 onPagesInsert(AsPagesInsert());
+                break;
+            case "pages.copy":
+                onPagesCopy(AsPagesCopy());
                 break;
             case "attachments.create":
                 onAttachmentsCreate(AsAttachmentsCreate());
@@ -1365,6 +1394,20 @@ public record ChangeOp
     }
 
     /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpPagesCopy"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesCopy(out CloudPDF.ChangeOpPagesCopy? value)
+    {
+        if (Type == "pages.copy")
+        {
+            value = (CloudPDF.ChangeOpPagesCopy)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
     /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpAttachmentsCreate"/> and returns true if successful.
     /// </summary>
     public bool TryAsAttachmentsCreate(out CloudPDF.ChangeOpAttachmentsCreate? value)
@@ -1452,6 +1495,8 @@ public record ChangeOp
     public static implicit operator ChangeOp(ChangeOp.PagesInsertBlank value) => new(value);
 
     public static implicit operator ChangeOp(ChangeOp.PagesInsert value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.PagesCopy value) => new(value);
 
     public static implicit operator ChangeOp(ChangeOp.AttachmentsCreate value) => new(value);
 
@@ -1667,6 +1712,9 @@ public record ChangeOp
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeOpPagesInsert"
                         ),
+                "pages.copy" => jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpPagesCopy?>(
+                    options
+                ) ?? throw new JsonException("Failed to deserialize CloudPDF.ChangeOpPagesCopy"),
                 "attachments.create" =>
                     jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpAttachmentsCreate?>(
                         options
@@ -1733,6 +1781,7 @@ public record ChangeOp
                     "pages.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.insertBlank" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.insert" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.copy" => JsonSerializer.SerializeToNode(value.Value, options),
                     "attachments.create" => JsonSerializer.SerializeToNode(value.Value, options),
                     "attachments.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     _ => JsonSerializer.SerializeToNode(value.Value, options),
@@ -2332,6 +2381,25 @@ public record ChangeOp
         public override string ToString() => Value.ToString() ?? "null";
 
         public static implicit operator ChangeOp.PagesInsert(CloudPDF.ChangeOpPagesInsert value) =>
+            new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.copy
+    /// </summary>
+    [Serializable]
+    public struct PagesCopy
+    {
+        public PagesCopy(CloudPDF.ChangeOpPagesCopy value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpPagesCopy Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.PagesCopy(CloudPDF.ChangeOpPagesCopy value) =>
             new(value);
     }
 

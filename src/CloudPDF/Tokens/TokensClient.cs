@@ -228,7 +228,7 @@ public partial class TokensClient : ITokensClient
     }
 
     /// <summary>
-    /// kind "tenant" requires the API token — authority mints only downward. Mounted only when the deployment can sign (HS256 mode); asymmetric deployments mint with their own private key.
+    /// Authority mints only downward: kind "doc" gives only document permissions the caller holds itself, kind "tenant" requires the API token, and kind "upload" requires docs.create instead of tokens.issue-doc, since an upload token can do only what docs.create allows. Mounted only when the deployment can sign (HS256 mode); asymmetric deployments mint with their own private key.
     /// </summary>
     /// <example><code>
     /// await client.Tokens.IssueAsync(

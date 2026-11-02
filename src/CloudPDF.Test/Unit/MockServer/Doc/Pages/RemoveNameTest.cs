@@ -192,6 +192,20 @@ public class RemoveNameTest : BaseMockServerTest
                     }
                   }
                 ],
+                "labels": [
+                  {
+                    "firstPage": 1,
+                    "style": "decimal",
+                    "firstNumber": 1,
+                    "prefix": "prefix"
+                  },
+                  {
+                    "firstPage": 1,
+                    "style": "decimal",
+                    "firstNumber": 1,
+                    "prefix": "prefix"
+                  }
+                ],
                 "namedPages": [
                   {
                     "name": "name",
@@ -235,6 +249,7 @@ public class RemoveNameTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -263,7 +278,11 @@ public class RemoveNameTest : BaseMockServerTest
                   ]
                 },
                 "opId": "opId",
-                "undoable": true
+                "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters",
+                  "missingCharacters"
+                ]
               }
             }
             """;
@@ -367,6 +386,13 @@ public class RemoveNameTest : BaseMockServerTest
                     }
                   }
                 ],
+                "labels": [
+                  {
+                    "firstPage": 1,
+                    "firstNumber": 1,
+                    "prefix": "prefix"
+                  }
+                ],
                 "namedPages": [
                   {
                     "name": "name",
@@ -396,6 +422,7 @@ public class RemoveNameTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -413,7 +440,10 @@ public class RemoveNameTest : BaseMockServerTest
                   ]
                 },
                 "opId": "opId",
-                "undoable": true
+                "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters"
+                ]
               }
             }
             """;

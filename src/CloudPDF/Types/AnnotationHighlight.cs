@@ -23,6 +23,9 @@ public record AnnotationHighlight : IJsonOnDeserialized
     [JsonPropertyName("appearanceState")]
     public string? AppearanceState { get; set; }
 
+    [JsonPropertyName("structurePosition")]
+    public IEnumerable<int>? StructurePosition { get; set; }
+
     [JsonPropertyName("nm")]
     public string? Nm { get; set; }
 

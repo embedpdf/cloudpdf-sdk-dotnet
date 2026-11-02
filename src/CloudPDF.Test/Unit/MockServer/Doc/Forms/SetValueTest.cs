@@ -190,6 +190,10 @@ public class SetValueTest : BaseMockServerTest
                   },
                   "hasAppearance": true,
                   "appearanceState": "appearanceState",
+                  "structurePosition": [
+                    1,
+                    1
+                  ],
                   "nm": "nm",
                   "rect": {
                     "x": 1.1,
@@ -513,6 +517,10 @@ public class SetValueTest : BaseMockServerTest
                   },
                   "hasAppearance": true,
                   "appearanceState": "appearanceState",
+                  "structurePosition": [
+                    1,
+                    1
+                  ],
                   "nm": "nm",
                   "rect": {
                     "x": 1.1,
@@ -841,6 +849,7 @@ public class SetValueTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -870,6 +879,10 @@ public class SetValueTest : BaseMockServerTest
                 },
                 "opId": "opId",
                 "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters",
+                  "missingCharacters"
+                ],
                 "changedFields": [
                   {
                     "kind": "objectNumber",
@@ -1078,6 +1091,9 @@ public class SetValueTest : BaseMockServerTest
                   },
                   "hasAppearance": true,
                   "appearanceState": "appearanceState",
+                  "structurePosition": [
+                    1
+                  ],
                   "nm": "nm",
                   "rect": {
                     "x": 1.1,
@@ -1169,6 +1185,7 @@ public class SetValueTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "fontsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -1187,6 +1204,9 @@ public class SetValueTest : BaseMockServerTest
                 },
                 "opId": "opId",
                 "undoable": true,
+                "missingCharacters": [
+                  "missingCharacters"
+                ],
                 "changedFields": [
                   {
                     "kind": "objectNumber",

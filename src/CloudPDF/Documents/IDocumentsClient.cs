@@ -32,6 +32,9 @@ public partial interface IDocumentsClient
         CancellationToken cancellationToken = default
     );
 
+    /// <summary>
+    /// An upload token commits only the documents it started; any other document answers 404.
+    /// </summary>
     WithRawResponseTask<DocumentsCommit200Response> CommitAsync(
         DocumentsCommitRequest request,
         RequestOptions? options = null,
@@ -51,7 +54,7 @@ public partial interface IDocumentsClient
     );
 
     /// <summary>
-    /// This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available.
+    /// This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available. An upload token sends files only to the documents it started.
     /// </summary>
     WithRawResponseTask<DocumentsUploadProxy200Response> UploadProxyAsync(
         UploadProxyDocumentsRequest request,
@@ -68,6 +71,9 @@ public partial interface IDocumentsClient
         CancellationToken cancellationToken = default
     );
 
+    /// <summary>
+    /// With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; contentLength must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
+    /// </summary>
     WithRawResponseTask<DocumentsInit200Response> InitAsync(
         DocumentsInitRequest request,
         RequestOptions? options = null,

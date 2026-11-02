@@ -23,6 +23,9 @@ public record MutationMeta : IJsonOnDeserialized
     [JsonPropertyName("undoable")]
     public required bool Undoable { get; set; }
 
+    [JsonPropertyName("missingCharacters")]
+    public IEnumerable<string>? MissingCharacters { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -37,6 +37,15 @@ public record TokensIssueRequest
     }
 
     /// <summary>
+    /// Create an instance of TokensIssueRequest with <see cref="TokensIssueRequest.Upload"/>.
+    /// </summary>
+    public TokensIssueRequest(TokensIssueRequest.Upload value)
+    {
+        Kind = "upload";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Discriminant value
     /// </summary>
     [JsonPropertyName("kind")]
@@ -58,6 +67,11 @@ public record TokensIssueRequest
     public bool IsTenant => Kind == "tenant";
 
     /// <summary>
+    /// Returns true if <see cref="Kind"/> is "upload"
+    /// </summary>
+    public bool IsUpload => Kind == "upload";
+
+    /// <summary>
     /// Returns the value as a <see cref="CloudPDF.TokensIssueRequestDoc"/> if <see cref="Kind"/> is 'doc', otherwise throws an exception.
     /// </summary>
     /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'doc'.</exception>
@@ -75,9 +89,19 @@ public record TokensIssueRequest
             ? (CloudPDF.TokensIssueRequestTenant)Value!
             : throw new global::System.Exception("TokensIssueRequest.Kind is not 'tenant'");
 
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.TokensIssueRequestUpload"/> if <see cref="Kind"/> is 'upload', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'upload'.</exception>
+    public CloudPDF.TokensIssueRequestUpload AsUpload() =>
+        IsUpload
+            ? (CloudPDF.TokensIssueRequestUpload)Value!
+            : throw new global::System.Exception("TokensIssueRequest.Kind is not 'upload'");
+
     public T Match<T>(
         Func<CloudPDF.TokensIssueRequestDoc, T> onDoc,
         Func<CloudPDF.TokensIssueRequestTenant, T> onTenant,
+        Func<CloudPDF.TokensIssueRequestUpload, T> onUpload,
         Func<string, object?, T> onUnknown_
     )
     {
@@ -85,6 +109,7 @@ public record TokensIssueRequest
         {
             "doc" => onDoc(AsDoc()),
             "tenant" => onTenant(AsTenant()),
+            "upload" => onUpload(AsUpload()),
             _ => onUnknown_(Kind, Value),
         };
     }
@@ -92,6 +117,7 @@ public record TokensIssueRequest
     public void Visit(
         Action<CloudPDF.TokensIssueRequestDoc> onDoc,
         Action<CloudPDF.TokensIssueRequestTenant> onTenant,
+        Action<CloudPDF.TokensIssueRequestUpload> onUpload,
         Action<string, object?> onUnknown_
     )
     {
@@ -102,6 +128,9 @@ public record TokensIssueRequest
                 break;
             case "tenant":
                 onTenant(AsTenant());
+                break;
+            case "upload":
+                onUpload(AsUpload());
                 break;
             default:
                 onUnknown_(Kind, Value);
@@ -137,11 +166,28 @@ public record TokensIssueRequest
         return false;
     }
 
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.TokensIssueRequestUpload"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsUpload(out CloudPDF.TokensIssueRequestUpload? value)
+    {
+        if (Kind == "upload")
+        {
+            value = (CloudPDF.TokensIssueRequestUpload)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
     public override string ToString() => JsonUtils.Serialize(this);
 
     public static implicit operator TokensIssueRequest(TokensIssueRequest.Doc value) => new(value);
 
     public static implicit operator TokensIssueRequest(TokensIssueRequest.Tenant value) =>
+        new(value);
+
+    public static implicit operator TokensIssueRequest(TokensIssueRequest.Upload value) =>
         new(value);
 
     [Serializable]
@@ -198,6 +244,13 @@ public record TokensIssueRequest
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.TokensIssueRequestTenant"
                         ),
+                "upload" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.TokensIssueRequestUpload?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.TokensIssueRequestUpload"
+                        ),
                 _ => json.Deserialize<object?>(options),
             };
             return new TokensIssueRequest(discriminator, value);
@@ -214,6 +267,7 @@ public record TokensIssueRequest
                 {
                     "doc" => JsonSerializer.SerializeToNode(value.Value, options),
                     "tenant" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "upload" => JsonSerializer.SerializeToNode(value.Value, options),
                     _ => JsonSerializer.SerializeToNode(value.Value, options),
                 } ?? new JsonObject();
             json["kind"] = value.Kind;
@@ -279,6 +333,26 @@ public record TokensIssueRequest
 
         public static implicit operator TokensIssueRequest.Tenant(
             CloudPDF.TokensIssueRequestTenant value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for upload
+    /// </summary>
+    [Serializable]
+    public struct Upload
+    {
+        public Upload(CloudPDF.TokensIssueRequestUpload value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.TokensIssueRequestUpload Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator TokensIssueRequest.Upload(
+            CloudPDF.TokensIssueRequestUpload value
         ) => new(value);
     }
 }

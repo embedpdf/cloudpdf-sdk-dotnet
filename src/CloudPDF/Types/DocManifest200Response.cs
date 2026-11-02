@@ -35,6 +35,12 @@ public record DocManifest200Response : IJsonOnDeserialized
     [JsonPropertyName("outlineVersion")]
     public int? OutlineVersion { get; set; }
 
+    [JsonPropertyName("fontsVersion")]
+    public int? FontsVersion { get; set; }
+
+    [JsonPropertyName("serverFonts")]
+    public required string ServerFonts { get; set; }
+
     [JsonPropertyName("auditHead")]
     public required int AuditHead { get; set; }
 

@@ -325,6 +325,15 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesCopy"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesCopy value)
+    {
+        Type = "pages.copy";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesRestore"/>.
     /// </summary>
     public ChangeItem(ChangeItem.PagesRestore value)
@@ -540,6 +549,11 @@ public record ChangeItem
     /// Returns true if <see cref="Type"/> is "pages.insert"
     /// </summary>
     public bool IsPagesInsert => Type == "pages.insert";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.copy"
+    /// </summary>
+    public bool IsPagesCopy => Type == "pages.copy";
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "pages.restore"
@@ -874,6 +888,15 @@ public record ChangeItem
             : throw new global::System.Exception("ChangeItem.Type is not 'pages.insert'");
 
     /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesCopy"/> if <see cref="Type"/> is 'pages.copy', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.copy'.</exception>
+    public CloudPDF.ChangeItemPagesCopy AsPagesCopy() =>
+        IsPagesCopy
+            ? (CloudPDF.ChangeItemPagesCopy)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.copy'");
+
+    /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesRestore"/> if <see cref="Type"/> is 'pages.restore', otherwise throws an exception.
     /// </summary>
     /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.restore'.</exception>
@@ -944,6 +967,7 @@ public record ChangeItem
         Func<CloudPDF.ChangeItemPagesDelete, T> onPagesDelete,
         Func<CloudPDF.ChangeItemPagesInsertBlank, T> onPagesInsertBlank,
         Func<CloudPDF.ChangeItemPagesInsert, T> onPagesInsert,
+        Func<CloudPDF.ChangeItemPagesCopy, T> onPagesCopy,
         Func<CloudPDF.ChangeItemPagesRestore, T> onPagesRestore,
         Func<CloudPDF.ChangeItemAttachmentsCreate, T> onAttachmentsCreate,
         Func<CloudPDF.ChangeItemAttachmentsDelete, T> onAttachmentsDelete,
@@ -989,6 +1013,7 @@ public record ChangeItem
             "pages.delete" => onPagesDelete(AsPagesDelete()),
             "pages.insertBlank" => onPagesInsertBlank(AsPagesInsertBlank()),
             "pages.insert" => onPagesInsert(AsPagesInsert()),
+            "pages.copy" => onPagesCopy(AsPagesCopy()),
             "pages.restore" => onPagesRestore(AsPagesRestore()),
             "attachments.create" => onAttachmentsCreate(AsAttachmentsCreate()),
             "attachments.delete" => onAttachmentsDelete(AsAttachmentsDelete()),
@@ -1032,6 +1057,7 @@ public record ChangeItem
         Action<CloudPDF.ChangeItemPagesDelete> onPagesDelete,
         Action<CloudPDF.ChangeItemPagesInsertBlank> onPagesInsertBlank,
         Action<CloudPDF.ChangeItemPagesInsert> onPagesInsert,
+        Action<CloudPDF.ChangeItemPagesCopy> onPagesCopy,
         Action<CloudPDF.ChangeItemPagesRestore> onPagesRestore,
         Action<CloudPDF.ChangeItemAttachmentsCreate> onAttachmentsCreate,
         Action<CloudPDF.ChangeItemAttachmentsDelete> onAttachmentsDelete,
@@ -1142,6 +1168,9 @@ public record ChangeItem
                 break;
             case "pages.insert":
                 onPagesInsert(AsPagesInsert());
+                break;
+            case "pages.copy":
+                onPagesCopy(AsPagesCopy());
                 break;
             case "pages.restore":
                 onPagesRestore(AsPagesRestore());
@@ -1642,6 +1671,20 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesCopy"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesCopy(out CloudPDF.ChangeItemPagesCopy? value)
+    {
+        if (Type == "pages.copy")
+        {
+            value = (CloudPDF.ChangeItemPagesCopy)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
     /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesRestore"/> and returns true if successful.
     /// </summary>
     public bool TryAsPagesRestore(out CloudPDF.ChangeItemPagesRestore? value)
@@ -1769,6 +1812,8 @@ public record ChangeItem
     public static implicit operator ChangeItem(ChangeItem.PagesInsertBlank value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.PagesInsert value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesCopy value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.PagesRestore value) => new(value);
 
@@ -2025,6 +2070,9 @@ public record ChangeItem
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeItemPagesInsert"
                         ),
+                "pages.copy" => jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesCopy?>(
+                    options
+                ) ?? throw new JsonException("Failed to deserialize CloudPDF.ChangeItemPagesCopy"),
                 "pages.restore" =>
                     jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesRestore?>(options)
                         ?? throw new JsonException(
@@ -2108,6 +2156,7 @@ public record ChangeItem
                     "pages.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.insertBlank" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.insert" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.copy" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.restore" => JsonSerializer.SerializeToNode(value.Value, options),
                     "attachments.create" => JsonSerializer.SerializeToNode(value.Value, options),
                     "attachments.delete" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -2817,6 +2866,25 @@ public record ChangeItem
         public static implicit operator ChangeItem.PagesInsert(
             CloudPDF.ChangeItemPagesInsert value
         ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.copy
+    /// </summary>
+    [Serializable]
+    public struct PagesCopy
+    {
+        public PagesCopy(CloudPDF.ChangeItemPagesCopy value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesCopy Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesCopy(CloudPDF.ChangeItemPagesCopy value) =>
+            new(value);
     }
 
     /// <summary>

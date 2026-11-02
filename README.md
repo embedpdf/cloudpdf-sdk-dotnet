@@ -11,6 +11,7 @@ The official .NET SDK for the CloudPDF API.
 - [Installation](#installation)
 - [Reference](#reference)
 - [Usage](#usage)
+- [Environments](#environments)
 - [Exception Handling](#exception-handling)
 - [Advanced](#advanced)
   - [Retries](#retries)
@@ -55,6 +56,19 @@ await client.Doc.ChangesAsync(
         },
     }
 );
+```
+
+## Environments
+
+This SDK allows you to configure different environments for API requests.
+
+```csharp
+using CloudPDF;
+
+var client = new CloudPDFClient(clientOptions: new ClientOptions
+{
+    BaseUrl = CloudPDFEnvironment.Saas
+});
 ```
 
 ## Exception Handling
