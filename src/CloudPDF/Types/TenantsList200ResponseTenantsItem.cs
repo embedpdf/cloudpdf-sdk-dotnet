@@ -23,6 +23,9 @@ public record TenantsList200ResponseTenantsItem : IJsonOnDeserialized
     [JsonPropertyName("status")]
     public TenantsList200ResponseTenantsItemStatus? Status { get; set; }
 
+    [JsonPropertyName("features")]
+    public IEnumerable<TenantFeature>? Features { get; set; }
+
     [JsonPropertyName("createdAt")]
     public required double CreatedAt { get; set; }
 
