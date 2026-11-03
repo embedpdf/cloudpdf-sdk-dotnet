@@ -885,6 +885,66 @@ await client.Tenants.DeleteAsync(new DeleteTenantsRequest { TenantId = "tenantId
 </dl>
 </details>
 
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">UpdateAsync</a>(TenantsUpdateRequest { ... }) -> WithRawResponseTask&lt;TenantsUpdate200Response&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A feature names an installed module; any other id is a 400. A module route answers a tenant without its feature 403 FeatureNotEnabled, and one whose feature is stopped 402 FeatureStopped (details.feature, details.stopped). Other replicas apply a change within 30 seconds.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Tenants.UpdateAsync(
+    new TenantsUpdateRequest
+    {
+        TenantId = "tenantId",
+        Features = new List<TenantFeature>() { new TenantFeature { Id = "id" } },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `TenantsUpdateRequest` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">ResumeAsync</a>(ResumeTenantsRequest { ... }) -> WithRawResponseTask</code></summary>
 <dl>
 <dd>

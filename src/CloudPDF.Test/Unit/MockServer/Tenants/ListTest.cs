@@ -20,6 +20,16 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "autoProvisioned": true,
                   "status": "active",
+                  "features": [
+                    {
+                      "id": "id",
+                      "stopped": "cap"
+                    },
+                    {
+                      "id": "id",
+                      "stopped": "cap"
+                    }
+                  ],
                   "createdAt": 1.1
                 },
                 {
@@ -27,6 +37,16 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "autoProvisioned": true,
                   "status": "active",
+                  "features": [
+                    {
+                      "id": "id",
+                      "stopped": "cap"
+                    },
+                    {
+                      "id": "id",
+                      "stopped": "cap"
+                    }
+                  ],
                   "createdAt": 1.1
                 }
               ],
@@ -58,6 +78,11 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "autoProvisioned": true,
                   "status": "active",
+                  "features": [
+                    {
+                      "id": "id"
+                    }
+                  ],
                   "createdAt": 1.1
                 }
               ],

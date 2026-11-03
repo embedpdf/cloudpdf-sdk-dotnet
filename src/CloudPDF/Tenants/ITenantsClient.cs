@@ -29,6 +29,15 @@ public partial interface ITenantsClient
         CancellationToken cancellationToken = default
     );
 
+    /// <summary>
+    /// A feature names an installed module; any other id is a 400. A module route answers a tenant without its feature 403 FeatureNotEnabled, and one whose feature is stopped 402 FeatureStopped (details.feature, details.stopped). Other replicas apply a change within 30 seconds.
+    /// </summary>
+    WithRawResponseTask<TenantsUpdate200Response> UpdateAsync(
+        TenantsUpdateRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
     WithRawResponseTask ResumeAsync(
         ResumeTenantsRequest request,
         RequestOptions? options = null,
