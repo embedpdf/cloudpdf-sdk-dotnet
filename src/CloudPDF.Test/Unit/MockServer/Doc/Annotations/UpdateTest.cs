@@ -322,6 +322,81 @@ public class UpdateTest : BaseMockServerTest
                     ]
                   }
                 },
+                "richText": {
+                  "body": {
+                    "family": "x",
+                    "weight": 900,
+                    "italic": true,
+                    "size": 1.1,
+                    "color": "color",
+                    "decoration": [
+                      "underline",
+                      "underline"
+                    ],
+                    "script": "normal",
+                    "letterSpacing": 1.1,
+                    "horizontalScale": 1.1,
+                    "unknown": "unknown",
+                    "align": "left",
+                    "dir": "ltr",
+                    "lineHeight": 1.1,
+                    "margins": {
+                      "top": 1.1,
+                      "bottom": 1.1,
+                      "left": 1.1,
+                      "right": 1.1
+                    },
+                    "textIndent": 1.1
+                  },
+                  "paragraphs": [
+                    {
+                      "align": "left",
+                      "dir": "ltr",
+                      "lineHeight": 1.1,
+                      "margins": {
+                        "top": 1.1,
+                        "bottom": 1.1,
+                        "left": 1.1,
+                        "right": 1.1
+                      },
+                      "textIndent": 1.1,
+                      "unknown": "unknown",
+                      "runs": [
+                        {
+                          "text": "text",
+                          "style": {}
+                        },
+                        {
+                          "text": "text",
+                          "style": {}
+                        }
+                      ]
+                    },
+                    {
+                      "align": "left",
+                      "dir": "ltr",
+                      "lineHeight": 1.1,
+                      "margins": {
+                        "top": 1.1,
+                        "bottom": 1.1,
+                        "left": 1.1,
+                        "right": 1.1
+                      },
+                      "textIndent": 1.1,
+                      "unknown": "unknown",
+                      "runs": [
+                        {
+                          "text": "text",
+                          "style": {}
+                        },
+                        {
+                          "text": "text",
+                          "style": {}
+                        }
+                      ]
+                    }
+                  ]
+                },
                 "color": "color",
                 "opacity": 1,
                 "quadPoints": [
@@ -635,6 +710,32 @@ public class UpdateTest : BaseMockServerTest
                       "cycle-dropped"
                     ]
                   }
+                },
+                "richText": {
+                  "body": {
+                    "family": "family",
+                    "weight": 1,
+                    "italic": true,
+                    "size": 1.1,
+                    "color": "color",
+                    "decoration": [
+                      "underline"
+                    ],
+                    "script": "normal",
+                    "letterSpacing": 1.1,
+                    "horizontalScale": 1.1,
+                    "align": "left",
+                    "dir": "ltr"
+                  },
+                  "paragraphs": [
+                    {
+                      "runs": [
+                        {
+                          "text": "text"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "color": "color",
                 "opacity": 1.1,

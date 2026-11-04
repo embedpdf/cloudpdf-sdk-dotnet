@@ -104,6 +104,9 @@ public record AnnotationStamp : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public PdfAnnotationActions? Actions { get; set; }
 
+    [JsonPropertyName("richText")]
+    public RichTextDocument? RichText { get; set; }
+
     [JsonPropertyName("box")]
     public required AnnotationStampBox Box { get; set; }
 

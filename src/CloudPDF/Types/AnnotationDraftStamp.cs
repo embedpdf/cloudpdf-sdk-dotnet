@@ -104,6 +104,9 @@ public record AnnotationDraftStamp : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public object? Actions { get; set; }
 
+    [JsonPropertyName("richText")]
+    public RichTextDocumentInput? RichText { get; set; }
+
     [JsonPropertyName("box")]
     public AnnotationDraftStampBox? Box { get; set; }
 

@@ -104,6 +104,9 @@ public record AnnotationUnderline : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public PdfAnnotationActions? Actions { get; set; }
 
+    [JsonPropertyName("richText")]
+    public RichTextDocument? RichText { get; set; }
+
     [JsonPropertyName("color")]
     public required string Color { get; set; }
 

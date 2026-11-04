@@ -104,6 +104,9 @@ public record AnnotationFreeText : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public PdfAnnotationActions? Actions { get; set; }
 
+    [JsonPropertyName("richText")]
+    public required RichTextDocument RichText { get; set; }
+
     [JsonPropertyName("box")]
     public required AnnotationFreeTextBox Box { get; set; }
 
@@ -124,9 +127,6 @@ public record AnnotationFreeText : IJsonOnDeserialized
 
     [JsonPropertyName("verticalAlign")]
     public required AnnotationFreeTextVerticalAlign VerticalAlign { get; set; }
-
-    [JsonPropertyName("richText")]
-    public required AnnotationFreeTextRichText RichText { get; set; }
 
     [JsonPropertyName("color")]
     public required string Color { get; set; }

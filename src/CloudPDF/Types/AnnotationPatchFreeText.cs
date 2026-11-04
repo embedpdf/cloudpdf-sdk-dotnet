@@ -105,6 +105,9 @@ public record AnnotationPatchFreeText : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public object? Actions { get; set; }
 
+    [JsonPropertyName("richText")]
+    public RichTextDocumentInput? RichText { get; set; }
+
     [JsonPropertyName("box")]
     public AnnotationPatchFreeTextBox? Box { get; set; }
 
@@ -128,9 +131,6 @@ public record AnnotationPatchFreeText : IJsonOnDeserialized
 
     [JsonPropertyName("verticalAlign")]
     public AnnotationPatchFreeTextVerticalAlign? VerticalAlign { get; set; }
-
-    [JsonPropertyName("richText")]
-    public AnnotationPatchFreeTextRichText? RichText { get; set; }
 
     [JsonPropertyName("color")]
     public string? Color { get; set; }

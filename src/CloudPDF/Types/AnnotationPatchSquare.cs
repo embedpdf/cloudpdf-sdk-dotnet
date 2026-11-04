@@ -105,6 +105,9 @@ public record AnnotationPatchSquare : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public object? Actions { get; set; }
 
+    [JsonPropertyName("richText")]
+    public RichTextDocumentInput? RichText { get; set; }
+
     [JsonPropertyName("color")]
     public string? Color { get; set; }
 

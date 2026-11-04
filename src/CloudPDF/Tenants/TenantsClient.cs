@@ -696,8 +696,10 @@ public partial class TenantsClient : ITenantsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 1)
+        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 3)
             .Add("period", request.Period)
+            .Add("from", request.From)
+            .Add("to", request.To)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()

@@ -12,6 +12,12 @@ public record UsageTenantsRequest
     [JsonIgnore]
     public string? Period { get; set; }
 
+    [JsonIgnore]
+    public string? From { get; set; }
+
+    [JsonIgnore]
+    public string? To { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {
