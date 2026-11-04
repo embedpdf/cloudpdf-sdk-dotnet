@@ -25,6 +25,45 @@ await client.Deployment.LicenseStatusAsync();
 </dl>
 </details>
 
+<details><summary><code>client.Deployment.<a href="/src/CloudPDF/Deployment/DeploymentClient.cs">ModulesAsync</a>() -> WithRawResponseTask&lt;DeploymentModulesResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+What each module declares, for a dashboard or a script that lists modules, offers their permissions in its dialogs and shows their meters. Which tenants may use one is in their `features` (`tenants.get`); what it costs, if anything, is the operator's.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Deployment.ModulesAsync();
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Doc
 <details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">HeadAsync</a>(HeadDocRequest { ... }) -> WithRawResponseTask&lt;DocHead200Response&gt;</code></summary>
 <dl>
