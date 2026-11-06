@@ -18,6 +18,7 @@ public class ListTest : BaseMockServerTest
                 {
                   "name": "name",
                   "source": "standard",
+                  "builtIn": true,
                   "familyName": "familyName",
                   "weight": 1,
                   "italic": true,
@@ -49,6 +50,7 @@ public class ListTest : BaseMockServerTest
                 {
                   "name": "name",
                   "source": "standard",
+                  "builtIn": true,
                   "familyName": "familyName",
                   "weight": 1,
                   "italic": true,
@@ -122,6 +124,7 @@ public class ListTest : BaseMockServerTest
                 {
                   "name": "name",
                   "source": "standard",
+                  "builtIn": true,
                   "familyName": "familyName",
                   "weight": 1,
                   "italic": true,

@@ -17,6 +17,9 @@ public record Font : IJsonOnDeserialized
     [JsonPropertyName("source")]
     public required FontSource Source { get; set; }
 
+    [JsonPropertyName("builtIn")]
+    public required bool BuiltIn { get; set; }
+
     [JsonPropertyName("familyName")]
     public required string FamilyName { get; set; }
 
