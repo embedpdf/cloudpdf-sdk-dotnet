@@ -13,7 +13,7 @@ public partial class PagesClient : IPagesClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<DocPagesSetScale200Response>> SetScaleAsyncCore(
+    private async Task<WithRawResponse<DocPagesSetScaleResponse>> SetScaleAsyncCore(
         DocPagesSetScaleRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -57,10 +57,8 @@ public partial class PagesClient : IPagesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocPagesSetScale200Response>(
-                    responseBody
-                )!;
-                return new WithRawResponse<DocPagesSetScale200Response>()
+                var responseData = JsonUtils.Deserialize<DocPagesSetScaleResponse>(responseBody)!;
+                return new WithRawResponse<DocPagesSetScaleResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -97,7 +95,7 @@ public partial class PagesClient : IPagesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -109,7 +107,7 @@ public partial class PagesClient : IPagesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -139,7 +137,7 @@ public partial class PagesClient : IPagesClient
         }
     }
 
-    private async Task<WithRawResponse<DocPagesViewports200Response>> ViewportsAsyncCore(
+    private async Task<WithRawResponse<DocPagesViewportsResponse>> ViewportsAsyncCore(
         ViewportsPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -180,10 +178,8 @@ public partial class PagesClient : IPagesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocPagesViewports200Response>(
-                    responseBody
-                )!;
-                return new WithRawResponse<DocPagesViewports200Response>()
+                var responseData = JsonUtils.Deserialize<DocPagesViewportsResponse>(responseBody)!;
+                return new WithRawResponse<DocPagesViewportsResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -220,7 +216,7 @@ public partial class PagesClient : IPagesClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -309,7 +305,7 @@ public partial class PagesClient : IPagesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -321,7 +317,7 @@ public partial class PagesClient : IPagesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -351,7 +347,7 @@ public partial class PagesClient : IPagesClient
         }
     }
 
-    private async Task<WithRawResponse<DocPagesFlatten200Response>> FlattenAsyncCore(
+    private async Task<WithRawResponse<DocPagesFlattenResponse>> FlattenAsyncCore(
         FlattenPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -394,8 +390,8 @@ public partial class PagesClient : IPagesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocPagesFlatten200Response>(responseBody)!;
-                return new WithRawResponse<DocPagesFlatten200Response>()
+                var responseData = JsonUtils.Deserialize<DocPagesFlattenResponse>(responseBody)!;
+                return new WithRawResponse<DocPagesFlattenResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -432,7 +428,7 @@ public partial class PagesClient : IPagesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -444,7 +440,7 @@ public partial class PagesClient : IPagesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -474,7 +470,7 @@ public partial class PagesClient : IPagesClient
         }
     }
 
-    private async Task<WithRawResponse<DocPagesSetName200Response>> SetNameAsyncCore(
+    private async Task<WithRawResponse<DocPagesSetNameResponse>> SetNameAsyncCore(
         SetNamePagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -517,8 +513,8 @@ public partial class PagesClient : IPagesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocPagesSetName200Response>(responseBody)!;
-                return new WithRawResponse<DocPagesSetName200Response>()
+                var responseData = JsonUtils.Deserialize<DocPagesSetNameResponse>(responseBody)!;
+                return new WithRawResponse<DocPagesSetNameResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -555,7 +551,7 @@ public partial class PagesClient : IPagesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -567,7 +563,7 @@ public partial class PagesClient : IPagesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -597,7 +593,7 @@ public partial class PagesClient : IPagesClient
         }
     }
 
-    private async Task<WithRawResponse<DocPagesRemoveName200Response>> RemoveNameAsyncCore(
+    private async Task<WithRawResponse<DocPagesRemoveNameResponse>> RemoveNameAsyncCore(
         RemoveNamePagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -640,10 +636,8 @@ public partial class PagesClient : IPagesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocPagesRemoveName200Response>(
-                    responseBody
-                )!;
-                return new WithRawResponse<DocPagesRemoveName200Response>()
+                var responseData = JsonUtils.Deserialize<DocPagesRemoveNameResponse>(responseBody)!;
+                return new WithRawResponse<DocPagesRemoveNameResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -680,7 +674,7 @@ public partial class PagesClient : IPagesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -692,7 +686,7 @@ public partial class PagesClient : IPagesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -732,13 +726,13 @@ public partial class PagesClient : IPagesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocPagesSetScale200Response> SetScaleAsync(
+    public WithRawResponseTask<DocPagesSetScaleResponse> SetScaleAsync(
         DocPagesSetScaleRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocPagesSetScale200Response>(
+        return new WithRawResponseTask<DocPagesSetScaleResponse>(
             SetScaleAsyncCore(request, options, cancellationToken)
         );
     }
@@ -753,13 +747,13 @@ public partial class PagesClient : IPagesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocPagesViewports200Response> ViewportsAsync(
+    public WithRawResponseTask<DocPagesViewportsResponse> ViewportsAsync(
         ViewportsPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocPagesViewports200Response>(
+        return new WithRawResponseTask<DocPagesViewportsResponse>(
             ViewportsAsyncCore(request, options, cancellationToken)
         );
     }
@@ -804,13 +798,13 @@ public partial class PagesClient : IPagesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocPagesFlatten200Response> FlattenAsync(
+    public WithRawResponseTask<DocPagesFlattenResponse> FlattenAsync(
         FlattenPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocPagesFlatten200Response>(
+        return new WithRawResponseTask<DocPagesFlattenResponse>(
             FlattenAsyncCore(request, options, cancellationToken)
         );
     }
@@ -825,13 +819,13 @@ public partial class PagesClient : IPagesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocPagesSetName200Response> SetNameAsync(
+    public WithRawResponseTask<DocPagesSetNameResponse> SetNameAsync(
         SetNamePagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocPagesSetName200Response>(
+        return new WithRawResponseTask<DocPagesSetNameResponse>(
             SetNameAsyncCore(request, options, cancellationToken)
         );
     }
@@ -846,13 +840,13 @@ public partial class PagesClient : IPagesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocPagesRemoveName200Response> RemoveNameAsync(
+    public WithRawResponseTask<DocPagesRemoveNameResponse> RemoveNameAsync(
         RemoveNamePagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocPagesRemoveName200Response>(
+        return new WithRawResponseTask<DocPagesRemoveNameResponse>(
             RemoveNameAsyncCore(request, options, cancellationToken)
         );
     }

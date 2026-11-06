@@ -32,7 +32,7 @@ public class MoveIntoTest : BaseMockServerTest
                 {
                     TenantId = "tenantId",
                     FolderId = "folderId",
-                    DocumentIds = null,
+                    DocIds = null,
                     FolderIds = null,
                 }
             )

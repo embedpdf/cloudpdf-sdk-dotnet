@@ -18,7 +18,7 @@ public class ListTest : BaseMockServerTest
               "needsAppearances": true,
               "fields": [
                 {
-                  "family": "text",
+                  "kind": "text",
                   "ref": {
                     "kind": "objectNumber",
                     "objectNumber": 1
@@ -52,7 +52,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -73,7 +72,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -94,7 +92,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -115,7 +112,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -169,7 +165,7 @@ public class ListTest : BaseMockServerTest
                   "comb": true
                 },
                 {
-                  "family": "text",
+                  "kind": "text",
                   "ref": {
                     "kind": "objectNumber",
                     "objectNumber": 1
@@ -203,7 +199,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -224,7 +219,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -245,7 +239,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -266,7 +259,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -404,7 +396,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -425,7 +416,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -446,7 +436,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -467,7 +456,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -488,7 +476,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -509,7 +496,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -530,7 +516,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -551,7 +536,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -572,7 +556,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -593,7 +576,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -614,7 +596,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -627,7 +608,7 @@ public class ListTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -646,7 +627,8 @@ public class ListTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 },
                 {
                   "subtype": "widget",
@@ -731,7 +713,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -752,7 +733,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -773,7 +753,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -794,7 +773,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -815,7 +793,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -836,7 +813,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -857,7 +833,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -878,7 +853,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -899,7 +873,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -920,7 +893,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -941,7 +913,6 @@ public class ListTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -954,7 +925,7 @@ public class ListTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -973,7 +944,8 @@ public class ListTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 }
               ],
               "calculationOrder": [
@@ -1018,7 +990,7 @@ public class ListTest : BaseMockServerTest
               "needsAppearances": true,
               "fields": [
                 {
-                  "family": "text",
+                  "kind": "text",
                   "ref": {
                     "kind": "objectNumber",
                     "objectNumber": 1
@@ -1130,7 +1102,7 @@ public class ListTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -1148,7 +1120,8 @@ public class ListTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 }
               ],
               "calculationOrder": [

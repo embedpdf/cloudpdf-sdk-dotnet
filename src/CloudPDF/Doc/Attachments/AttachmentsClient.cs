@@ -71,7 +71,7 @@ public partial class AttachmentsClient : IAttachmentsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -83,7 +83,7 @@ public partial class AttachmentsClient : IAttachmentsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -95,7 +95,7 @@ public partial class AttachmentsClient : IAttachmentsClient
                         );
                     case 413:
                         throw new ContentTooLargeError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -203,7 +203,7 @@ public partial class AttachmentsClient : IAttachmentsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,

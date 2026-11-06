@@ -23,7 +23,7 @@ public class SetValueTest : BaseMockServerTest
         const string mockResponse = """
             {
               "field": {
-                "family": "text",
+                "kind": "text",
                 "ref": {
                   "kind": "objectNumber",
                   "objectNumber": 1
@@ -57,7 +57,6 @@ public class SetValueTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -78,7 +77,6 @@ public class SetValueTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -99,7 +97,6 @@ public class SetValueTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -120,7 +117,6 @@ public class SetValueTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -257,7 +253,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -278,7 +273,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -299,7 +293,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -320,7 +313,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -341,7 +333,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -362,7 +353,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -383,7 +373,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -404,7 +393,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -425,7 +413,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -446,7 +433,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -467,7 +453,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -480,7 +465,7 @@ public class SetValueTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -499,7 +484,8 @@ public class SetValueTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 },
                 {
                   "subtype": "widget",
@@ -584,7 +570,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -605,7 +590,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -626,7 +610,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -647,7 +630,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -668,7 +650,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -689,7 +670,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -710,7 +690,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -731,7 +710,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -752,7 +730,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -773,7 +750,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -794,7 +770,6 @@ public class SetValueTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -807,7 +782,7 @@ public class SetValueTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -826,7 +801,8 @@ public class SetValueTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 }
               ],
               "meta": {
@@ -850,6 +826,7 @@ public class SetValueTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -1007,7 +984,7 @@ public class SetValueTest : BaseMockServerTest
         const string mockResponse = """
             {
               "field": {
-                "family": "text",
+                "kind": "text",
                 "ref": {
                   "kind": "objectNumber",
                   "objectNumber": 1
@@ -1028,28 +1005,24 @@ public class SetValueTest : BaseMockServerTest
                 "actions": {
                   "keystroke": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "format": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "validate": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "calculate": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
@@ -1148,7 +1121,7 @@ public class SetValueTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -1166,7 +1139,8 @@ public class SetValueTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 }
               ],
               "meta": {
@@ -1186,6 +1160,7 @@ public class SetValueTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [

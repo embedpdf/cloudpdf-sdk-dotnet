@@ -95,7 +95,7 @@ public partial class FontsClient : IFontsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -205,7 +205,7 @@ public partial class FontsClient : IFontsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -217,7 +217,7 @@ public partial class FontsClient : IFontsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,

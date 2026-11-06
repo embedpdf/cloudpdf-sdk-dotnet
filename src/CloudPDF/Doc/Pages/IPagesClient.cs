@@ -4,13 +4,13 @@ namespace CloudPDF.Doc;
 
 public partial interface IPagesClient
 {
-    WithRawResponseTask<DocPagesSetScale200Response> SetScaleAsync(
+    WithRawResponseTask<DocPagesSetScaleResponse> SetScaleAsync(
         DocPagesSetScaleRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocPagesViewports200Response> ViewportsAsync(
+    WithRawResponseTask<DocPagesViewportsResponse> ViewportsAsync(
         ViewportsPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -25,19 +25,19 @@ public partial interface IPagesClient
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocPagesFlatten200Response> FlattenAsync(
+    WithRawResponseTask<DocPagesFlattenResponse> FlattenAsync(
         FlattenPagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocPagesSetName200Response> SetNameAsync(
+    WithRawResponseTask<DocPagesSetNameResponse> SetNameAsync(
         SetNamePagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocPagesRemoveName200Response> RemoveNameAsync(
+    WithRawResponseTask<DocPagesRemoveNameResponse> RemoveNameAsync(
         RemoveNamePagesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

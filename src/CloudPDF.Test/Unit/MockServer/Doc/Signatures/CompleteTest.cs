@@ -59,7 +59,7 @@ public class CompleteTest : BaseMockServerTest
                     "key": "value"
                   }
                 ],
-                "contentsSize": 1,
+                "contentsSizeBytes": 1,
                 "coverage": "whole-revision",
                 "revisionIndex": 1,
                 "signer": {
@@ -69,7 +69,7 @@ public class CompleteTest : BaseMockServerTest
                   "contactInfo": "contactInfo",
                   "signedAt": "2024-01-15T09:30:00.000Z"
                 },
-                "docMdp": 1.1,
+                "docMdp": 1,
                 "catalogCertification": true,
                 "fieldMdp": {
                   "action": "all",
@@ -77,7 +77,7 @@ public class CompleteTest : BaseMockServerTest
                     "fields",
                     "fields"
                   ],
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "lock": {
                   "action": "all",
@@ -85,32 +85,35 @@ public class CompleteTest : BaseMockServerTest
                     "fields",
                     "fields"
                   ],
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "seedValue": {
-                  "requiredFlags": 1,
-                  "presentFlags": 1,
-                  "version": 1,
-                  "mdp": 1.1,
+                  "parserVersion": 1,
+                  "parserVersionRequired": true,
+                  "mdp": 1,
                   "filter": "filter",
+                  "filterRequired": true,
                   "subFilters": [
                     "subFilters",
                     "subFilters"
                   ],
+                  "subFiltersRequired": true,
                   "digestMethods": [
                     "digestMethods",
                     "digestMethods"
                   ],
+                  "digestMethodsRequired": true,
                   "reasons": [
                     "reasons",
                     "reasons"
                   ],
+                  "reasonsRequired": true,
                   "unsupportedRequired": true
                 }
               },
               "version": {
                 "sha256": "sha256",
-                "byteLength": 1
+                "sizeBytes": 1
               },
               "previous": {
                 "baseSha256": "baseSha256",
@@ -121,7 +124,7 @@ public class CompleteTest : BaseMockServerTest
                 "judged": "none",
                 "certification": {
                   "signatureIndex": 1,
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "fieldLocks": [
                   {
@@ -133,7 +136,7 @@ public class CompleteTest : BaseMockServerTest
                         "fields",
                         "fields"
                       ],
-                      "permission": 1.1
+                      "permission": 1
                     }
                   },
                   {
@@ -145,7 +148,7 @@ public class CompleteTest : BaseMockServerTest
                         "fields",
                         "fields"
                       ],
-                      "permission": 1.1
+                      "permission": 1
                     }
                   }
                 ],
@@ -172,6 +175,7 @@ public class CompleteTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -289,7 +293,7 @@ public class CompleteTest : BaseMockServerTest
                     "key": "value"
                   }
                 ],
-                "contentsSize": 1,
+                "contentsSizeBytes": 1,
                 "coverage": "whole-revision",
                 "revisionIndex": 1,
                 "signer": {
@@ -299,43 +303,46 @@ public class CompleteTest : BaseMockServerTest
                   "contactInfo": "contactInfo",
                   "signedAt": "2024-01-15T09:30:00.000Z"
                 },
-                "docMdp": 1.1,
+                "docMdp": 1,
                 "catalogCertification": true,
                 "fieldMdp": {
                   "action": "all",
                   "fields": [
                     "fields"
                   ],
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "lock": {
                   "action": "all",
                   "fields": [
                     "fields"
                   ],
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "seedValue": {
-                  "requiredFlags": 1,
-                  "presentFlags": 1,
-                  "version": 1,
-                  "mdp": 1.1,
+                  "parserVersion": 1,
+                  "parserVersionRequired": true,
+                  "mdp": 1,
                   "filter": "filter",
+                  "filterRequired": true,
                   "subFilters": [
                     "subFilters"
                   ],
+                  "subFiltersRequired": true,
                   "digestMethods": [
                     "digestMethods"
                   ],
+                  "digestMethodsRequired": true,
                   "reasons": [
                     "reasons"
                   ],
+                  "reasonsRequired": true,
                   "unsupportedRequired": true
                 }
               },
               "version": {
                 "sha256": "sha256",
-                "byteLength": 1
+                "sizeBytes": 1
               },
               "previous": {
                 "baseSha256": "baseSha256",
@@ -346,12 +353,18 @@ public class CompleteTest : BaseMockServerTest
                 "judged": "none",
                 "certification": {
                   "signatureIndex": 1,
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "fieldLocks": [
                   {
                     "signatureIndex": 1,
-                    "source": "fieldmdp"
+                    "source": "fieldmdp",
+                    "spec": {
+                      "action": "all",
+                      "fields": [
+                        "fields"
+                      ]
+                    }
                   }
                 ],
                 "policyVersion": 1
@@ -373,6 +386,7 @@ public class CompleteTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [

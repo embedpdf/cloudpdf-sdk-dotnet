@@ -13,7 +13,7 @@ public partial class LayersClient : ILayersClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<DocumentsLayersList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<DocumentsLayersListResponse>> ListAsyncCore(
         ListLayersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -39,7 +39,7 @@ public partial class LayersClient : ILayersClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}/layers",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id)
+                        ValueConvert.ToPathParameterString(request.DocId)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -55,10 +55,10 @@ public partial class LayersClient : ILayersClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsLayersList200Response>(
+                var responseData = JsonUtils.Deserialize<DocumentsLayersListResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocumentsLayersList200Response>()
+                return new WithRawResponse<DocumentsLayersListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -95,7 +95,7 @@ public partial class LayersClient : ILayersClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -107,7 +107,7 @@ public partial class LayersClient : ILayersClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -119,7 +119,7 @@ public partial class LayersClient : ILayersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -172,7 +172,7 @@ public partial class LayersClient : ILayersClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}/layers/{2}",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id),
+                        ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName)
                     ),
                     QueryString = _queryString,
@@ -201,7 +201,7 @@ public partial class LayersClient : ILayersClient
                 {
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -213,7 +213,7 @@ public partial class LayersClient : ILayersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -225,7 +225,7 @@ public partial class LayersClient : ILayersClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -256,15 +256,17 @@ public partial class LayersClient : ILayersClient
     }
 
     /// <example><code>
-    /// await client.Documents.Layers.ListAsync(new ListLayersRequest { TenantId = "tenantId", Id = "id" });
+    /// await client.Documents.Layers.ListAsync(
+    ///     new ListLayersRequest { TenantId = "tenantId", DocId = "docId" }
+    /// );
     /// </code></example>
-    public WithRawResponseTask<DocumentsLayersList200Response> ListAsync(
+    public WithRawResponseTask<DocumentsLayersListResponse> ListAsync(
         ListLayersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsLayersList200Response>(
+        return new WithRawResponseTask<DocumentsLayersListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
@@ -274,7 +276,7 @@ public partial class LayersClient : ILayersClient
     ///     new DeleteLayersRequest
     ///     {
     ///         TenantId = "tenantId",
-    ///         Id = "id",
+    ///         DocId = "docId",
     ///         LayerName = "layerName",
     ///     }
     /// );

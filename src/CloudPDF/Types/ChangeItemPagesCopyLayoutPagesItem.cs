@@ -24,7 +24,7 @@ public record ChangeItemPagesCopyLayoutPagesItem : IJsonOnDeserialized
     public required ChangeItemPagesCopyLayoutPagesItemSize Size { get; set; }
 
     [JsonPropertyName("rotation")]
-    public required double Rotation { get; set; }
+    public required int Rotation { get; set; }
 
     [JsonPropertyName("userUnit")]
     public required double UserUnit { get; set; }

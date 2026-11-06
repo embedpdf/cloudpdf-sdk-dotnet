@@ -12,7 +12,7 @@ public partial class FoldersClient : IFoldersClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<FoldersList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<FoldersListResponse>> ListAsyncCore(
         ListFoldersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -53,8 +53,8 @@ public partial class FoldersClient : IFoldersClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<FoldersList200Response>(responseBody)!;
-                return new WithRawResponse<FoldersList200Response>()
+                var responseData = JsonUtils.Deserialize<FoldersListResponse>(responseBody)!;
+                return new WithRawResponse<FoldersListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -91,7 +91,7 @@ public partial class FoldersClient : IFoldersClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -103,7 +103,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -115,7 +115,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -145,7 +145,7 @@ public partial class FoldersClient : IFoldersClient
         }
     }
 
-    private async Task<WithRawResponse<FoldersCreate200Response>> CreateAsyncCore(
+    private async Task<WithRawResponse<FoldersCreateResponse>> CreateAsyncCore(
         FoldersCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -185,8 +185,8 @@ public partial class FoldersClient : IFoldersClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<FoldersCreate200Response>(responseBody)!;
-                return new WithRawResponse<FoldersCreate200Response>()
+                var responseData = JsonUtils.Deserialize<FoldersCreateResponse>(responseBody)!;
+                return new WithRawResponse<FoldersCreateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -223,7 +223,7 @@ public partial class FoldersClient : IFoldersClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -235,7 +235,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -247,7 +247,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -259,7 +259,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -289,7 +289,7 @@ public partial class FoldersClient : IFoldersClient
         }
     }
 
-    private async Task<WithRawResponse<FoldersGet200Response>> GetAsyncCore(
+    private async Task<WithRawResponse<FoldersGetResponse>> GetAsyncCore(
         GetFoldersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -328,8 +328,8 @@ public partial class FoldersClient : IFoldersClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<FoldersGet200Response>(responseBody)!;
-                return new WithRawResponse<FoldersGet200Response>()
+                var responseData = JsonUtils.Deserialize<FoldersGetResponse>(responseBody)!;
+                return new WithRawResponse<FoldersGetResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -366,7 +366,7 @@ public partial class FoldersClient : IFoldersClient
                 {
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -378,7 +378,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -460,7 +460,7 @@ public partial class FoldersClient : IFoldersClient
                 {
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -472,7 +472,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -484,7 +484,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -514,7 +514,7 @@ public partial class FoldersClient : IFoldersClient
         }
     }
 
-    private async Task<WithRawResponse<FoldersUpdate200Response>> UpdateAsyncCore(
+    private async Task<WithRawResponse<FoldersUpdateResponse>> UpdateAsyncCore(
         FoldersUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -555,8 +555,8 @@ public partial class FoldersClient : IFoldersClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<FoldersUpdate200Response>(responseBody)!;
-                return new WithRawResponse<FoldersUpdate200Response>()
+                var responseData = JsonUtils.Deserialize<FoldersUpdateResponse>(responseBody)!;
+                return new WithRawResponse<FoldersUpdateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -593,7 +593,7 @@ public partial class FoldersClient : IFoldersClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -605,7 +605,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -617,7 +617,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -629,7 +629,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -712,7 +712,7 @@ public partial class FoldersClient : IFoldersClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -724,7 +724,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -736,7 +736,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -748,7 +748,7 @@ public partial class FoldersClient : IFoldersClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -781,13 +781,13 @@ public partial class FoldersClient : IFoldersClient
     /// <example><code>
     /// await client.Folders.ListAsync(new ListFoldersRequest { TenantId = "tenantId" });
     /// </code></example>
-    public WithRawResponseTask<FoldersList200Response> ListAsync(
+    public WithRawResponseTask<FoldersListResponse> ListAsync(
         ListFoldersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<FoldersList200Response>(
+        return new WithRawResponseTask<FoldersListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
@@ -798,13 +798,13 @@ public partial class FoldersClient : IFoldersClient
     /// <example><code>
     /// await client.Folders.CreateAsync(new FoldersCreateRequest { TenantId = "tenantId", Name = "name" });
     /// </code></example>
-    public WithRawResponseTask<FoldersCreate200Response> CreateAsync(
+    public WithRawResponseTask<FoldersCreateResponse> CreateAsync(
         FoldersCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<FoldersCreate200Response>(
+        return new WithRawResponseTask<FoldersCreateResponse>(
             CreateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -814,13 +814,13 @@ public partial class FoldersClient : IFoldersClient
     ///     new GetFoldersRequest { TenantId = "tenantId", FolderId = "folderId" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<FoldersGet200Response> GetAsync(
+    public WithRawResponseTask<FoldersGetResponse> GetAsync(
         GetFoldersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<FoldersGet200Response>(
+        return new WithRawResponseTask<FoldersGetResponse>(
             GetAsyncCore(request, options, cancellationToken)
         );
     }
@@ -855,19 +855,19 @@ public partial class FoldersClient : IFoldersClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<FoldersUpdate200Response> UpdateAsync(
+    public WithRawResponseTask<FoldersUpdateResponse> UpdateAsync(
         FoldersUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<FoldersUpdate200Response>(
+        return new WithRawResponseTask<FoldersUpdateResponse>(
             UpdateAsyncCore(request, options, cancellationToken)
         );
     }
 
     /// <summary>
-    /// Up to 1,000 ids in total. A folder moves with everything in it. 404 NotFound names the ids that do not exist or are being deleted in `details.documentIds` and `details.folderIds`. 409 Conflict carries `details.reason`: `cycle` (the destination is a moved folder or inside one; `details.folderId`), `too-deep` (the move would nest folders deeper than 100 levels; `details.maxDepth`) or `name-taken` (a moved folder's name is taken in the destination, ignoring case; `details.name`).
+    /// Up to 1,000 ids in total. A folder moves with everything in it. 404 NotFound names the ids that do not exist or are being deleted in `details.docIds` and `details.folderIds`. 409 Conflict carries `details.reason`: `cycle` (the destination is a moved folder or inside one; `details.folderId`), `too-deep` (the move would nest folders deeper than 100 levels; `details.maxDepth`) or `name-taken` (a moved folder's name is taken in the destination, ignoring case; `details.name`).
     /// </summary>
     /// <example><code>
     /// await client.Folders.MoveIntoAsync(

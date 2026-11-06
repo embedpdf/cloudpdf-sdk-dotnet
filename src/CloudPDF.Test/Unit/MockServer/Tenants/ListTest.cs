@@ -30,7 +30,7 @@ public class ListTest : BaseMockServerTest
                       "stopped": "cap"
                     }
                   ],
-                  "createdAt": 1.1
+                  "createdAt": "2024-01-15T09:30:00.000Z"
                 },
                 {
                   "id": "id",
@@ -47,7 +47,7 @@ public class ListTest : BaseMockServerTest
                       "stopped": "cap"
                     }
                   ],
-                  "createdAt": 1.1
+                  "createdAt": "2024-01-15T09:30:00.000Z"
                 }
               ],
               "nextCursor": "nextCursor"
@@ -83,7 +83,7 @@ public class ListTest : BaseMockServerTest
                       "id": "id"
                     }
                   ],
-                  "createdAt": 1.1
+                  "createdAt": "2024-01-15T09:30:00.000Z"
                 }
               ],
               "nextCursor": "nextCursor"

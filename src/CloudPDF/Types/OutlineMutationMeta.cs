@@ -26,8 +26,8 @@ public record OutlineMutationMeta : IJsonOnDeserialized
     [JsonPropertyName("missingCharacters")]
     public IEnumerable<string>? MissingCharacters { get; set; }
 
-    [JsonPropertyName("changed")]
-    public IEnumerable<OutlineItemRef> Changed { get; set; } = new List<OutlineItemRef>();
+    [JsonPropertyName("changedRefs")]
+    public IEnumerable<OutlineItemRef> ChangedRefs { get; set; } = new List<OutlineItemRef>();
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

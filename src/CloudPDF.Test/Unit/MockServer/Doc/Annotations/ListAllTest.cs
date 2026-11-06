@@ -98,7 +98,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -119,7 +118,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -140,7 +138,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -161,7 +158,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -182,7 +178,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -203,7 +198,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -224,7 +218,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -245,7 +238,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -266,7 +258,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -287,7 +278,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -308,7 +298,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -514,7 +503,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -535,7 +523,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -556,7 +543,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -577,7 +563,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -598,7 +583,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -619,7 +603,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -640,7 +623,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -661,7 +643,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -682,7 +663,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -703,7 +683,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -724,7 +703,6 @@ public class ListAllTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"

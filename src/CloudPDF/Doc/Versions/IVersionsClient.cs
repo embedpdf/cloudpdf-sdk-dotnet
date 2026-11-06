@@ -7,7 +7,7 @@ public partial interface IVersionsClient
     /// <summary>
     /// Every completed signature makes a new version of its layer; another layer's versions are never listed. Never cached: the list grows.
     /// </summary>
-    WithRawResponseTask<DocVersionsList200Response> ListAsync(
+    WithRawResponseTask<DocVersionsListResponse> ListAsync(
         ListVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -16,7 +16,7 @@ public partial interface IVersionsClient
     /// <summary>
     /// Exactly one of `since.signature` / `since.revision`; `until=&lt;revision&gt;` defaults to the last. The same answer for every caller.
     /// </summary>
-    WithRawResponseTask<DocVersionsAnalysis200Response> AnalysisAsync(
+    WithRawResponseTask<DocVersionsAnalysisResponse> AnalysisAsync(
         AnalysisVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -34,7 +34,7 @@ public partial interface IVersionsClient
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocVersionsSignatures200Response> SignaturesAsync(
+    WithRawResponseTask<DocVersionsSignaturesResponse> SignaturesAsync(
         SignaturesVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

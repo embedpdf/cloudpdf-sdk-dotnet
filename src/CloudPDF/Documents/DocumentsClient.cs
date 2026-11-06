@@ -16,7 +16,7 @@ public partial class DocumentsClient : IDocumentsClient
 
     public ILayersClient Layers { get; }
 
-    private async Task<WithRawResponse<DocumentsList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<DocumentsListResponse>> ListAsyncCore(
         ListDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -61,8 +61,8 @@ public partial class DocumentsClient : IDocumentsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsList200Response>(responseBody)!;
-                return new WithRawResponse<DocumentsList200Response>()
+                var responseData = JsonUtils.Deserialize<DocumentsListResponse>(responseBody)!;
+                return new WithRawResponse<DocumentsListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -99,7 +99,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -129,7 +129,7 @@ public partial class DocumentsClient : IDocumentsClient
         }
     }
 
-    private async Task<WithRawResponse<DocumentsGet200Response>> GetAsyncCore(
+    private async Task<WithRawResponse<DocumentsGetResponse>> GetAsyncCore(
         GetDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -152,7 +152,7 @@ public partial class DocumentsClient : IDocumentsClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id)
+                        ValueConvert.ToPathParameterString(request.DocId)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -168,8 +168,8 @@ public partial class DocumentsClient : IDocumentsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsGet200Response>(responseBody)!;
-                return new WithRawResponse<DocumentsGet200Response>()
+                var responseData = JsonUtils.Deserialize<DocumentsGetResponse>(responseBody)!;
+                return new WithRawResponse<DocumentsGetResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -206,7 +206,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -218,7 +218,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -271,7 +271,7 @@ public partial class DocumentsClient : IDocumentsClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id)
+                        ValueConvert.ToPathParameterString(request.DocId)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -299,7 +299,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -311,7 +311,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -341,7 +341,7 @@ public partial class DocumentsClient : IDocumentsClient
         }
     }
 
-    private async Task<WithRawResponse<DocumentsUpdate200Response>> UpdateAsyncCore(
+    private async Task<WithRawResponse<DocumentsUpdateResponse>> UpdateAsyncCore(
         DocumentsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -364,7 +364,7 @@ public partial class DocumentsClient : IDocumentsClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id)
+                        ValueConvert.ToPathParameterString(request.DocId)
                     ),
                     Body = request,
                     QueryString = _queryString,
@@ -382,8 +382,8 @@ public partial class DocumentsClient : IDocumentsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsUpdate200Response>(responseBody)!;
-                return new WithRawResponse<DocumentsUpdate200Response>()
+                var responseData = JsonUtils.Deserialize<DocumentsUpdateResponse>(responseBody)!;
+                return new WithRawResponse<DocumentsUpdateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -420,7 +420,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -432,7 +432,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -444,7 +444,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -474,7 +474,7 @@ public partial class DocumentsClient : IDocumentsClient
         }
     }
 
-    private async Task<WithRawResponse<DocumentsCommit200Response>> CommitAsyncCore(
+    private async Task<WithRawResponse<DocumentsCommitResponse>> CommitAsyncCore(
         DocumentsCommitRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -497,7 +497,7 @@ public partial class DocumentsClient : IDocumentsClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}/commit",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id)
+                        ValueConvert.ToPathParameterString(request.DocId)
                     ),
                     Body = request,
                     QueryString = _queryString,
@@ -515,8 +515,8 @@ public partial class DocumentsClient : IDocumentsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsCommit200Response>(responseBody)!;
-                return new WithRawResponse<DocumentsCommit200Response>()
+                var responseData = JsonUtils.Deserialize<DocumentsCommitResponse>(responseBody)!;
+                return new WithRawResponse<DocumentsCommitResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -553,7 +553,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -565,7 +565,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -618,7 +618,7 @@ public partial class DocumentsClient : IDocumentsClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}/download",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id)
+                        ValueConvert.ToPathParameterString(request.DocId)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -651,7 +651,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -663,7 +663,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -716,7 +716,7 @@ public partial class DocumentsClient : IDocumentsClient
                     Path = string.Format(
                         "v1/tenants/{0}/documents/{1}/thumbnail",
                         ValueConvert.ToPathParameterString(request.TenantId),
-                        ValueConvert.ToPathParameterString(request.Id)
+                        ValueConvert.ToPathParameterString(request.DocId)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -749,7 +749,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -779,7 +779,7 @@ public partial class DocumentsClient : IDocumentsClient
         }
     }
 
-    private async Task<WithRawResponse<DocumentsUploadProxy200Response>> UploadProxyAsyncCore(
+    private async Task<WithRawResponse<DocumentsUploadProxyResponse>> UploadProxyAsyncCore(
         UploadProxyDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -800,7 +800,7 @@ public partial class DocumentsClient : IDocumentsClient
             Path = string.Format(
                 "v1/tenants/{0}/documents/{1}/upload-proxy",
                 ValueConvert.ToPathParameterString(request.TenantId),
-                ValueConvert.ToPathParameterString(request.Id)
+                ValueConvert.ToPathParameterString(request.DocId)
             ),
             QueryString = _queryString,
             Headers = _headers,
@@ -817,10 +817,10 @@ public partial class DocumentsClient : IDocumentsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsUploadProxy200Response>(
+                var responseData = JsonUtils.Deserialize<DocumentsUploadProxyResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocumentsUploadProxy200Response>()
+                return new WithRawResponse<DocumentsUploadProxyResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -857,7 +857,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -869,7 +869,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -881,7 +881,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -991,7 +991,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1003,7 +1003,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1015,7 +1015,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 502:
                         throw new BadGatewayError(
-                            JsonUtils.Deserialize<AdminErrorPayload>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1045,7 +1045,7 @@ public partial class DocumentsClient : IDocumentsClient
         }
     }
 
-    private async Task<WithRawResponse<DocumentsInit200Response>> InitAsyncCore(
+    private async Task<WithRawResponse<DocumentsInitResponse>> InitAsyncCore(
         DocumentsInitRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -1085,8 +1085,8 @@ public partial class DocumentsClient : IDocumentsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocumentsInit200Response>(responseBody)!;
-                return new WithRawResponse<DocumentsInit200Response>()
+                var responseData = JsonUtils.Deserialize<DocumentsInitResponse>(responseBody)!;
+                return new WithRawResponse<DocumentsInitResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -1123,7 +1123,7 @@ public partial class DocumentsClient : IDocumentsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1135,7 +1135,7 @@ public partial class DocumentsClient : IDocumentsClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1168,33 +1168,35 @@ public partial class DocumentsClient : IDocumentsClient
     /// <example><code>
     /// await client.Documents.ListAsync(new ListDocumentsRequest { TenantId = "tenantId" });
     /// </code></example>
-    public WithRawResponseTask<DocumentsList200Response> ListAsync(
+    public WithRawResponseTask<DocumentsListResponse> ListAsync(
         ListDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsList200Response>(
+        return new WithRawResponseTask<DocumentsListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
 
     /// <example><code>
-    /// await client.Documents.GetAsync(new GetDocumentsRequest { TenantId = "tenantId", Id = "id" });
+    /// await client.Documents.GetAsync(new GetDocumentsRequest { TenantId = "tenantId", DocId = "docId" });
     /// </code></example>
-    public WithRawResponseTask<DocumentsGet200Response> GetAsync(
+    public WithRawResponseTask<DocumentsGetResponse> GetAsync(
         GetDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsGet200Response>(
+        return new WithRawResponseTask<DocumentsGetResponse>(
             GetAsyncCore(request, options, cancellationToken)
         );
     }
 
     /// <example><code>
-    /// await client.Documents.DeleteAsync(new DeleteDocumentsRequest { TenantId = "tenantId", Id = "id" });
+    /// await client.Documents.DeleteAsync(
+    ///     new DeleteDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
+    /// );
     /// </code></example>
     public WithRawResponseTask DeleteAsync(
         DeleteDocumentsRequest request,
@@ -1213,18 +1215,18 @@ public partial class DocumentsClient : IDocumentsClient
     ///     new DocumentsUpdateRequest
     ///     {
     ///         TenantId = "tenantId",
-    ///         Id = "id",
+    ///         DocId = "docId",
     ///         Name = "name",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocumentsUpdate200Response> UpdateAsync(
+    public WithRawResponseTask<DocumentsUpdateResponse> UpdateAsync(
         DocumentsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsUpdate200Response>(
+        return new WithRawResponseTask<DocumentsUpdateResponse>(
             UpdateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1237,25 +1239,25 @@ public partial class DocumentsClient : IDocumentsClient
     ///     new DocumentsCommitRequest
     ///     {
     ///         TenantId = "tenantId",
-    ///         Id = "id",
+    ///         DocId = "docId",
     ///         Sha256 = "sha256",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocumentsCommit200Response> CommitAsync(
+    public WithRawResponseTask<DocumentsCommitResponse> CommitAsync(
         DocumentsCommitRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsCommit200Response>(
+        return new WithRawResponseTask<DocumentsCommitResponse>(
             CommitAsyncCore(request, options, cancellationToken)
         );
     }
 
     /// <example><code>
     /// await client.Documents.DownloadAsync(
-    ///     new DownloadDocumentsRequest { TenantId = "tenantId", Id = "id" }
+    ///     new DownloadDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
     /// );
     /// </code></example>
     public WithRawResponseTask<global::System.IO.Stream> DownloadAsync(
@@ -1271,7 +1273,7 @@ public partial class DocumentsClient : IDocumentsClient
 
     /// <example><code>
     /// await client.Documents.ThumbnailAsync(
-    ///     new ThumbnailDocumentsRequest { TenantId = "tenantId", Id = "id" }
+    ///     new ThumbnailDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
     /// );
     /// </code></example>
     public WithRawResponseTask<global::System.IO.Stream> ThumbnailAsync(
@@ -1290,16 +1292,16 @@ public partial class DocumentsClient : IDocumentsClient
     /// </summary>
     /// <example><code>
     /// await client.Documents.UploadProxyAsync(
-    ///     new UploadProxyDocumentsRequest { TenantId = "tenantId", Id = "id" }
+    ///     new UploadProxyDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocumentsUploadProxy200Response> UploadProxyAsync(
+    public WithRawResponseTask<DocumentsUploadProxyResponse> UploadProxyAsync(
         UploadProxyDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsUploadProxy200Response>(
+        return new WithRawResponseTask<DocumentsUploadProxyResponse>(
             UploadProxyAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1332,25 +1334,25 @@ public partial class DocumentsClient : IDocumentsClient
     }
 
     /// <summary>
-    /// With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; contentLength must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
+    /// With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; sizeBytes must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
     /// </summary>
     /// <example><code>
     /// await client.Documents.InitAsync(
     ///     new DocumentsInitRequest
     ///     {
     ///         TenantId = "tenantId",
-    ///         ContentLength = 1.1,
+    ///         SizeBytes = 1,
     ///         ContentSha256 = "contentSha256",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocumentsInit200Response> InitAsync(
+    public WithRawResponseTask<DocumentsInitResponse> InitAsync(
         DocumentsInitRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocumentsInit200Response>(
+        return new WithRawResponseTask<DocumentsInitResponse>(
             InitAsyncCore(request, options, cancellationToken)
         );
     }

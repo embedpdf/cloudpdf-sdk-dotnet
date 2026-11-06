@@ -9,8 +9,8 @@ public record DocumentsInitRequest
     [JsonIgnore]
     public required string TenantId { get; set; }
 
-    [JsonPropertyName("contentLength")]
-    public required double ContentLength { get; set; }
+    [JsonPropertyName("sizeBytes")]
+    public required int SizeBytes { get; set; }
 
     [JsonPropertyName("contentSha256")]
     public required string ContentSha256 { get; set; }
@@ -42,8 +42,8 @@ public record DocumentsInitRequest
     [JsonPropertyName("docId")]
     public string? DocId { get; set; }
 
-    [JsonPropertyName("uploadTtlSec")]
-    public double? UploadTtlSec { get; set; }
+    [JsonPropertyName("uploadTtlSeconds")]
+    public int? UploadTtlSeconds { get; set; }
 
     [JsonPropertyName("uploadPreference")]
     public DocumentsInitRequestUploadPreference? UploadPreference { get; set; }

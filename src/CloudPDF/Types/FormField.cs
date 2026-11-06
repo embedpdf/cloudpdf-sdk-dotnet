@@ -8,13 +8,16 @@ using global::System.Text.Json.Serialization;
 
 namespace CloudPDF;
 
+/// <summary>
+/// A form field, by its `family`. A newer server can add families: read one your client doesn't know as `unknown`, keeping the fields every field has, with `rawValue` an empty string when the body has none.
+/// </summary>
 [JsonConverter(typeof(FormField.JsonConverter))]
 [Serializable]
 public record FormField
 {
     internal FormField(string type, object? value)
     {
-        Family = type;
+        Kind = type;
         Value = value;
     }
 
@@ -23,7 +26,7 @@ public record FormField
     /// </summary>
     public FormField(FormField.Text value)
     {
-        Family = "text";
+        Kind = "text";
         Value = value.Value;
     }
 
@@ -32,7 +35,7 @@ public record FormField
     /// </summary>
     public FormField(FormField.Checkbox value)
     {
-        Family = "checkbox";
+        Kind = "checkbox";
         Value = value.Value;
     }
 
@@ -41,7 +44,7 @@ public record FormField
     /// </summary>
     public FormField(FormField.Radio value)
     {
-        Family = "radio";
+        Kind = "radio";
         Value = value.Value;
     }
 
@@ -50,7 +53,7 @@ public record FormField
     /// </summary>
     public FormField(FormField.Combobox value)
     {
-        Family = "combobox";
+        Kind = "combobox";
         Value = value.Value;
     }
 
@@ -59,7 +62,7 @@ public record FormField
     /// </summary>
     public FormField(FormField.Listbox value)
     {
-        Family = "listbox";
+        Kind = "listbox";
         Value = value.Value;
     }
 
@@ -68,7 +71,7 @@ public record FormField
     /// </summary>
     public FormField(FormField.Pushbutton value)
     {
-        Family = "pushbutton";
+        Kind = "pushbutton";
         Value = value.Value;
     }
 
@@ -77,7 +80,7 @@ public record FormField
     /// </summary>
     public FormField(FormField.Signature value)
     {
-        Family = "signature";
+        Kind = "signature";
         Value = value.Value;
     }
 
@@ -86,15 +89,15 @@ public record FormField
     /// </summary>
     public FormField(FormField.Unknown value)
     {
-        Family = "unknown";
+        Kind = "unknown";
         Value = value.Value;
     }
 
     /// <summary>
     /// Discriminant value
     /// </summary>
-    [JsonPropertyName("family")]
-    public string Family { get; internal set; }
+    [JsonPropertyName("kind")]
+    public string Kind { get; internal set; }
 
     /// <summary>
     /// Discriminated union value
@@ -102,116 +105,116 @@ public record FormField
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "text"
+    /// Returns true if <see cref="Kind"/> is "text"
     /// </summary>
-    public bool IsText => Family == "text";
+    public bool IsText => Kind == "text";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "checkbox"
+    /// Returns true if <see cref="Kind"/> is "checkbox"
     /// </summary>
-    public bool IsCheckbox => Family == "checkbox";
+    public bool IsCheckbox => Kind == "checkbox";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "radio"
+    /// Returns true if <see cref="Kind"/> is "radio"
     /// </summary>
-    public bool IsRadio => Family == "radio";
+    public bool IsRadio => Kind == "radio";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "combobox"
+    /// Returns true if <see cref="Kind"/> is "combobox"
     /// </summary>
-    public bool IsCombobox => Family == "combobox";
+    public bool IsCombobox => Kind == "combobox";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "listbox"
+    /// Returns true if <see cref="Kind"/> is "listbox"
     /// </summary>
-    public bool IsListbox => Family == "listbox";
+    public bool IsListbox => Kind == "listbox";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "pushbutton"
+    /// Returns true if <see cref="Kind"/> is "pushbutton"
     /// </summary>
-    public bool IsPushbutton => Family == "pushbutton";
+    public bool IsPushbutton => Kind == "pushbutton";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "signature"
+    /// Returns true if <see cref="Kind"/> is "signature"
     /// </summary>
-    public bool IsSignature => Family == "signature";
+    public bool IsSignature => Kind == "signature";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "unknown"
+    /// Returns true if <see cref="Kind"/> is "unknown"
     /// </summary>
-    public bool IsUnknown => Family == "unknown";
+    public bool IsUnknown => Kind == "unknown";
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldText"/> if <see cref="Family"/> is 'text', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldText"/> if <see cref="Kind"/> is 'text', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'text'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'text'.</exception>
     public CloudPDF.FormFieldText AsText() =>
         IsText
             ? (CloudPDF.FormFieldText)Value!
-            : throw new global::System.Exception("FormField.Family is not 'text'");
+            : throw new global::System.Exception("FormField.Kind is not 'text'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldCheckbox"/> if <see cref="Family"/> is 'checkbox', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldCheckbox"/> if <see cref="Kind"/> is 'checkbox', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'checkbox'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'checkbox'.</exception>
     public CloudPDF.FormFieldCheckbox AsCheckbox() =>
         IsCheckbox
             ? (CloudPDF.FormFieldCheckbox)Value!
-            : throw new global::System.Exception("FormField.Family is not 'checkbox'");
+            : throw new global::System.Exception("FormField.Kind is not 'checkbox'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldRadio"/> if <see cref="Family"/> is 'radio', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldRadio"/> if <see cref="Kind"/> is 'radio', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'radio'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'radio'.</exception>
     public CloudPDF.FormFieldRadio AsRadio() =>
         IsRadio
             ? (CloudPDF.FormFieldRadio)Value!
-            : throw new global::System.Exception("FormField.Family is not 'radio'");
+            : throw new global::System.Exception("FormField.Kind is not 'radio'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldCombobox"/> if <see cref="Family"/> is 'combobox', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldCombobox"/> if <see cref="Kind"/> is 'combobox', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'combobox'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'combobox'.</exception>
     public CloudPDF.FormFieldCombobox AsCombobox() =>
         IsCombobox
             ? (CloudPDF.FormFieldCombobox)Value!
-            : throw new global::System.Exception("FormField.Family is not 'combobox'");
+            : throw new global::System.Exception("FormField.Kind is not 'combobox'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldListbox"/> if <see cref="Family"/> is 'listbox', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldListbox"/> if <see cref="Kind"/> is 'listbox', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'listbox'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'listbox'.</exception>
     public CloudPDF.FormFieldListbox AsListbox() =>
         IsListbox
             ? (CloudPDF.FormFieldListbox)Value!
-            : throw new global::System.Exception("FormField.Family is not 'listbox'");
+            : throw new global::System.Exception("FormField.Kind is not 'listbox'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldPushbutton"/> if <see cref="Family"/> is 'pushbutton', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldPushbutton"/> if <see cref="Kind"/> is 'pushbutton', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'pushbutton'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'pushbutton'.</exception>
     public CloudPDF.FormFieldPushbutton AsPushbutton() =>
         IsPushbutton
             ? (CloudPDF.FormFieldPushbutton)Value!
-            : throw new global::System.Exception("FormField.Family is not 'pushbutton'");
+            : throw new global::System.Exception("FormField.Kind is not 'pushbutton'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldSignature"/> if <see cref="Family"/> is 'signature', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldSignature"/> if <see cref="Kind"/> is 'signature', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'signature'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'signature'.</exception>
     public CloudPDF.FormFieldSignature AsSignature() =>
         IsSignature
             ? (CloudPDF.FormFieldSignature)Value!
-            : throw new global::System.Exception("FormField.Family is not 'signature'");
+            : throw new global::System.Exception("FormField.Kind is not 'signature'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldUnknown"/> if <see cref="Family"/> is 'unknown', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldUnknown"/> if <see cref="Kind"/> is 'unknown', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'unknown'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'unknown'.</exception>
     public CloudPDF.FormFieldUnknown AsUnknown() =>
         IsUnknown
             ? (CloudPDF.FormFieldUnknown)Value!
-            : throw new global::System.Exception("FormField.Family is not 'unknown'");
+            : throw new global::System.Exception("FormField.Kind is not 'unknown'");
 
     public T Match<T>(
         Func<CloudPDF.FormFieldText, T> onText,
@@ -225,7 +228,7 @@ public record FormField
         Func<string, object?, T> onUnknown_
     )
     {
-        return Family switch
+        return Kind switch
         {
             "text" => onText(AsText()),
             "checkbox" => onCheckbox(AsCheckbox()),
@@ -235,7 +238,7 @@ public record FormField
             "pushbutton" => onPushbutton(AsPushbutton()),
             "signature" => onSignature(AsSignature()),
             "unknown" => onUnknown(AsUnknown()),
-            _ => onUnknown_(Family, Value),
+            _ => onUnknown_(Kind, Value),
         };
     }
 
@@ -251,7 +254,7 @@ public record FormField
         Action<string, object?> onUnknown_
     )
     {
-        switch (Family)
+        switch (Kind)
         {
             case "text":
                 onText(AsText());
@@ -278,7 +281,7 @@ public record FormField
                 onUnknown(AsUnknown());
                 break;
             default:
-                onUnknown_(Family, Value);
+                onUnknown_(Kind, Value);
                 break;
         }
     }
@@ -288,7 +291,7 @@ public record FormField
     /// </summary>
     public bool TryAsText(out CloudPDF.FormFieldText? value)
     {
-        if (Family == "text")
+        if (Kind == "text")
         {
             value = (CloudPDF.FormFieldText)Value!;
             return true;
@@ -302,7 +305,7 @@ public record FormField
     /// </summary>
     public bool TryAsCheckbox(out CloudPDF.FormFieldCheckbox? value)
     {
-        if (Family == "checkbox")
+        if (Kind == "checkbox")
         {
             value = (CloudPDF.FormFieldCheckbox)Value!;
             return true;
@@ -316,7 +319,7 @@ public record FormField
     /// </summary>
     public bool TryAsRadio(out CloudPDF.FormFieldRadio? value)
     {
-        if (Family == "radio")
+        if (Kind == "radio")
         {
             value = (CloudPDF.FormFieldRadio)Value!;
             return true;
@@ -330,7 +333,7 @@ public record FormField
     /// </summary>
     public bool TryAsCombobox(out CloudPDF.FormFieldCombobox? value)
     {
-        if (Family == "combobox")
+        if (Kind == "combobox")
         {
             value = (CloudPDF.FormFieldCombobox)Value!;
             return true;
@@ -344,7 +347,7 @@ public record FormField
     /// </summary>
     public bool TryAsListbox(out CloudPDF.FormFieldListbox? value)
     {
-        if (Family == "listbox")
+        if (Kind == "listbox")
         {
             value = (CloudPDF.FormFieldListbox)Value!;
             return true;
@@ -358,7 +361,7 @@ public record FormField
     /// </summary>
     public bool TryAsPushbutton(out CloudPDF.FormFieldPushbutton? value)
     {
-        if (Family == "pushbutton")
+        if (Kind == "pushbutton")
         {
             value = (CloudPDF.FormFieldPushbutton)Value!;
             return true;
@@ -372,7 +375,7 @@ public record FormField
     /// </summary>
     public bool TryAsSignature(out CloudPDF.FormFieldSignature? value)
     {
-        if (Family == "signature")
+        if (Kind == "signature")
         {
             value = (CloudPDF.FormFieldSignature)Value!;
             return true;
@@ -386,7 +389,7 @@ public record FormField
     /// </summary>
     public bool TryAsUnknown(out CloudPDF.FormFieldUnknown? value)
     {
-        if (Family == "unknown")
+        if (Kind == "unknown")
         {
             value = (CloudPDF.FormFieldUnknown)Value!;
             return true;
@@ -426,29 +429,29 @@ public record FormField
         )
         {
             var json = JsonElement.ParseValue(ref reader);
-            if (!json.TryGetProperty("family", out var discriminatorElement))
+            if (!json.TryGetProperty("kind", out var discriminatorElement))
             {
-                throw new JsonException("Missing discriminator property 'family'");
+                throw new JsonException("Missing discriminator property 'kind'");
             }
             if (discriminatorElement.ValueKind != JsonValueKind.String)
             {
                 if (discriminatorElement.ValueKind == JsonValueKind.Null)
                 {
-                    throw new JsonException("Discriminator property 'family' is null");
+                    throw new JsonException("Discriminator property 'kind' is null");
                 }
 
                 throw new JsonException(
-                    $"Discriminator property 'family' is not a string, instead is {discriminatorElement.ToString()}"
+                    $"Discriminator property 'kind' is not a string, instead is {discriminatorElement.ToString()}"
                 );
             }
 
             var discriminator =
                 discriminatorElement.GetString()
-                ?? throw new JsonException("Discriminator property 'family' is null");
+                ?? throw new JsonException("Discriminator property 'kind' is null");
 
             // Strip the discriminant property to prevent it from leaking into AdditionalProperties
             var jsonObject = System.Text.Json.Nodes.JsonObject.Create(json);
-            jsonObject?.Remove("family");
+            jsonObject?.Remove("kind");
             var jsonWithoutDiscriminator =
                 jsonObject != null ? JsonSerializer.SerializeToElement(jsonObject, options) : json;
 
@@ -488,7 +491,7 @@ public record FormField
         )
         {
             JsonNode json =
-                value.Family switch
+                value.Kind switch
                 {
                     "text" => JsonSerializer.SerializeToNode(value.Value, options),
                     "checkbox" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -500,7 +503,7 @@ public record FormField
                     "unknown" => JsonSerializer.SerializeToNode(value.Value, options),
                     _ => JsonSerializer.SerializeToNode(value.Value, options),
                 } ?? new JsonObject();
-            json["family"] = value.Family;
+            json["kind"] = value.Kind;
             json.WriteTo(writer, options);
         }
 
@@ -522,7 +525,7 @@ public record FormField
             JsonSerializerOptions options
         )
         {
-            writer.WritePropertyName(value.Family);
+            writer.WritePropertyName(value.Kind);
         }
     }
 

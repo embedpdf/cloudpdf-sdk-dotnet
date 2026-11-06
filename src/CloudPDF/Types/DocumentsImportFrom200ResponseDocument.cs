@@ -29,11 +29,11 @@ public record DocumentsImportFrom200ResponseDocument : IJsonOnDeserialized
     [JsonPropertyName("state")]
     public required DocumentsImportFrom200ResponseDocumentState State { get; set; }
 
-    [JsonPropertyName("baseSha")]
-    public string? BaseSha { get; set; }
+    [JsonPropertyName("baseSha256")]
+    public string? BaseSha256 { get; set; }
 
-    [JsonPropertyName("storageSizeBytes")]
-    public double? StorageSizeBytes { get; set; }
+    [JsonPropertyName("sizeBytes")]
+    public int? SizeBytes { get; set; }
 
     [JsonPropertyName("metadata")]
     public Dictionary<string, object?>? Metadata { get; set; }
@@ -45,16 +45,16 @@ public record DocumentsImportFrom200ResponseDocument : IJsonOnDeserialized
     public string? FailureReason { get; set; }
 
     [JsonPropertyName("thumbnailState")]
-    public DocumentsImportFrom200ResponseDocumentThumbnailState? ThumbnailState { get; set; }
+    public required DocumentsImportFrom200ResponseDocumentThumbnailState ThumbnailState { get; set; }
 
     [JsonPropertyName("thumbnailUrl")]
     public string? ThumbnailUrl { get; set; }
 
     [JsonPropertyName("createdAt")]
-    public required double CreatedAt { get; set; }
+    public required DateTime CreatedAt { get; set; }
 
     [JsonPropertyName("updatedAt")]
-    public required double UpdatedAt { get; set; }
+    public required DateTime UpdatedAt { get; set; }
 
     [JsonPropertyName("createdBy")]
     public string? CreatedBy { get; set; }

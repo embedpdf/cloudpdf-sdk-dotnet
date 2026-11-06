@@ -23,8 +23,8 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "mimeType": "mimeType",
                   "description": "description",
-                  "size": 1,
-                  "checksum": "checksum",
+                  "sizeBytes": 1,
+                  "md5": "md5",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "modifiedAt": "2024-01-15T09:30:00.000Z",
                   "index": 1
@@ -37,8 +37,8 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "mimeType": "mimeType",
                   "description": "description",
-                  "size": 1,
-                  "checksum": "checksum",
+                  "sizeBytes": 1,
+                  "md5": "md5",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "modifiedAt": "2024-01-15T09:30:00.000Z",
                   "index": 1
@@ -81,8 +81,8 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "mimeType": "mimeType",
                   "description": "description",
-                  "size": 1,
-                  "checksum": "checksum",
+                  "sizeBytes": 1,
+                  "md5": "md5",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "modifiedAt": "2024-01-15T09:30:00.000Z",
                   "index": 1

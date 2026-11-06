@@ -27,7 +27,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                 "objectNumber": 1
               },
               "field": {
-                "family": "text",
+                "kind": "text",
                 "ref": {
                   "kind": "objectNumber",
                   "objectNumber": 1
@@ -61,7 +61,6 @@ public class DeleteWidgetTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -82,7 +81,6 @@ public class DeleteWidgetTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -103,7 +101,6 @@ public class DeleteWidgetTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -124,7 +121,6 @@ public class DeleteWidgetTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -198,6 +194,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -313,7 +310,7 @@ public class DeleteWidgetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/form/widgets/pageKey/annotKey")
+                    .WithPath("/v1/docs/docId/layers/layerName/form/widgets/pageKey/annotationKey")
                     .UsingDelete()
             )
             .RespondWith(
@@ -329,7 +326,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                 DocId = "docId",
                 LayerName = "layerName",
                 PageKey = "pageKey",
-                AnnotKey = "annotKey",
+                AnnotationKey = "annotationKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -353,7 +350,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                 "objectNumber": 1
               },
               "field": {
-                "family": "text",
+                "kind": "text",
                 "ref": {
                   "kind": "objectNumber",
                   "objectNumber": 1
@@ -374,28 +371,24 @@ public class DeleteWidgetTest : BaseMockServerTest
                 "actions": {
                   "keystroke": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "format": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "validate": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "calculate": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
@@ -437,6 +430,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -482,7 +476,7 @@ public class DeleteWidgetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/form/widgets/pageKey/annotKey")
+                    .WithPath("/v1/docs/docId/layers/layerName/form/widgets/pageKey/annotationKey")
                     .UsingDelete()
             )
             .RespondWith(
@@ -498,7 +492,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                 DocId = "docId",
                 LayerName = "layerName",
                 PageKey = "pageKey",
-                AnnotKey = "annotKey",
+                AnnotationKey = "annotationKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

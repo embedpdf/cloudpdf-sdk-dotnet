@@ -10,7 +10,7 @@ public record DownloadDocumentsRequest
     public required string TenantId { get; set; }
 
     [JsonIgnore]
-    public required string Id { get; set; }
+    public required string DocId { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

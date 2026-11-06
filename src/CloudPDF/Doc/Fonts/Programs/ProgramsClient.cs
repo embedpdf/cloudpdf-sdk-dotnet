@@ -38,7 +38,7 @@ public partial class ProgramsClient : IProgramsClient
                         "v1/docs/{0}/layers/{1}/font-program-files/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.DisplayHash)
+                        ValueConvert.ToPathParameterString(request.DisplaySha256)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -71,7 +71,7 @@ public partial class ProgramsClient : IProgramsClient
                 {
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -83,7 +83,7 @@ public partial class ProgramsClient : IProgramsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -138,7 +138,7 @@ public partial class ProgramsClient : IProgramsClient
                         "v1/docs/{0}/layers/{1}/font-programs/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.DisplayHash)
+                        ValueConvert.ToPathParameterString(request.DisplaySha256)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -192,7 +192,7 @@ public partial class ProgramsClient : IProgramsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -231,7 +231,7 @@ public partial class ProgramsClient : IProgramsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         DisplayHash = "displayHash",
+    ///         DisplaySha256 = "displaySha256",
     ///     }
     /// );
     /// </code></example>
@@ -252,7 +252,7 @@ public partial class ProgramsClient : IProgramsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         DisplayHash = "displayHash",
+    ///         DisplaySha256 = "displaySha256",
     ///     }
     /// );
     /// </code></example>

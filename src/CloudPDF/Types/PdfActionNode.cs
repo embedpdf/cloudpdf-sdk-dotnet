@@ -8,6 +8,9 @@ using global::System.Text.Json.Serialization;
 
 namespace CloudPDF;
 
+/// <summary>
+/// An action, by its `type`. A newer server can add types: read one your client doesn't know as `unknown`, keeping its `subtype` and `next`.
+/// </summary>
 [JsonConverter(typeof(PdfActionNode.JsonConverter))]
 [Serializable]
 public record PdfActionNode

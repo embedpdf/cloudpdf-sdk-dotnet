@@ -46,7 +46,7 @@ public record GrantsCreateRequest
     public int? SessionTtlSeconds { get; set; }
 
     [JsonPropertyName("expiresAt")]
-    public int? ExpiresAt { get; set; }
+    public DateTime? ExpiresAt { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

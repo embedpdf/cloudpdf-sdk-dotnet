@@ -36,8 +36,8 @@ public record FormFieldPatch : IJsonOnDeserialized
     [JsonPropertyName("actions")]
     public FieldActionsPatch? Actions { get; set; }
 
-    [JsonPropertyName("family")]
-    public FormFieldPatchFamily? Family { get; set; }
+    [JsonPropertyName("kind")]
+    public FormFieldPatchKind? Kind { get; set; }
 
     [JsonPropertyName("defaultValue")]
     public OneOf<string, IEnumerable<string>>? DefaultValue { get; set; }

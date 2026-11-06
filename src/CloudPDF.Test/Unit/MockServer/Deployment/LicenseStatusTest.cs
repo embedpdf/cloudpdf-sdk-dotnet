@@ -14,13 +14,19 @@ public class LicenseStatusTest : BaseMockServerTest
         const string mockResponse = """
             {
               "license": {
-                "key": "value"
+                "license": {
+                  "key": "value"
+                }
               },
               "reporting": {
-                "key": "value"
+                "reporting": {
+                  "key": "value"
+                }
               },
               "usage": {
-                "key": "value"
+                "usage": {
+                  "key": "value"
+                }
               }
             }
             """;

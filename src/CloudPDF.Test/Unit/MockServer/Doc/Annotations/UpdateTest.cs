@@ -105,7 +105,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -126,7 +125,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -147,7 +145,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -168,7 +165,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -189,7 +185,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -210,7 +205,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -231,7 +225,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -252,7 +245,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -273,7 +265,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -294,7 +285,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -315,7 +305,6 @@ public class UpdateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -463,6 +452,7 @@ public class UpdateTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -496,7 +486,7 @@ public class UpdateTest : BaseMockServerTest
                   "missingCharacters",
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {
@@ -523,7 +513,7 @@ public class UpdateTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath(
-                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotKey"
+                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotationKey"
                     )
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
@@ -542,7 +532,7 @@ public class UpdateTest : BaseMockServerTest
                 DocId = "docId",
                 LayerName = "layerName",
                 PageKey = "pageKey",
-                AnnotKey = "annotKey",
+                AnnotationKey = "annotationKey",
                 Body = new Dictionary<string, object?>()
                 {
                     {
@@ -635,77 +625,66 @@ public class UpdateTest : BaseMockServerTest
                 "actions": {
                   "activate": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "cursorEnter": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "cursorExit": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "mouseDown": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "mouseUp": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "focus": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "blur": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageOpen": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageClose": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageVisible": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageInvisible": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
@@ -781,6 +760,7 @@ public class UpdateTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -802,7 +782,7 @@ public class UpdateTest : BaseMockServerTest
                 "missingCharacters": [
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {
@@ -821,7 +801,7 @@ public class UpdateTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath(
-                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotKey"
+                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotationKey"
                     )
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
@@ -840,7 +820,7 @@ public class UpdateTest : BaseMockServerTest
                 DocId = "docId",
                 LayerName = "layerName",
                 PageKey = "pageKey",
-                AnnotKey = "annotKey",
+                AnnotationKey = "annotationKey",
                 Body = new Dictionary<string, object?>() { { "key", "value" } },
             }
         );

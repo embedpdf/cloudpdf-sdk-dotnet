@@ -15,7 +15,7 @@ public record DocFormsReorderWidgetsRequest
     public required string LayerName { get; set; }
 
     /// <summary>
-    /// The page's address, `obj:N`: the page's indirect object number, the durable identity every `PageLayout.ref` carries. Mirrors `annotKey` and `fieldKey`.
+    /// The page's address, `obj:N`: the page's indirect object number, the durable identity every `PageLayout.ref` carries. Mirrors `annotationKey` and `fieldKey`.
     /// </summary>
     [JsonIgnore]
     public required string PageKey { get; set; }

@@ -36,10 +36,10 @@ public record FormFieldCombobox : IJsonOnDeserialized
     public string? MappingName { get; set; }
 
     [JsonPropertyName("valueEntry")]
-    public required FormFieldComboboxValueEntry ValueEntry { get; set; }
+    public required FormValueEntry ValueEntry { get; set; }
 
     [JsonPropertyName("defaultValueEntry")]
-    public required FormFieldComboboxDefaultValueEntry DefaultValueEntry { get; set; }
+    public required FormValueEntry DefaultValueEntry { get; set; }
 
     [JsonPropertyName("actions")]
     public PdfFieldActions? Actions { get; set; }

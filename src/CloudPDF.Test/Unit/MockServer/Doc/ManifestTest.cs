@@ -23,12 +23,12 @@ public class ManifestTest : BaseMockServerTest
               "formsVersion": 1,
               "outlineVersion": 1,
               "fontsVersion": 1,
-              "serverFonts": "serverFonts",
+              "contentsVersion": 1,
               "auditHead": 1,
-              "baseSha": "baseSha",
+              "baseSha256": "baseSha256",
               "layerVersion": 1,
               "working": true,
-              "baseByteLength": 1,
+              "baseSizeBytes": 1,
               "scopes": {
                 "content": "base",
                 "annotations": "base",
@@ -44,7 +44,7 @@ public class ManifestTest : BaseMockServerTest
                 "judged": "none",
                 "certification": {
                   "signatureIndex": 1,
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "fieldLocks": [
                   {
@@ -56,7 +56,7 @@ public class ManifestTest : BaseMockServerTest
                         "fields",
                         "fields"
                       ],
-                      "permission": 1.1
+                      "permission": 1
                     }
                   },
                   {
@@ -68,7 +68,7 @@ public class ManifestTest : BaseMockServerTest
                         "fields",
                         "fields"
                       ],
-                      "permission": 1.1
+                      "permission": 1
                     }
                   }
                 ],
@@ -135,12 +135,12 @@ public class ManifestTest : BaseMockServerTest
               "formsVersion": 1,
               "outlineVersion": 1,
               "fontsVersion": 1,
-              "serverFonts": "serverFonts",
+              "contentsVersion": 1,
               "auditHead": 1,
-              "baseSha": "baseSha",
+              "baseSha256": "baseSha256",
               "layerVersion": 1,
               "working": true,
-              "baseByteLength": 1,
+              "baseSizeBytes": 1,
               "scopes": {
                 "content": "base",
                 "annotations": "base",
@@ -156,7 +156,7 @@ public class ManifestTest : BaseMockServerTest
                 "judged": "none",
                 "certification": {
                   "signatureIndex": 1,
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "fieldLocks": [
                   {

@@ -15,14 +15,14 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id")
+                    .WithPath("/v1/tenants/tenantId/documents/docId")
                     .UsingDelete()
             )
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
 
         Assert.DoesNotThrowAsync(async () =>
             await Client.Documents.DeleteAsync(
-                new DeleteDocumentsRequest { TenantId = "tenantId", Id = "id" }
+                new DeleteDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
             )
         );
     }
@@ -34,14 +34,14 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id")
+                    .WithPath("/v1/tenants/tenantId/documents/docId")
                     .UsingDelete()
             )
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
 
         Assert.DoesNotThrowAsync(async () =>
             await Client.Documents.DeleteAsync(
-                new DeleteDocumentsRequest { TenantId = "tenantId", Id = "id" }
+                new DeleteDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
             )
         );
     }

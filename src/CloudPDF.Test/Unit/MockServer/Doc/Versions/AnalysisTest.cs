@@ -19,7 +19,7 @@ public class AnalysisTest : BaseMockServerTest
               "basis": {
                 "version": {
                   "sha256": "sha256",
-                  "byteLength": 1
+                  "sizeBytes": 1
                 },
                 "editsVersion": 1,
                 "source": "persisted"
@@ -37,7 +37,7 @@ public class AnalysisTest : BaseMockServerTest
                   "revisionIndex": 1,
                   "source": "docmdp",
                   "own": true,
-                  "permission": 1.1,
+                  "permission": 1,
                   "fields": {
                     "key": "value"
                   }
@@ -47,7 +47,7 @@ public class AnalysisTest : BaseMockServerTest
                   "revisionIndex": 1,
                   "source": "docmdp",
                   "own": true,
-                  "permission": 1.1,
+                  "permission": 1,
                   "fields": {
                     "key": "value"
                   }
@@ -104,7 +104,7 @@ public class AnalysisTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/versions/analysis/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/analysis/sha256")
                     .UsingGet()
             )
             .RespondWith(
@@ -119,7 +119,7 @@ public class AnalysisTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Sha = "sha",
+                Sha256 = "sha256",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -135,7 +135,7 @@ public class AnalysisTest : BaseMockServerTest
               "basis": {
                 "version": {
                   "sha256": "sha256",
-                  "byteLength": 1
+                  "sizeBytes": 1
                 },
                 "editsVersion": 1,
                 "source": "persisted"
@@ -153,7 +153,7 @@ public class AnalysisTest : BaseMockServerTest
                   "revisionIndex": 1,
                   "source": "docmdp",
                   "own": true,
-                  "permission": 1.1,
+                  "permission": 1,
                   "fields": {
                     "key": "value"
                   }
@@ -197,7 +197,7 @@ public class AnalysisTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/versions/analysis/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/analysis/sha256")
                     .UsingGet()
             )
             .RespondWith(
@@ -212,7 +212,7 @@ public class AnalysisTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Sha = "sha",
+                Sha256 = "sha256",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

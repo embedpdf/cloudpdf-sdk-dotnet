@@ -13,7 +13,7 @@ public partial class VisitorsClient : IVisitorsClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<GrantsVisitorsList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<GrantsVisitorsListResponse>> ListAsyncCore(
         ListVisitorsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -54,10 +54,8 @@ public partial class VisitorsClient : IVisitorsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<GrantsVisitorsList200Response>(
-                    responseBody
-                )!;
-                return new WithRawResponse<GrantsVisitorsList200Response>()
+                var responseData = JsonUtils.Deserialize<GrantsVisitorsListResponse>(responseBody)!;
+                return new WithRawResponse<GrantsVisitorsListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -94,7 +92,7 @@ public partial class VisitorsClient : IVisitorsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -106,7 +104,7 @@ public partial class VisitorsClient : IVisitorsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -188,7 +186,7 @@ public partial class VisitorsClient : IVisitorsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -226,13 +224,13 @@ public partial class VisitorsClient : IVisitorsClient
     ///     new ListVisitorsRequest { TenantId = "tenantId", GrantId = "grantId" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<GrantsVisitorsList200Response> ListAsync(
+    public WithRawResponseTask<GrantsVisitorsListResponse> ListAsync(
         ListVisitorsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GrantsVisitorsList200Response>(
+        return new WithRawResponseTask<GrantsVisitorsListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }

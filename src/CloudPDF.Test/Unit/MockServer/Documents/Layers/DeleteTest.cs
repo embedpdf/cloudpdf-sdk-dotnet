@@ -15,7 +15,7 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id/layers/layerName")
+                    .WithPath("/v1/tenants/tenantId/documents/docId/layers/layerName")
                     .UsingDelete()
             )
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
@@ -25,7 +25,7 @@ public class DeleteTest : BaseMockServerTest
                 new DeleteLayersRequest
                 {
                     TenantId = "tenantId",
-                    Id = "id",
+                    DocId = "docId",
                     LayerName = "layerName",
                 }
             )
@@ -39,7 +39,7 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id/layers/layerName")
+                    .WithPath("/v1/tenants/tenantId/documents/docId/layers/layerName")
                     .UsingDelete()
             )
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
@@ -49,7 +49,7 @@ public class DeleteTest : BaseMockServerTest
                 new DeleteLayersRequest
                 {
                     TenantId = "tenantId",
-                    Id = "id",
+                    DocId = "docId",
                     LayerName = "layerName",
                 }
             )

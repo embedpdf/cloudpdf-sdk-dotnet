@@ -66,6 +66,14 @@ public partial class ClientOptions
 #endif
     } = TimeSpan.FromMilliseconds(30000);
 
+    public string? EmbedPdfVersion { get;
+#if NET5_0_OR_GREATER
+        init;
+#else
+        set;
+#endif
+    } = null;
+
     /// <summary>
     /// Clones this and returns a new instance
     /// </summary>

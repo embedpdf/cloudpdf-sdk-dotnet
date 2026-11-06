@@ -19,7 +19,7 @@ public class DownloadLinkTest : BaseMockServerTest
         const string mockResponse = """
             {
               "url": "url",
-              "expiresAt": 1.1
+              "expiresAt": "2024-01-15T09:30:00.000Z"
             }
             """;
 
@@ -44,7 +44,7 @@ public class DownloadLinkTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                ExpiresIn = null,
+                ExpiresInSeconds = null,
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -60,7 +60,7 @@ public class DownloadLinkTest : BaseMockServerTest
         const string mockResponse = """
             {
               "url": "url",
-              "expiresAt": 1.1
+              "expiresAt": "2024-01-15T09:30:00.000Z"
             }
             """;
 

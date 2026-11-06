@@ -36,7 +36,7 @@ public class RemoveNameTest : BaseMockServerTest
                       "width": 1.1,
                       "height": 1.1
                     },
-                    "rotation": 1.1,
+                    "rotation": 1,
                     "userUnit": 1.1,
                     "tabOrder": "rows",
                     "boxes": {
@@ -86,7 +86,6 @@ public class RemoveNameTest : BaseMockServerTest
                           "script": "script"
                         },
                         "incomplete": true,
-                        "warningFlags": 1,
                         "warnings": [
                           "cycle-dropped",
                           "cycle-dropped"
@@ -100,7 +99,6 @@ public class RemoveNameTest : BaseMockServerTest
                           "script": "script"
                         },
                         "incomplete": true,
-                        "warningFlags": 1,
                         "warnings": [
                           "cycle-dropped",
                           "cycle-dropped"
@@ -119,7 +117,7 @@ public class RemoveNameTest : BaseMockServerTest
                       "width": 1.1,
                       "height": 1.1
                     },
-                    "rotation": 1.1,
+                    "rotation": 1,
                     "userUnit": 1.1,
                     "tabOrder": "rows",
                     "boxes": {
@@ -169,7 +167,6 @@ public class RemoveNameTest : BaseMockServerTest
                           "script": "script"
                         },
                         "incomplete": true,
-                        "warningFlags": 1,
                         "warnings": [
                           "cycle-dropped",
                           "cycle-dropped"
@@ -183,7 +180,6 @@ public class RemoveNameTest : BaseMockServerTest
                           "script": "script"
                         },
                         "incomplete": true,
-                        "warningFlags": 1,
                         "warnings": [
                           "cycle-dropped",
                           "cycle-dropped"
@@ -250,6 +246,7 @@ public class RemoveNameTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -344,7 +341,7 @@ public class RemoveNameTest : BaseMockServerTest
                       "width": 1.1,
                       "height": 1.1
                     },
-                    "rotation": 1.1,
+                    "rotation": 1,
                     "userUnit": 1.1,
                     "boxes": {
                       "media": {
@@ -423,6 +420,7 @@ public class RemoveNameTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [

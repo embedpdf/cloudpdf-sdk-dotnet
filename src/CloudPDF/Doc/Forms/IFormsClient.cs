@@ -4,43 +4,43 @@ namespace CloudPDF.Doc;
 
 public partial interface IFormsClient
 {
-    WithRawResponseTask<DocFormsList200Response> ListAsync(
+    WithRawResponseTask<DocFormsListResponse> ListAsync(
         ListFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocFormsReorderCalculations200Response> ReorderCalculationsAsync(
+    WithRawResponseTask<DocFormsReorderCalculationsResponse> ReorderCalculationsAsync(
         DocFormsReorderCalculationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocFormsSetValue200Response> SetValueAsync(
+    WithRawResponseTask<DocFormsSetValueResponse> SetValueAsync(
         SetValueFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocFormsReset200Response> ResetAsync(
+    WithRawResponseTask<DocFormsResetResponse> ResetAsync(
         DocFormsResetRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocFormsDeleteWidget200Response> DeleteWidgetAsync(
+    WithRawResponseTask<DocFormsDeleteWidgetResponse> DeleteWidgetAsync(
         DeleteWidgetFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocFormsUpdateWidget200Response> UpdateWidgetAsync(
+    WithRawResponseTask<DocFormsUpdateWidgetResponse> UpdateWidgetAsync(
         DocFormsUpdateWidgetRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocFormsReorderWidgets200Response> ReorderWidgetsAsync(
+    WithRawResponseTask<DocFormsReorderWidgetsResponse> ReorderWidgetsAsync(
         DocFormsReorderWidgetsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

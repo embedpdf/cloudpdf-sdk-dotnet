@@ -29,16 +29,16 @@ public class ListTest : BaseMockServerTest
                   ],
                   "programs": [
                     {
-                      "displayHash": "displayHash",
-                      "sourceHash": "sourceHash",
+                      "displaySha256": "displaySha256",
+                      "sourceSha256": "sourceSha256",
                       "embedded": "whole",
                       "format": "truetype",
                       "embeddingPermission": "installable",
                       "canDownload": true
                     },
                     {
-                      "displayHash": "displayHash",
-                      "sourceHash": "sourceHash",
+                      "displaySha256": "displaySha256",
+                      "sourceSha256": "sourceSha256",
                       "embedded": "whole",
                       "format": "truetype",
                       "embeddingPermission": "installable",
@@ -60,16 +60,16 @@ public class ListTest : BaseMockServerTest
                   ],
                   "programs": [
                     {
-                      "displayHash": "displayHash",
-                      "sourceHash": "sourceHash",
+                      "displaySha256": "displaySha256",
+                      "sourceSha256": "sourceSha256",
                       "embedded": "whole",
                       "format": "truetype",
                       "embeddingPermission": "installable",
                       "canDownload": true
                     },
                     {
-                      "displayHash": "displayHash",
-                      "sourceHash": "sourceHash",
+                      "displaySha256": "displaySha256",
+                      "sourceSha256": "sourceSha256",
                       "embedded": "whole",
                       "format": "truetype",
                       "embeddingPermission": "installable",
@@ -83,8 +83,8 @@ public class ListTest : BaseMockServerTest
                 "fallbacks"
               ],
               "lastResort": {
-                "displayHash": "displayHash",
-                "sourceHash": "sourceHash",
+                "displaySha256": "displaySha256",
+                "sourceSha256": "sourceSha256",
                 "embedded": "whole",
                 "format": "truetype",
                 "embeddingPermission": "installable",
@@ -142,8 +142,8 @@ public class ListTest : BaseMockServerTest
                 "fallbacks"
               ],
               "lastResort": {
-                "displayHash": "displayHash",
-                "sourceHash": "sourceHash",
+                "displaySha256": "displaySha256",
+                "sourceSha256": "sourceSha256",
                 "embedded": "whole",
                 "format": "truetype",
                 "embeddingPermission": "installable",

@@ -15,7 +15,7 @@ public record ChangeItemPagesRotate : IJsonOnDeserialized
     public IEnumerable<PageRef> Pages { get; set; } = new List<PageRef>();
 
     [JsonPropertyName("rotation")]
-    public required double Rotation { get; set; }
+    public required int Rotation { get; set; }
 
     [JsonPropertyName("layout")]
     public required ChangeItemPagesRotateLayout Layout { get; set; }

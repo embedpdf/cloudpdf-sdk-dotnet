@@ -8,6 +8,9 @@ using global::System.Text.Json.Serialization;
 
 namespace CloudPDF;
 
+/// <summary>
+/// An annotation, by its `subtype`. A newer server can add subtypes: read one your client doesn't know as `unsupported`, keeping the fields every annotation has, with `rawSubtypeCode` 0 and `rawSubtypeName` null when the body has neither.
+/// </summary>
 [JsonConverter(typeof(Annotation.JsonConverter))]
 [Serializable]
 public record Annotation

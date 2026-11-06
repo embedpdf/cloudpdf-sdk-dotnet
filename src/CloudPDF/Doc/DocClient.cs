@@ -43,7 +43,7 @@ public partial class DocClient : IDocClient
 
     public IVersionsClient Versions { get; }
 
-    private async Task<WithRawResponse<DocHead200Response>> HeadAsyncCore(
+    private async Task<WithRawResponse<DocHeadResponse>> HeadAsyncCore(
         HeadDocRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -82,8 +82,8 @@ public partial class DocClient : IDocClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocHead200Response>(responseBody)!;
-                return new WithRawResponse<DocHead200Response>()
+                var responseData = JsonUtils.Deserialize<DocHeadResponse>(responseBody)!;
+                return new WithRawResponse<DocHeadResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -120,7 +120,7 @@ public partial class DocClient : IDocClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -150,7 +150,7 @@ public partial class DocClient : IDocClient
         }
     }
 
-    private async Task<WithRawResponse<DocChanges200Response>> ChangesAsyncCore(
+    private async Task<WithRawResponse<DocChangesResponse>> ChangesAsyncCore(
         DocChangesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -192,8 +192,8 @@ public partial class DocClient : IDocClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocChanges200Response>(responseBody)!;
-                return new WithRawResponse<DocChanges200Response>()
+                var responseData = JsonUtils.Deserialize<DocChangesResponse>(responseBody)!;
+                return new WithRawResponse<DocChangesResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -230,7 +230,7 @@ public partial class DocClient : IDocClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -242,7 +242,7 @@ public partial class DocClient : IDocClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -254,7 +254,7 @@ public partial class DocClient : IDocClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -266,7 +266,7 @@ public partial class DocClient : IDocClient
                         );
                     case 413:
                         throw new ContentTooLargeError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -353,7 +353,7 @@ public partial class DocClient : IDocClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -383,7 +383,7 @@ public partial class DocClient : IDocClient
         }
     }
 
-    private async Task<WithRawResponse<DocDownloadLink200Response>> DownloadLinkAsyncCore(
+    private async Task<WithRawResponse<DocDownloadLinkResponse>> DownloadLinkAsyncCore(
         DocDownloadLinkRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -425,8 +425,8 @@ public partial class DocClient : IDocClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocDownloadLink200Response>(responseBody)!;
-                return new WithRawResponse<DocDownloadLink200Response>()
+                var responseData = JsonUtils.Deserialize<DocDownloadLinkResponse>(responseBody)!;
+                return new WithRawResponse<DocDownloadLinkResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -463,7 +463,7 @@ public partial class DocClient : IDocClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -475,7 +475,7 @@ public partial class DocClient : IDocClient
                         );
                     case 501:
                         throw new NotImplementedError(
-                            JsonUtils.Deserialize<EngineErrorPayload>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -505,7 +505,7 @@ public partial class DocClient : IDocClient
         }
     }
 
-    private async Task<WithRawResponse<DocManifest200Response>> ManifestAsyncCore(
+    private async Task<WithRawResponse<DocManifestResponse>> ManifestAsyncCore(
         ManifestDocRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -545,8 +545,8 @@ public partial class DocClient : IDocClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocManifest200Response>(responseBody)!;
-                return new WithRawResponse<DocManifest200Response>()
+                var responseData = JsonUtils.Deserialize<DocManifestResponse>(responseBody)!;
+                return new WithRawResponse<DocManifestResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -583,7 +583,7 @@ public partial class DocClient : IDocClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -671,7 +671,7 @@ public partial class DocClient : IDocClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -701,7 +701,7 @@ public partial class DocClient : IDocClient
         }
     }
 
-    private async Task<WithRawResponse<DocText200Response>> TextAsyncCore(
+    private async Task<WithRawResponse<DocTextResponse>> TextAsyncCore(
         TextDocRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -742,8 +742,8 @@ public partial class DocClient : IDocClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocText200Response>(responseBody)!;
-                return new WithRawResponse<DocText200Response>()
+                var responseData = JsonUtils.Deserialize<DocTextResponse>(responseBody)!;
+                return new WithRawResponse<DocTextResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -780,7 +780,7 @@ public partial class DocClient : IDocClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -813,13 +813,13 @@ public partial class DocClient : IDocClient
     /// <example><code>
     /// await client.Doc.HeadAsync(new HeadDocRequest { DocId = "docId" });
     /// </code></example>
-    public WithRawResponseTask<DocHead200Response> HeadAsync(
+    public WithRawResponseTask<DocHeadResponse> HeadAsync(
         HeadDocRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocHead200Response>(
+        return new WithRawResponseTask<DocHeadResponse>(
             HeadAsyncCore(request, options, cancellationToken)
         );
     }
@@ -840,13 +840,13 @@ public partial class DocClient : IDocClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocChanges200Response> ChangesAsync(
+    public WithRawResponseTask<DocChangesResponse> ChangesAsync(
         DocChangesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocChanges200Response>(
+        return new WithRawResponseTask<DocChangesResponse>(
             ChangesAsyncCore(request, options, cancellationToken)
         );
     }
@@ -873,13 +873,13 @@ public partial class DocClient : IDocClient
     ///     new DocDownloadLinkRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocDownloadLink200Response> DownloadLinkAsync(
+    public WithRawResponseTask<DocDownloadLinkResponse> DownloadLinkAsync(
         DocDownloadLinkRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocDownloadLink200Response>(
+        return new WithRawResponseTask<DocDownloadLinkResponse>(
             DownloadLinkAsyncCore(request, options, cancellationToken)
         );
     }
@@ -887,13 +887,13 @@ public partial class DocClient : IDocClient
     /// <example><code>
     /// await client.Doc.ManifestAsync(new ManifestDocRequest { DocId = "docId", LayerName = "layerName" });
     /// </code></example>
-    public WithRawResponseTask<DocManifest200Response> ManifestAsync(
+    public WithRawResponseTask<DocManifestResponse> ManifestAsync(
         ManifestDocRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocManifest200Response>(
+        return new WithRawResponseTask<DocManifestResponse>(
             ManifestAsyncCore(request, options, cancellationToken)
         );
     }
@@ -932,13 +932,13 @@ public partial class DocClient : IDocClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocText200Response> TextAsync(
+    public WithRawResponseTask<DocTextResponse> TextAsync(
         TextDocRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocText200Response>(
+        return new WithRawResponseTask<DocTextResponse>(
             TextAsyncCore(request, options, cancellationToken)
         );
     }

@@ -8,6 +8,9 @@ using global::System.Text.Json.Serialization;
 
 namespace CloudPDF;
 
+/// <summary>
+/// Where a link goes, by its `kind`. A newer server can add kinds: read one your client doesn't know as `unsupported`.
+/// </summary>
 [JsonConverter(typeof(PdfLinkTarget.JsonConverter))]
 [Serializable]
 public record PdfLinkTarget

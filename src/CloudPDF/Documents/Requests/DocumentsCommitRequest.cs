@@ -10,7 +10,7 @@ public record DocumentsCommitRequest
     public required string TenantId { get; set; }
 
     [JsonIgnore]
-    public required string Id { get; set; }
+    public required string DocId { get; set; }
 
     [JsonPropertyName("sha256")]
     public required string Sha256 { get; set; }

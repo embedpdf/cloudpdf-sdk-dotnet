@@ -33,7 +33,7 @@ public class RevokeTest : BaseMockServerTest
                     TenantId = "tenantId",
                     Jti = "jti",
                     Reason = null,
-                    ExpiresAtSeconds = null,
+                    ExpiresAt = null,
                 }
             )
         );

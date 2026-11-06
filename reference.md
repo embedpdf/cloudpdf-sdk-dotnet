@@ -65,7 +65,7 @@ await client.Deployment.ModulesAsync();
 </details>
 
 ## Doc
-<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">HeadAsync</a>(HeadDocRequest { ... }) -> WithRawResponseTask&lt;DocHead200Response&gt;</code></summary>
+<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">HeadAsync</a>(HeadDocRequest { ... }) -> WithRawResponseTask&lt;DocHeadResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -105,7 +105,7 @@ await client.Doc.HeadAsync(new HeadDocRequest { DocId = "docId" });
 </dl>
 </details>
 
-<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">ChangesAsync</a>(DocChangesRequest { ... }) -> WithRawResponseTask&lt;DocChanges200Response&gt;</code></summary>
+<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">ChangesAsync</a>(DocChangesRequest { ... }) -> WithRawResponseTask&lt;DocChangesResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -209,7 +209,7 @@ await client.Doc.DownloadAsync(new DownloadDocRequest { DocId = "docId", LayerNa
 </dl>
 </details>
 
-<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">DownloadLinkAsync</a>(DocDownloadLinkRequest { ... }) -> WithRawResponseTask&lt;DocDownloadLink200Response&gt;</code></summary>
+<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">DownloadLinkAsync</a>(DocDownloadLinkRequest { ... }) -> WithRawResponseTask&lt;DocDownloadLinkResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -265,7 +265,7 @@ await client.Doc.DownloadLinkAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">ManifestAsync</a>(ManifestDocRequest { ... }) -> WithRawResponseTask&lt;DocManifest200Response&gt;</code></summary>
+<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">ManifestAsync</a>(ManifestDocRequest { ... }) -> WithRawResponseTask&lt;DocManifestResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -366,7 +366,7 @@ await client.Doc.RenderAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">TextAsync</a>(TextDocRequest { ... }) -> WithRawResponseTask&lt;DocText200Response&gt;</code></summary>
+<details><summary><code>client.Doc.<a href="/src/CloudPDF/Doc/DocClient.cs">TextAsync</a>(TextDocRequest { ... }) -> WithRawResponseTask&lt;DocTextResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -414,7 +414,7 @@ await client.Doc.TextAsync(
 </details>
 
 ## Grants
-<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ExchangeAsync</a>(GrantsExchangeRequest { ... }) -> WithRawResponseTask&lt;GrantsExchange200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ExchangeAsync</a>(GrantsExchangeRequest { ... }) -> WithRawResponseTask&lt;GrantsExchangeResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -468,7 +468,7 @@ await client.Grants.ExchangeAsync(new GrantsExchangeRequest { Grant = "grant" })
 </dl>
 </details>
 
-<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ListAsync</a>(ListGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsList200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ListAsync</a>(ListGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -508,7 +508,7 @@ await client.Grants.ListAsync(new ListGrantsRequest { TenantId = "tenantId" });
 </dl>
 </details>
 
-<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">CreateAsync</a>(GrantsCreateRequest { ... }) -> WithRawResponseTask&lt;GrantsCreate200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">CreateAsync</a>(GrantsCreateRequest { ... }) -> WithRawResponseTask&lt;GrantsCreateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -569,7 +569,7 @@ await client.Grants.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">GetAsync</a>(GetGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsGet200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">GetAsync</a>(GetGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsGetResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -651,7 +651,7 @@ await client.Grants.DeleteAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">UpdateAsync</a>(GrantsUpdateRequest { ... }) -> WithRawResponseTask&lt;GrantsUpdate200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">UpdateAsync</a>(GrantsUpdateRequest { ... }) -> WithRawResponseTask&lt;GrantsUpdateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -693,7 +693,7 @@ await client.Grants.UpdateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ArchiveAsync</a>(ArchiveGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsArchive200Response&gt;</code></summary>
+<details><summary><code>client.Grants.<a href="/src/CloudPDF/Grants/GrantsClient.cs">ArchiveAsync</a>(ArchiveGrantsRequest { ... }) -> WithRawResponseTask&lt;GrantsArchiveResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -750,7 +750,7 @@ await client.Grants.ArchiveAsync(
 </details>
 
 ## Tenants
-<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">ListAsync</a>(ListTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsList200Response&gt;</code></summary>
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">ListAsync</a>(ListTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -790,7 +790,7 @@ await client.Tenants.ListAsync(new ListTenantsRequest());
 </dl>
 </details>
 
-<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">CreateAsync</a>(TenantsCreateRequest { ... }) -> WithRawResponseTask&lt;TenantsCreate200Response&gt;</code></summary>
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">CreateAsync</a>(TenantsCreateRequest { ... }) -> WithRawResponseTask&lt;TenantsCreateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -830,7 +830,7 @@ await client.Tenants.CreateAsync(new TenantsCreateRequest { Id = "id" });
 </dl>
 </details>
 
-<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">GetAsync</a>(GetTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsGet200Response&gt;</code></summary>
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">GetAsync</a>(GetTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsGetResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -924,7 +924,7 @@ await client.Tenants.DeleteAsync(new DeleteTenantsRequest { TenantId = "tenantId
 </dl>
 </details>
 
-<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">UpdateAsync</a>(TenantsUpdateRequest { ... }) -> WithRawResponseTask&lt;TenantsUpdate200Response&gt;</code></summary>
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">UpdateAsync</a>(TenantsUpdateRequest { ... }) -> WithRawResponseTask&lt;TenantsUpdateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1078,7 +1078,7 @@ await client.Tenants.SuspendAsync(new TenantsSuspendRequest { TenantId = "tenant
 </dl>
 </details>
 
-<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">UsageAsync</a>(UsageTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsUsage200Response&gt;</code></summary>
+<details><summary><code>client.Tenants.<a href="/src/CloudPDF/Tenants/TenantsClient.cs">UsageAsync</a>(UsageTenantsRequest { ... }) -> WithRawResponseTask&lt;TenantsUsageResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1133,7 +1133,7 @@ await client.Tenants.UsageAsync(new UsageTenantsRequest { TenantId = "tenantId" 
 </details>
 
 ## Documents
-<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">ListAsync</a>(ListDocumentsRequest { ... }) -> WithRawResponseTask&lt;DocumentsList200Response&gt;</code></summary>
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">ListAsync</a>(ListDocumentsRequest { ... }) -> WithRawResponseTask&lt;DocumentsListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1173,7 +1173,7 @@ await client.Documents.ListAsync(new ListDocumentsRequest { TenantId = "tenantId
 </dl>
 </details>
 
-<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">GetAsync</a>(GetDocumentsRequest { ... }) -> WithRawResponseTask&lt;DocumentsGet200Response&gt;</code></summary>
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">GetAsync</a>(GetDocumentsRequest { ... }) -> WithRawResponseTask&lt;DocumentsGetResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1186,7 +1186,7 @@ await client.Documents.ListAsync(new ListDocumentsRequest { TenantId = "tenantId
 <dd>
 
 ```csharp
-await client.Documents.GetAsync(new GetDocumentsRequest { TenantId = "tenantId", Id = "id" });
+await client.Documents.GetAsync(new GetDocumentsRequest { TenantId = "tenantId", DocId = "docId" });
 ```
 </dd>
 </dl>
@@ -1226,7 +1226,9 @@ await client.Documents.GetAsync(new GetDocumentsRequest { TenantId = "tenantId",
 <dd>
 
 ```csharp
-await client.Documents.DeleteAsync(new DeleteDocumentsRequest { TenantId = "tenantId", Id = "id" });
+await client.Documents.DeleteAsync(
+    new DeleteDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
+);
 ```
 </dd>
 </dl>
@@ -1253,7 +1255,7 @@ await client.Documents.DeleteAsync(new DeleteDocumentsRequest { TenantId = "tena
 </dl>
 </details>
 
-<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">UpdateAsync</a>(DocumentsUpdateRequest { ... }) -> WithRawResponseTask&lt;DocumentsUpdate200Response&gt;</code></summary>
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">UpdateAsync</a>(DocumentsUpdateRequest { ... }) -> WithRawResponseTask&lt;DocumentsUpdateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1284,7 +1286,7 @@ await client.Documents.UpdateAsync(
     new DocumentsUpdateRequest
     {
         TenantId = "tenantId",
-        Id = "id",
+        DocId = "docId",
         Name = "name",
     }
 );
@@ -1314,7 +1316,7 @@ await client.Documents.UpdateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">CommitAsync</a>(DocumentsCommitRequest { ... }) -> WithRawResponseTask&lt;DocumentsCommit200Response&gt;</code></summary>
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">CommitAsync</a>(DocumentsCommitRequest { ... }) -> WithRawResponseTask&lt;DocumentsCommitResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1345,7 +1347,7 @@ await client.Documents.CommitAsync(
     new DocumentsCommitRequest
     {
         TenantId = "tenantId",
-        Id = "id",
+        DocId = "docId",
         Sha256 = "sha256",
     }
 );
@@ -1389,7 +1391,7 @@ await client.Documents.CommitAsync(
 
 ```csharp
 await client.Documents.DownloadAsync(
-    new DownloadDocumentsRequest { TenantId = "tenantId", Id = "id" }
+    new DownloadDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
 );
 ```
 </dd>
@@ -1431,7 +1433,7 @@ await client.Documents.DownloadAsync(
 
 ```csharp
 await client.Documents.ThumbnailAsync(
-    new ThumbnailDocumentsRequest { TenantId = "tenantId", Id = "id" }
+    new ThumbnailDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
 );
 ```
 </dd>
@@ -1459,7 +1461,7 @@ await client.Documents.ThumbnailAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">UploadProxyAsync</a>(UploadProxyDocumentsRequest { ... }) -> WithRawResponseTask&lt;DocumentsUploadProxy200Response&gt;</code></summary>
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">UploadProxyAsync</a>(UploadProxyDocumentsRequest { ... }) -> WithRawResponseTask&lt;DocumentsUploadProxyResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1487,7 +1489,7 @@ This bounded origin-mediated fallback must only be used after documents.init ret
 
 ```csharp
 await client.Documents.UploadProxyAsync(
-    new UploadProxyDocumentsRequest { TenantId = "tenantId", Id = "id" }
+    new UploadProxyDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
 );
 ```
 </dd>
@@ -1579,7 +1581,7 @@ await client.Documents.ImportFromAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">InitAsync</a>(DocumentsInitRequest { ... }) -> WithRawResponseTask&lt;DocumentsInit200Response&gt;</code></summary>
+<details><summary><code>client.Documents.<a href="/src/CloudPDF/Documents/DocumentsClient.cs">InitAsync</a>(DocumentsInitRequest { ... }) -> WithRawResponseTask&lt;DocumentsInitResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1591,7 +1593,7 @@ await client.Documents.ImportFromAsync(
 <dl>
 <dd>
 
-With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; contentLength must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
+With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; sizeBytes must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
 </dd>
 </dl>
 </dd>
@@ -1610,7 +1612,7 @@ await client.Documents.InitAsync(
     new DocumentsInitRequest
     {
         TenantId = "tenantId",
-        ContentLength = 1.1,
+        SizeBytes = 1,
         ContentSha256 = "contentSha256",
     }
 );
@@ -1641,7 +1643,7 @@ await client.Documents.InitAsync(
 </details>
 
 ## Folders
-<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">ListAsync</a>(ListFoldersRequest { ... }) -> WithRawResponseTask&lt;FoldersList200Response&gt;</code></summary>
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">ListAsync</a>(ListFoldersRequest { ... }) -> WithRawResponseTask&lt;FoldersListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1681,7 +1683,7 @@ await client.Folders.ListAsync(new ListFoldersRequest { TenantId = "tenantId" })
 </dl>
 </details>
 
-<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">CreateAsync</a>(FoldersCreateRequest { ... }) -> WithRawResponseTask&lt;FoldersCreate200Response&gt;</code></summary>
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">CreateAsync</a>(FoldersCreateRequest { ... }) -> WithRawResponseTask&lt;FoldersCreateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1735,7 +1737,7 @@ await client.Folders.CreateAsync(new FoldersCreateRequest { TenantId = "tenantId
 </dl>
 </details>
 
-<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">GetAsync</a>(GetFoldersRequest { ... }) -> WithRawResponseTask&lt;FoldersGet200Response&gt;</code></summary>
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">GetAsync</a>(GetFoldersRequest { ... }) -> WithRawResponseTask&lt;FoldersGetResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1833,7 +1835,7 @@ await client.Folders.DeleteAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">UpdateAsync</a>(FoldersUpdateRequest { ... }) -> WithRawResponseTask&lt;FoldersUpdate200Response&gt;</code></summary>
+<details><summary><code>client.Folders.<a href="/src/CloudPDF/Folders/FoldersClient.cs">UpdateAsync</a>(FoldersUpdateRequest { ... }) -> WithRawResponseTask&lt;FoldersUpdateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1906,7 +1908,7 @@ await client.Folders.UpdateAsync(
 <dl>
 <dd>
 
-Up to 1,000 ids in total. A folder moves with everything in it. 404 NotFound names the ids that do not exist or are being deleted in `details.documentIds` and `details.folderIds`. 409 Conflict carries `details.reason`: `cycle` (the destination is a moved folder or inside one; `details.folderId`), `too-deep` (the move would nest folders deeper than 100 levels; `details.maxDepth`) or `name-taken` (a moved folder's name is taken in the destination, ignoring case; `details.name`).
+Up to 1,000 ids in total. A folder moves with everything in it. 404 NotFound names the ids that do not exist or are being deleted in `details.docIds` and `details.folderIds`. 409 Conflict carries `details.reason`: `cycle` (the destination is a moved folder or inside one; `details.folderId`), `too-deep` (the move would nest folders deeper than 100 levels; `details.maxDepth`) or `name-taken` (a moved folder's name is taken in the destination, ignoring case; `details.name`).
 </dd>
 </dl>
 </dd>
@@ -1951,7 +1953,7 @@ await client.Folders.MoveIntoAsync(
 </details>
 
 ## Tokens
-<details><summary><code>client.Tokens.<a href="/src/CloudPDF/Tokens/TokensClient.cs">IssueAsync</a>(IssueTokensRequest { ... }) -> WithRawResponseTask&lt;TokensIssue200Response&gt;</code></summary>
+<details><summary><code>client.Tokens.<a href="/src/CloudPDF/Tokens/TokensClient.cs">IssueAsync</a>(IssueTokensRequest { ... }) -> WithRawResponseTask&lt;TokensIssueResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1989,7 +1991,7 @@ await client.Tokens.IssueAsync(
                     Sub = "sub",
                     DocId = "docId",
                     Scope = new List<string>() { "scope" },
-                    ExpiresIn = 1,
+                    ExpiresInSeconds = 1,
                 }
             )
         ),
@@ -2179,7 +2181,7 @@ await client.Doc.Annotations.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">CreateAsync</a>(CreateAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsCreate200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">CreateAsync</a>(CreateAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsCreateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2241,7 +2243,7 @@ await client.Doc.Annotations.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">DeleteAsync</a>(DeleteAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsDelete200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">DeleteAsync</a>(DeleteAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsDeleteResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2260,7 +2262,7 @@ await client.Doc.Annotations.DeleteAsync(
         DocId = "docId",
         LayerName = "layerName",
         PageKey = "pageKey",
-        AnnotKey = "annotKey",
+        AnnotationKey = "annotationKey",
     }
 );
 ```
@@ -2289,7 +2291,7 @@ await client.Doc.Annotations.DeleteAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">UpdateAsync</a>(UpdateAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsUpdate200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">UpdateAsync</a>(UpdateAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsUpdateResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2308,7 +2310,7 @@ await client.Doc.Annotations.UpdateAsync(
         DocId = "docId",
         LayerName = "layerName",
         PageKey = "pageKey",
-        AnnotKey = "annotKey",
+        AnnotationKey = "annotationKey",
         Body = new Dictionary<string, object?>() { { "key", "value" } },
     }
 );
@@ -2357,7 +2359,7 @@ await client.Doc.Annotations.ReadAppearanceAsync(
         DocId = "docId",
         LayerName = "layerName",
         PageKey = "pageKey",
-        AnnotKey = "annotKey",
+        AnnotationKey = "annotationKey",
     }
 );
 ```
@@ -2419,7 +2421,7 @@ await client.Doc.Annotations.ReadFileAsync(
         DocId = "docId",
         LayerName = "layerName",
         PageKey = "pageKey",
-        AnnotKey = "annotKey",
+        AnnotationKey = "annotationKey",
     }
 );
 ```
@@ -2502,7 +2504,7 @@ await client.Doc.Annotations.ExportAppearanceAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">FlattenAsync</a>(FlattenAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsFlatten200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">FlattenAsync</a>(FlattenAnnotationsRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsFlattenResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2550,7 +2552,7 @@ await client.Doc.Annotations.FlattenAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ReorderAsync</a>(DocAnnotationsReorderRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsReorder200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Annotations.<a href="/src/CloudPDF/Doc/Annotations/AnnotationsClient.cs">ReorderAsync</a>(DocAnnotationsReorderRequest { ... }) -> WithRawResponseTask&lt;DocAnnotationsReorderResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2820,7 +2822,7 @@ await client.Doc.Fonts.ResolveAsync(
 </details>
 
 ## Doc Forms
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ListAsync</a>(ListFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsList200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ListAsync</a>(ListFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2860,7 +2862,7 @@ await client.Doc.Forms.ListAsync(new ListFormsRequest { DocId = "docId", LayerNa
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ReorderCalculationsAsync</a>(DocFormsReorderCalculationsRequest { ... }) -> WithRawResponseTask&lt;DocFormsReorderCalculations200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ReorderCalculationsAsync</a>(DocFormsReorderCalculationsRequest { ... }) -> WithRawResponseTask&lt;DocFormsReorderCalculationsResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2913,7 +2915,7 @@ await client.Doc.Forms.ReorderCalculationsAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">SetValueAsync</a>(SetValueFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsSetValue200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">SetValueAsync</a>(SetValueFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsSetValueResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2961,7 +2963,7 @@ await client.Doc.Forms.SetValueAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ResetAsync</a>(DocFormsResetRequest { ... }) -> WithRawResponseTask&lt;DocFormsReset200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ResetAsync</a>(DocFormsResetRequest { ... }) -> WithRawResponseTask&lt;DocFormsResetResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3003,7 +3005,7 @@ await client.Doc.Forms.ResetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">DeleteWidgetAsync</a>(DeleteWidgetFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsDeleteWidget200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">DeleteWidgetAsync</a>(DeleteWidgetFormsRequest { ... }) -> WithRawResponseTask&lt;DocFormsDeleteWidgetResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3022,7 +3024,7 @@ await client.Doc.Forms.DeleteWidgetAsync(
         DocId = "docId",
         LayerName = "layerName",
         PageKey = "pageKey",
-        AnnotKey = "annotKey",
+        AnnotationKey = "annotationKey",
     }
 );
 ```
@@ -3051,7 +3053,7 @@ await client.Doc.Forms.DeleteWidgetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">UpdateWidgetAsync</a>(DocFormsUpdateWidgetRequest { ... }) -> WithRawResponseTask&lt;DocFormsUpdateWidget200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">UpdateWidgetAsync</a>(DocFormsUpdateWidgetRequest { ... }) -> WithRawResponseTask&lt;DocFormsUpdateWidgetResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3070,7 +3072,7 @@ await client.Doc.Forms.UpdateWidgetAsync(
         DocId = "docId",
         LayerName = "layerName",
         PageKey = "pageKey",
-        AnnotKey = "annotKey",
+        AnnotationKey = "annotationKey",
         Patch = new WidgetPatch(),
     }
 );
@@ -3100,7 +3102,7 @@ await client.Doc.Forms.UpdateWidgetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ReorderWidgetsAsync</a>(DocFormsReorderWidgetsRequest { ... }) -> WithRawResponseTask&lt;DocFormsReorderWidgets200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Forms.<a href="/src/CloudPDF/Doc/Forms/FormsClient.cs">ReorderWidgetsAsync</a>(DocFormsReorderWidgetsRequest { ... }) -> WithRawResponseTask&lt;DocFormsReorderWidgetsResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3247,7 +3249,7 @@ await client.Doc.Outline.GetAsync(
 </details>
 
 ## Doc Pages
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetScaleAsync</a>(DocPagesSetScaleRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetScale200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetScaleAsync</a>(DocPagesSetScaleRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetScaleResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3294,7 +3296,7 @@ await client.Doc.Pages.SetScaleAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ViewportsAsync</a>(ViewportsPagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesViewports200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">ViewportsAsync</a>(ViewportsPagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesViewportsResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3408,7 +3410,7 @@ await client.Doc.Pages.ExtractAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">FlattenAsync</a>(FlattenPagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesFlatten200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">FlattenAsync</a>(FlattenPagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesFlattenResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3455,7 +3457,7 @@ await client.Doc.Pages.FlattenAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetNameAsync</a>(SetNamePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetName200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">SetNameAsync</a>(SetNamePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesSetNameResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3502,7 +3504,7 @@ await client.Doc.Pages.SetNameAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">RemoveNameAsync</a>(RemoveNamePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesRemoveName200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Pages.<a href="/src/CloudPDF/Doc/Pages/PagesClient.cs">RemoveNameAsync</a>(RemoveNamePagesRequest { ... }) -> WithRawResponseTask&lt;DocPagesRemoveNameResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3550,7 +3552,7 @@ await client.Doc.Pages.RemoveNameAsync(
 </details>
 
 ## Doc Redactions
-<details><summary><code>client.Doc.Redactions.<a href="/src/CloudPDF/Doc/Redactions/RedactionsClient.cs">ApplyAsync</a>(DocRedactionsApplyRequest { ... }) -> WithRawResponseTask&lt;DocRedactionsApply200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Redactions.<a href="/src/CloudPDF/Doc/Redactions/RedactionsClient.cs">ApplyAsync</a>(DocRedactionsApplyRequest { ... }) -> WithRawResponseTask&lt;DocRedactionsApplyResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3593,7 +3595,7 @@ await client.Doc.Redactions.ApplyAsync(
 </details>
 
 ## Doc Signatures
-<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">ListAsync</a>(ListSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesList200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">ListAsync</a>(ListSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3649,7 +3651,7 @@ await client.Doc.Signatures.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">CancelAsync</a>(CancelSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesCancel200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">CancelAsync</a>(CancelSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesCancelResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3696,7 +3698,7 @@ await client.Doc.Signatures.CancelAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">CompleteAsync</a>(DocSignaturesCompleteRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesComplete200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">CompleteAsync</a>(DocSignaturesCompleteRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesCompleteResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3763,7 +3765,7 @@ await client.Doc.Signatures.CompleteAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">AnalysisAsync</a>(AnalysisSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesAnalysis200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">AnalysisAsync</a>(AnalysisSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesAnalysisResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3819,7 +3821,7 @@ await client.Doc.Signatures.AnalysisAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">PrepareAsync</a>(PrepareSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesPrepare200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Signatures.<a href="/src/CloudPDF/Doc/Signatures/SignaturesClient.cs">PrepareAsync</a>(PrepareSignaturesRequest { ... }) -> WithRawResponseTask&lt;DocSignaturesPrepareResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3876,7 +3878,7 @@ await client.Doc.Signatures.PrepareAsync(
 </details>
 
 ## Doc Versions
-<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">ListAsync</a>(ListVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsList200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">ListAsync</a>(ListVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3932,7 +3934,7 @@ await client.Doc.Versions.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">AnalysisAsync</a>(AnalysisVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsAnalysis200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">AnalysisAsync</a>(AnalysisVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsAnalysisResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3964,7 +3966,7 @@ await client.Doc.Versions.AnalysisAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Sha = "sha",
+        Sha256 = "sha256",
     }
 );
 ```
@@ -4011,7 +4013,7 @@ await client.Doc.Versions.DownloadAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Sha = "sha",
+        Sha256 = "sha256",
     }
 );
 ```
@@ -4058,7 +4060,7 @@ await client.Doc.Versions.RevisionAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Sha = "sha",
+        Sha256 = "sha256",
         Index = 1,
     }
 );
@@ -4088,7 +4090,7 @@ await client.Doc.Versions.RevisionAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">SignaturesAsync</a>(SignaturesVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsSignatures200Response&gt;</code></summary>
+<details><summary><code>client.Doc.Versions.<a href="/src/CloudPDF/Doc/Versions/VersionsClient.cs">SignaturesAsync</a>(SignaturesVersionsRequest { ... }) -> WithRawResponseTask&lt;DocVersionsSignaturesResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4106,7 +4108,7 @@ await client.Doc.Versions.SignaturesAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Sha = "sha",
+        Sha256 = "sha256",
     }
 );
 ```
@@ -4167,7 +4169,7 @@ await client.Doc.Versions.SignatureContentsAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Sha = "sha",
+        Sha256 = "sha256",
         FieldKey = "fieldKey",
     }
 );
@@ -4229,7 +4231,7 @@ await client.Doc.Versions.SignatureDigestAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        Sha = "sha",
+        Sha256 = "sha256",
         FieldKey = "fieldKey",
         Algorithm = SignatureDigestVersionsRequestAlgorithm.Sha1,
     }
@@ -4293,7 +4295,7 @@ await client.Doc.Fonts.Programs.DownloadAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        DisplayHash = "displayHash",
+        DisplaySha256 = "displaySha256",
     }
 );
 ```
@@ -4340,7 +4342,7 @@ await client.Doc.Fonts.Programs.GetAsync(
     {
         DocId = "docId",
         LayerName = "layerName",
-        DisplayHash = "displayHash",
+        DisplaySha256 = "displaySha256",
     }
 );
 ```
@@ -4413,7 +4415,7 @@ await client.Doc.Metadata.Custom.GetAsync(
 </details>
 
 ## Documents Layers
-<details><summary><code>client.Documents.Layers.<a href="/src/CloudPDF/Documents/Layers/LayersClient.cs">ListAsync</a>(ListLayersRequest { ... }) -> WithRawResponseTask&lt;DocumentsLayersList200Response&gt;</code></summary>
+<details><summary><code>client.Documents.Layers.<a href="/src/CloudPDF/Documents/Layers/LayersClient.cs">ListAsync</a>(ListLayersRequest { ... }) -> WithRawResponseTask&lt;DocumentsLayersListResponse&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4426,7 +4428,9 @@ await client.Doc.Metadata.Custom.GetAsync(
 <dd>
 
 ```csharp
-await client.Documents.Layers.ListAsync(new ListLayersRequest { TenantId = "tenantId", Id = "id" });
+await client.Documents.Layers.ListAsync(
+    new ListLayersRequest { TenantId = "tenantId", DocId = "docId" }
+);
 ```
 </dd>
 </dl>
@@ -4470,7 +4474,7 @@ await client.Documents.Layers.DeleteAsync(
     new DeleteLayersRequest
     {
         TenantId = "tenantId",
-        Id = "id",
+        DocId = "docId",
         LayerName = "layerName",
     }
 );
@@ -4501,7 +4505,7 @@ await client.Documents.Layers.DeleteAsync(
 </details>
 
 ## Grants Visitors
-<details><summary><code>client.Grants.Visitors.<a href="/src/CloudPDF/Grants/Visitors/VisitorsClient.cs">ListAsync</a>(ListVisitorsRequest { ... }) -> WithRawResponseTask&lt;GrantsVisitorsList200Response&gt;</code></summary>
+<details><summary><code>client.Grants.Visitors.<a href="/src/CloudPDF/Grants/Visitors/VisitorsClient.cs">ListAsync</a>(ListVisitorsRequest { ... }) -> WithRawResponseTask&lt;GrantsVisitorsListResponse&gt;</code></summary>
 <dl>
 <dd>
 

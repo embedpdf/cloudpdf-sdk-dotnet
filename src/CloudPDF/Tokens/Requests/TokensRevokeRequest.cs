@@ -15,8 +15,8 @@ public record TokensRevokeRequest
     [JsonPropertyName("reason")]
     public string? Reason { get; set; }
 
-    [JsonPropertyName("expiresAtSeconds")]
-    public int? ExpiresAtSeconds { get; set; }
+    [JsonPropertyName("expiresAt")]
+    public DateTime? ExpiresAt { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

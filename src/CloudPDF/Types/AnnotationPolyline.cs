@@ -141,8 +141,11 @@ public record AnnotationPolyline : IJsonOnDeserialized
     [JsonPropertyName("intent")]
     public AnnotationPolylineIntent? Intent { get; set; }
 
+    /// <summary>
+    /// A measure, by its `subtype`. A newer server can add subtypes: read one your client doesn't know as `unknown`.
+    /// </summary>
     [JsonPropertyName("measure")]
-    public AnnotationPolylineMeasure? Measure { get; set; }
+    public PdfMeasurement? Measure { get; set; }
 
     [JsonPropertyName("lineEndings")]
     public required AnnotationPolylineLineEndings LineEndings { get; set; }

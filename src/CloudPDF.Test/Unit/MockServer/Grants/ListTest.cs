@@ -23,7 +23,7 @@ public class ListTest : BaseMockServerTest
                   "layerMode": "shared",
                   "layerName": "layerName",
                   "keepVisitorLayers": true,
-                  "visitorIdleSeconds": 1.1,
+                  "visitorIdleSeconds": 1,
                   "visitorIdentity": {
                     "fields": {
                       "displayName": "required",
@@ -54,15 +54,15 @@ public class ListTest : BaseMockServerTest
                     "origins"
                   ],
                   "passphraseProtected": true,
-                  "sessionTtlSeconds": 1.1,
+                  "sessionTtlSeconds": 1,
                   "disabled": true,
-                  "archivedAt": 1.1,
-                  "expiresAt": 1.1,
-                  "exchangeCount": 1.1,
-                  "lastExchangedAt": 1.1,
+                  "archivedAt": "2024-01-15T09:30:00.000Z",
+                  "expiresAt": "2024-01-15T09:30:00.000Z",
+                  "exchangeCount": 1,
+                  "lastExchangedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z"
                 },
                 {
                   "id": "id",
@@ -72,7 +72,7 @@ public class ListTest : BaseMockServerTest
                   "layerMode": "shared",
                   "layerName": "layerName",
                   "keepVisitorLayers": true,
-                  "visitorIdleSeconds": 1.1,
+                  "visitorIdleSeconds": 1,
                   "visitorIdentity": {
                     "fields": {
                       "displayName": "required",
@@ -103,15 +103,15 @@ public class ListTest : BaseMockServerTest
                     "origins"
                   ],
                   "passphraseProtected": true,
-                  "sessionTtlSeconds": 1.1,
+                  "sessionTtlSeconds": 1,
                   "disabled": true,
-                  "archivedAt": 1.1,
-                  "expiresAt": 1.1,
-                  "exchangeCount": 1.1,
-                  "lastExchangedAt": 1.1,
+                  "archivedAt": "2024-01-15T09:30:00.000Z",
+                  "expiresAt": "2024-01-15T09:30:00.000Z",
+                  "exchangeCount": 1,
+                  "lastExchangedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z"
                 }
               ],
               "nextCursor": "nextCursor"
@@ -152,7 +152,7 @@ public class ListTest : BaseMockServerTest
                   "layerMode": "shared",
                   "layerName": "layerName",
                   "keepVisitorLayers": true,
-                  "visitorIdleSeconds": 1.1,
+                  "visitorIdleSeconds": 1,
                   "visitorIdentity": {
                     "fields": {},
                     "ask": "on-open"
@@ -165,15 +165,15 @@ public class ListTest : BaseMockServerTest
                     "origins"
                   ],
                   "passphraseProtected": true,
-                  "sessionTtlSeconds": 1.1,
+                  "sessionTtlSeconds": 1,
                   "disabled": true,
-                  "archivedAt": 1.1,
-                  "expiresAt": 1.1,
-                  "exchangeCount": 1.1,
-                  "lastExchangedAt": 1.1,
+                  "archivedAt": "2024-01-15T09:30:00.000Z",
+                  "expiresAt": "2024-01-15T09:30:00.000Z",
+                  "exchangeCount": 1,
+                  "lastExchangedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z"
                 }
               ],
               "nextCursor": "nextCursor"

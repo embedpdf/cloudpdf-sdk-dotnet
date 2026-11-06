@@ -36,10 +36,10 @@ public record FormFieldUnknown : IJsonOnDeserialized
     public string? MappingName { get; set; }
 
     [JsonPropertyName("valueEntry")]
-    public required FormFieldUnknownValueEntry ValueEntry { get; set; }
+    public required FormValueEntry ValueEntry { get; set; }
 
     [JsonPropertyName("defaultValueEntry")]
-    public required FormFieldUnknownDefaultValueEntry DefaultValueEntry { get; set; }
+    public required FormValueEntry DefaultValueEntry { get; set; }
 
     [JsonPropertyName("actions")]
     public PdfFieldActions? Actions { get; set; }

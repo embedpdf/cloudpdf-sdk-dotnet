@@ -13,7 +13,7 @@ public record SignatureContentsVersionsRequest
     public required string LayerName { get; set; }
 
     [JsonIgnore]
-    public required string Sha { get; set; }
+    public required string Sha256 { get; set; }
 
     [JsonIgnore]
     public required string FieldKey { get; set; }

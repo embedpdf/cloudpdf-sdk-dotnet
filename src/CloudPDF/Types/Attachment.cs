@@ -23,11 +23,11 @@ public record Attachment : IJsonOnDeserialized
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
-    [JsonPropertyName("size")]
-    public int? Size { get; set; }
+    [JsonPropertyName("sizeBytes")]
+    public int? SizeBytes { get; set; }
 
-    [JsonPropertyName("checksum")]
-    public string? Checksum { get; set; }
+    [JsonPropertyName("md5")]
+    public string? Md5 { get; set; }
 
     [JsonPropertyName("createdAt")]
     public DateTime? CreatedAt { get; set; }

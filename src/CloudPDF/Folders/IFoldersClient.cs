@@ -2,7 +2,7 @@ namespace CloudPDF;
 
 public partial interface IFoldersClient
 {
-    WithRawResponseTask<FoldersList200Response> ListAsync(
+    WithRawResponseTask<FoldersListResponse> ListAsync(
         ListFoldersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -11,13 +11,13 @@ public partial interface IFoldersClient
     /// <summary>
     /// 409 Conflict carries `details.reason`: `name-taken` (a sibling has the name, ignoring case; `details.name`) or `too-deep` (folders nest at most 100 levels; `details.maxDepth`). 404 when the parent folder does not exist.
     /// </summary>
-    WithRawResponseTask<FoldersCreate200Response> CreateAsync(
+    WithRawResponseTask<FoldersCreateResponse> CreateAsync(
         FoldersCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<FoldersGet200Response> GetAsync(
+    WithRawResponseTask<FoldersGetResponse> GetAsync(
         GetFoldersRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -35,14 +35,14 @@ public partial interface IFoldersClient
     /// <summary>
     /// 409 Conflict with `details.reason` `name-taken` when a sibling has the name, ignoring case.
     /// </summary>
-    WithRawResponseTask<FoldersUpdate200Response> UpdateAsync(
+    WithRawResponseTask<FoldersUpdateResponse> UpdateAsync(
         FoldersUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Up to 1,000 ids in total. A folder moves with everything in it. 404 NotFound names the ids that do not exist or are being deleted in `details.documentIds` and `details.folderIds`. 409 Conflict carries `details.reason`: `cycle` (the destination is a moved folder or inside one; `details.folderId`), `too-deep` (the move would nest folders deeper than 100 levels; `details.maxDepth`) or `name-taken` (a moved folder's name is taken in the destination, ignoring case; `details.name`).
+    /// Up to 1,000 ids in total. A folder moves with everything in it. 404 NotFound names the ids that do not exist or are being deleted in `details.docIds` and `details.folderIds`. 409 Conflict carries `details.reason`: `cycle` (the destination is a moved folder or inside one; `details.folderId`), `too-deep` (the move would nest folders deeper than 100 levels; `details.maxDepth`) or `name-taken` (a moved folder's name is taken in the destination, ignoring case; `details.name`).
     /// </summary>
     WithRawResponseTask MoveIntoAsync(
         FoldersMoveIntoRequest request,

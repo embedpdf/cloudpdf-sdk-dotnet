@@ -21,8 +21,8 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "folderId": "folderId",
                   "state": "pending",
-                  "baseSha": "baseSha",
-                  "storageSizeBytes": 1.1,
+                  "baseSha256": "baseSha256",
+                  "sizeBytes": 1,
                   "metadata": {
                     "metadata": {
                       "key": "value"
@@ -32,8 +32,8 @@ public class ListTest : BaseMockServerTest
                   "failureReason": "failureReason",
                   "thumbnailState": "pending",
                   "thumbnailUrl": "thumbnailUrl",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy"
                 },
                 {
@@ -42,8 +42,8 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "folderId": "folderId",
                   "state": "pending",
-                  "baseSha": "baseSha",
-                  "storageSizeBytes": 1.1,
+                  "baseSha256": "baseSha256",
+                  "sizeBytes": 1,
                   "metadata": {
                     "metadata": {
                       "key": "value"
@@ -53,8 +53,8 @@ public class ListTest : BaseMockServerTest
                   "failureReason": "failureReason",
                   "thumbnailState": "pending",
                   "thumbnailUrl": "thumbnailUrl",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy"
                 }
               ],
@@ -94,8 +94,8 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "folderId": "folderId",
                   "state": "pending",
-                  "baseSha": "baseSha",
-                  "storageSizeBytes": 1.1,
+                  "baseSha256": "baseSha256",
+                  "sizeBytes": 1,
                   "metadata": {
                     "key": "value"
                   },
@@ -103,8 +103,8 @@ public class ListTest : BaseMockServerTest
                   "failureReason": "failureReason",
                   "thumbnailState": "pending",
                   "thumbnailUrl": "thumbnailUrl",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy"
                 }
               ],

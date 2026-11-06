@@ -21,7 +21,7 @@ public record WidgetPlacement : IJsonOnDeserialized
     public WidgetPlacementBox? Box { get; set; }
 
     [JsonPropertyName("rotation")]
-    public double? Rotation { get; set; }
+    public int? Rotation { get; set; }
 
     [JsonPropertyName("exportValue")]
     public string? ExportValue { get; set; }

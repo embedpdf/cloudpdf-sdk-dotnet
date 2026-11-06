@@ -10,7 +10,7 @@ public record DeleteLayersRequest
     public required string TenantId { get; set; }
 
     [JsonIgnore]
-    public required string Id { get; set; }
+    public required string DocId { get; set; }
 
     [JsonIgnore]
     public required string LayerName { get; set; }

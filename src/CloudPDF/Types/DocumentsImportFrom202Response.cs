@@ -11,8 +11,8 @@ public record DocumentsImportFrom202Response : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("tag")]
-    public required DocumentsImportFrom202ResponseTag Tag { get; set; }
+    [JsonPropertyName("status")]
+    public required DocumentsImportFrom202ResponseStatus Status { get; set; }
 
     [JsonPropertyName("document")]
     public required DocumentsImportFrom202ResponseDocument Document { get; set; }

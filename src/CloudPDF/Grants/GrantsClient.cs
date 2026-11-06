@@ -16,7 +16,7 @@ public partial class GrantsClient : IGrantsClient
 
     public IVisitorsClient Visitors { get; }
 
-    private async Task<WithRawResponse<GrantsExchange200Response>> ExchangeAsyncCore(
+    private async Task<WithRawResponse<GrantsExchangeResponse>> ExchangeAsyncCore(
         GrantsExchangeRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -53,8 +53,8 @@ public partial class GrantsClient : IGrantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<GrantsExchange200Response>(responseBody)!;
-                return new WithRawResponse<GrantsExchange200Response>()
+                var responseData = JsonUtils.Deserialize<GrantsExchangeResponse>(responseBody)!;
+                return new WithRawResponse<GrantsExchangeResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -91,7 +91,7 @@ public partial class GrantsClient : IGrantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -103,7 +103,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -115,7 +115,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -127,7 +127,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 410:
                         throw new GoneError(
-                            JsonUtils.Deserialize<AdminErrorPayload>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -139,7 +139,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 422:
                         throw new UnprocessableEntityError(
-                            JsonUtils.Deserialize<AdminErrorPayload>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -169,7 +169,7 @@ public partial class GrantsClient : IGrantsClient
         }
     }
 
-    private async Task<WithRawResponse<GrantsList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<GrantsListResponse>> ListAsyncCore(
         ListGrantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -211,8 +211,8 @@ public partial class GrantsClient : IGrantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<GrantsList200Response>(responseBody)!;
-                return new WithRawResponse<GrantsList200Response>()
+                var responseData = JsonUtils.Deserialize<GrantsListResponse>(responseBody)!;
+                return new WithRawResponse<GrantsListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -249,7 +249,7 @@ public partial class GrantsClient : IGrantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -279,7 +279,7 @@ public partial class GrantsClient : IGrantsClient
         }
     }
 
-    private async Task<WithRawResponse<GrantsCreate200Response>> CreateAsyncCore(
+    private async Task<WithRawResponse<GrantsCreateResponse>> CreateAsyncCore(
         GrantsCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -319,8 +319,8 @@ public partial class GrantsClient : IGrantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<GrantsCreate200Response>(responseBody)!;
-                return new WithRawResponse<GrantsCreate200Response>()
+                var responseData = JsonUtils.Deserialize<GrantsCreateResponse>(responseBody)!;
+                return new WithRawResponse<GrantsCreateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -357,7 +357,7 @@ public partial class GrantsClient : IGrantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -369,7 +369,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -381,7 +381,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -411,7 +411,7 @@ public partial class GrantsClient : IGrantsClient
         }
     }
 
-    private async Task<WithRawResponse<GrantsGet200Response>> GetAsyncCore(
+    private async Task<WithRawResponse<GrantsGetResponse>> GetAsyncCore(
         GetGrantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -450,8 +450,8 @@ public partial class GrantsClient : IGrantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<GrantsGet200Response>(responseBody)!;
-                return new WithRawResponse<GrantsGet200Response>()
+                var responseData = JsonUtils.Deserialize<GrantsGetResponse>(responseBody)!;
+                return new WithRawResponse<GrantsGetResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -488,7 +488,7 @@ public partial class GrantsClient : IGrantsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -569,7 +569,7 @@ public partial class GrantsClient : IGrantsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -581,7 +581,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -611,7 +611,7 @@ public partial class GrantsClient : IGrantsClient
         }
     }
 
-    private async Task<WithRawResponse<GrantsUpdate200Response>> UpdateAsyncCore(
+    private async Task<WithRawResponse<GrantsUpdateResponse>> UpdateAsyncCore(
         GrantsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -652,8 +652,8 @@ public partial class GrantsClient : IGrantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<GrantsUpdate200Response>(responseBody)!;
-                return new WithRawResponse<GrantsUpdate200Response>()
+                var responseData = JsonUtils.Deserialize<GrantsUpdateResponse>(responseBody)!;
+                return new WithRawResponse<GrantsUpdateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -690,7 +690,7 @@ public partial class GrantsClient : IGrantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -702,7 +702,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -714,7 +714,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -726,7 +726,7 @@ public partial class GrantsClient : IGrantsClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -756,7 +756,7 @@ public partial class GrantsClient : IGrantsClient
         }
     }
 
-    private async Task<WithRawResponse<GrantsArchive200Response>> ArchiveAsyncCore(
+    private async Task<WithRawResponse<GrantsArchiveResponse>> ArchiveAsyncCore(
         ArchiveGrantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -795,8 +795,8 @@ public partial class GrantsClient : IGrantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<GrantsArchive200Response>(responseBody)!;
-                return new WithRawResponse<GrantsArchive200Response>()
+                var responseData = JsonUtils.Deserialize<GrantsArchiveResponse>(responseBody)!;
+                return new WithRawResponse<GrantsArchiveResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -833,7 +833,7 @@ public partial class GrantsClient : IGrantsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -869,13 +869,13 @@ public partial class GrantsClient : IGrantsClient
     /// <example><code>
     /// await client.Grants.ExchangeAsync(new GrantsExchangeRequest { Grant = "grant" });
     /// </code></example>
-    public WithRawResponseTask<GrantsExchange200Response> ExchangeAsync(
+    public WithRawResponseTask<GrantsExchangeResponse> ExchangeAsync(
         GrantsExchangeRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GrantsExchange200Response>(
+        return new WithRawResponseTask<GrantsExchangeResponse>(
             ExchangeAsyncCore(request, options, cancellationToken)
         );
     }
@@ -883,13 +883,13 @@ public partial class GrantsClient : IGrantsClient
     /// <example><code>
     /// await client.Grants.ListAsync(new ListGrantsRequest { TenantId = "tenantId" });
     /// </code></example>
-    public WithRawResponseTask<GrantsList200Response> ListAsync(
+    public WithRawResponseTask<GrantsListResponse> ListAsync(
         ListGrantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GrantsList200Response>(
+        return new WithRawResponseTask<GrantsListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
@@ -907,13 +907,13 @@ public partial class GrantsClient : IGrantsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<GrantsCreate200Response> CreateAsync(
+    public WithRawResponseTask<GrantsCreateResponse> CreateAsync(
         GrantsCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GrantsCreate200Response>(
+        return new WithRawResponseTask<GrantsCreateResponse>(
             CreateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -921,13 +921,13 @@ public partial class GrantsClient : IGrantsClient
     /// <example><code>
     /// await client.Grants.GetAsync(new GetGrantsRequest { TenantId = "tenantId", GrantId = "grantId" });
     /// </code></example>
-    public WithRawResponseTask<GrantsGet200Response> GetAsync(
+    public WithRawResponseTask<GrantsGetResponse> GetAsync(
         GetGrantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GrantsGet200Response>(
+        return new WithRawResponseTask<GrantsGetResponse>(
             GetAsyncCore(request, options, cancellationToken)
         );
     }
@@ -951,13 +951,13 @@ public partial class GrantsClient : IGrantsClient
     ///     new GrantsUpdateRequest { TenantId = "tenantId", GrantId = "grantId" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<GrantsUpdate200Response> UpdateAsync(
+    public WithRawResponseTask<GrantsUpdateResponse> UpdateAsync(
         GrantsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GrantsUpdate200Response>(
+        return new WithRawResponseTask<GrantsUpdateResponse>(
             UpdateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -970,13 +970,13 @@ public partial class GrantsClient : IGrantsClient
     ///     new ArchiveGrantsRequest { TenantId = "tenantId", GrantId = "grantId" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<GrantsArchive200Response> ArchiveAsync(
+    public WithRawResponseTask<GrantsArchiveResponse> ArchiveAsync(
         ArchiveGrantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<GrantsArchive200Response>(
+        return new WithRawResponseTask<GrantsArchiveResponse>(
             ArchiveAsyncCore(request, options, cancellationToken)
         );
     }

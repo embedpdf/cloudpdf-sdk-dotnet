@@ -26,8 +26,8 @@ public class UpdateTest : BaseMockServerTest
                 "name": "name",
                 "folderId": "folderId",
                 "state": "pending",
-                "baseSha": "baseSha",
-                "storageSizeBytes": 1.1,
+                "baseSha256": "baseSha256",
+                "sizeBytes": 1,
                 "metadata": {
                   "metadata": {
                     "key": "value"
@@ -37,8 +37,8 @@ public class UpdateTest : BaseMockServerTest
                 "failureReason": "failureReason",
                 "thumbnailState": "pending",
                 "thumbnailUrl": "thumbnailUrl",
-                "createdAt": 1.1,
-                "updatedAt": 1.1,
+                "createdAt": "2024-01-15T09:30:00.000Z",
+                "updatedAt": "2024-01-15T09:30:00.000Z",
                 "createdBy": "createdBy"
               }
             }
@@ -48,7 +48,7 @@ public class UpdateTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id")
+                    .WithPath("/v1/tenants/tenantId/documents/docId")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
@@ -64,7 +64,7 @@ public class UpdateTest : BaseMockServerTest
             new DocumentsUpdateRequest
             {
                 TenantId = "tenantId",
-                Id = "id",
+                DocId = "docId",
                 Name = "x",
             }
         );
@@ -88,8 +88,8 @@ public class UpdateTest : BaseMockServerTest
                 "name": "name",
                 "folderId": "folderId",
                 "state": "pending",
-                "baseSha": "baseSha",
-                "storageSizeBytes": 1.1,
+                "baseSha256": "baseSha256",
+                "sizeBytes": 1,
                 "metadata": {
                   "key": "value"
                 },
@@ -97,8 +97,8 @@ public class UpdateTest : BaseMockServerTest
                 "failureReason": "failureReason",
                 "thumbnailState": "pending",
                 "thumbnailUrl": "thumbnailUrl",
-                "createdAt": 1.1,
-                "updatedAt": 1.1,
+                "createdAt": "2024-01-15T09:30:00.000Z",
+                "updatedAt": "2024-01-15T09:30:00.000Z",
                 "createdBy": "createdBy"
               }
             }
@@ -108,7 +108,7 @@ public class UpdateTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id")
+                    .WithPath("/v1/tenants/tenantId/documents/docId")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
@@ -124,7 +124,7 @@ public class UpdateTest : BaseMockServerTest
             new DocumentsUpdateRequest
             {
                 TenantId = "tenantId",
-                Id = "id",
+                DocId = "docId",
                 Name = "name",
             }
         );

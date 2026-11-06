@@ -20,8 +20,8 @@ public class GetTest : BaseMockServerTest
                 "name": "name",
                 "folderId": "folderId",
                 "state": "pending",
-                "baseSha": "baseSha",
-                "storageSizeBytes": 1.1,
+                "baseSha256": "baseSha256",
+                "sizeBytes": 1,
                 "metadata": {
                   "metadata": {
                     "key": "value"
@@ -31,8 +31,8 @@ public class GetTest : BaseMockServerTest
                 "failureReason": "failureReason",
                 "thumbnailState": "pending",
                 "thumbnailUrl": "thumbnailUrl",
-                "createdAt": 1.1,
-                "updatedAt": 1.1,
+                "createdAt": "2024-01-15T09:30:00.000Z",
+                "updatedAt": "2024-01-15T09:30:00.000Z",
                 "createdBy": "createdBy"
               }
             }
@@ -42,7 +42,7 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id")
+                    .WithPath("/v1/tenants/tenantId/documents/docId")
                     .UsingGet()
             )
             .RespondWith(
@@ -53,7 +53,7 @@ public class GetTest : BaseMockServerTest
             );
 
         var response = await Client.Documents.GetAsync(
-            new GetDocumentsRequest { TenantId = "tenantId", Id = "id" }
+            new GetDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
@@ -69,8 +69,8 @@ public class GetTest : BaseMockServerTest
                 "name": "name",
                 "folderId": "folderId",
                 "state": "pending",
-                "baseSha": "baseSha",
-                "storageSizeBytes": 1.1,
+                "baseSha256": "baseSha256",
+                "sizeBytes": 1,
                 "metadata": {
                   "key": "value"
                 },
@@ -78,8 +78,8 @@ public class GetTest : BaseMockServerTest
                 "failureReason": "failureReason",
                 "thumbnailState": "pending",
                 "thumbnailUrl": "thumbnailUrl",
-                "createdAt": 1.1,
-                "updatedAt": 1.1,
+                "createdAt": "2024-01-15T09:30:00.000Z",
+                "updatedAt": "2024-01-15T09:30:00.000Z",
                 "createdBy": "createdBy"
               }
             }
@@ -89,7 +89,7 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id")
+                    .WithPath("/v1/tenants/tenantId/documents/docId")
                     .UsingGet()
             )
             .RespondWith(
@@ -100,7 +100,7 @@ public class GetTest : BaseMockServerTest
             );
 
         var response = await Client.Documents.GetAsync(
-            new GetDocumentsRequest { TenantId = "tenantId", Id = "id" }
+            new GetDocumentsRequest { TenantId = "tenantId", DocId = "docId" }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
