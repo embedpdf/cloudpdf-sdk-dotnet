@@ -14,25 +14,25 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "baseSha": "baseSha",
+              "baseSha256": "baseSha256",
               "versions": [
                 {
                   "sha256": "sha256",
-                  "byteLength": 1,
+                  "sizeBytes": 1,
                   "number": 1,
                   "parentSha256": "parentSha256",
                   "producer": "upload",
                   "signingId": "signingId",
-                  "createdAt": 1
+                  "createdAt": "2024-01-15T09:30:00.000Z"
                 },
                 {
                   "sha256": "sha256",
-                  "byteLength": 1,
+                  "sizeBytes": 1,
                   "number": 1,
                   "parentSha256": "parentSha256",
                   "producer": "upload",
                   "signingId": "signingId",
-                  "createdAt": 1
+                  "createdAt": "2024-01-15T09:30:00.000Z"
                 }
               ]
             }
@@ -63,16 +63,16 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "baseSha": "baseSha",
+              "baseSha256": "baseSha256",
               "versions": [
                 {
                   "sha256": "sha256",
-                  "byteLength": 1,
+                  "sizeBytes": 1,
                   "number": 1,
                   "parentSha256": "parentSha256",
                   "producer": "upload",
                   "signingId": "signingId",
-                  "createdAt": 1
+                  "createdAt": "2024-01-15T09:30:00.000Z"
                 }
               ]
             }

@@ -14,8 +14,8 @@ public class GetTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "displayHash": "displayHash",
-              "sourceHash": "sourceHash",
+              "displaySha256": "displaySha256",
+              "sourceSha256": "sourceSha256",
               "embedded": "whole",
               "format": "truetype",
               "embeddingPermission": "installable",
@@ -39,7 +39,7 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/font-programs/displayHash")
+                    .WithPath("/v1/docs/docId/layers/layerName/font-programs/displaySha256")
                     .UsingGet()
             )
             .RespondWith(
@@ -54,7 +54,7 @@ public class GetTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                DisplayHash = "displayHash",
+                DisplaySha256 = "displaySha256",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -65,8 +65,8 @@ public class GetTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "displayHash": "displayHash",
-              "sourceHash": "sourceHash",
+              "displaySha256": "displaySha256",
+              "sourceSha256": "sourceSha256",
               "embedded": "whole",
               "format": "truetype",
               "embeddingPermission": "installable",
@@ -86,7 +86,7 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/font-programs/displayHash")
+                    .WithPath("/v1/docs/docId/layers/layerName/font-programs/displaySha256")
                     .UsingGet()
             )
             .RespondWith(
@@ -101,7 +101,7 @@ public class GetTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                DisplayHash = "displayHash",
+                DisplaySha256 = "displaySha256",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

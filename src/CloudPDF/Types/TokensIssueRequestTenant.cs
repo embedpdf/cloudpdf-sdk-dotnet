@@ -17,8 +17,8 @@ public record TokensIssueRequestTenant : IJsonOnDeserialized
     [JsonPropertyName("scope")]
     public IEnumerable<string> Scope { get; set; } = new List<string>();
 
-    [JsonPropertyName("expiresIn")]
-    public required int ExpiresIn { get; set; }
+    [JsonPropertyName("expiresInSeconds")]
+    public required int ExpiresInSeconds { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

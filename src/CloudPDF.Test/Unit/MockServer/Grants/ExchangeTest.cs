@@ -47,7 +47,7 @@ public class ExchangeTest : BaseMockServerTest
                   "privacyUrl": "privacyUrl"
                 }
               },
-              "expiresAt": 1.1
+              "expiresAt": "2024-01-15T09:30:00.000Z"
             }
             """;
 
@@ -110,7 +110,7 @@ public class ExchangeTest : BaseMockServerTest
                   "privacyUrl": "privacyUrl"
                 }
               },
-              "expiresAt": 1.1
+              "expiresAt": "2024-01-15T09:30:00.000Z"
             }
             """;
 

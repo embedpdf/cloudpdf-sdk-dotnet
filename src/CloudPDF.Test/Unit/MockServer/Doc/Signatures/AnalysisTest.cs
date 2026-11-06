@@ -19,7 +19,7 @@ public class AnalysisTest : BaseMockServerTest
               "basis": {
                 "version": {
                   "sha256": "sha256",
-                  "byteLength": 1
+                  "sizeBytes": 1
                 },
                 "editsVersion": 1,
                 "source": "persisted"
@@ -37,7 +37,7 @@ public class AnalysisTest : BaseMockServerTest
                   "revisionIndex": 1,
                   "source": "docmdp",
                   "own": true,
-                  "permission": 1.1,
+                  "permission": 1,
                   "fields": {
                     "key": "value"
                   }
@@ -47,7 +47,7 @@ public class AnalysisTest : BaseMockServerTest
                   "revisionIndex": 1,
                   "source": "docmdp",
                   "own": true,
-                  "permission": 1.1,
+                  "permission": 1,
                   "fields": {
                     "key": "value"
                   }
@@ -130,7 +130,7 @@ public class AnalysisTest : BaseMockServerTest
               "basis": {
                 "version": {
                   "sha256": "sha256",
-                  "byteLength": 1
+                  "sizeBytes": 1
                 },
                 "editsVersion": 1,
                 "source": "persisted"
@@ -148,7 +148,7 @@ public class AnalysisTest : BaseMockServerTest
                   "revisionIndex": 1,
                   "source": "docmdp",
                   "own": true,
-                  "permission": 1.1,
+                  "permission": 1,
                   "fields": {
                     "key": "value"
                   }

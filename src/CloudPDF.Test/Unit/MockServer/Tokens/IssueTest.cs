@@ -21,7 +21,7 @@ public class IssueTest : BaseMockServerTest
                 "scope",
                 "scope"
               ],
-              "expiresIn": 7776000
+              "expiresInSeconds": 7776000
             }
             """;
 
@@ -29,7 +29,7 @@ public class IssueTest : BaseMockServerTest
             {
               "token": "token",
               "jti": "jti",
-              "expiresAt": 1.1
+              "expiresAt": "2024-01-15T09:30:00.000Z"
             }
             """;
 
@@ -63,7 +63,7 @@ public class IssueTest : BaseMockServerTest
                             Scope = new List<string>() { "scope", "scope" },
                             Identity = null,
                             Origins = null,
-                            ExpiresIn = 7776000,
+                            ExpiresInSeconds = 7776000,
                         }
                     )
                 ),
@@ -83,7 +83,7 @@ public class IssueTest : BaseMockServerTest
               "scope": [
                 "scope"
               ],
-              "expiresIn": 1
+              "expiresInSeconds": 1
             }
             """;
 
@@ -91,7 +91,7 @@ public class IssueTest : BaseMockServerTest
             {
               "token": "token",
               "jti": "jti",
-              "expiresAt": 1.1
+              "expiresAt": "2024-01-15T09:30:00.000Z"
             }
             """;
 
@@ -122,7 +122,7 @@ public class IssueTest : BaseMockServerTest
                             Sub = "sub",
                             DocId = "docId",
                             Scope = new List<string>() { "scope" },
-                            ExpiresIn = 1,
+                            ExpiresInSeconds = 1,
                         }
                     )
                 ),

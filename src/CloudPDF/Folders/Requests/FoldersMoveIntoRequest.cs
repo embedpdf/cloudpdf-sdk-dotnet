@@ -15,8 +15,8 @@ public record FoldersMoveIntoRequest
     [JsonIgnore]
     public required string FolderId { get; set; }
 
-    [JsonPropertyName("documentIds")]
-    public IEnumerable<string>? DocumentIds { get; set; }
+    [JsonPropertyName("docIds")]
+    public IEnumerable<string>? DocIds { get; set; }
 
     [JsonPropertyName("folderIds")]
     public IEnumerable<string>? FolderIds { get; set; }

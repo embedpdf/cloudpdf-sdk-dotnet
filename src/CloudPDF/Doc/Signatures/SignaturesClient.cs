@@ -13,7 +13,7 @@ public partial class SignaturesClient : ISignaturesClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<DocSignaturesList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<DocSignaturesListResponse>> ListAsyncCore(
         ListSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -53,10 +53,8 @@ public partial class SignaturesClient : ISignaturesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocSignaturesList200Response>(
-                    responseBody
-                )!;
-                return new WithRawResponse<DocSignaturesList200Response>()
+                var responseData = JsonUtils.Deserialize<DocSignaturesListResponse>(responseBody)!;
+                return new WithRawResponse<DocSignaturesListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -93,7 +91,7 @@ public partial class SignaturesClient : ISignaturesClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -123,7 +121,7 @@ public partial class SignaturesClient : ISignaturesClient
         }
     }
 
-    private async Task<WithRawResponse<DocSignaturesCancel200Response>> CancelAsyncCore(
+    private async Task<WithRawResponse<DocSignaturesCancelResponse>> CancelAsyncCore(
         CancelSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -164,10 +162,10 @@ public partial class SignaturesClient : ISignaturesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocSignaturesCancel200Response>(
+                var responseData = JsonUtils.Deserialize<DocSignaturesCancelResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocSignaturesCancel200Response>()
+                return new WithRawResponse<DocSignaturesCancelResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -204,7 +202,7 @@ public partial class SignaturesClient : ISignaturesClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -234,7 +232,7 @@ public partial class SignaturesClient : ISignaturesClient
         }
     }
 
-    private async Task<WithRawResponse<DocSignaturesComplete200Response>> CompleteAsyncCore(
+    private async Task<WithRawResponse<DocSignaturesCompleteResponse>> CompleteAsyncCore(
         DocSignaturesCompleteRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -277,10 +275,10 @@ public partial class SignaturesClient : ISignaturesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocSignaturesComplete200Response>(
+                var responseData = JsonUtils.Deserialize<DocSignaturesCompleteResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocSignaturesComplete200Response>()
+                return new WithRawResponse<DocSignaturesCompleteResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -317,7 +315,7 @@ public partial class SignaturesClient : ISignaturesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -329,7 +327,7 @@ public partial class SignaturesClient : ISignaturesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -341,7 +339,7 @@ public partial class SignaturesClient : ISignaturesClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -371,7 +369,7 @@ public partial class SignaturesClient : ISignaturesClient
         }
     }
 
-    private async Task<WithRawResponse<DocSignaturesAnalysis200Response>> AnalysisAsyncCore(
+    private async Task<WithRawResponse<DocSignaturesAnalysisResponse>> AnalysisAsyncCore(
         AnalysisSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -414,10 +412,10 @@ public partial class SignaturesClient : ISignaturesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocSignaturesAnalysis200Response>(
+                var responseData = JsonUtils.Deserialize<DocSignaturesAnalysisResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocSignaturesAnalysis200Response>()
+                return new WithRawResponse<DocSignaturesAnalysisResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -454,7 +452,7 @@ public partial class SignaturesClient : ISignaturesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -466,7 +464,7 @@ public partial class SignaturesClient : ISignaturesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -496,7 +494,7 @@ public partial class SignaturesClient : ISignaturesClient
         }
     }
 
-    private async Task<WithRawResponse<DocSignaturesPrepare200Response>> PrepareAsyncCore(
+    private async Task<WithRawResponse<DocSignaturesPrepareResponse>> PrepareAsyncCore(
         PrepareSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -535,10 +533,10 @@ public partial class SignaturesClient : ISignaturesClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocSignaturesPrepare200Response>(
+                var responseData = JsonUtils.Deserialize<DocSignaturesPrepareResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocSignaturesPrepare200Response>()
+                return new WithRawResponse<DocSignaturesPrepareResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -575,7 +573,7 @@ public partial class SignaturesClient : ISignaturesClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -587,7 +585,7 @@ public partial class SignaturesClient : ISignaturesClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -599,7 +597,7 @@ public partial class SignaturesClient : ISignaturesClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -637,13 +635,13 @@ public partial class SignaturesClient : ISignaturesClient
     ///     new ListSignaturesRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocSignaturesList200Response> ListAsync(
+    public WithRawResponseTask<DocSignaturesListResponse> ListAsync(
         ListSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocSignaturesList200Response>(
+        return new WithRawResponseTask<DocSignaturesListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
@@ -658,13 +656,13 @@ public partial class SignaturesClient : ISignaturesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocSignaturesCancel200Response> CancelAsync(
+    public WithRawResponseTask<DocSignaturesCancelResponse> CancelAsync(
         CancelSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocSignaturesCancel200Response>(
+        return new WithRawResponseTask<DocSignaturesCancelResponse>(
             CancelAsyncCore(request, options, cancellationToken)
         );
     }
@@ -688,13 +686,13 @@ public partial class SignaturesClient : ISignaturesClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocSignaturesComplete200Response> CompleteAsync(
+    public WithRawResponseTask<DocSignaturesCompleteResponse> CompleteAsync(
         DocSignaturesCompleteRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocSignaturesComplete200Response>(
+        return new WithRawResponseTask<DocSignaturesCompleteResponse>(
             CompleteAsyncCore(request, options, cancellationToken)
         );
     }
@@ -707,13 +705,13 @@ public partial class SignaturesClient : ISignaturesClient
     ///     new AnalysisSignaturesRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocSignaturesAnalysis200Response> AnalysisAsync(
+    public WithRawResponseTask<DocSignaturesAnalysisResponse> AnalysisAsync(
         AnalysisSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocSignaturesAnalysis200Response>(
+        return new WithRawResponseTask<DocSignaturesAnalysisResponse>(
             AnalysisAsyncCore(request, options, cancellationToken)
         );
     }
@@ -726,13 +724,13 @@ public partial class SignaturesClient : ISignaturesClient
     ///     new PrepareSignaturesRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocSignaturesPrepare200Response> PrepareAsync(
+    public WithRawResponseTask<DocSignaturesPrepareResponse> PrepareAsync(
         PrepareSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocSignaturesPrepare200Response>(
+        return new WithRawResponseTask<DocSignaturesPrepareResponse>(
             PrepareAsyncCore(request, options, cancellationToken)
         );
     }

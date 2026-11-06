@@ -25,12 +25,12 @@ public class ListTest : BaseMockServerTest
                     "organizationalUnit": "organizationalUnit"
                   },
                   "emailVerified": true,
-                  "consentedAt": 1.1,
-                  "firstSeenAt": 1.1,
-                  "lastSeenAt": 1.1,
+                  "consentedAt": "2024-01-15T09:30:00.000Z",
+                  "firstSeenAt": "2024-01-15T09:30:00.000Z",
+                  "lastSeenAt": "2024-01-15T09:30:00.000Z",
                   "layer": {
                     "layerName": "layerName",
-                    "storageSizeBytes": 1.1
+                    "sizeBytes": 1
                   }
                 },
                 {
@@ -43,12 +43,12 @@ public class ListTest : BaseMockServerTest
                     "organizationalUnit": "organizationalUnit"
                   },
                   "emailVerified": true,
-                  "consentedAt": 1.1,
-                  "firstSeenAt": 1.1,
-                  "lastSeenAt": 1.1,
+                  "consentedAt": "2024-01-15T09:30:00.000Z",
+                  "firstSeenAt": "2024-01-15T09:30:00.000Z",
+                  "lastSeenAt": "2024-01-15T09:30:00.000Z",
                   "layer": {
                     "layerName": "layerName",
-                    "storageSizeBytes": 1.1
+                    "sizeBytes": 1
                   }
                 }
               ],
@@ -86,9 +86,9 @@ public class ListTest : BaseMockServerTest
                   "visitorId": "visitorId",
                   "answers": {},
                   "emailVerified": true,
-                  "consentedAt": 1.1,
-                  "firstSeenAt": 1.1,
-                  "lastSeenAt": 1.1,
+                  "consentedAt": "2024-01-15T09:30:00.000Z",
+                  "firstSeenAt": "2024-01-15T09:30:00.000Z",
+                  "lastSeenAt": "2024-01-15T09:30:00.000Z",
                   "layer": {
                     "layerName": "layerName"
                   }

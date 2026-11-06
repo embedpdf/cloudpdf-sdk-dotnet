@@ -7,13 +7,13 @@ public partial interface ISignaturesClient
     /// <summary>
     /// Describes the bytes the layer is over: the base version's signatures plus the layer's own edits as the last revision. Signed bytes (contents, digests, revision prefixes) are served per base version under /versions.
     /// </summary>
-    WithRawResponseTask<DocSignaturesList200Response> ListAsync(
+    WithRawResponseTask<DocSignaturesListResponse> ListAsync(
         ListSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocSignaturesCancel200Response> CancelAsync(
+    WithRawResponseTask<DocSignaturesCancelResponse> CancelAsync(
         CancelSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -22,7 +22,7 @@ public partial interface ISignaturesClient
     /// <summary>
     /// `cms` is the detached CMS over the prepared digest, base64. `expectedVersion` must be what prepare returned. Idempotent by signing id: the same CMS again answers `already-completed`. The new version is the layer's own: only this layer moves to it, and the document and every other layer stay as they were. Refetch the manifest after a completion.
     /// </summary>
-    WithRawResponseTask<DocSignaturesComplete200Response> CompleteAsync(
+    WithRawResponseTask<DocSignaturesCompleteResponse> CompleteAsync(
         DocSignaturesCompleteRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -31,7 +31,7 @@ public partial interface ISignaturesClient
     /// <summary>
     /// Exactly one of `since.signature=&lt;index&gt;` or `since.revision=&lt;index&gt;`; the layer's pending edits are the end. `level=fill|annotate|lta|none` evaluates exploratorily and never becomes a verdict. For history between two base revisions use the version analysis.
     /// </summary>
-    WithRawResponseTask<DocSignaturesAnalysis200Response> AnalysisAsync(
+    WithRawResponseTask<DocSignaturesAnalysisResponse> AnalysisAsync(
         AnalysisSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -40,7 +40,7 @@ public partial interface ISignaturesClient
     /// <summary>
     /// Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '&lt;key&gt;' }`, and that PDF as the part `resource:&lt;key&gt;`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). The signature is made over the layer's own base: the upload, or the version its last signature made.
     /// </summary>
-    WithRawResponseTask<DocSignaturesPrepare200Response> PrepareAsync(
+    WithRawResponseTask<DocSignaturesPrepareResponse> PrepareAsync(
         PrepareSignaturesRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

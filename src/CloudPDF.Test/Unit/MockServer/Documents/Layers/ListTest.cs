@@ -20,20 +20,20 @@ public class ListTest : BaseMockServerTest
                   "layerName": "layerName",
                   "grantId": "grantId",
                   "visitorId": "visitorId",
-                  "storageSizeBytes": 1.1,
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
-                  "lastSeenAt": 1.1
+                  "sizeBytes": 1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
+                  "lastSeenAt": "2024-01-15T09:30:00.000Z"
                 },
                 {
                   "docId": "docId",
                   "layerName": "layerName",
                   "grantId": "grantId",
                   "visitorId": "visitorId",
-                  "storageSizeBytes": 1.1,
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
-                  "lastSeenAt": 1.1
+                  "sizeBytes": 1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
+                  "lastSeenAt": "2024-01-15T09:30:00.000Z"
                 }
               ],
               "nextCursor": "nextCursor"
@@ -44,7 +44,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id/layers")
+                    .WithPath("/v1/tenants/tenantId/documents/docId/layers")
                     .UsingGet()
             )
             .RespondWith(
@@ -55,7 +55,7 @@ public class ListTest : BaseMockServerTest
             );
 
         var response = await Client.Documents.Layers.ListAsync(
-            new ListLayersRequest { TenantId = "tenantId", Id = "id" }
+            new ListLayersRequest { TenantId = "tenantId", DocId = "docId" }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }
@@ -71,10 +71,10 @@ public class ListTest : BaseMockServerTest
                   "layerName": "layerName",
                   "grantId": "grantId",
                   "visitorId": "visitorId",
-                  "storageSizeBytes": 1.1,
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
-                  "lastSeenAt": 1.1
+                  "sizeBytes": 1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
+                  "lastSeenAt": "2024-01-15T09:30:00.000Z"
                 }
               ],
               "nextCursor": "nextCursor"
@@ -85,7 +85,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/tenants/tenantId/documents/id/layers")
+                    .WithPath("/v1/tenants/tenantId/documents/docId/layers")
                     .UsingGet()
             )
             .RespondWith(
@@ -96,7 +96,7 @@ public class ListTest : BaseMockServerTest
             );
 
         var response = await Client.Documents.Layers.ListAsync(
-            new ListLayersRequest { TenantId = "tenantId", Id = "id" }
+            new ListLayersRequest { TenantId = "tenantId", DocId = "docId" }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

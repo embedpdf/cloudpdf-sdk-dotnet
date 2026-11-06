@@ -12,13 +12,13 @@ public record DeploymentLicenseStatusResponse : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("license")]
-    public object? License { get; set; }
+    public Dictionary<string, object?> License { get; set; } = new Dictionary<string, object?>();
 
     [JsonPropertyName("reporting")]
-    public object? Reporting { get; set; }
+    public Dictionary<string, object?>? Reporting { get; set; }
 
     [JsonPropertyName("usage")]
-    public object? Usage { get; set; }
+    public Dictionary<string, object?>? Usage { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

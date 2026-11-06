@@ -2,19 +2,19 @@ namespace CloudPDF;
 
 public partial interface ITenantsClient
 {
-    WithRawResponseTask<TenantsList200Response> ListAsync(
+    WithRawResponseTask<TenantsListResponse> ListAsync(
         ListTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<TenantsCreate200Response> CreateAsync(
+    WithRawResponseTask<TenantsCreateResponse> CreateAsync(
         TenantsCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<TenantsGet200Response> GetAsync(
+    WithRawResponseTask<TenantsGetResponse> GetAsync(
         GetTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -32,7 +32,7 @@ public partial interface ITenantsClient
     /// <summary>
     /// A feature names an installed module; any other id is a 400. A module route answers a tenant without its feature 403 FeatureNotEnabled, and one whose feature is stopped 402 FeatureStopped (details.feature, details.stopped). Other replicas apply a change within 30 seconds.
     /// </summary>
-    WithRawResponseTask<TenantsUpdate200Response> UpdateAsync(
+    WithRawResponseTask<TenantsUpdateResponse> UpdateAsync(
         TenantsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -56,7 +56,7 @@ public partial interface ITenantsClient
     /// <summary>
     /// Facts only — no limits or billing state. Views count grant exchanges plus authorized /v1/access requests, deduplicated across the two.
     /// </summary>
-    WithRawResponseTask<TenantsUsage200Response> UsageAsync(
+    WithRawResponseTask<TenantsUsageResponse> UsageAsync(
         UsageTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

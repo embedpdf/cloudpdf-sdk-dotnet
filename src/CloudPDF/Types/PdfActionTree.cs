@@ -17,9 +17,6 @@ public record PdfActionTree : IJsonOnDeserialized
     [JsonPropertyName("incomplete")]
     public required bool Incomplete { get; set; }
 
-    [JsonPropertyName("warningFlags")]
-    public required int WarningFlags { get; set; }
-
     [JsonPropertyName("warnings")]
     public IEnumerable<PdfActionTreeWarningsItem> Warnings { get; set; } =
         new List<PdfActionTreeWarningsItem>();

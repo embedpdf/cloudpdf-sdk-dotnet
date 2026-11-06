@@ -13,7 +13,7 @@ public partial class VersionsClient : IVersionsClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<DocVersionsList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<DocVersionsListResponse>> ListAsyncCore(
         ListVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -53,8 +53,8 @@ public partial class VersionsClient : IVersionsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocVersionsList200Response>(responseBody)!;
-                return new WithRawResponse<DocVersionsList200Response>()
+                var responseData = JsonUtils.Deserialize<DocVersionsListResponse>(responseBody)!;
+                return new WithRawResponse<DocVersionsListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -91,7 +91,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -121,7 +121,7 @@ public partial class VersionsClient : IVersionsClient
         }
     }
 
-    private async Task<WithRawResponse<DocVersionsAnalysis200Response>> AnalysisAsyncCore(
+    private async Task<WithRawResponse<DocVersionsAnalysisResponse>> AnalysisAsyncCore(
         AnalysisVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -151,7 +151,7 @@ public partial class VersionsClient : IVersionsClient
                         "v1/docs/{0}/layers/{1}/versions/analysis/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Sha)
+                        ValueConvert.ToPathParameterString(request.Sha256)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -167,10 +167,10 @@ public partial class VersionsClient : IVersionsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocVersionsAnalysis200Response>(
+                var responseData = JsonUtils.Deserialize<DocVersionsAnalysisResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocVersionsAnalysis200Response>()
+                return new WithRawResponse<DocVersionsAnalysisResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -207,7 +207,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -219,7 +219,7 @@ public partial class VersionsClient : IVersionsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -274,7 +274,7 @@ public partial class VersionsClient : IVersionsClient
                         "v1/docs/{0}/layers/{1}/versions/download/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Sha)
+                        ValueConvert.ToPathParameterString(request.Sha256)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -307,7 +307,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -362,7 +362,7 @@ public partial class VersionsClient : IVersionsClient
                         "v1/docs/{0}/layers/{1}/versions/revisions/{2}/{3}",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Sha),
+                        ValueConvert.ToPathParameterString(request.Sha256),
                         ValueConvert.ToPathParameterString(request.Index)
                     ),
                     QueryString = _queryString,
@@ -396,7 +396,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -426,7 +426,7 @@ public partial class VersionsClient : IVersionsClient
         }
     }
 
-    private async Task<WithRawResponse<DocVersionsSignatures200Response>> SignaturesAsyncCore(
+    private async Task<WithRawResponse<DocVersionsSignaturesResponse>> SignaturesAsyncCore(
         SignaturesVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -451,7 +451,7 @@ public partial class VersionsClient : IVersionsClient
                         "v1/docs/{0}/layers/{1}/versions/signatures/{2}",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Sha)
+                        ValueConvert.ToPathParameterString(request.Sha256)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -467,10 +467,10 @@ public partial class VersionsClient : IVersionsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocVersionsSignatures200Response>(
+                var responseData = JsonUtils.Deserialize<DocVersionsSignaturesResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocVersionsSignatures200Response>()
+                return new WithRawResponse<DocVersionsSignaturesResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -507,7 +507,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -562,7 +562,7 @@ public partial class VersionsClient : IVersionsClient
                         "v1/docs/{0}/layers/{1}/versions/signatures/{2}/{3}/contents",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Sha),
+                        ValueConvert.ToPathParameterString(request.Sha256),
                         ValueConvert.ToPathParameterString(request.FieldKey)
                     ),
                     QueryString = _queryString,
@@ -596,7 +596,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -651,7 +651,7 @@ public partial class VersionsClient : IVersionsClient
                         "v1/docs/{0}/layers/{1}/versions/signatures/{2}/{3}/digest/{4}",
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
-                        ValueConvert.ToPathParameterString(request.Sha),
+                        ValueConvert.ToPathParameterString(request.Sha256),
                         ValueConvert.ToPathParameterString(request.FieldKey),
                         ValueConvert.ToPathParameterString(request.Algorithm)
                     ),
@@ -686,7 +686,7 @@ public partial class VersionsClient : IVersionsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -724,13 +724,13 @@ public partial class VersionsClient : IVersionsClient
     ///     new ListVersionsRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocVersionsList200Response> ListAsync(
+    public WithRawResponseTask<DocVersionsListResponse> ListAsync(
         ListVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocVersionsList200Response>(
+        return new WithRawResponseTask<DocVersionsListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
@@ -744,17 +744,17 @@ public partial class VersionsClient : IVersionsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Sha = "sha",
+    ///         Sha256 = "sha256",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocVersionsAnalysis200Response> AnalysisAsync(
+    public WithRawResponseTask<DocVersionsAnalysisResponse> AnalysisAsync(
         AnalysisVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocVersionsAnalysis200Response>(
+        return new WithRawResponseTask<DocVersionsAnalysisResponse>(
             AnalysisAsyncCore(request, options, cancellationToken)
         );
     }
@@ -765,7 +765,7 @@ public partial class VersionsClient : IVersionsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Sha = "sha",
+    ///         Sha256 = "sha256",
     ///     }
     /// );
     /// </code></example>
@@ -786,7 +786,7 @@ public partial class VersionsClient : IVersionsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Sha = "sha",
+    ///         Sha256 = "sha256",
     ///         Index = 1,
     ///     }
     /// );
@@ -808,17 +808,17 @@ public partial class VersionsClient : IVersionsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Sha = "sha",
+    ///         Sha256 = "sha256",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocVersionsSignatures200Response> SignaturesAsync(
+    public WithRawResponseTask<DocVersionsSignaturesResponse> SignaturesAsync(
         SignaturesVersionsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocVersionsSignatures200Response>(
+        return new WithRawResponseTask<DocVersionsSignaturesResponse>(
             SignaturesAsyncCore(request, options, cancellationToken)
         );
     }
@@ -832,7 +832,7 @@ public partial class VersionsClient : IVersionsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Sha = "sha",
+    ///         Sha256 = "sha256",
     ///         FieldKey = "fieldKey",
     ///     }
     /// );
@@ -857,7 +857,7 @@ public partial class VersionsClient : IVersionsClient
     ///     {
     ///         DocId = "docId",
     ///         LayerName = "layerName",
-    ///         Sha = "sha",
+    ///         Sha256 = "sha256",
     ///         FieldKey = "fieldKey",
     ///         Algorithm = SignatureDigestVersionsRequestAlgorithm.Sha1,
     ///     }

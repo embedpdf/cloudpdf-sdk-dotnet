@@ -17,8 +17,38 @@ public record PdfActionNodeSubmitFormPayload : IJsonOnDeserialized
     [JsonPropertyName("fields")]
     public IEnumerable<PdfActionTargetRef>? Fields { get; set; }
 
-    [JsonPropertyName("flags")]
-    public required PdfActionNodeSubmitFormPayloadFlags Flags { get; set; }
+    [JsonPropertyName("exclude")]
+    public required bool Exclude { get; set; }
+
+    [JsonPropertyName("includeNoValueFields")]
+    public required bool IncludeNoValueFields { get; set; }
+
+    [JsonPropertyName("format")]
+    public required PdfActionNodeSubmitFormPayloadFormat Format { get; set; }
+
+    [JsonPropertyName("method")]
+    public required PdfActionNodeSubmitFormPayloadMethod Method { get; set; }
+
+    [JsonPropertyName("submitCoordinates")]
+    public required bool SubmitCoordinates { get; set; }
+
+    [JsonPropertyName("includeAppendSaves")]
+    public required bool IncludeAppendSaves { get; set; }
+
+    [JsonPropertyName("includeAnnotations")]
+    public required bool IncludeAnnotations { get; set; }
+
+    [JsonPropertyName("canonicalFormat")]
+    public required bool CanonicalFormat { get; set; }
+
+    [JsonPropertyName("exclNonUserAnnots")]
+    public required bool ExclNonUserAnnots { get; set; }
+
+    [JsonPropertyName("exclFKey")]
+    public required bool ExclFKey { get; set; }
+
+    [JsonPropertyName("embedForm")]
+    public required bool EmbedForm { get; set; }
 
     [JsonPropertyName("charSet")]
     public string? CharSet { get; set; }

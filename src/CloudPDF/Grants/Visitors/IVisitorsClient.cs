@@ -7,7 +7,7 @@ public partial interface IVisitorsClient
     /// <summary>
     /// An archived grant's visitors are listed too.
     /// </summary>
-    WithRawResponseTask<GrantsVisitorsList200Response> ListAsync(
+    WithRawResponseTask<GrantsVisitorsListResponse> ListAsync(
         ListVisitorsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

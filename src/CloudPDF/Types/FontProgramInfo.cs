@@ -11,11 +11,11 @@ public record FontProgramInfo : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [JsonPropertyName("displayHash")]
-    public string? DisplayHash { get; set; }
+    [JsonPropertyName("displaySha256")]
+    public string? DisplaySha256 { get; set; }
 
-    [JsonPropertyName("sourceHash")]
-    public string? SourceHash { get; set; }
+    [JsonPropertyName("sourceSha256")]
+    public string? SourceSha256 { get; set; }
 
     [JsonPropertyName("embedded")]
     public required FontProgramInfoEmbedded Embedded { get; set; }

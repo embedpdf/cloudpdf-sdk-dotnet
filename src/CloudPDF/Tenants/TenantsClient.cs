@@ -12,7 +12,7 @@ public partial class TenantsClient : ITenantsClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<TenantsList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<TenantsListResponse>> ListAsyncCore(
         ListTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -49,8 +49,8 @@ public partial class TenantsClient : ITenantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<TenantsList200Response>(responseBody)!;
-                return new WithRawResponse<TenantsList200Response>()
+                var responseData = JsonUtils.Deserialize<TenantsListResponse>(responseBody)!;
+                return new WithRawResponse<TenantsListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -87,7 +87,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -117,7 +117,7 @@ public partial class TenantsClient : ITenantsClient
         }
     }
 
-    private async Task<WithRawResponse<TenantsCreate200Response>> CreateAsyncCore(
+    private async Task<WithRawResponse<TenantsCreateResponse>> CreateAsyncCore(
         TenantsCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -154,8 +154,8 @@ public partial class TenantsClient : ITenantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<TenantsCreate200Response>(responseBody)!;
-                return new WithRawResponse<TenantsCreate200Response>()
+                var responseData = JsonUtils.Deserialize<TenantsCreateResponse>(responseBody)!;
+                return new WithRawResponse<TenantsCreateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -192,7 +192,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -222,7 +222,7 @@ public partial class TenantsClient : ITenantsClient
         }
     }
 
-    private async Task<WithRawResponse<TenantsGet200Response>> GetAsyncCore(
+    private async Task<WithRawResponse<TenantsGetResponse>> GetAsyncCore(
         GetTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -260,8 +260,8 @@ public partial class TenantsClient : ITenantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<TenantsGet200Response>(responseBody)!;
-                return new WithRawResponse<TenantsGet200Response>()
+                var responseData = JsonUtils.Deserialize<TenantsGetResponse>(responseBody)!;
+                return new WithRawResponse<TenantsGetResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -298,7 +298,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -378,7 +378,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -408,7 +408,7 @@ public partial class TenantsClient : ITenantsClient
         }
     }
 
-    private async Task<WithRawResponse<TenantsUpdate200Response>> UpdateAsyncCore(
+    private async Task<WithRawResponse<TenantsUpdateResponse>> UpdateAsyncCore(
         TenantsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -448,8 +448,8 @@ public partial class TenantsClient : ITenantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<TenantsUpdate200Response>(responseBody)!;
-                return new WithRawResponse<TenantsUpdate200Response>()
+                var responseData = JsonUtils.Deserialize<TenantsUpdateResponse>(responseBody)!;
+                return new WithRawResponse<TenantsUpdateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -486,7 +486,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -498,7 +498,7 @@ public partial class TenantsClient : ITenantsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -578,7 +578,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -660,7 +660,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -690,7 +690,7 @@ public partial class TenantsClient : ITenantsClient
         }
     }
 
-    private async Task<WithRawResponse<TenantsUsage200Response>> UsageAsyncCore(
+    private async Task<WithRawResponse<TenantsUsageResponse>> UsageAsyncCore(
         UsageTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -731,8 +731,8 @@ public partial class TenantsClient : ITenantsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<TenantsUsage200Response>(responseBody)!;
-                return new WithRawResponse<TenantsUsage200Response>()
+                var responseData = JsonUtils.Deserialize<TenantsUsageResponse>(responseBody)!;
+                return new WithRawResponse<TenantsUsageResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -769,7 +769,7 @@ public partial class TenantsClient : ITenantsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -781,7 +781,7 @@ public partial class TenantsClient : ITenantsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -814,13 +814,13 @@ public partial class TenantsClient : ITenantsClient
     /// <example><code>
     /// await client.Tenants.ListAsync(new ListTenantsRequest());
     /// </code></example>
-    public WithRawResponseTask<TenantsList200Response> ListAsync(
+    public WithRawResponseTask<TenantsListResponse> ListAsync(
         ListTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<TenantsList200Response>(
+        return new WithRawResponseTask<TenantsListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
@@ -828,13 +828,13 @@ public partial class TenantsClient : ITenantsClient
     /// <example><code>
     /// await client.Tenants.CreateAsync(new TenantsCreateRequest { Id = "id" });
     /// </code></example>
-    public WithRawResponseTask<TenantsCreate200Response> CreateAsync(
+    public WithRawResponseTask<TenantsCreateResponse> CreateAsync(
         TenantsCreateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<TenantsCreate200Response>(
+        return new WithRawResponseTask<TenantsCreateResponse>(
             CreateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -842,13 +842,13 @@ public partial class TenantsClient : ITenantsClient
     /// <example><code>
     /// await client.Tenants.GetAsync(new GetTenantsRequest { TenantId = "tenantId" });
     /// </code></example>
-    public WithRawResponseTask<TenantsGet200Response> GetAsync(
+    public WithRawResponseTask<TenantsGetResponse> GetAsync(
         GetTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<TenantsGet200Response>(
+        return new WithRawResponseTask<TenantsGetResponse>(
             GetAsyncCore(request, options, cancellationToken)
         );
     }
@@ -880,13 +880,13 @@ public partial class TenantsClient : ITenantsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<TenantsUpdate200Response> UpdateAsync(
+    public WithRawResponseTask<TenantsUpdateResponse> UpdateAsync(
         TenantsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<TenantsUpdate200Response>(
+        return new WithRawResponseTask<TenantsUpdateResponse>(
             UpdateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -924,13 +924,13 @@ public partial class TenantsClient : ITenantsClient
     /// <example><code>
     /// await client.Tenants.UsageAsync(new UsageTenantsRequest { TenantId = "tenantId" });
     /// </code></example>
-    public WithRawResponseTask<TenantsUsage200Response> UsageAsync(
+    public WithRawResponseTask<TenantsUsageResponse> UsageAsync(
         UsageTenantsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<TenantsUsage200Response>(
+        return new WithRawResponseTask<TenantsUsageResponse>(
             UsageAsyncCore(request, options, cancellationToken)
         );
     }

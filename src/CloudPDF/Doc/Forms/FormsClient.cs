@@ -13,7 +13,7 @@ public partial class FormsClient : IFormsClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<DocFormsList200Response>> ListAsyncCore(
+    private async Task<WithRawResponse<DocFormsListResponse>> ListAsyncCore(
         ListFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -53,8 +53,8 @@ public partial class FormsClient : IFormsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocFormsList200Response>(responseBody)!;
-                return new WithRawResponse<DocFormsList200Response>()
+                var responseData = JsonUtils.Deserialize<DocFormsListResponse>(responseBody)!;
+                return new WithRawResponse<DocFormsListResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -91,7 +91,7 @@ public partial class FormsClient : IFormsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -122,7 +122,7 @@ public partial class FormsClient : IFormsClient
     }
 
     private async Task<
-        WithRawResponse<DocFormsReorderCalculations200Response>
+        WithRawResponse<DocFormsReorderCalculationsResponse>
     > ReorderCalculationsAsyncCore(
         DocFormsReorderCalculationsRequest request,
         RequestOptions? options = null,
@@ -166,10 +166,10 @@ public partial class FormsClient : IFormsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocFormsReorderCalculations200Response>(
+                var responseData = JsonUtils.Deserialize<DocFormsReorderCalculationsResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocFormsReorderCalculations200Response>()
+                return new WithRawResponse<DocFormsReorderCalculationsResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -206,7 +206,7 @@ public partial class FormsClient : IFormsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -218,7 +218,7 @@ public partial class FormsClient : IFormsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -248,7 +248,7 @@ public partial class FormsClient : IFormsClient
         }
     }
 
-    private async Task<WithRawResponse<DocFormsSetValue200Response>> SetValueAsyncCore(
+    private async Task<WithRawResponse<DocFormsSetValueResponse>> SetValueAsyncCore(
         SetValueFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -292,10 +292,8 @@ public partial class FormsClient : IFormsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocFormsSetValue200Response>(
-                    responseBody
-                )!;
-                return new WithRawResponse<DocFormsSetValue200Response>()
+                var responseData = JsonUtils.Deserialize<DocFormsSetValueResponse>(responseBody)!;
+                return new WithRawResponse<DocFormsSetValueResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -332,7 +330,7 @@ public partial class FormsClient : IFormsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -344,7 +342,7 @@ public partial class FormsClient : IFormsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -374,7 +372,7 @@ public partial class FormsClient : IFormsClient
         }
     }
 
-    private async Task<WithRawResponse<DocFormsReset200Response>> ResetAsyncCore(
+    private async Task<WithRawResponse<DocFormsResetResponse>> ResetAsyncCore(
         DocFormsResetRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -417,8 +415,8 @@ public partial class FormsClient : IFormsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocFormsReset200Response>(responseBody)!;
-                return new WithRawResponse<DocFormsReset200Response>()
+                var responseData = JsonUtils.Deserialize<DocFormsResetResponse>(responseBody)!;
+                return new WithRawResponse<DocFormsResetResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -455,7 +453,7 @@ public partial class FormsClient : IFormsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -467,7 +465,7 @@ public partial class FormsClient : IFormsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -497,7 +495,7 @@ public partial class FormsClient : IFormsClient
         }
     }
 
-    private async Task<WithRawResponse<DocFormsDeleteWidget200Response>> DeleteWidgetAsyncCore(
+    private async Task<WithRawResponse<DocFormsDeleteWidgetResponse>> DeleteWidgetAsyncCore(
         DeleteWidgetFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -524,7 +522,7 @@ public partial class FormsClient : IFormsClient
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.PageKey),
-                        ValueConvert.ToPathParameterString(request.AnnotKey)
+                        ValueConvert.ToPathParameterString(request.AnnotationKey)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -540,10 +538,10 @@ public partial class FormsClient : IFormsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocFormsDeleteWidget200Response>(
+                var responseData = JsonUtils.Deserialize<DocFormsDeleteWidgetResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocFormsDeleteWidget200Response>()
+                return new WithRawResponse<DocFormsDeleteWidgetResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -580,7 +578,7 @@ public partial class FormsClient : IFormsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -592,7 +590,7 @@ public partial class FormsClient : IFormsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -622,7 +620,7 @@ public partial class FormsClient : IFormsClient
         }
     }
 
-    private async Task<WithRawResponse<DocFormsUpdateWidget200Response>> UpdateWidgetAsyncCore(
+    private async Task<WithRawResponse<DocFormsUpdateWidgetResponse>> UpdateWidgetAsyncCore(
         DocFormsUpdateWidgetRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -649,7 +647,7 @@ public partial class FormsClient : IFormsClient
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.PageKey),
-                        ValueConvert.ToPathParameterString(request.AnnotKey)
+                        ValueConvert.ToPathParameterString(request.AnnotationKey)
                     ),
                     Body = request,
                     QueryString = _queryString,
@@ -667,10 +665,10 @@ public partial class FormsClient : IFormsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocFormsUpdateWidget200Response>(
+                var responseData = JsonUtils.Deserialize<DocFormsUpdateWidgetResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocFormsUpdateWidget200Response>()
+                return new WithRawResponse<DocFormsUpdateWidgetResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -707,7 +705,7 @@ public partial class FormsClient : IFormsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -719,7 +717,7 @@ public partial class FormsClient : IFormsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -749,7 +747,7 @@ public partial class FormsClient : IFormsClient
         }
     }
 
-    private async Task<WithRawResponse<DocFormsReorderWidgets200Response>> ReorderWidgetsAsyncCore(
+    private async Task<WithRawResponse<DocFormsReorderWidgetsResponse>> ReorderWidgetsAsyncCore(
         DocFormsReorderWidgetsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -793,10 +791,10 @@ public partial class FormsClient : IFormsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocFormsReorderWidgets200Response>(
+                var responseData = JsonUtils.Deserialize<DocFormsReorderWidgetsResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocFormsReorderWidgets200Response>()
+                return new WithRawResponse<DocFormsReorderWidgetsResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -833,7 +831,7 @@ public partial class FormsClient : IFormsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -845,7 +843,7 @@ public partial class FormsClient : IFormsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -878,13 +876,13 @@ public partial class FormsClient : IFormsClient
     /// <example><code>
     /// await client.Doc.Forms.ListAsync(new ListFormsRequest { DocId = "docId", LayerName = "layerName" });
     /// </code></example>
-    public WithRawResponseTask<DocFormsList200Response> ListAsync(
+    public WithRawResponseTask<DocFormsListResponse> ListAsync(
         ListFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocFormsList200Response>(
+        return new WithRawResponseTask<DocFormsListResponse>(
             ListAsyncCore(request, options, cancellationToken)
         );
     }
@@ -905,13 +903,13 @@ public partial class FormsClient : IFormsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocFormsReorderCalculations200Response> ReorderCalculationsAsync(
+    public WithRawResponseTask<DocFormsReorderCalculationsResponse> ReorderCalculationsAsync(
         DocFormsReorderCalculationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocFormsReorderCalculations200Response>(
+        return new WithRawResponseTask<DocFormsReorderCalculationsResponse>(
             ReorderCalculationsAsyncCore(request, options, cancellationToken)
         );
     }
@@ -927,13 +925,13 @@ public partial class FormsClient : IFormsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocFormsSetValue200Response> SetValueAsync(
+    public WithRawResponseTask<DocFormsSetValueResponse> SetValueAsync(
         SetValueFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocFormsSetValue200Response>(
+        return new WithRawResponseTask<DocFormsSetValueResponse>(
             SetValueAsyncCore(request, options, cancellationToken)
         );
     }
@@ -943,13 +941,13 @@ public partial class FormsClient : IFormsClient
     ///     new DocFormsResetRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocFormsReset200Response> ResetAsync(
+    public WithRawResponseTask<DocFormsResetResponse> ResetAsync(
         DocFormsResetRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocFormsReset200Response>(
+        return new WithRawResponseTask<DocFormsResetResponse>(
             ResetAsyncCore(request, options, cancellationToken)
         );
     }
@@ -961,17 +959,17 @@ public partial class FormsClient : IFormsClient
     ///         DocId = "docId",
     ///         LayerName = "layerName",
     ///         PageKey = "pageKey",
-    ///         AnnotKey = "annotKey",
+    ///         AnnotationKey = "annotationKey",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocFormsDeleteWidget200Response> DeleteWidgetAsync(
+    public WithRawResponseTask<DocFormsDeleteWidgetResponse> DeleteWidgetAsync(
         DeleteWidgetFormsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocFormsDeleteWidget200Response>(
+        return new WithRawResponseTask<DocFormsDeleteWidgetResponse>(
             DeleteWidgetAsyncCore(request, options, cancellationToken)
         );
     }
@@ -983,18 +981,18 @@ public partial class FormsClient : IFormsClient
     ///         DocId = "docId",
     ///         LayerName = "layerName",
     ///         PageKey = "pageKey",
-    ///         AnnotKey = "annotKey",
+    ///         AnnotationKey = "annotationKey",
     ///         Patch = new WidgetPatch(),
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocFormsUpdateWidget200Response> UpdateWidgetAsync(
+    public WithRawResponseTask<DocFormsUpdateWidgetResponse> UpdateWidgetAsync(
         DocFormsUpdateWidgetRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocFormsUpdateWidget200Response>(
+        return new WithRawResponseTask<DocFormsUpdateWidgetResponse>(
             UpdateWidgetAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1022,13 +1020,13 @@ public partial class FormsClient : IFormsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocFormsReorderWidgets200Response> ReorderWidgetsAsync(
+    public WithRawResponseTask<DocFormsReorderWidgetsResponse> ReorderWidgetsAsync(
         DocFormsReorderWidgetsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocFormsReorderWidgets200Response>(
+        return new WithRawResponseTask<DocFormsReorderWidgetsResponse>(
             ReorderWidgetsAsyncCore(request, options, cancellationToken)
         );
     }

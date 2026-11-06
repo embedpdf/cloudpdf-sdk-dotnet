@@ -20,7 +20,7 @@ public class ResetTest : BaseMockServerTest
             {
               "fields": [
                 {
-                  "family": "text",
+                  "kind": "text",
                   "ref": {
                     "kind": "objectNumber",
                     "objectNumber": 1
@@ -54,7 +54,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -75,7 +74,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -96,7 +94,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -117,7 +114,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -171,7 +167,7 @@ public class ResetTest : BaseMockServerTest
                   "comb": true
                 },
                 {
-                  "family": "text",
+                  "kind": "text",
                   "ref": {
                     "kind": "objectNumber",
                     "objectNumber": 1
@@ -205,7 +201,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -226,7 +221,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -247,7 +241,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -268,7 +261,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -406,7 +398,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -427,7 +418,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -448,7 +438,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -469,7 +458,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -490,7 +478,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -511,7 +498,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -532,7 +518,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -553,7 +538,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -574,7 +558,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -595,7 +578,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -616,7 +598,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -629,7 +610,7 @@ public class ResetTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -648,7 +629,8 @@ public class ResetTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 },
                 {
                   "subtype": "widget",
@@ -733,7 +715,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -754,7 +735,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -775,7 +755,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -796,7 +775,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -817,7 +795,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -838,7 +815,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -859,7 +835,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -880,7 +855,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -901,7 +875,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -922,7 +895,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -943,7 +915,6 @@ public class ResetTest : BaseMockServerTest
                         "script": "script"
                       },
                       "incomplete": true,
-                      "warningFlags": 1,
                       "warnings": [
                         "cycle-dropped",
                         "cycle-dropped"
@@ -956,7 +927,7 @@ public class ResetTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -975,7 +946,8 @@ public class ResetTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 }
               ],
               "meta": {
@@ -999,6 +971,7 @@ public class ResetTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -1148,7 +1121,7 @@ public class ResetTest : BaseMockServerTest
             {
               "fields": [
                 {
-                  "family": "text",
+                  "kind": "text",
                   "ref": {
                     "kind": "objectNumber",
                     "objectNumber": 1
@@ -1260,7 +1233,7 @@ public class ResetTest : BaseMockServerTest
                     "width": 1.1,
                     "height": 1.1
                   },
-                  "rotation": 1.1,
+                  "rotation": 1,
                   "color": "color",
                   "interiorColor": "interiorColor",
                   "strokeWidth": 1.1,
@@ -1278,7 +1251,8 @@ public class ResetTest : BaseMockServerTest
                     "kind": "objectNumber",
                     "objectNumber": 1
                   },
-                  "fieldFamily": "text"
+                  "fieldKind": "text",
+                  "hasMark": true
                 }
               ],
               "meta": {
@@ -1298,6 +1272,7 @@ public class ResetTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [

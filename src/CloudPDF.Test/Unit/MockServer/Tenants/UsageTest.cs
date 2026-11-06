@@ -18,9 +18,12 @@ public class UsageTest : BaseMockServerTest
               "periodStart": "periodStart",
               "periodEnd": "periodEnd",
               "metrics": {
-                "pdf.views": 1.1,
-                "pdf.uploads": 1.1,
-                "storage.bytes": 1.1
+                "pdfViews": 1,
+                "pdfUploads": 1,
+                "storageBytes": 1
+              },
+              "moduleMeters": {
+                "moduleMeters": 1
               }
             }
             """;
@@ -54,9 +57,12 @@ public class UsageTest : BaseMockServerTest
               "periodStart": "periodStart",
               "periodEnd": "periodEnd",
               "metrics": {
-                "pdf.views": 1.1,
-                "pdf.uploads": 1.1,
-                "storage.bytes": 1.1
+                "pdfViews": 1,
+                "pdfUploads": 1,
+                "storageBytes": 1
+              },
+              "moduleMeters": {
+                "key": 1
               }
             }
             """;

@@ -64,7 +64,7 @@ public class SignaturesTest : BaseMockServerTest
                       "key": "value"
                     }
                   ],
-                  "contentsSize": 1,
+                  "contentsSizeBytes": 1,
                   "coverage": "whole-revision",
                   "revisionIndex": 1,
                   "signer": {
@@ -74,7 +74,7 @@ public class SignaturesTest : BaseMockServerTest
                     "contactInfo": "contactInfo",
                     "signedAt": "2024-01-15T09:30:00.000Z"
                   },
-                  "docMdp": 1.1,
+                  "docMdp": 1,
                   "catalogCertification": true,
                   "fieldMdp": {
                     "action": "all",
@@ -82,7 +82,7 @@ public class SignaturesTest : BaseMockServerTest
                       "fields",
                       "fields"
                     ],
-                    "permission": 1.1
+                    "permission": 1
                   },
                   "lock": {
                     "action": "all",
@@ -90,26 +90,29 @@ public class SignaturesTest : BaseMockServerTest
                       "fields",
                       "fields"
                     ],
-                    "permission": 1.1
+                    "permission": 1
                   },
                   "seedValue": {
-                    "requiredFlags": 1,
-                    "presentFlags": 1,
-                    "version": 1,
-                    "mdp": 1.1,
+                    "parserVersion": 1,
+                    "parserVersionRequired": true,
+                    "mdp": 1,
                     "filter": "filter",
+                    "filterRequired": true,
                     "subFilters": [
                       "subFilters",
                       "subFilters"
                     ],
+                    "subFiltersRequired": true,
                     "digestMethods": [
                       "digestMethods",
                       "digestMethods"
                     ],
+                    "digestMethodsRequired": true,
                     "reasons": [
                       "reasons",
                       "reasons"
                     ],
+                    "reasonsRequired": true,
                     "unsupportedRequired": true
                   }
                 },
@@ -147,7 +150,7 @@ public class SignaturesTest : BaseMockServerTest
                       "key": "value"
                     }
                   ],
-                  "contentsSize": 1,
+                  "contentsSizeBytes": 1,
                   "coverage": "whole-revision",
                   "revisionIndex": 1,
                   "signer": {
@@ -157,7 +160,7 @@ public class SignaturesTest : BaseMockServerTest
                     "contactInfo": "contactInfo",
                     "signedAt": "2024-01-15T09:30:00.000Z"
                   },
-                  "docMdp": 1.1,
+                  "docMdp": 1,
                   "catalogCertification": true,
                   "fieldMdp": {
                     "action": "all",
@@ -165,7 +168,7 @@ public class SignaturesTest : BaseMockServerTest
                       "fields",
                       "fields"
                     ],
-                    "permission": 1.1
+                    "permission": 1
                   },
                   "lock": {
                     "action": "all",
@@ -173,26 +176,29 @@ public class SignaturesTest : BaseMockServerTest
                       "fields",
                       "fields"
                     ],
-                    "permission": 1.1
+                    "permission": 1
                   },
                   "seedValue": {
-                    "requiredFlags": 1,
-                    "presentFlags": 1,
-                    "version": 1,
-                    "mdp": 1.1,
+                    "parserVersion": 1,
+                    "parserVersionRequired": true,
+                    "mdp": 1,
                     "filter": "filter",
+                    "filterRequired": true,
                     "subFilters": [
                       "subFilters",
                       "subFilters"
                     ],
+                    "subFiltersRequired": true,
                     "digestMethods": [
                       "digestMethods",
                       "digestMethods"
                     ],
+                    "digestMethodsRequired": true,
                     "reasons": [
                       "reasons",
                       "reasons"
                     ],
+                    "reasonsRequired": true,
                     "unsupportedRequired": true
                   }
                 }
@@ -202,7 +208,7 @@ public class SignaturesTest : BaseMockServerTest
                 "judged": "none",
                 "certification": {
                   "signatureIndex": 1,
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "fieldLocks": [
                   {
@@ -214,7 +220,7 @@ public class SignaturesTest : BaseMockServerTest
                         "fields",
                         "fields"
                       ],
-                      "permission": 1.1
+                      "permission": 1
                     }
                   },
                   {
@@ -226,7 +232,7 @@ public class SignaturesTest : BaseMockServerTest
                         "fields",
                         "fields"
                       ],
-                      "permission": 1.1
+                      "permission": 1
                     }
                   }
                 ],
@@ -239,7 +245,7 @@ public class SignaturesTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/versions/signatures/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/signatures/sha256")
                     .UsingGet()
             )
             .RespondWith(
@@ -254,7 +260,7 @@ public class SignaturesTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Sha = "sha",
+                Sha256 = "sha256",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -290,11 +296,11 @@ public class SignaturesTest : BaseMockServerTest
                   "filter": "filter",
                   "subFilter": "subFilter",
                   "byteRange": [],
-                  "contentsSize": 1,
+                  "contentsSizeBytes": 1,
                   "coverage": "whole-revision",
                   "revisionIndex": 1,
                   "signer": {},
-                  "docMdp": 1.1,
+                  "docMdp": 1,
                   "catalogCertification": true,
                   "fieldMdp": {
                     "action": "all",
@@ -309,17 +315,20 @@ public class SignaturesTest : BaseMockServerTest
                     ]
                   },
                   "seedValue": {
-                    "requiredFlags": 1,
-                    "presentFlags": 1,
+                    "parserVersionRequired": true,
+                    "filterRequired": true,
                     "subFilters": [
                       "subFilters"
                     ],
+                    "subFiltersRequired": true,
                     "digestMethods": [
                       "digestMethods"
                     ],
+                    "digestMethodsRequired": true,
                     "reasons": [
                       "reasons"
                     ],
+                    "reasonsRequired": true,
                     "unsupportedRequired": true
                   }
                 }
@@ -329,12 +338,18 @@ public class SignaturesTest : BaseMockServerTest
                 "judged": "none",
                 "certification": {
                   "signatureIndex": 1,
-                  "permission": 1.1
+                  "permission": 1
                 },
                 "fieldLocks": [
                   {
                     "signatureIndex": 1,
-                    "source": "fieldmdp"
+                    "source": "fieldmdp",
+                    "spec": {
+                      "action": "all",
+                      "fields": [
+                        "fields"
+                      ]
+                    }
                   }
                 ],
                 "policyVersion": 1
@@ -346,7 +361,7 @@ public class SignaturesTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/v1/docs/docId/layers/layerName/versions/signatures/sha")
+                    .WithPath("/v1/docs/docId/layers/layerName/versions/signatures/sha256")
                     .UsingGet()
             )
             .RespondWith(
@@ -361,7 +376,7 @@ public class SignaturesTest : BaseMockServerTest
             {
                 DocId = "docId",
                 LayerName = "layerName",
-                Sha = "sha",
+                Sha256 = "sha256",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

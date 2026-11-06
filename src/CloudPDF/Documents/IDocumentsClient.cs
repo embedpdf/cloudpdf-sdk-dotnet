@@ -5,13 +5,13 @@ namespace CloudPDF;
 public partial interface IDocumentsClient
 {
     public ILayersClient Layers { get; }
-    WithRawResponseTask<DocumentsList200Response> ListAsync(
+    WithRawResponseTask<DocumentsListResponse> ListAsync(
         ListDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocumentsGet200Response> GetAsync(
+    WithRawResponseTask<DocumentsGetResponse> GetAsync(
         GetDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -26,7 +26,7 @@ public partial interface IDocumentsClient
     /// <summary>
     /// A document that is being deleted answers 404.
     /// </summary>
-    WithRawResponseTask<DocumentsUpdate200Response> UpdateAsync(
+    WithRawResponseTask<DocumentsUpdateResponse> UpdateAsync(
         DocumentsUpdateRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -35,7 +35,7 @@ public partial interface IDocumentsClient
     /// <summary>
     /// An upload token commits only the documents it started; any other document answers 404.
     /// </summary>
-    WithRawResponseTask<DocumentsCommit200Response> CommitAsync(
+    WithRawResponseTask<DocumentsCommitResponse> CommitAsync(
         DocumentsCommitRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -56,7 +56,7 @@ public partial interface IDocumentsClient
     /// <summary>
     /// This bounded origin-mediated fallback must only be used after documents.init returns upload.kind=proxy. Auto mode prefers a presigned object-store PUT whenever available. An upload token sends files only to the documents it started.
     /// </summary>
-    WithRawResponseTask<DocumentsUploadProxy200Response> UploadProxyAsync(
+    WithRawResponseTask<DocumentsUploadProxyResponse> UploadProxyAsync(
         UploadProxyDocumentsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -72,9 +72,9 @@ public partial interface IDocumentsClient
     );
 
     /// <summary>
-    /// With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; contentLength must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
+    /// With an upload token, the document goes into the token's folder with the token's metadata, whatever the request says; sizeBytes must be within the token's maxBytes, and the token makes at most maxFiles documents (403 after). docId, idempotencyKey and dedupMode reuse-existing are refused (400): each could reach a document the token didn't make.
     /// </summary>
-    WithRawResponseTask<DocumentsInit200Response> InitAsync(
+    WithRawResponseTask<DocumentsInitResponse> InitAsync(
         DocumentsInitRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

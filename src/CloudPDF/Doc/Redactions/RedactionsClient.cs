@@ -13,7 +13,7 @@ public partial class RedactionsClient : IRedactionsClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<DocRedactionsApply200Response>> ApplyAsyncCore(
+    private async Task<WithRawResponse<DocRedactionsApplyResponse>> ApplyAsyncCore(
         DocRedactionsApplyRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -56,10 +56,8 @@ public partial class RedactionsClient : IRedactionsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocRedactionsApply200Response>(
-                    responseBody
-                )!;
-                return new WithRawResponse<DocRedactionsApply200Response>()
+                var responseData = JsonUtils.Deserialize<DocRedactionsApplyResponse>(responseBody)!;
+                return new WithRawResponse<DocRedactionsApplyResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -96,7 +94,7 @@ public partial class RedactionsClient : IRedactionsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -108,7 +106,7 @@ public partial class RedactionsClient : IRedactionsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -143,13 +141,13 @@ public partial class RedactionsClient : IRedactionsClient
     ///     new DocRedactionsApplyRequest { DocId = "docId", LayerName = "layerName" }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocRedactionsApply200Response> ApplyAsync(
+    public WithRawResponseTask<DocRedactionsApplyResponse> ApplyAsync(
         DocRedactionsApplyRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocRedactionsApply200Response>(
+        return new WithRawResponseTask<DocRedactionsApplyResponse>(
             ApplyAsyncCore(request, options, cancellationToken)
         );
     }

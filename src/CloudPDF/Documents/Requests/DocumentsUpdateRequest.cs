@@ -10,7 +10,7 @@ public record DocumentsUpdateRequest
     public required string TenantId { get; set; }
 
     [JsonIgnore]
-    public required string Id { get; set; }
+    public required string DocId { get; set; }
 
     /// <summary>
     /// What people call the document: shown in dashboards, searched and sorted by. 1 to 255 characters, no control characters, no leading or trailing whitespace. Names need not be unique.

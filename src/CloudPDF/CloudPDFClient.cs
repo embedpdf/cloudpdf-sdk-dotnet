@@ -17,6 +17,10 @@ public partial class CloudPDFClient : ICloudPDFClient
                 { "X-Fern-SDK-Version", Version.Current },
             }
         );
+        if (clientOptions.EmbedPdfVersion != null)
+        {
+            platformHeaders["EmbedPDF-Version"] = clientOptions.EmbedPdfVersion;
+        }
         foreach (var header in platformHeaders)
         {
             if (!clientOptions.Headers.ContainsKey(header.Key))
@@ -26,7 +30,11 @@ public partial class CloudPDFClient : ICloudPDFClient
         }
         var clientOptionsWithAuth = clientOptions.Clone();
         var authHeaders = new Headers(
-            new Dictionary<string, string>() { { "Authorization", $"Bearer {token}" } }
+            new Dictionary<string, string>()
+            {
+                { "Authorization", $"Bearer {token}" },
+                { "EmbedPDF-Version", "3.0" },
+            }
         );
         foreach (var header in authHeaders)
         {

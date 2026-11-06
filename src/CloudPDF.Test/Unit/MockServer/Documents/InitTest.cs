@@ -14,22 +14,22 @@ public class InitTest : BaseMockServerTest
     {
         const string requestJson = """
             {
-              "contentLength": 1,
+              "sizeBytes": 1,
               "contentSha256": "contentSha256"
             }
             """;
 
         const string mockResponse = """
             {
-              "tag": "created",
+              "status": "created",
               "document": {
                 "id": "id",
                 "tenantId": "tenantId",
                 "name": "name",
                 "folderId": "folderId",
                 "state": "pending",
-                "baseSha": "baseSha",
-                "storageSizeBytes": 1.1,
+                "baseSha256": "baseSha256",
+                "sizeBytes": 1,
                 "metadata": {
                   "metadata": {
                     "key": "value"
@@ -39,8 +39,8 @@ public class InitTest : BaseMockServerTest
                 "failureReason": "failureReason",
                 "thumbnailState": "pending",
                 "thumbnailUrl": "thumbnailUrl",
-                "createdAt": 1.1,
-                "updatedAt": 1.1,
+                "createdAt": "2024-01-15T09:30:00.000Z",
+                "updatedAt": "2024-01-15T09:30:00.000Z",
                 "createdBy": "createdBy"
               },
               "upload": {
@@ -51,7 +51,7 @@ public class InitTest : BaseMockServerTest
                     "headers": "headers"
                   },
                   "method": "PUT",
-                  "expiresAt": 1.1
+                  "expiresAt": "2024-01-15T09:30:00.000Z"
                 },
                 "key": "key"
               }
@@ -78,7 +78,7 @@ public class InitTest : BaseMockServerTest
             new DocumentsInitRequest
             {
                 TenantId = "tenantId",
-                ContentLength = 1,
+                SizeBytes = 1,
                 ContentSha256 = "contentSha256",
                 Name = null,
                 FolderId = null,
@@ -86,7 +86,7 @@ public class InitTest : BaseMockServerTest
                 IdempotencyKey = null,
                 DedupMode = null,
                 DocId = null,
-                UploadTtlSec = null,
+                UploadTtlSeconds = null,
                 UploadPreference = null,
             }
         );
@@ -98,22 +98,22 @@ public class InitTest : BaseMockServerTest
     {
         const string requestJson = """
             {
-              "contentLength": 1.1,
+              "sizeBytes": 1,
               "contentSha256": "contentSha256"
             }
             """;
 
         const string mockResponse = """
             {
-              "tag": "created",
+              "status": "created",
               "document": {
                 "id": "id",
                 "tenantId": "tenantId",
                 "name": "name",
                 "folderId": "folderId",
                 "state": "pending",
-                "baseSha": "baseSha",
-                "storageSizeBytes": 1.1,
+                "baseSha256": "baseSha256",
+                "sizeBytes": 1,
                 "metadata": {
                   "key": "value"
                 },
@@ -121,8 +121,8 @@ public class InitTest : BaseMockServerTest
                 "failureReason": "failureReason",
                 "thumbnailState": "pending",
                 "thumbnailUrl": "thumbnailUrl",
-                "createdAt": 1.1,
-                "updatedAt": 1.1,
+                "createdAt": "2024-01-15T09:30:00.000Z",
+                "updatedAt": "2024-01-15T09:30:00.000Z",
                 "createdBy": "createdBy"
               },
               "upload": {
@@ -133,7 +133,7 @@ public class InitTest : BaseMockServerTest
                     "key": "value"
                   },
                   "method": "PUT",
-                  "expiresAt": 1.1
+                  "expiresAt": "2024-01-15T09:30:00.000Z"
                 },
                 "key": "key"
               }
@@ -160,7 +160,7 @@ public class InitTest : BaseMockServerTest
             new DocumentsInitRequest
             {
                 TenantId = "tenantId",
-                ContentLength = 1.1,
+                SizeBytes = 1,
                 ContentSha256 = "contentSha256",
             }
         );

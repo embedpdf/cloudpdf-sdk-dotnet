@@ -11,6 +11,9 @@ public record ChangeItemFormsRestoreWidget : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    /// <summary>
+    /// A form field, by its `family`. A newer server can add families: read one your client doesn't know as `unknown`, keeping the fields every field has, with `rawValue` an empty string when the body has none.
+    /// </summary>
     [JsonPropertyName("field")]
     public FormField? Field { get; set; }
 

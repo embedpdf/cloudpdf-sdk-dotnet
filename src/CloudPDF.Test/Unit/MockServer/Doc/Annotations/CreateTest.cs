@@ -105,7 +105,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -126,7 +125,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -147,7 +145,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -168,7 +165,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -189,7 +185,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -210,7 +205,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -231,7 +225,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -252,7 +245,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -273,7 +265,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -294,7 +285,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -315,7 +305,6 @@ public class CreateTest : BaseMockServerTest
                       "script": "script"
                     },
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped",
                       "cycle-dropped"
@@ -459,6 +448,7 @@ public class CreateTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -492,7 +482,7 @@ public class CreateTest : BaseMockServerTest
                   "missingCharacters",
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {
@@ -628,77 +618,66 @@ public class CreateTest : BaseMockServerTest
                 "actions": {
                   "activate": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "cursorEnter": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "cursorExit": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "mouseDown": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "mouseUp": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "focus": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "blur": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageOpen": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageClose": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageVisible": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
                   },
                   "pageInvisible": {
                     "incomplete": true,
-                    "warningFlags": 1,
                     "warnings": [
                       "cycle-dropped"
                     ]
@@ -770,6 +749,7 @@ public class CreateTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -791,7 +771,7 @@ public class CreateTest : BaseMockServerTest
                 "missingCharacters": [
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {

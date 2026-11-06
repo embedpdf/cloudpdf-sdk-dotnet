@@ -29,8 +29,8 @@ public record TokensIssueRequestDoc : IJsonOnDeserialized
     [JsonPropertyName("origins")]
     public IEnumerable<string>? Origins { get; set; }
 
-    [JsonPropertyName("expiresIn")]
-    public required int ExpiresIn { get; set; }
+    [JsonPropertyName("expiresInSeconds")]
+    public required int ExpiresInSeconds { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

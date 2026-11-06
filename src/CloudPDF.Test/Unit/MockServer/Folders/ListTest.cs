@@ -20,8 +20,8 @@ public class ListTest : BaseMockServerTest
                   "tenantId": "tenantId",
                   "parentId": "parentId",
                   "name": "name",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy"
                 },
                 {
@@ -29,8 +29,8 @@ public class ListTest : BaseMockServerTest
                   "tenantId": "tenantId",
                   "parentId": "parentId",
                   "name": "name",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy"
                 }
               ],
@@ -69,8 +69,8 @@ public class ListTest : BaseMockServerTest
                   "tenantId": "tenantId",
                   "parentId": "parentId",
                   "name": "name",
-                  "createdAt": 1.1,
-                  "updatedAt": 1.1,
+                  "createdAt": "2024-01-15T09:30:00.000Z",
+                  "updatedAt": "2024-01-15T09:30:00.000Z",
                   "createdBy": "createdBy"
                 }
               ],

@@ -15,8 +15,8 @@ public class HeadTest : BaseMockServerTest
         const string mockResponse = """
             {
               "id": "id",
-              "baseSha": "baseSha",
-              "storageSizeBytes": 1,
+              "baseSha256": "baseSha256",
+              "sizeBytes": 1,
               "docVersion": 1,
               "state": "pending",
               "encryption": {
@@ -25,7 +25,16 @@ public class HeadTest : BaseMockServerTest
               },
               "permissions": {
                 "known": true,
-                "bits": 1,
+                "flags": {
+                  "print": true,
+                  "modifyContents": true,
+                  "copy": true,
+                  "modifyAnnotations": true,
+                  "fillForms": true,
+                  "copyForAccessibility": true,
+                  "assemble": true,
+                  "printHighQuality": true
+                },
                 "allAllowed": true,
                 "openedAs": "none",
                 "securityHandlerRevision": 1,
@@ -38,6 +47,9 @@ public class HeadTest : BaseMockServerTest
                   "password"
                 ],
                 "endpoint": "endpoint"
+              },
+              "engine": {
+                "engine": "engine"
               }
             }
             """;
@@ -63,8 +75,8 @@ public class HeadTest : BaseMockServerTest
         const string mockResponse = """
             {
               "id": "id",
-              "baseSha": "baseSha",
-              "storageSizeBytes": 1,
+              "baseSha256": "baseSha256",
+              "sizeBytes": 1,
               "docVersion": 1,
               "state": "pending",
               "encryption": {
@@ -73,7 +85,16 @@ public class HeadTest : BaseMockServerTest
               },
               "permissions": {
                 "known": true,
-                "bits": 1,
+                "flags": {
+                  "print": true,
+                  "modifyContents": true,
+                  "copy": true,
+                  "modifyAnnotations": true,
+                  "fillForms": true,
+                  "copyForAccessibility": true,
+                  "assemble": true,
+                  "printHighQuality": true
+                },
                 "allAllowed": true,
                 "openedAs": "none",
                 "securityHandlerRevision": 1,
@@ -85,6 +106,9 @@ public class HeadTest : BaseMockServerTest
                   "password"
                 ],
                 "endpoint": "endpoint"
+              },
+              "engine": {
+                "key": "value"
               }
             }
             """;

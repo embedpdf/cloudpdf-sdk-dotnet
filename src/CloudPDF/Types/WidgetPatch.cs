@@ -112,7 +112,7 @@ public record WidgetPatch : IJsonOnDeserialized
     public WidgetPatchBox? Box { get; set; }
 
     [JsonPropertyName("rotation")]
-    public double? Rotation { get; set; }
+    public int? Rotation { get; set; }
 
     [JsonPropertyName("color")]
     public string? Color { get; set; }
@@ -150,8 +150,11 @@ public record WidgetPatch : IJsonOnDeserialized
     [JsonPropertyName("field")]
     public object? Field { get; set; }
 
-    [JsonPropertyName("fieldFamily")]
-    public object? FieldFamily { get; set; }
+    [JsonPropertyName("fieldKind")]
+    public object? FieldKind { get; set; }
+
+    [JsonPropertyName("hasMark")]
+    public object? HasMark { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -78,6 +78,7 @@ public class ReorderTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -111,7 +112,7 @@ public class ReorderTest : BaseMockServerTest
                   "missingCharacters",
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {
@@ -240,6 +241,7 @@ public class ReorderTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -261,7 +263,7 @@ public class ReorderTest : BaseMockServerTest
                 "missingCharacters": [
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {

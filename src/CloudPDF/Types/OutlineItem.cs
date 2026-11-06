@@ -20,6 +20,9 @@ public record OutlineItem : IJsonOnDeserialized
     [JsonPropertyName("title")]
     public required string Title { get; set; }
 
+    /// <summary>
+    /// Where a link goes, by its `kind`. A newer server can add kinds: read one your client doesn't know as `unsupported`.
+    /// </summary>
     [JsonPropertyName("target")]
     public PdfLinkTarget? Target { get; set; }
 

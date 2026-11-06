@@ -22,19 +22,19 @@ public partial interface IAnnotationsClient
     /// <summary>
     /// Doc JWTs may instead carry collab scopes (annotations:create:self, …) that refine per-annotation authorship rules; the API token is exempt from both.
     /// </summary>
-    WithRawResponseTask<DocAnnotationsCreate200Response> CreateAsync(
+    WithRawResponseTask<DocAnnotationsCreateResponse> CreateAsync(
         CreateAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocAnnotationsDelete200Response> DeleteAsync(
+    WithRawResponseTask<DocAnnotationsDeleteResponse> DeleteAsync(
         DeleteAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocAnnotationsUpdate200Response> UpdateAsync(
+    WithRawResponseTask<DocAnnotationsUpdateResponse> UpdateAsync(
         UpdateAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -61,13 +61,13 @@ public partial interface IAnnotationsClient
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocAnnotationsFlatten200Response> FlattenAsync(
+    WithRawResponseTask<DocAnnotationsFlattenResponse> FlattenAsync(
         FlattenAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
-    WithRawResponseTask<DocAnnotationsReorder200Response> ReorderAsync(
+    WithRawResponseTask<DocAnnotationsReorderResponse> ReorderAsync(
         DocAnnotationsReorderRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

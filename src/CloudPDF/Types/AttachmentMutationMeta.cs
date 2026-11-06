@@ -26,8 +26,8 @@ public record AttachmentMutationMeta : IJsonOnDeserialized
     [JsonPropertyName("missingCharacters")]
     public IEnumerable<string>? MissingCharacters { get; set; }
 
-    [JsonPropertyName("changed")]
-    public IEnumerable<AttachmentRef> Changed { get; set; } = new List<AttachmentRef>();
+    [JsonPropertyName("changedRefs")]
+    public IEnumerable<AttachmentRef> ChangedRefs { get; set; } = new List<AttachmentRef>();
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

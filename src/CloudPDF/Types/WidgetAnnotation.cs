@@ -111,7 +111,7 @@ public record WidgetAnnotation : IJsonOnDeserialized
     public required WidgetAnnotationBox Box { get; set; }
 
     [JsonPropertyName("rotation")]
-    public double? Rotation { get; set; }
+    public int? Rotation { get; set; }
 
     [JsonPropertyName("color")]
     public string? Color { get; set; }
@@ -149,8 +149,14 @@ public record WidgetAnnotation : IJsonOnDeserialized
     [JsonPropertyName("field")]
     public FormFieldRef? Field { get; set; }
 
-    [JsonPropertyName("fieldFamily")]
-    public required WidgetAnnotationFieldFamily FieldFamily { get; set; }
+    /// <summary>
+    /// Its field's family. A newer server can add families: read one your client doesn't know as `unknown`.
+    /// </summary>
+    [JsonPropertyName("fieldKind")]
+    public required WidgetAnnotationFieldKind FieldKind { get; set; }
+
+    [JsonPropertyName("hasMark")]
+    public required bool HasMark { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

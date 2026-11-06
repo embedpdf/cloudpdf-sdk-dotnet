@@ -141,8 +141,11 @@ public record AnnotationPolygon : IJsonOnDeserialized
     [JsonPropertyName("intent")]
     public AnnotationPolygonIntent? Intent { get; set; }
 
+    /// <summary>
+    /// A measure, by its `subtype`. A newer server can add subtypes: read one your client doesn't know as `unknown`.
+    /// </summary>
     [JsonPropertyName("measure")]
-    public AnnotationPolygonMeasure? Measure { get; set; }
+    public PdfMeasurement? Measure { get; set; }
 
     [JsonPropertyName("cloudyIntensity")]
     public double? CloudyIntensity { get; set; }

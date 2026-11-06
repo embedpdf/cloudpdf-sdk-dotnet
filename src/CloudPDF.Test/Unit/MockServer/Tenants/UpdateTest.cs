@@ -42,7 +42,7 @@ public class UpdateTest : BaseMockServerTest
                     "stopped": "cap"
                   }
                 ],
-                "createdAt": 1.1
+                "createdAt": "2024-01-15T09:30:00.000Z"
               }
             }
             """;
@@ -102,7 +102,7 @@ public class UpdateTest : BaseMockServerTest
                     "id": "id"
                   }
                 ],
-                "createdAt": 1.1
+                "createdAt": "2024-01-15T09:30:00.000Z"
               }
             }
             """;

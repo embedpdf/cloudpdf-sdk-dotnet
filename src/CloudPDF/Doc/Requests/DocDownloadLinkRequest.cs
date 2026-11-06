@@ -18,8 +18,8 @@ public record DocDownloadLinkRequest
     [JsonIgnore]
     public string? DocumentPassword { get; set; }
 
-    [JsonPropertyName("expiresIn")]
-    public int? ExpiresIn { get; set; }
+    [JsonPropertyName("expiresInSeconds")]
+    public int? ExpiresInSeconds { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

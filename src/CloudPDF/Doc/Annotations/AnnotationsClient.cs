@@ -91,7 +91,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -103,7 +103,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 409:
                         throw new ConflictError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -212,7 +212,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -242,7 +242,7 @@ public partial class AnnotationsClient : IAnnotationsClient
         }
     }
 
-    private async Task<WithRawResponse<DocAnnotationsCreate200Response>> CreateAsyncCore(
+    private async Task<WithRawResponse<DocAnnotationsCreateResponse>> CreateAsyncCore(
         CreateAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -286,10 +286,10 @@ public partial class AnnotationsClient : IAnnotationsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocAnnotationsCreate200Response>(
+                var responseData = JsonUtils.Deserialize<DocAnnotationsCreateResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocAnnotationsCreate200Response>()
+                return new WithRawResponse<DocAnnotationsCreateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -326,7 +326,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -338,7 +338,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -368,7 +368,7 @@ public partial class AnnotationsClient : IAnnotationsClient
         }
     }
 
-    private async Task<WithRawResponse<DocAnnotationsDelete200Response>> DeleteAsyncCore(
+    private async Task<WithRawResponse<DocAnnotationsDeleteResponse>> DeleteAsyncCore(
         DeleteAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -395,7 +395,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.PageKey),
-                        ValueConvert.ToPathParameterString(request.AnnotKey)
+                        ValueConvert.ToPathParameterString(request.AnnotationKey)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -411,10 +411,10 @@ public partial class AnnotationsClient : IAnnotationsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocAnnotationsDelete200Response>(
+                var responseData = JsonUtils.Deserialize<DocAnnotationsDeleteResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocAnnotationsDelete200Response>()
+                return new WithRawResponse<DocAnnotationsDeleteResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -451,7 +451,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -481,7 +481,7 @@ public partial class AnnotationsClient : IAnnotationsClient
         }
     }
 
-    private async Task<WithRawResponse<DocAnnotationsUpdate200Response>> UpdateAsyncCore(
+    private async Task<WithRawResponse<DocAnnotationsUpdateResponse>> UpdateAsyncCore(
         UpdateAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -508,7 +508,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.PageKey),
-                        ValueConvert.ToPathParameterString(request.AnnotKey)
+                        ValueConvert.ToPathParameterString(request.AnnotationKey)
                     ),
                     Body = request.Body,
                     QueryString = _queryString,
@@ -526,10 +526,10 @@ public partial class AnnotationsClient : IAnnotationsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocAnnotationsUpdate200Response>(
+                var responseData = JsonUtils.Deserialize<DocAnnotationsUpdateResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocAnnotationsUpdate200Response>()
+                return new WithRawResponse<DocAnnotationsUpdateResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -566,7 +566,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -578,7 +578,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -634,7 +634,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.PageKey),
-                        ValueConvert.ToPathParameterString(request.AnnotKey)
+                        ValueConvert.ToPathParameterString(request.AnnotationKey)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -667,7 +667,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -679,7 +679,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -735,7 +735,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         ValueConvert.ToPathParameterString(request.DocId),
                         ValueConvert.ToPathParameterString(request.LayerName),
                         ValueConvert.ToPathParameterString(request.PageKey),
-                        ValueConvert.ToPathParameterString(request.AnnotKey)
+                        ValueConvert.ToPathParameterString(request.AnnotationKey)
                     ),
                     QueryString = _queryString,
                     Headers = _headers,
@@ -768,7 +768,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -780,7 +780,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -792,7 +792,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 413:
                         throw new ContentTooLargeError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -882,7 +882,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -894,7 +894,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -924,7 +924,7 @@ public partial class AnnotationsClient : IAnnotationsClient
         }
     }
 
-    private async Task<WithRawResponse<DocAnnotationsFlatten200Response>> FlattenAsyncCore(
+    private async Task<WithRawResponse<DocAnnotationsFlattenResponse>> FlattenAsyncCore(
         FlattenAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -968,10 +968,10 @@ public partial class AnnotationsClient : IAnnotationsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocAnnotationsFlatten200Response>(
+                var responseData = JsonUtils.Deserialize<DocAnnotationsFlattenResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocAnnotationsFlatten200Response>()
+                return new WithRawResponse<DocAnnotationsFlattenResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -1008,7 +1008,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1020,7 +1020,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1050,7 +1050,7 @@ public partial class AnnotationsClient : IAnnotationsClient
         }
     }
 
-    private async Task<WithRawResponse<DocAnnotationsReorder200Response>> ReorderAsyncCore(
+    private async Task<WithRawResponse<DocAnnotationsReorderResponse>> ReorderAsyncCore(
         DocAnnotationsReorderRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -1094,10 +1094,10 @@ public partial class AnnotationsClient : IAnnotationsClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<DocAnnotationsReorder200Response>(
+                var responseData = JsonUtils.Deserialize<DocAnnotationsReorderResponse>(
                     responseBody
                 )!;
-                return new WithRawResponse<DocAnnotationsReorder200Response>()
+                return new WithRawResponse<DocAnnotationsReorderResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -1134,7 +1134,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1146,7 +1146,7 @@ public partial class AnnotationsClient : IAnnotationsClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -1230,13 +1230,13 @@ public partial class AnnotationsClient : IAnnotationsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocAnnotationsCreate200Response> CreateAsync(
+    public WithRawResponseTask<DocAnnotationsCreateResponse> CreateAsync(
         CreateAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocAnnotationsCreate200Response>(
+        return new WithRawResponseTask<DocAnnotationsCreateResponse>(
             CreateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1248,17 +1248,17 @@ public partial class AnnotationsClient : IAnnotationsClient
     ///         DocId = "docId",
     ///         LayerName = "layerName",
     ///         PageKey = "pageKey",
-    ///         AnnotKey = "annotKey",
+    ///         AnnotationKey = "annotationKey",
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocAnnotationsDelete200Response> DeleteAsync(
+    public WithRawResponseTask<DocAnnotationsDeleteResponse> DeleteAsync(
         DeleteAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocAnnotationsDelete200Response>(
+        return new WithRawResponseTask<DocAnnotationsDeleteResponse>(
             DeleteAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1270,18 +1270,18 @@ public partial class AnnotationsClient : IAnnotationsClient
     ///         DocId = "docId",
     ///         LayerName = "layerName",
     ///         PageKey = "pageKey",
-    ///         AnnotKey = "annotKey",
+    ///         AnnotationKey = "annotationKey",
     ///         Body = new Dictionary&lt;string, object?&gt;() { { "key", "value" } },
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocAnnotationsUpdate200Response> UpdateAsync(
+    public WithRawResponseTask<DocAnnotationsUpdateResponse> UpdateAsync(
         UpdateAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocAnnotationsUpdate200Response>(
+        return new WithRawResponseTask<DocAnnotationsUpdateResponse>(
             UpdateAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1293,7 +1293,7 @@ public partial class AnnotationsClient : IAnnotationsClient
     ///         DocId = "docId",
     ///         LayerName = "layerName",
     ///         PageKey = "pageKey",
-    ///         AnnotKey = "annotKey",
+    ///         AnnotationKey = "annotationKey",
     ///     }
     /// );
     /// </code></example>
@@ -1318,7 +1318,7 @@ public partial class AnnotationsClient : IAnnotationsClient
     ///         DocId = "docId",
     ///         LayerName = "layerName",
     ///         PageKey = "pageKey",
-    ///         AnnotKey = "annotKey",
+    ///         AnnotationKey = "annotationKey",
     ///     }
     /// );
     /// </code></example>
@@ -1372,13 +1372,13 @@ public partial class AnnotationsClient : IAnnotationsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocAnnotationsFlatten200Response> FlattenAsync(
+    public WithRawResponseTask<DocAnnotationsFlattenResponse> FlattenAsync(
         FlattenAnnotationsRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocAnnotationsFlatten200Response>(
+        return new WithRawResponseTask<DocAnnotationsFlattenResponse>(
             FlattenAsyncCore(request, options, cancellationToken)
         );
     }
@@ -1406,13 +1406,13 @@ public partial class AnnotationsClient : IAnnotationsClient
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<DocAnnotationsReorder200Response> ReorderAsync(
+    public WithRawResponseTask<DocAnnotationsReorderResponse> ReorderAsync(
         DocAnnotationsReorderRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<DocAnnotationsReorder200Response>(
+        return new WithRawResponseTask<DocAnnotationsReorderResponse>(
             ReorderAsyncCore(request, options, cancellationToken)
         );
     }

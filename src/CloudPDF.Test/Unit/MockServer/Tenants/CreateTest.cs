@@ -35,7 +35,7 @@ public class CreateTest : BaseMockServerTest
                     "stopped": "cap"
                   }
                 ],
-                "createdAt": 1.1
+                "createdAt": "2024-01-15T09:30:00.000Z"
               },
               "created": true
             }
@@ -84,7 +84,7 @@ public class CreateTest : BaseMockServerTest
                     "id": "id"
                   }
                 ],
-                "createdAt": 1.1
+                "createdAt": "2024-01-15T09:30:00.000Z"
               },
               "created": true
             }

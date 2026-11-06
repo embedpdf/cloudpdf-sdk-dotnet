@@ -12,7 +12,7 @@ public partial class TokensClient : ITokensClient
         _client = client;
     }
 
-    private async Task<WithRawResponse<TokensIssue200Response>> IssueAsyncCore(
+    private async Task<WithRawResponse<TokensIssueResponse>> IssueAsyncCore(
         IssueTokensRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -52,8 +52,8 @@ public partial class TokensClient : ITokensClient
                 .ConfigureAwait(false);
             try
             {
-                var responseData = JsonUtils.Deserialize<TokensIssue200Response>(responseBody)!;
-                return new WithRawResponse<TokensIssue200Response>()
+                var responseData = JsonUtils.Deserialize<TokensIssueResponse>(responseBody)!;
+                return new WithRawResponse<TokensIssueResponse>()
                 {
                     Data = responseData,
                     RawResponse = new CloudPDF.RawResponse()
@@ -90,7 +90,7 @@ public partial class TokensClient : ITokensClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -102,7 +102,7 @@ public partial class TokensClient : ITokensClient
                         );
                     case 403:
                         throw new ForbiddenError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -114,7 +114,7 @@ public partial class TokensClient : ITokensClient
                         );
                     case 404:
                         throw new NotFoundError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -197,7 +197,7 @@ public partial class TokensClient : ITokensClient
                 {
                     case 400:
                         throw new BadRequestError(
-                            JsonUtils.Deserialize<object>(responseBody),
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
                             rawResponse: new CloudPDF.RawResponse()
                             {
                                 StatusCode = response.Raw.StatusCode,
@@ -242,20 +242,20 @@ public partial class TokensClient : ITokensClient
     ///                     Sub = "sub",
     ///                     DocId = "docId",
     ///                     Scope = new List&lt;string&gt;() { "scope" },
-    ///                     ExpiresIn = 1,
+    ///                     ExpiresInSeconds = 1,
     ///                 }
     ///             )
     ///         ),
     ///     }
     /// );
     /// </code></example>
-    public WithRawResponseTask<TokensIssue200Response> IssueAsync(
+    public WithRawResponseTask<TokensIssueResponse> IssueAsync(
         IssueTokensRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
-        return new WithRawResponseTask<TokensIssue200Response>(
+        return new WithRawResponseTask<TokensIssueResponse>(
             IssueAsyncCore(request, options, cancellationToken)
         );
     }

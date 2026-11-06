@@ -35,6 +35,7 @@ public class DeleteTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -68,7 +69,7 @@ public class DeleteTest : BaseMockServerTest
                   "missingCharacters",
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {
@@ -95,7 +96,7 @@ public class DeleteTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath(
-                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotKey"
+                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotationKey"
                     )
                     .UsingDelete()
             )
@@ -112,7 +113,7 @@ public class DeleteTest : BaseMockServerTest
                 DocId = "docId",
                 LayerName = "layerName",
                 PageKey = "pageKey",
-                AnnotKey = "annotKey",
+                AnnotationKey = "annotationKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);
@@ -140,6 +141,7 @@ public class DeleteTest : BaseMockServerTest
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
                   "fontsVersion": 1,
+                  "contentsVersion": 1,
                   "layerVersion": 1,
                   "working": true,
                   "pages": [
@@ -161,7 +163,7 @@ public class DeleteTest : BaseMockServerTest
                 "missingCharacters": [
                   "missingCharacters"
                 ],
-                "changed": [
+                "changedRefs": [
                   {
                     "kind": "objectNumber",
                     "page": {
@@ -180,7 +182,7 @@ public class DeleteTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath(
-                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotKey"
+                        "/v1/docs/docId/layers/layerName/annotations/pages/pageKey/items/annotationKey"
                     )
                     .UsingDelete()
             )
@@ -197,7 +199,7 @@ public class DeleteTest : BaseMockServerTest
                 DocId = "docId",
                 LayerName = "layerName",
                 PageKey = "pageKey",
-                AnnotKey = "annotKey",
+                AnnotationKey = "annotationKey",
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

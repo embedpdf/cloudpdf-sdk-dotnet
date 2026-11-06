@@ -137,11 +137,14 @@ public record AnnotationLine : IJsonOnDeserialized
     [JsonPropertyName("intent")]
     public AnnotationLineIntent? Intent { get; set; }
 
+    /// <summary>
+    /// A measure, by its `subtype`. A newer server can add subtypes: read one your client doesn't know as `unknown`.
+    /// </summary>
     [JsonPropertyName("measure")]
-    public AnnotationLineMeasure? Measure { get; set; }
+    public PdfMeasurement? Measure { get; set; }
 
     [JsonPropertyName("captionEnabled")]
-    public bool? CaptionEnabled { get; set; }
+    public required bool CaptionEnabled { get; set; }
 
     [JsonPropertyName("captionPosition")]
     public required AnnotationLineCaptionPosition CaptionPosition { get; set; }

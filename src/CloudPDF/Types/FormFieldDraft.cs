@@ -14,7 +14,7 @@ public record FormFieldDraft
 {
     internal FormFieldDraft(string type, object? value)
     {
-        Family = type;
+        Kind = type;
         Value = value;
     }
 
@@ -23,7 +23,7 @@ public record FormFieldDraft
     /// </summary>
     public FormFieldDraft(FormFieldDraft.Text value)
     {
-        Family = "text";
+        Kind = "text";
         Value = value.Value;
     }
 
@@ -32,7 +32,7 @@ public record FormFieldDraft
     /// </summary>
     public FormFieldDraft(FormFieldDraft.Checkbox value)
     {
-        Family = "checkbox";
+        Kind = "checkbox";
         Value = value.Value;
     }
 
@@ -41,7 +41,7 @@ public record FormFieldDraft
     /// </summary>
     public FormFieldDraft(FormFieldDraft.Radio value)
     {
-        Family = "radio";
+        Kind = "radio";
         Value = value.Value;
     }
 
@@ -50,7 +50,7 @@ public record FormFieldDraft
     /// </summary>
     public FormFieldDraft(FormFieldDraft.Combobox value)
     {
-        Family = "combobox";
+        Kind = "combobox";
         Value = value.Value;
     }
 
@@ -59,7 +59,7 @@ public record FormFieldDraft
     /// </summary>
     public FormFieldDraft(FormFieldDraft.Listbox value)
     {
-        Family = "listbox";
+        Kind = "listbox";
         Value = value.Value;
     }
 
@@ -68,7 +68,7 @@ public record FormFieldDraft
     /// </summary>
     public FormFieldDraft(FormFieldDraft.Pushbutton value)
     {
-        Family = "pushbutton";
+        Kind = "pushbutton";
         Value = value.Value;
     }
 
@@ -77,15 +77,15 @@ public record FormFieldDraft
     /// </summary>
     public FormFieldDraft(FormFieldDraft.Signature value)
     {
-        Family = "signature";
+        Kind = "signature";
         Value = value.Value;
     }
 
     /// <summary>
     /// Discriminant value
     /// </summary>
-    [JsonPropertyName("family")]
-    public string Family { get; internal set; }
+    [JsonPropertyName("kind")]
+    public string Kind { get; internal set; }
 
     /// <summary>
     /// Discriminated union value
@@ -93,102 +93,102 @@ public record FormFieldDraft
     public object? Value { get; internal set; }
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "text"
+    /// Returns true if <see cref="Kind"/> is "text"
     /// </summary>
-    public bool IsText => Family == "text";
+    public bool IsText => Kind == "text";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "checkbox"
+    /// Returns true if <see cref="Kind"/> is "checkbox"
     /// </summary>
-    public bool IsCheckbox => Family == "checkbox";
+    public bool IsCheckbox => Kind == "checkbox";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "radio"
+    /// Returns true if <see cref="Kind"/> is "radio"
     /// </summary>
-    public bool IsRadio => Family == "radio";
+    public bool IsRadio => Kind == "radio";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "combobox"
+    /// Returns true if <see cref="Kind"/> is "combobox"
     /// </summary>
-    public bool IsCombobox => Family == "combobox";
+    public bool IsCombobox => Kind == "combobox";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "listbox"
+    /// Returns true if <see cref="Kind"/> is "listbox"
     /// </summary>
-    public bool IsListbox => Family == "listbox";
+    public bool IsListbox => Kind == "listbox";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "pushbutton"
+    /// Returns true if <see cref="Kind"/> is "pushbutton"
     /// </summary>
-    public bool IsPushbutton => Family == "pushbutton";
+    public bool IsPushbutton => Kind == "pushbutton";
 
     /// <summary>
-    /// Returns true if <see cref="Family"/> is "signature"
+    /// Returns true if <see cref="Kind"/> is "signature"
     /// </summary>
-    public bool IsSignature => Family == "signature";
+    public bool IsSignature => Kind == "signature";
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftText"/> if <see cref="Family"/> is 'text', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftText"/> if <see cref="Kind"/> is 'text', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'text'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'text'.</exception>
     public CloudPDF.FormFieldDraftText AsText() =>
         IsText
             ? (CloudPDF.FormFieldDraftText)Value!
-            : throw new global::System.Exception("FormFieldDraft.Family is not 'text'");
+            : throw new global::System.Exception("FormFieldDraft.Kind is not 'text'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftCheckbox"/> if <see cref="Family"/> is 'checkbox', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftCheckbox"/> if <see cref="Kind"/> is 'checkbox', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'checkbox'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'checkbox'.</exception>
     public CloudPDF.FormFieldDraftCheckbox AsCheckbox() =>
         IsCheckbox
             ? (CloudPDF.FormFieldDraftCheckbox)Value!
-            : throw new global::System.Exception("FormFieldDraft.Family is not 'checkbox'");
+            : throw new global::System.Exception("FormFieldDraft.Kind is not 'checkbox'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftRadio"/> if <see cref="Family"/> is 'radio', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftRadio"/> if <see cref="Kind"/> is 'radio', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'radio'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'radio'.</exception>
     public CloudPDF.FormFieldDraftRadio AsRadio() =>
         IsRadio
             ? (CloudPDF.FormFieldDraftRadio)Value!
-            : throw new global::System.Exception("FormFieldDraft.Family is not 'radio'");
+            : throw new global::System.Exception("FormFieldDraft.Kind is not 'radio'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftCombobox"/> if <see cref="Family"/> is 'combobox', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftCombobox"/> if <see cref="Kind"/> is 'combobox', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'combobox'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'combobox'.</exception>
     public CloudPDF.FormFieldDraftCombobox AsCombobox() =>
         IsCombobox
             ? (CloudPDF.FormFieldDraftCombobox)Value!
-            : throw new global::System.Exception("FormFieldDraft.Family is not 'combobox'");
+            : throw new global::System.Exception("FormFieldDraft.Kind is not 'combobox'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftListbox"/> if <see cref="Family"/> is 'listbox', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftListbox"/> if <see cref="Kind"/> is 'listbox', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'listbox'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'listbox'.</exception>
     public CloudPDF.FormFieldDraftListbox AsListbox() =>
         IsListbox
             ? (CloudPDF.FormFieldDraftListbox)Value!
-            : throw new global::System.Exception("FormFieldDraft.Family is not 'listbox'");
+            : throw new global::System.Exception("FormFieldDraft.Kind is not 'listbox'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftPushbutton"/> if <see cref="Family"/> is 'pushbutton', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftPushbutton"/> if <see cref="Kind"/> is 'pushbutton', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'pushbutton'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'pushbutton'.</exception>
     public CloudPDF.FormFieldDraftPushbutton AsPushbutton() =>
         IsPushbutton
             ? (CloudPDF.FormFieldDraftPushbutton)Value!
-            : throw new global::System.Exception("FormFieldDraft.Family is not 'pushbutton'");
+            : throw new global::System.Exception("FormFieldDraft.Kind is not 'pushbutton'");
 
     /// <summary>
-    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftSignature"/> if <see cref="Family"/> is 'signature', otherwise throws an exception.
+    /// Returns the value as a <see cref="CloudPDF.FormFieldDraftSignature"/> if <see cref="Kind"/> is 'signature', otherwise throws an exception.
     /// </summary>
-    /// <exception cref="Exception">Thrown when <see cref="Family"/> is not 'signature'.</exception>
+    /// <exception cref="Exception">Thrown when <see cref="Kind"/> is not 'signature'.</exception>
     public CloudPDF.FormFieldDraftSignature AsSignature() =>
         IsSignature
             ? (CloudPDF.FormFieldDraftSignature)Value!
-            : throw new global::System.Exception("FormFieldDraft.Family is not 'signature'");
+            : throw new global::System.Exception("FormFieldDraft.Kind is not 'signature'");
 
     public T Match<T>(
         Func<CloudPDF.FormFieldDraftText, T> onText,
@@ -201,7 +201,7 @@ public record FormFieldDraft
         Func<string, object?, T> onUnknown_
     )
     {
-        return Family switch
+        return Kind switch
         {
             "text" => onText(AsText()),
             "checkbox" => onCheckbox(AsCheckbox()),
@@ -210,7 +210,7 @@ public record FormFieldDraft
             "listbox" => onListbox(AsListbox()),
             "pushbutton" => onPushbutton(AsPushbutton()),
             "signature" => onSignature(AsSignature()),
-            _ => onUnknown_(Family, Value),
+            _ => onUnknown_(Kind, Value),
         };
     }
 
@@ -225,7 +225,7 @@ public record FormFieldDraft
         Action<string, object?> onUnknown_
     )
     {
-        switch (Family)
+        switch (Kind)
         {
             case "text":
                 onText(AsText());
@@ -249,7 +249,7 @@ public record FormFieldDraft
                 onSignature(AsSignature());
                 break;
             default:
-                onUnknown_(Family, Value);
+                onUnknown_(Kind, Value);
                 break;
         }
     }
@@ -259,7 +259,7 @@ public record FormFieldDraft
     /// </summary>
     public bool TryAsText(out CloudPDF.FormFieldDraftText? value)
     {
-        if (Family == "text")
+        if (Kind == "text")
         {
             value = (CloudPDF.FormFieldDraftText)Value!;
             return true;
@@ -273,7 +273,7 @@ public record FormFieldDraft
     /// </summary>
     public bool TryAsCheckbox(out CloudPDF.FormFieldDraftCheckbox? value)
     {
-        if (Family == "checkbox")
+        if (Kind == "checkbox")
         {
             value = (CloudPDF.FormFieldDraftCheckbox)Value!;
             return true;
@@ -287,7 +287,7 @@ public record FormFieldDraft
     /// </summary>
     public bool TryAsRadio(out CloudPDF.FormFieldDraftRadio? value)
     {
-        if (Family == "radio")
+        if (Kind == "radio")
         {
             value = (CloudPDF.FormFieldDraftRadio)Value!;
             return true;
@@ -301,7 +301,7 @@ public record FormFieldDraft
     /// </summary>
     public bool TryAsCombobox(out CloudPDF.FormFieldDraftCombobox? value)
     {
-        if (Family == "combobox")
+        if (Kind == "combobox")
         {
             value = (CloudPDF.FormFieldDraftCombobox)Value!;
             return true;
@@ -315,7 +315,7 @@ public record FormFieldDraft
     /// </summary>
     public bool TryAsListbox(out CloudPDF.FormFieldDraftListbox? value)
     {
-        if (Family == "listbox")
+        if (Kind == "listbox")
         {
             value = (CloudPDF.FormFieldDraftListbox)Value!;
             return true;
@@ -329,7 +329,7 @@ public record FormFieldDraft
     /// </summary>
     public bool TryAsPushbutton(out CloudPDF.FormFieldDraftPushbutton? value)
     {
-        if (Family == "pushbutton")
+        if (Kind == "pushbutton")
         {
             value = (CloudPDF.FormFieldDraftPushbutton)Value!;
             return true;
@@ -343,7 +343,7 @@ public record FormFieldDraft
     /// </summary>
     public bool TryAsSignature(out CloudPDF.FormFieldDraftSignature? value)
     {
-        if (Family == "signature")
+        if (Kind == "signature")
         {
             value = (CloudPDF.FormFieldDraftSignature)Value!;
             return true;
@@ -381,29 +381,29 @@ public record FormFieldDraft
         )
         {
             var json = JsonElement.ParseValue(ref reader);
-            if (!json.TryGetProperty("family", out var discriminatorElement))
+            if (!json.TryGetProperty("kind", out var discriminatorElement))
             {
-                throw new JsonException("Missing discriminator property 'family'");
+                throw new JsonException("Missing discriminator property 'kind'");
             }
             if (discriminatorElement.ValueKind != JsonValueKind.String)
             {
                 if (discriminatorElement.ValueKind == JsonValueKind.Null)
                 {
-                    throw new JsonException("Discriminator property 'family' is null");
+                    throw new JsonException("Discriminator property 'kind' is null");
                 }
 
                 throw new JsonException(
-                    $"Discriminator property 'family' is not a string, instead is {discriminatorElement.ToString()}"
+                    $"Discriminator property 'kind' is not a string, instead is {discriminatorElement.ToString()}"
                 );
             }
 
             var discriminator =
                 discriminatorElement.GetString()
-                ?? throw new JsonException("Discriminator property 'family' is null");
+                ?? throw new JsonException("Discriminator property 'kind' is null");
 
             // Strip the discriminant property to prevent it from leaking into AdditionalProperties
             var jsonObject = System.Text.Json.Nodes.JsonObject.Create(json);
-            jsonObject?.Remove("family");
+            jsonObject?.Remove("kind");
             var jsonWithoutDiscriminator =
                 jsonObject != null ? JsonSerializer.SerializeToElement(jsonObject, options) : json;
 
@@ -455,7 +455,7 @@ public record FormFieldDraft
         )
         {
             JsonNode json =
-                value.Family switch
+                value.Kind switch
                 {
                     "text" => JsonSerializer.SerializeToNode(value.Value, options),
                     "checkbox" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -466,7 +466,7 @@ public record FormFieldDraft
                     "signature" => JsonSerializer.SerializeToNode(value.Value, options),
                     _ => JsonSerializer.SerializeToNode(value.Value, options),
                 } ?? new JsonObject();
-            json["family"] = value.Family;
+            json["kind"] = value.Kind;
             json.WriteTo(writer, options);
         }
 
@@ -488,7 +488,7 @@ public record FormFieldDraft
             JsonSerializerOptions options
         )
         {
-            writer.WritePropertyName(value.Family);
+            writer.WritePropertyName(value.Kind);
         }
     }
 
