@@ -14,6 +14,9 @@ public record DocPagesSetScaleResponse : IJsonOnDeserialized
     [JsonPropertyName("page")]
     public required PageRef Page { get; set; }
 
+    [JsonPropertyName("layout")]
+    public required PageListSnapshot Layout { get; set; }
+
     [JsonPropertyName("meta")]
     public required MutationMeta Meta { get; set; }
 

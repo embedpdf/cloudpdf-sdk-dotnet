@@ -15,7 +15,7 @@ public record ChangeItemPagesDelete : IJsonOnDeserialized
     public IEnumerable<PageRef> Pages { get; set; } = new List<PageRef>();
 
     [JsonPropertyName("layout")]
-    public required ChangeItemPagesDeleteLayout Layout { get; set; }
+    public required PageListSnapshot Layout { get; set; }
 
     [JsonPropertyName("meta")]
     public required MutationMeta Meta { get; set; }

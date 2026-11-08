@@ -35,6 +35,9 @@ public record CacheDelta : IJsonOnDeserialized
     [JsonPropertyName("outlineVersion")]
     public int? OutlineVersion { get; set; }
 
+    [JsonPropertyName("viewportsVersion")]
+    public int? ViewportsVersion { get; set; }
+
     [JsonPropertyName("fontsVersion")]
     public int? FontsVersion { get; set; }
 

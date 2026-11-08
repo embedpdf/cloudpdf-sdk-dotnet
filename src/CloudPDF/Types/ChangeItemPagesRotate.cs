@@ -18,7 +18,7 @@ public record ChangeItemPagesRotate : IJsonOnDeserialized
     public required int Rotation { get; set; }
 
     [JsonPropertyName("layout")]
-    public required ChangeItemPagesRotateLayout Layout { get; set; }
+    public required PageListSnapshot Layout { get; set; }
 
     [JsonPropertyName("meta")]
     public required MutationMeta Meta { get; set; }

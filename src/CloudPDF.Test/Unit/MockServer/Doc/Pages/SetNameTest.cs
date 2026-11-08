@@ -104,7 +104,51 @@ public class SetNameTest : BaseMockServerTest
                           "cycle-dropped"
                         ]
                       }
-                    }
+                    },
+                    "viewports": [
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      },
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      }
+                    ]
                   },
                   {
                     "index": 1,
@@ -185,7 +229,51 @@ public class SetNameTest : BaseMockServerTest
                           "cycle-dropped"
                         ]
                       }
-                    }
+                    },
+                    "viewports": [
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      },
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      }
+                    ]
                   }
                 ],
                 "labels": [
@@ -245,6 +333,7 @@ public class SetNameTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "viewportsVersion": 1,
                   "fontsVersion": 1,
                   "contentsVersion": 1,
                   "layerVersion": 1,
@@ -419,6 +508,7 @@ public class SetNameTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "viewportsVersion": 1,
                   "fontsVersion": 1,
                   "contentsVersion": 1,
                   "layerVersion": 1,
