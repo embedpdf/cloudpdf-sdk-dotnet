@@ -12,7 +12,7 @@ public record DocPagesSetNameResponse : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("layout")]
-    public required DocPagesSetNameResponseLayout Layout { get; set; }
+    public required PageListSnapshot Layout { get; set; }
 
     [JsonPropertyName("meta")]
     public required MutationMeta Meta { get; set; }

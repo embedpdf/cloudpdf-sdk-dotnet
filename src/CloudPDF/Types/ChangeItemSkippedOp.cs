@@ -68,6 +68,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
 
     public static readonly ChangeItemSkippedOp PagesRotate = new(Values.PagesRotate);
 
+    public static readonly ChangeItemSkippedOp PagesSetScale = new(Values.PagesSetScale);
+
     public static readonly ChangeItemSkippedOp PagesReorder = new(Values.PagesReorder);
 
     public static readonly ChangeItemSkippedOp PagesDelete = new(Values.PagesDelete);
@@ -239,6 +241,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
         public const string OutlineDelete = "outline.delete";
 
         public const string PagesRotate = "pages.rotate";
+
+        public const string PagesSetScale = "pages.setScale";
 
         public const string PagesReorder = "pages.reorder";
 

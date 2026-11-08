@@ -12,8 +12,8 @@ public record DocPagesViewportsResponse : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("viewports")]
-    public IEnumerable<DocPagesViewportsResponseViewportsItem> Viewports { get; set; } =
-        new List<DocPagesViewportsResponseViewportsItem>();
+    public IEnumerable<PageMeasurementViewport> Viewports { get; set; } =
+        new List<PageMeasurementViewport>();
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

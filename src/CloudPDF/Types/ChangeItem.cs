@@ -289,6 +289,15 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesSetScale"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.PagesSetScale value)
+    {
+        Type = "pages.setScale";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Create an instance of ChangeItem with <see cref="ChangeItem.PagesReorder"/>.
     /// </summary>
     public ChangeItem(ChangeItem.PagesReorder value)
@@ -529,6 +538,11 @@ public record ChangeItem
     /// Returns true if <see cref="Type"/> is "pages.rotate"
     /// </summary>
     public bool IsPagesRotate => Type == "pages.rotate";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "pages.setScale"
+    /// </summary>
+    public bool IsPagesSetScale => Type == "pages.setScale";
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "pages.reorder"
@@ -852,6 +866,15 @@ public record ChangeItem
             : throw new global::System.Exception("ChangeItem.Type is not 'pages.rotate'");
 
     /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesSetScale"/> if <see cref="Type"/> is 'pages.setScale', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.setScale'.</exception>
+    public CloudPDF.ChangeItemPagesSetScale AsPagesSetScale() =>
+        IsPagesSetScale
+            ? (CloudPDF.ChangeItemPagesSetScale)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'pages.setScale'");
+
+    /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeItemPagesReorder"/> if <see cref="Type"/> is 'pages.reorder', otherwise throws an exception.
     /// </summary>
     /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'pages.reorder'.</exception>
@@ -963,6 +986,7 @@ public record ChangeItem
         Func<CloudPDF.ChangeItemOutlineDelete, T> onOutlineDelete,
         Func<CloudPDF.ChangeItemOutlineRestore, T> onOutlineRestore,
         Func<CloudPDF.ChangeItemPagesRotate, T> onPagesRotate,
+        Func<CloudPDF.ChangeItemPagesSetScale, T> onPagesSetScale,
         Func<CloudPDF.ChangeItemPagesReorder, T> onPagesReorder,
         Func<CloudPDF.ChangeItemPagesDelete, T> onPagesDelete,
         Func<CloudPDF.ChangeItemPagesInsertBlank, T> onPagesInsertBlank,
@@ -1009,6 +1033,7 @@ public record ChangeItem
             "outline.delete" => onOutlineDelete(AsOutlineDelete()),
             "outline.restore" => onOutlineRestore(AsOutlineRestore()),
             "pages.rotate" => onPagesRotate(AsPagesRotate()),
+            "pages.setScale" => onPagesSetScale(AsPagesSetScale()),
             "pages.reorder" => onPagesReorder(AsPagesReorder()),
             "pages.delete" => onPagesDelete(AsPagesDelete()),
             "pages.insertBlank" => onPagesInsertBlank(AsPagesInsertBlank()),
@@ -1053,6 +1078,7 @@ public record ChangeItem
         Action<CloudPDF.ChangeItemOutlineDelete> onOutlineDelete,
         Action<CloudPDF.ChangeItemOutlineRestore> onOutlineRestore,
         Action<CloudPDF.ChangeItemPagesRotate> onPagesRotate,
+        Action<CloudPDF.ChangeItemPagesSetScale> onPagesSetScale,
         Action<CloudPDF.ChangeItemPagesReorder> onPagesReorder,
         Action<CloudPDF.ChangeItemPagesDelete> onPagesDelete,
         Action<CloudPDF.ChangeItemPagesInsertBlank> onPagesInsertBlank,
@@ -1156,6 +1182,9 @@ public record ChangeItem
                 break;
             case "pages.rotate":
                 onPagesRotate(AsPagesRotate());
+                break;
+            case "pages.setScale":
+                onPagesSetScale(AsPagesSetScale());
                 break;
             case "pages.reorder":
                 onPagesReorder(AsPagesReorder());
@@ -1615,6 +1644,20 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesSetScale"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsPagesSetScale(out CloudPDF.ChangeItemPagesSetScale? value)
+    {
+        if (Type == "pages.setScale")
+        {
+            value = (CloudPDF.ChangeItemPagesSetScale)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
     /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemPagesReorder"/> and returns true if successful.
     /// </summary>
     public bool TryAsPagesReorder(out CloudPDF.ChangeItemPagesReorder? value)
@@ -1804,6 +1847,8 @@ public record ChangeItem
     public static implicit operator ChangeItem(ChangeItem.OutlineRestore value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.PagesRotate value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.PagesSetScale value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.PagesReorder value) => new(value);
 
@@ -2048,6 +2093,11 @@ public record ChangeItem
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeItemPagesRotate"
                         ),
+                "pages.setScale" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesSetScale?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemPagesSetScale"
+                        ),
                 "pages.reorder" =>
                     jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemPagesReorder?>(options)
                         ?? throw new JsonException(
@@ -2152,6 +2202,7 @@ public record ChangeItem
                     "outline.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "outline.restore" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.rotate" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "pages.setScale" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.reorder" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "pages.insertBlank" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -2785,6 +2836,26 @@ public record ChangeItem
 
         public static implicit operator ChangeItem.PagesRotate(
             CloudPDF.ChangeItemPagesRotate value
+        ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for pages.setScale
+    /// </summary>
+    [Serializable]
+    public struct PagesSetScale
+    {
+        public PagesSetScale(CloudPDF.ChangeItemPagesSetScale value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemPagesSetScale Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.PagesSetScale(
+            CloudPDF.ChangeItemPagesSetScale value
         ) => new(value);
     }
 

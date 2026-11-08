@@ -22,6 +22,297 @@ public class SetScaleTest : BaseMockServerTest
                 "kind": "objectNumber",
                 "objectNumber": 1
               },
+              "layout": {
+                "pageCount": 1,
+                "pages": [
+                  {
+                    "index": 1,
+                    "ref": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "label": "label",
+                    "size": {
+                      "width": 1.1,
+                      "height": 1.1
+                    },
+                    "rotation": 1,
+                    "userUnit": 1.1,
+                    "tabOrder": "rows",
+                    "boxes": {
+                      "media": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "crop": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "bleed": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "trim": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "art": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      }
+                    },
+                    "pdfCropBox": {
+                      "left": 1.1,
+                      "bottom": 1.1,
+                      "right": 1.1,
+                      "top": 1.1
+                    },
+                    "actions": {
+                      "open": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      },
+                      "close": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      }
+                    },
+                    "viewports": [
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      },
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      }
+                    ]
+                  },
+                  {
+                    "index": 1,
+                    "ref": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "label": "label",
+                    "size": {
+                      "width": 1.1,
+                      "height": 1.1
+                    },
+                    "rotation": 1,
+                    "userUnit": 1.1,
+                    "tabOrder": "rows",
+                    "boxes": {
+                      "media": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "crop": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "bleed": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "trim": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "art": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      }
+                    },
+                    "pdfCropBox": {
+                      "left": 1.1,
+                      "bottom": 1.1,
+                      "right": 1.1,
+                      "top": 1.1
+                    },
+                    "actions": {
+                      "open": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      },
+                      "close": {
+                        "root": {
+                          "type": "javascript",
+                          "subtype": "subtype",
+                          "next": [],
+                          "script": "script"
+                        },
+                        "incomplete": true,
+                        "warnings": [
+                          "cycle-dropped",
+                          "cycle-dropped"
+                        ]
+                      }
+                    },
+                    "viewports": [
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      },
+                      {
+                        "bbox": {
+                          "x": 1.1,
+                          "y": 1.1,
+                          "width": 1.1,
+                          "height": 1.1
+                        },
+                        "name": "name",
+                        "measure": {
+                          "subtype": "rectilinear",
+                          "ratio": "ratio",
+                          "x": [],
+                          "y": [],
+                          "distance": [],
+                          "area": [],
+                          "angle": [],
+                          "slope": [],
+                          "cyx": 1.1
+                        },
+                        "owned": true
+                      }
+                    ]
+                  }
+                ],
+                "labels": [
+                  {
+                    "firstPage": 1,
+                    "style": "decimal",
+                    "firstNumber": 1,
+                    "prefix": "prefix"
+                  },
+                  {
+                    "firstPage": 1,
+                    "style": "decimal",
+                    "firstNumber": 1,
+                    "prefix": "prefix"
+                  }
+                ],
+                "namedPages": [
+                  {
+                    "name": "name",
+                    "target": {
+                      "kind": "page",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      }
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "target": {
+                      "kind": "page",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      }
+                    }
+                  }
+                ]
+              },
               "meta": {
                 "affectedPages": [
                   {
@@ -42,6 +333,7 @@ public class SetScaleTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "viewportsVersion": 1,
                   "fontsVersion": 1,
                   "contentsVersion": 1,
                   "layerVersion": 1,
@@ -122,6 +414,81 @@ public class SetScaleTest : BaseMockServerTest
                 "kind": "objectNumber",
                 "objectNumber": 1
               },
+              "layout": {
+                "pageCount": 1,
+                "pages": [
+                  {
+                    "index": 1,
+                    "ref": {
+                      "kind": "objectNumber",
+                      "objectNumber": 1
+                    },
+                    "size": {
+                      "width": 1.1,
+                      "height": 1.1
+                    },
+                    "rotation": 1,
+                    "userUnit": 1.1,
+                    "boxes": {
+                      "media": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "crop": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "bleed": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "trim": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      },
+                      "art": {
+                        "x": 1.1,
+                        "y": 1.1,
+                        "width": 1.1,
+                        "height": 1.1
+                      }
+                    },
+                    "pdfCropBox": {
+                      "left": 1.1,
+                      "bottom": 1.1,
+                      "right": 1.1,
+                      "top": 1.1
+                    }
+                  }
+                ],
+                "labels": [
+                  {
+                    "firstPage": 1,
+                    "firstNumber": 1,
+                    "prefix": "prefix"
+                  }
+                ],
+                "namedPages": [
+                  {
+                    "name": "name",
+                    "target": {
+                      "kind": "page",
+                      "page": {
+                        "kind": "objectNumber",
+                        "objectNumber": 1
+                      }
+                    }
+                  }
+                ]
+              },
               "meta": {
                 "affectedPages": [
                   {
@@ -138,6 +505,7 @@ public class SetScaleTest : BaseMockServerTest
                   "metadataVersion": 1,
                   "attachmentsVersion": 1,
                   "outlineVersion": 1,
+                  "viewportsVersion": 1,
                   "fontsVersion": 1,
                   "contentsVersion": 1,
                   "layerVersion": 1,

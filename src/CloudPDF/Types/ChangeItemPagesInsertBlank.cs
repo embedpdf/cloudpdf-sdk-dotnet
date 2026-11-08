@@ -15,7 +15,7 @@ public record ChangeItemPagesInsertBlank : IJsonOnDeserialized
     public IEnumerable<PageRef> InsertedPages { get; set; } = new List<PageRef>();
 
     [JsonPropertyName("layout")]
-    public required ChangeItemPagesInsertBlankLayout Layout { get; set; }
+    public required PageListSnapshot Layout { get; set; }
 
     [JsonPropertyName("meta")]
     public required MutationMeta Meta { get; set; }

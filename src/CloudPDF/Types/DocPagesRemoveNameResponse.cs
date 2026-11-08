@@ -12,7 +12,7 @@ public record DocPagesRemoveNameResponse : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("layout")]
-    public required DocPagesRemoveNameResponseLayout Layout { get; set; }
+    public required PageListSnapshot Layout { get; set; }
 
     [JsonPropertyName("meta")]
     public required MutationMeta Meta { get; set; }

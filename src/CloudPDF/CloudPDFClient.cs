@@ -33,7 +33,7 @@ public partial class CloudPDFClient : ICloudPDFClient
             new Dictionary<string, string>()
             {
                 { "Authorization", $"Bearer {token}" },
-                { "EmbedPDF-Version", "3.0" },
+                { "EmbedPDF-Version", "3.1" },
             }
         );
         foreach (var header in authHeaders)
