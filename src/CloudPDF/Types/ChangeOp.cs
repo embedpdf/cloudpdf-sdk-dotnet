@@ -55,6 +55,15 @@ public record ChangeOp
     }
 
     /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.AnnotationsCopy"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.AnnotationsCopy value)
+    {
+        Type = "annotations.copy";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Create an instance of ChangeOp with <see cref="ChangeOp.FormsSetValue"/>.
     /// </summary>
     public ChangeOp(ChangeOp.FormsSetValue value)
@@ -96,6 +105,15 @@ public record ChangeOp
     public ChangeOp(ChangeOp.FormsCreate value)
     {
         Type = "forms.create";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeOp with <see cref="ChangeOp.FormsCopy"/>.
+    /// </summary>
+    public ChangeOp(ChangeOp.FormsCopy value)
+    {
+        Type = "forms.copy";
         Value = value.Value;
     }
 
@@ -347,6 +365,11 @@ public record ChangeOp
     public bool IsAnnotationsReorder => Type == "annotations.reorder";
 
     /// <summary>
+    /// Returns true if <see cref="Type"/> is "annotations.copy"
+    /// </summary>
+    public bool IsAnnotationsCopy => Type == "annotations.copy";
+
+    /// <summary>
     /// Returns true if <see cref="Type"/> is "forms.setValue"
     /// </summary>
     public bool IsFormsSetValue => Type == "forms.setValue";
@@ -370,6 +393,11 @@ public record ChangeOp
     /// Returns true if <see cref="Type"/> is "forms.create"
     /// </summary>
     public bool IsFormsCreate => Type == "forms.create";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "forms.copy"
+    /// </summary>
+    public bool IsFormsCopy => Type == "forms.copy";
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "forms.update"
@@ -528,6 +556,15 @@ public record ChangeOp
             : throw new global::System.Exception("ChangeOp.Type is not 'annotations.reorder'");
 
     /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpAnnotationsCopy"/> if <see cref="Type"/> is 'annotations.copy', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'annotations.copy'.</exception>
+    public CloudPDF.ChangeOpAnnotationsCopy AsAnnotationsCopy() =>
+        IsAnnotationsCopy
+            ? (CloudPDF.ChangeOpAnnotationsCopy)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'annotations.copy'");
+
+    /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeOpFormsSetValue"/> if <see cref="Type"/> is 'forms.setValue', otherwise throws an exception.
     /// </summary>
     /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'forms.setValue'.</exception>
@@ -571,6 +608,15 @@ public record ChangeOp
         IsFormsCreate
             ? (CloudPDF.ChangeOpFormsCreate)Value!
             : throw new global::System.Exception("ChangeOp.Type is not 'forms.create'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeOpFormsCopy"/> if <see cref="Type"/> is 'forms.copy', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'forms.copy'.</exception>
+    public CloudPDF.ChangeOpFormsCopy AsFormsCopy() =>
+        IsFormsCopy
+            ? (CloudPDF.ChangeOpFormsCopy)Value!
+            : throw new global::System.Exception("ChangeOp.Type is not 'forms.copy'");
 
     /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeOpFormsUpdate"/> if <see cref="Type"/> is 'forms.update', otherwise throws an exception.
@@ -797,11 +843,13 @@ public record ChangeOp
         Func<CloudPDF.ChangeOpAnnotationsUpdate, T> onAnnotationsUpdate,
         Func<CloudPDF.ChangeOpAnnotationsDelete, T> onAnnotationsDelete,
         Func<CloudPDF.ChangeOpAnnotationsReorder, T> onAnnotationsReorder,
+        Func<CloudPDF.ChangeOpAnnotationsCopy, T> onAnnotationsCopy,
         Func<CloudPDF.ChangeOpFormsSetValue, T> onFormsSetValue,
         Func<CloudPDF.ChangeOpFormsSetDisplay, T> onFormsSetDisplay,
         Func<CloudPDF.ChangeOpFormsSetAppearanceText, T> onFormsSetAppearanceText,
         Func<CloudPDF.ChangeOpFormsReset, T> onFormsReset,
         Func<CloudPDF.ChangeOpFormsCreate, T> onFormsCreate,
+        Func<CloudPDF.ChangeOpFormsCopy, T> onFormsCopy,
         Func<CloudPDF.ChangeOpFormsUpdate, T> onFormsUpdate,
         Func<CloudPDF.ChangeOpFormsDelete, T> onFormsDelete,
         Func<CloudPDF.ChangeOpFormsAddWidget, T> onFormsAddWidget,
@@ -835,11 +883,13 @@ public record ChangeOp
             "annotations.update" => onAnnotationsUpdate(AsAnnotationsUpdate()),
             "annotations.delete" => onAnnotationsDelete(AsAnnotationsDelete()),
             "annotations.reorder" => onAnnotationsReorder(AsAnnotationsReorder()),
+            "annotations.copy" => onAnnotationsCopy(AsAnnotationsCopy()),
             "forms.setValue" => onFormsSetValue(AsFormsSetValue()),
             "forms.setDisplay" => onFormsSetDisplay(AsFormsSetDisplay()),
             "forms.setAppearanceText" => onFormsSetAppearanceText(AsFormsSetAppearanceText()),
             "forms.reset" => onFormsReset(AsFormsReset()),
             "forms.create" => onFormsCreate(AsFormsCreate()),
+            "forms.copy" => onFormsCopy(AsFormsCopy()),
             "forms.update" => onFormsUpdate(AsFormsUpdate()),
             "forms.delete" => onFormsDelete(AsFormsDelete()),
             "forms.addWidget" => onFormsAddWidget(AsFormsAddWidget()),
@@ -875,11 +925,13 @@ public record ChangeOp
         Action<CloudPDF.ChangeOpAnnotationsUpdate> onAnnotationsUpdate,
         Action<CloudPDF.ChangeOpAnnotationsDelete> onAnnotationsDelete,
         Action<CloudPDF.ChangeOpAnnotationsReorder> onAnnotationsReorder,
+        Action<CloudPDF.ChangeOpAnnotationsCopy> onAnnotationsCopy,
         Action<CloudPDF.ChangeOpFormsSetValue> onFormsSetValue,
         Action<CloudPDF.ChangeOpFormsSetDisplay> onFormsSetDisplay,
         Action<CloudPDF.ChangeOpFormsSetAppearanceText> onFormsSetAppearanceText,
         Action<CloudPDF.ChangeOpFormsReset> onFormsReset,
         Action<CloudPDF.ChangeOpFormsCreate> onFormsCreate,
+        Action<CloudPDF.ChangeOpFormsCopy> onFormsCopy,
         Action<CloudPDF.ChangeOpFormsUpdate> onFormsUpdate,
         Action<CloudPDF.ChangeOpFormsDelete> onFormsDelete,
         Action<CloudPDF.ChangeOpFormsAddWidget> onFormsAddWidget,
@@ -921,6 +973,9 @@ public record ChangeOp
             case "annotations.reorder":
                 onAnnotationsReorder(AsAnnotationsReorder());
                 break;
+            case "annotations.copy":
+                onAnnotationsCopy(AsAnnotationsCopy());
+                break;
             case "forms.setValue":
                 onFormsSetValue(AsFormsSetValue());
                 break;
@@ -935,6 +990,9 @@ public record ChangeOp
                 break;
             case "forms.create":
                 onFormsCreate(AsFormsCreate());
+                break;
+            case "forms.copy":
+                onFormsCopy(AsFormsCopy());
                 break;
             case "forms.update":
                 onFormsUpdate(AsFormsUpdate());
@@ -1071,6 +1129,20 @@ public record ChangeOp
     }
 
     /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpAnnotationsCopy"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsAnnotationsCopy(out CloudPDF.ChangeOpAnnotationsCopy? value)
+    {
+        if (Type == "annotations.copy")
+        {
+            value = (CloudPDF.ChangeOpAnnotationsCopy)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
     /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpFormsSetValue"/> and returns true if successful.
     /// </summary>
     public bool TryAsFormsSetValue(out CloudPDF.ChangeOpFormsSetValue? value)
@@ -1134,6 +1206,20 @@ public record ChangeOp
         if (Type == "forms.create")
         {
             value = (CloudPDF.ChangeOpFormsCreate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeOpFormsCopy"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsFormsCopy(out CloudPDF.ChangeOpFormsCopy? value)
+    {
+        if (Type == "forms.copy")
+        {
+            value = (CloudPDF.ChangeOpFormsCopy)Value!;
             return true;
         }
         value = null;
@@ -1488,6 +1574,8 @@ public record ChangeOp
 
     public static implicit operator ChangeOp(ChangeOp.AnnotationsReorder value) => new(value);
 
+    public static implicit operator ChangeOp(ChangeOp.AnnotationsCopy value) => new(value);
+
     public static implicit operator ChangeOp(ChangeOp.FormsSetValue value) => new(value);
 
     public static implicit operator ChangeOp(ChangeOp.FormsSetDisplay value) => new(value);
@@ -1497,6 +1585,8 @@ public record ChangeOp
     public static implicit operator ChangeOp(ChangeOp.FormsReset value) => new(value);
 
     public static implicit operator ChangeOp(ChangeOp.FormsCreate value) => new(value);
+
+    public static implicit operator ChangeOp(ChangeOp.FormsCopy value) => new(value);
 
     public static implicit operator ChangeOp(ChangeOp.FormsUpdate value) => new(value);
 
@@ -1616,6 +1706,11 @@ public record ChangeOp
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeOpAnnotationsReorder"
                         ),
+                "annotations.copy" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpAnnotationsCopy?>(options)
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeOpAnnotationsCopy"
+                        ),
                 "forms.setValue" =>
                     jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpFormsSetValue?>(options)
                         ?? throw new JsonException(
@@ -1641,6 +1736,9 @@ public record ChangeOp
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeOpFormsCreate"
                         ),
+                "forms.copy" => jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpFormsCopy?>(
+                    options
+                ) ?? throw new JsonException("Failed to deserialize CloudPDF.ChangeOpFormsCopy"),
                 "forms.update" =>
                     jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeOpFormsUpdate?>(options)
                         ?? throw new JsonException(
@@ -1797,6 +1895,7 @@ public record ChangeOp
                     "annotations.update" => JsonSerializer.SerializeToNode(value.Value, options),
                     "annotations.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "annotations.reorder" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "annotations.copy" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.setValue" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.setDisplay" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.setAppearanceText" => JsonSerializer.SerializeToNode(
@@ -1805,6 +1904,7 @@ public record ChangeOp
                     ),
                     "forms.reset" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.create" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "forms.copy" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.update" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.addWidget" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -1944,6 +2044,26 @@ public record ChangeOp
     }
 
     /// <summary>
+    /// Discriminated union type for annotations.copy
+    /// </summary>
+    [Serializable]
+    public struct AnnotationsCopy
+    {
+        public AnnotationsCopy(CloudPDF.ChangeOpAnnotationsCopy value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpAnnotationsCopy Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.AnnotationsCopy(
+            CloudPDF.ChangeOpAnnotationsCopy value
+        ) => new(value);
+    }
+
+    /// <summary>
     /// Discriminated union type for forms.setValue
     /// </summary>
     [Serializable]
@@ -2038,6 +2158,25 @@ public record ChangeOp
         public override string ToString() => Value.ToString() ?? "null";
 
         public static implicit operator ChangeOp.FormsCreate(CloudPDF.ChangeOpFormsCreate value) =>
+            new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for forms.copy
+    /// </summary>
+    [Serializable]
+    public struct FormsCopy
+    {
+        public FormsCopy(CloudPDF.ChangeOpFormsCopy value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeOpFormsCopy Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeOp.FormsCopy(CloudPDF.ChangeOpFormsCopy value) =>
             new(value);
     }
 

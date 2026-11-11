@@ -11,9 +11,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>3.1.0</Version>
-    <AssemblyVersion>3.1.0.0</AssemblyVersion>
-    <FileVersion>3.1.0.0</FileVersion>
+    <Version>3.2.0</Version>
+    <AssemblyVersion>3.2.0.0</AssemblyVersion>
+    <FileVersion>3.2.0.0</FileVersion>
     <PackageReadmeFile Condition="Exists('..\..\README.md')">README.md</PackageReadmeFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>

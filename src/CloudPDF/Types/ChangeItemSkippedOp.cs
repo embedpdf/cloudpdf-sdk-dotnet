@@ -16,6 +16,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
 
     public static readonly ChangeItemSkippedOp AnnotationsReorder = new(Values.AnnotationsReorder);
 
+    public static readonly ChangeItemSkippedOp AnnotationsCopy = new(Values.AnnotationsCopy);
+
     public static readonly ChangeItemSkippedOp FormsSetValue = new(Values.FormsSetValue);
 
     public static readonly ChangeItemSkippedOp FormsSetDisplay = new(Values.FormsSetDisplay);
@@ -27,6 +29,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
     public static readonly ChangeItemSkippedOp FormsReset = new(Values.FormsReset);
 
     public static readonly ChangeItemSkippedOp FormsCreate = new(Values.FormsCreate);
+
+    public static readonly ChangeItemSkippedOp FormsCopy = new(Values.FormsCopy);
 
     public static readonly ChangeItemSkippedOp FormsUpdate = new(Values.FormsUpdate);
 
@@ -200,6 +204,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
 
         public const string AnnotationsReorder = "annotations.reorder";
 
+        public const string AnnotationsCopy = "annotations.copy";
+
         public const string FormsSetValue = "forms.setValue";
 
         public const string FormsSetDisplay = "forms.setDisplay";
@@ -209,6 +215,8 @@ public readonly record struct ChangeItemSkippedOp : IStringEnum
         public const string FormsReset = "forms.reset";
 
         public const string FormsCreate = "forms.create";
+
+        public const string FormsCopy = "forms.copy";
 
         public const string FormsUpdate = "forms.update";
 
