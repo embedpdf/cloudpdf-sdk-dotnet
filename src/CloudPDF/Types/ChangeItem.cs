@@ -64,6 +64,15 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.AnnotationsCopy"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.AnnotationsCopy value)
+    {
+        Type = "annotations.copy";
+        Value = value.Value;
+    }
+
+    /// <summary>
     /// Create an instance of ChangeItem with <see cref="ChangeItem.AnnotationsRestore"/>.
     /// </summary>
     public ChangeItem(ChangeItem.AnnotationsRestore value)
@@ -114,6 +123,15 @@ public record ChangeItem
     public ChangeItem(ChangeItem.FormsCreate value)
     {
         Type = "forms.create";
+        Value = value.Value;
+    }
+
+    /// <summary>
+    /// Create an instance of ChangeItem with <see cref="ChangeItem.FormsCopy"/>.
+    /// </summary>
+    public ChangeItem(ChangeItem.FormsCopy value)
+    {
+        Type = "forms.copy";
         Value = value.Value;
     }
 
@@ -415,6 +433,11 @@ public record ChangeItem
     public bool IsAnnotationsReorder => Type == "annotations.reorder";
 
     /// <summary>
+    /// Returns true if <see cref="Type"/> is "annotations.copy"
+    /// </summary>
+    public bool IsAnnotationsCopy => Type == "annotations.copy";
+
+    /// <summary>
     /// Returns true if <see cref="Type"/> is "annotations.restore"
     /// </summary>
     public bool IsAnnotationsRestore => Type == "annotations.restore";
@@ -443,6 +466,11 @@ public record ChangeItem
     /// Returns true if <see cref="Type"/> is "forms.create"
     /// </summary>
     public bool IsFormsCreate => Type == "forms.create";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "forms.copy"
+    /// </summary>
+    public bool IsFormsCopy => Type == "forms.copy";
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "forms.update"
@@ -635,6 +663,15 @@ public record ChangeItem
             : throw new global::System.Exception("ChangeItem.Type is not 'annotations.reorder'");
 
     /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemAnnotationsCopy"/> if <see cref="Type"/> is 'annotations.copy', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'annotations.copy'.</exception>
+    public CloudPDF.ChangeItemAnnotationsCopy AsAnnotationsCopy() =>
+        IsAnnotationsCopy
+            ? (CloudPDF.ChangeItemAnnotationsCopy)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'annotations.copy'");
+
+    /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeItemAnnotationsRestore"/> if <see cref="Type"/> is 'annotations.restore', otherwise throws an exception.
     /// </summary>
     /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'annotations.restore'.</exception>
@@ -689,6 +726,15 @@ public record ChangeItem
         IsFormsCreate
             ? (CloudPDF.ChangeItemFormsCreate)Value!
             : throw new global::System.Exception("ChangeItem.Type is not 'forms.create'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="CloudPDF.ChangeItemFormsCopy"/> if <see cref="Type"/> is 'forms.copy', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when <see cref="Type"/> is not 'forms.copy'.</exception>
+    public CloudPDF.ChangeItemFormsCopy AsFormsCopy() =>
+        IsFormsCopy
+            ? (CloudPDF.ChangeItemFormsCopy)Value!
+            : throw new global::System.Exception("ChangeItem.Type is not 'forms.copy'");
 
     /// <summary>
     /// Returns the value as a <see cref="CloudPDF.ChangeItemFormsUpdate"/> if <see cref="Type"/> is 'forms.update', otherwise throws an exception.
@@ -961,12 +1007,14 @@ public record ChangeItem
         Func<CloudPDF.ChangeItemAnnotationsUpdate, T> onAnnotationsUpdate,
         Func<CloudPDF.ChangeItemAnnotationsDelete, T> onAnnotationsDelete,
         Func<CloudPDF.ChangeItemAnnotationsReorder, T> onAnnotationsReorder,
+        Func<CloudPDF.ChangeItemAnnotationsCopy, T> onAnnotationsCopy,
         Func<CloudPDF.ChangeItemAnnotationsRestore, T> onAnnotationsRestore,
         Func<CloudPDF.ChangeItemFormsSetValue, T> onFormsSetValue,
         Func<CloudPDF.ChangeItemFormsSetDisplay, T> onFormsSetDisplay,
         Func<CloudPDF.ChangeItemFormsSetAppearanceText, T> onFormsSetAppearanceText,
         Func<CloudPDF.ChangeItemFormsReset, T> onFormsReset,
         Func<CloudPDF.ChangeItemFormsCreate, T> onFormsCreate,
+        Func<CloudPDF.ChangeItemFormsCopy, T> onFormsCopy,
         Func<CloudPDF.ChangeItemFormsUpdate, T> onFormsUpdate,
         Func<CloudPDF.ChangeItemFormsDelete, T> onFormsDelete,
         Func<CloudPDF.ChangeItemFormsRestore, T> onFormsRestore,
@@ -1006,12 +1054,14 @@ public record ChangeItem
             "annotations.update" => onAnnotationsUpdate(AsAnnotationsUpdate()),
             "annotations.delete" => onAnnotationsDelete(AsAnnotationsDelete()),
             "annotations.reorder" => onAnnotationsReorder(AsAnnotationsReorder()),
+            "annotations.copy" => onAnnotationsCopy(AsAnnotationsCopy()),
             "annotations.restore" => onAnnotationsRestore(AsAnnotationsRestore()),
             "forms.setValue" => onFormsSetValue(AsFormsSetValue()),
             "forms.setDisplay" => onFormsSetDisplay(AsFormsSetDisplay()),
             "forms.setAppearanceText" => onFormsSetAppearanceText(AsFormsSetAppearanceText()),
             "forms.reset" => onFormsReset(AsFormsReset()),
             "forms.create" => onFormsCreate(AsFormsCreate()),
+            "forms.copy" => onFormsCopy(AsFormsCopy()),
             "forms.update" => onFormsUpdate(AsFormsUpdate()),
             "forms.delete" => onFormsDelete(AsFormsDelete()),
             "forms.restore" => onFormsRestore(AsFormsRestore()),
@@ -1053,12 +1103,14 @@ public record ChangeItem
         Action<CloudPDF.ChangeItemAnnotationsUpdate> onAnnotationsUpdate,
         Action<CloudPDF.ChangeItemAnnotationsDelete> onAnnotationsDelete,
         Action<CloudPDF.ChangeItemAnnotationsReorder> onAnnotationsReorder,
+        Action<CloudPDF.ChangeItemAnnotationsCopy> onAnnotationsCopy,
         Action<CloudPDF.ChangeItemAnnotationsRestore> onAnnotationsRestore,
         Action<CloudPDF.ChangeItemFormsSetValue> onFormsSetValue,
         Action<CloudPDF.ChangeItemFormsSetDisplay> onFormsSetDisplay,
         Action<CloudPDF.ChangeItemFormsSetAppearanceText> onFormsSetAppearanceText,
         Action<CloudPDF.ChangeItemFormsReset> onFormsReset,
         Action<CloudPDF.ChangeItemFormsCreate> onFormsCreate,
+        Action<CloudPDF.ChangeItemFormsCopy> onFormsCopy,
         Action<CloudPDF.ChangeItemFormsUpdate> onFormsUpdate,
         Action<CloudPDF.ChangeItemFormsDelete> onFormsDelete,
         Action<CloudPDF.ChangeItemFormsRestore> onFormsRestore,
@@ -1108,6 +1160,9 @@ public record ChangeItem
             case "annotations.reorder":
                 onAnnotationsReorder(AsAnnotationsReorder());
                 break;
+            case "annotations.copy":
+                onAnnotationsCopy(AsAnnotationsCopy());
+                break;
             case "annotations.restore":
                 onAnnotationsRestore(AsAnnotationsRestore());
                 break;
@@ -1125,6 +1180,9 @@ public record ChangeItem
                 break;
             case "forms.create":
                 onFormsCreate(AsFormsCreate());
+                break;
+            case "forms.copy":
+                onFormsCopy(AsFormsCopy());
                 break;
             case "forms.update":
                 onFormsUpdate(AsFormsUpdate());
@@ -1290,6 +1348,20 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemAnnotationsCopy"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsAnnotationsCopy(out CloudPDF.ChangeItemAnnotationsCopy? value)
+    {
+        if (Type == "annotations.copy")
+        {
+            value = (CloudPDF.ChangeItemAnnotationsCopy)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
     /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemAnnotationsRestore"/> and returns true if successful.
     /// </summary>
     public bool TryAsAnnotationsRestore(out CloudPDF.ChangeItemAnnotationsRestore? value)
@@ -1367,6 +1439,20 @@ public record ChangeItem
         if (Type == "forms.create")
         {
             value = (CloudPDF.ChangeItemFormsCreate)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="CloudPDF.ChangeItemFormsCopy"/> and returns true if successful.
+    /// </summary>
+    public bool TryAsFormsCopy(out CloudPDF.ChangeItemFormsCopy? value)
+    {
+        if (Type == "forms.copy")
+        {
+            value = (CloudPDF.ChangeItemFormsCopy)Value!;
             return true;
         }
         value = null;
@@ -1795,6 +1881,8 @@ public record ChangeItem
 
     public static implicit operator ChangeItem(ChangeItem.AnnotationsReorder value) => new(value);
 
+    public static implicit operator ChangeItem(ChangeItem.AnnotationsCopy value) => new(value);
+
     public static implicit operator ChangeItem(ChangeItem.AnnotationsRestore value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.FormsSetValue value) => new(value);
@@ -1807,6 +1895,8 @@ public record ChangeItem
     public static implicit operator ChangeItem(ChangeItem.FormsReset value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.FormsCreate value) => new(value);
+
+    public static implicit operator ChangeItem(ChangeItem.FormsCopy value) => new(value);
 
     public static implicit operator ChangeItem(ChangeItem.FormsUpdate value) => new(value);
 
@@ -1940,6 +2030,13 @@ public record ChangeItem
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeItemAnnotationsReorder"
                         ),
+                "annotations.copy" =>
+                    jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemAnnotationsCopy?>(
+                        options
+                    )
+                        ?? throw new JsonException(
+                            "Failed to deserialize CloudPDF.ChangeItemAnnotationsCopy"
+                        ),
                 "annotations.restore" =>
                     jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemAnnotationsRestore?>(
                         options
@@ -1976,6 +2073,9 @@ public record ChangeItem
                         ?? throw new JsonException(
                             "Failed to deserialize CloudPDF.ChangeItemFormsCreate"
                         ),
+                "forms.copy" => jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemFormsCopy?>(
+                    options
+                ) ?? throw new JsonException("Failed to deserialize CloudPDF.ChangeItemFormsCopy"),
                 "forms.update" =>
                     jsonWithoutDiscriminator.Deserialize<CloudPDF.ChangeItemFormsUpdate?>(options)
                         ?? throw new JsonException(
@@ -2168,6 +2268,7 @@ public record ChangeItem
                     "annotations.update" => JsonSerializer.SerializeToNode(value.Value, options),
                     "annotations.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "annotations.reorder" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "annotations.copy" => JsonSerializer.SerializeToNode(value.Value, options),
                     "annotations.restore" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.setValue" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.setDisplay" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -2177,6 +2278,7 @@ public record ChangeItem
                     ),
                     "forms.reset" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.create" => JsonSerializer.SerializeToNode(value.Value, options),
+                    "forms.copy" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.update" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.delete" => JsonSerializer.SerializeToNode(value.Value, options),
                     "forms.restore" => JsonSerializer.SerializeToNode(value.Value, options),
@@ -2340,6 +2442,26 @@ public record ChangeItem
     }
 
     /// <summary>
+    /// Discriminated union type for annotations.copy
+    /// </summary>
+    [Serializable]
+    public struct AnnotationsCopy
+    {
+        public AnnotationsCopy(CloudPDF.ChangeItemAnnotationsCopy value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemAnnotationsCopy Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.AnnotationsCopy(
+            CloudPDF.ChangeItemAnnotationsCopy value
+        ) => new(value);
+    }
+
+    /// <summary>
     /// Discriminated union type for annotations.restore
     /// </summary>
     [Serializable]
@@ -2457,6 +2579,25 @@ public record ChangeItem
         public static implicit operator ChangeItem.FormsCreate(
             CloudPDF.ChangeItemFormsCreate value
         ) => new(value);
+    }
+
+    /// <summary>
+    /// Discriminated union type for forms.copy
+    /// </summary>
+    [Serializable]
+    public struct FormsCopy
+    {
+        public FormsCopy(CloudPDF.ChangeItemFormsCopy value)
+        {
+            Value = value;
+        }
+
+        internal CloudPDF.ChangeItemFormsCopy Value { get; set; }
+
+        public override string ToString() => Value.ToString() ?? "null";
+
+        public static implicit operator ChangeItem.FormsCopy(CloudPDF.ChangeItemFormsCopy value) =>
+            new(value);
     }
 
     /// <summary>
