@@ -35,6 +35,9 @@ public record DocSignaturesPrepareResponse : IJsonOnDeserialized
     [JsonPropertyName("expiresAt")]
     public DateTime? ExpiresAt { get; set; }
 
+    [JsonPropertyName("field")]
+    public FormFieldRef? Field { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

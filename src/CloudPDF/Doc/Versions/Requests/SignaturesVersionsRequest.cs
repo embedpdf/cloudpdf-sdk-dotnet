@@ -16,6 +16,12 @@ public record SignaturesVersionsRequest
     public required string Sha256 { get; set; }
 
     /// <summary>
+    /// The `signatures` engine value from the layer's head (`engine.signatures`): what the answer is computed with besides the file. With it, the answer is cached.
+    /// </summary>
+    [JsonIgnore]
+    public string? Engine { get; set; }
+
+    /// <summary>
     /// Base64-encoded password for an encrypted document. Valid only with the API token (403 anywhere else). An encrypted document answers 422 DocPasswordRequired when the header is absent. Viewer doc JWTs use the SDK password-session flow instead.
     /// </summary>
     [JsonIgnore]
