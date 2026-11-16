@@ -27,8 +27,11 @@ public record AnalysisVersionsRequest
     [JsonIgnore]
     public int? Until { get; set; }
 
+    /// <summary>
+    /// The `analysis` engine value from the layer's head (`engine.analysis`): the rules the answer is judged with. With it, a settled answer is cached.
+    /// </summary>
     [JsonIgnore]
-    public int? Policy { get; set; }
+    public string? Engine { get; set; }
 
     /// <summary>
     /// Base64-encoded password for an encrypted document. Valid only with the API token (403 anywhere else). An encrypted document answers 422 DocPasswordRequired when the header is absent. Viewer doc JWTs use the SDK password-session flow instead.
