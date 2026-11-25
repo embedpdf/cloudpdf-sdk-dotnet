@@ -47,6 +47,9 @@ public record FormFieldRadio : IJsonOnDeserialized
     [JsonPropertyName("groupId")]
     public string? GroupId { get; set; }
 
+    [JsonPropertyName("purpose")]
+    public string? Purpose { get; set; }
+
     [JsonPropertyName("createdBy")]
     public string? CreatedBy { get; set; }
 

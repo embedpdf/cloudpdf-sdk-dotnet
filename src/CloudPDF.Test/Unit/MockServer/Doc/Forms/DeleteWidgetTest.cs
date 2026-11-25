@@ -128,6 +128,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                   }
                 },
                 "groupId": "groupId",
+                "purpose": "purpose",
                 "createdBy": "createdBy",
                 "createdAt": "2024-01-15T09:30:00.000Z",
                 "filledBy": "filledBy",
@@ -171,7 +172,11 @@ public class DeleteWidgetTest : BaseMockServerTest
                 "maxLength": 1,
                 "multiline": true,
                 "password": true,
-                "comb": true
+                "comb": true,
+                "format": {
+                  "kind": "date",
+                  "pattern": "pattern"
+                }
               },
               "meta": {
                 "affectedPages": [
@@ -396,6 +401,7 @@ public class DeleteWidgetTest : BaseMockServerTest
                   }
                 },
                 "groupId": "groupId",
+                "purpose": "purpose",
                 "createdBy": "createdBy",
                 "createdAt": "2024-01-15T09:30:00.000Z",
                 "filledBy": "filledBy",
@@ -412,7 +418,11 @@ public class DeleteWidgetTest : BaseMockServerTest
                 "maxLength": 1,
                 "multiline": true,
                 "password": true,
-                "comb": true
+                "comb": true,
+                "format": {
+                  "kind": "date",
+                  "pattern": "pattern"
+                }
               },
               "meta": {
                 "affectedPages": [

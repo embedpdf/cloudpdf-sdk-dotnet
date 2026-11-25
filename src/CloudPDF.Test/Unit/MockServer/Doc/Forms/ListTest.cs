@@ -119,6 +119,7 @@ public class ListTest : BaseMockServerTest
                     }
                   },
                   "groupId": "groupId",
+                  "purpose": "purpose",
                   "createdBy": "createdBy",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "filledBy": "filledBy",
@@ -162,7 +163,11 @@ public class ListTest : BaseMockServerTest
                   "maxLength": 1,
                   "multiline": true,
                   "password": true,
-                  "comb": true
+                  "comb": true,
+                  "format": {
+                    "kind": "date",
+                    "pattern": "pattern"
+                  }
                 },
                 {
                   "kind": "text",
@@ -266,6 +271,7 @@ public class ListTest : BaseMockServerTest
                     }
                   },
                   "groupId": "groupId",
+                  "purpose": "purpose",
                   "createdBy": "createdBy",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "filledBy": "filledBy",
@@ -309,7 +315,11 @@ public class ListTest : BaseMockServerTest
                   "maxLength": 1,
                   "multiline": true,
                   "password": true,
-                  "comb": true
+                  "comb": true,
+                  "format": {
+                    "kind": "date",
+                    "pattern": "pattern"
+                  }
                 }
               ],
               "widgets": [
@@ -1009,6 +1019,7 @@ public class ListTest : BaseMockServerTest
                     "kind": "none"
                   },
                   "groupId": "groupId",
+                  "purpose": "purpose",
                   "createdBy": "createdBy",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "filledBy": "filledBy",
@@ -1025,7 +1036,11 @@ public class ListTest : BaseMockServerTest
                   "maxLength": 1,
                   "multiline": true,
                   "password": true,
-                  "comb": true
+                  "comb": true,
+                  "format": {
+                    "kind": "date",
+                    "pattern": "pattern"
+                  }
                 }
               ],
               "widgets": [

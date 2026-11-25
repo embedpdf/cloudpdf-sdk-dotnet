@@ -38,10 +38,28 @@ public partial interface ISignaturesClient
     );
 
     /// <summary>
-    /// Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '&lt;key&gt;' }`, and that PDF as the part `resource:&lt;key&gt;`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). The signature is made over the layer's own base: the upload, or the version its last signature made.
+    /// Multipart: a JSON `body` part (field, subFilter, digest, contentsSize, signer, certify, lock), naming the appearance PDF it may carry as `resources: { appearance: '&lt;key&gt;' }`, and that PDF as the part `resource:&lt;key&gt;`. A certification (`certify.permission`) additionally requires `doc.sign.certify`. The layer is read-only until the signing completes, is cancelled, or expires (15 minutes). A document timestamp (`kind: 'timestamp'`) may leave `field` out, since 3.3: the engine then makes a field of no size for it, under a name no other field has, and the answer names it in `field`. That needs `doc.sign` for the document. The signature is made over the layer's own base: the upload, or the version its last signature made.
     /// </summary>
     WithRawResponseTask<DocSignaturesPrepareResponse> PrepareAsync(
         PrepareSignaturesRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Each entry is one DER object, base64. It reads the layer as it is now, so entries stored and not yet sealed by a signature are among them. Arrived in 3.3.
+    /// </summary>
+    WithRawResponseTask<DocSignaturesValidationInfoResponse> ValidationInfoAsync(
+        ValidationInfoSignaturesRequest request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Each entry is one DER object of at most 16 MiB, base64. An entry the file already holds, byte for byte, is not stored again: `added` counts the new ones. An entry that is not one DER object fails the request and nothing is stored; the error names it, as in `certificates[1]`. The server stores what it is given and asks no certificate authority: collect the answers first. It needs `doc.sign` for the document, not for a group of fields, and is refused after a certification that allows no changes. It cannot be undone, and it leaves undo for earlier changes as it was. Arrived in 3.3.
+    /// </summary>
+    WithRawResponseTask<DocSignaturesAddValidationInfoResponse> AddValidationInfoAsync(
+        DocSignaturesAddValidationInfoRequest request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

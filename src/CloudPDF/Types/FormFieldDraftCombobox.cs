@@ -32,6 +32,9 @@ public record FormFieldDraftCombobox : IJsonOnDeserialized
     [JsonPropertyName("groupId")]
     public string? GroupId { get; set; }
 
+    [JsonPropertyName("purpose")]
+    public string? Purpose { get; set; }
+
     [JsonPropertyName("actions")]
     public FieldActionsPatch? Actions { get; set; }
 
@@ -46,6 +49,9 @@ public record FormFieldDraftCombobox : IJsonOnDeserialized
 
     [JsonPropertyName("defaultValue")]
     public string? DefaultValue { get; set; }
+
+    [JsonPropertyName("format")]
+    public FormFieldFormatWritable? Format { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

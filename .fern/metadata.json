@@ -10,10 +10,10 @@
     "base-exception-class-name": "CloudPDFException",
     "base-api-exception-class-name": "CloudPDFApiException"
   },
-  "originGitCommit": "e074ee8465006a168ff6d8cfa73928df13ae159c",
+  "originGitCommit": "9af4d9ee755d6e5c20a8055654e895a81b95fb83",
   "originGitCommitIsDirty": false,
   "invokedBy": "ci",
-  "requestedVersion": "3.2.0",
+  "requestedVersion": "3.4.0",
   "ciProvider": "github",
-  "sdkVersion": "3.2.0"
+  "sdkVersion": "3.4.0"
 }

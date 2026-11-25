@@ -132,7 +132,7 @@ public partial class VersionsClient : IVersionsClient
             .Add("since.revision", request.SinceRevision)
             .Add("level", request.Level)
             .Add("until", request.Until)
-            .Add("policy", request.Policy)
+            .Add("engine", request.Engine)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
@@ -432,7 +432,8 @@ public partial class VersionsClient : IVersionsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 0)
+        var _queryString = new CloudPDF.Core.QueryStringBuilder.Builder(capacity: 1)
+            .Add("engine", request.Engine)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
         var _headers = await new CloudPDF.Core.HeadersBuilder.Builder()
@@ -505,6 +506,18 @@ public partial class VersionsClient : IVersionsClient
             {
                 switch (response.StatusCode)
                 {
+                    case 400:
+                        throw new BadRequestError(
+                            JsonUtils.Deserialize<ErrorResponse>(responseBody),
+                            rawResponse: new CloudPDF.RawResponse()
+                            {
+                                StatusCode = response.Raw.StatusCode,
+                                Url =
+                                    response.Raw.RequestMessage?.RequestUri
+                                    ?? new Uri("about:blank"),
+                                Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                            }
+                        );
                     case 404:
                         throw new NotFoundError(
                             JsonUtils.Deserialize<ErrorResponse>(responseBody),
@@ -736,7 +749,7 @@ public partial class VersionsClient : IVersionsClient
     }
 
     /// <summary>
-    /// Exactly one of `since.signature` / `since.revision`; `until=&lt;revision&gt;` defaults to the last. The same answer for every caller.
+    /// Exactly one of `since.signature` / `since.revision`; `until=&lt;revision&gt;` defaults to the last. The same answer for every caller. A version never changes, but the rules that judge it can: with `engine`, the `analysis` value of the layer's head, a settled answer is `immutable`. Without it, or with another value, the answer is this server's own, with `no-store` and the current value in `EmbedPDF-Engine`.
     /// </summary>
     /// <example><code>
     /// await client.Doc.Versions.AnalysisAsync(
@@ -802,6 +815,9 @@ public partial class VersionsClient : IVersionsClient
         );
     }
 
+    /// <summary>
+    /// A version never changes, but what the server reads from it can: with `engine`, the `signatures` value of the layer's head, the answer is `immutable`. Without it, or with another value, the answer is this server's own, with `no-store` and the current value in `EmbedPDF-Engine`.
+    /// </summary>
     /// <example><code>
     /// await client.Doc.Versions.SignaturesAsync(
     ///     new SignaturesVersionsRequest
