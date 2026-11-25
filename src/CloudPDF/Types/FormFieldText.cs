@@ -47,6 +47,9 @@ public record FormFieldText : IJsonOnDeserialized
     [JsonPropertyName("groupId")]
     public string? GroupId { get; set; }
 
+    [JsonPropertyName("purpose")]
+    public string? Purpose { get; set; }
+
     [JsonPropertyName("createdBy")]
     public string? CreatedBy { get; set; }
 
@@ -85,6 +88,12 @@ public record FormFieldText : IJsonOnDeserialized
 
     [JsonPropertyName("comb")]
     public required bool Comb { get; set; }
+
+    /// <summary>
+    /// The shape a text field's or a dropdown's value has, by its `kind`: a date or a time with the pattern it is shown in, or `other` for a format script the engine does not recognise. A newer server can add kinds: read one your client doesn't know as `other`.
+    /// </summary>
+    [JsonPropertyName("format")]
+    public FormFieldFormat? Format { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

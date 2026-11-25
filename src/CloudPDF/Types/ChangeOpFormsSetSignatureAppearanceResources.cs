@@ -12,7 +12,7 @@ public record ChangeOpFormsSetSignatureAppearanceResources : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("appearance")]
-    public required string Appearance { get; set; }
+    public string? Appearance { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

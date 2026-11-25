@@ -32,6 +32,9 @@ public record FormFieldDraftText : IJsonOnDeserialized
     [JsonPropertyName("groupId")]
     public string? GroupId { get; set; }
 
+    [JsonPropertyName("purpose")]
+    public string? Purpose { get; set; }
+
     [JsonPropertyName("actions")]
     public FieldActionsPatch? Actions { get; set; }
 
@@ -52,6 +55,9 @@ public record FormFieldDraftText : IJsonOnDeserialized
 
     [JsonPropertyName("comb")]
     public bool? Comb { get; set; }
+
+    [JsonPropertyName("format")]
+    public FormFieldFormatWritable? Format { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -32,6 +32,9 @@ public record FormFieldDraftPushbutton : IJsonOnDeserialized
     [JsonPropertyName("groupId")]
     public string? GroupId { get; set; }
 
+    [JsonPropertyName("purpose")]
+    public string? Purpose { get; set; }
+
     [JsonPropertyName("actions")]
     public FieldActionsPatch? Actions { get; set; }
 

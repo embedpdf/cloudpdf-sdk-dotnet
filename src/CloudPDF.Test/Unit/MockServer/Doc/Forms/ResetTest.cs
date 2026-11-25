@@ -121,6 +121,7 @@ public class ResetTest : BaseMockServerTest
                     }
                   },
                   "groupId": "groupId",
+                  "purpose": "purpose",
                   "createdBy": "createdBy",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "filledBy": "filledBy",
@@ -164,7 +165,11 @@ public class ResetTest : BaseMockServerTest
                   "maxLength": 1,
                   "multiline": true,
                   "password": true,
-                  "comb": true
+                  "comb": true,
+                  "format": {
+                    "kind": "date",
+                    "pattern": "pattern"
+                  }
                 },
                 {
                   "kind": "text",
@@ -268,6 +273,7 @@ public class ResetTest : BaseMockServerTest
                     }
                   },
                   "groupId": "groupId",
+                  "purpose": "purpose",
                   "createdBy": "createdBy",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "filledBy": "filledBy",
@@ -311,7 +317,11 @@ public class ResetTest : BaseMockServerTest
                   "maxLength": 1,
                   "multiline": true,
                   "password": true,
-                  "comb": true
+                  "comb": true,
+                  "format": {
+                    "kind": "date",
+                    "pattern": "pattern"
+                  }
                 }
               ],
               "widgets": [
@@ -1141,6 +1151,7 @@ public class ResetTest : BaseMockServerTest
                     "kind": "none"
                   },
                   "groupId": "groupId",
+                  "purpose": "purpose",
                   "createdBy": "createdBy",
                   "createdAt": "2024-01-15T09:30:00.000Z",
                   "filledBy": "filledBy",
@@ -1157,7 +1168,11 @@ public class ResetTest : BaseMockServerTest
                   "maxLength": 1,
                   "multiline": true,
                   "password": true,
-                  "comb": true
+                  "comb": true,
+                  "format": {
+                    "kind": "date",
+                    "pattern": "pattern"
+                  }
                 }
               ],
               "widgets": [
